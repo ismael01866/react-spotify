@@ -1,6 +1,6 @@
 import { Home } from 'modules';
 import type { NextPage } from 'next';
 
-const Index: NextPage = () => <Home />;
+const IndexPage: NextPage = () => <Home />;
 
-export default Index;
+export default IndexPage;

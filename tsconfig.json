@@ -21,11 +21,17 @@
       "components": ["src/components"],
       "components/*": ["src/components/*"],
 
+      "layout": ["src/layout"],
+      "layout/*": ["src/layout/*"],
+
       "pages": ["src/pages"],
       "pages/*": ["src/pages/*"],
 
       "modules": ["src/modules"],
       "modules/*": ["src/modules/*"],
+
+      "features": ["src/features"],
+      "features/*": ["src/features/*"],
 
       "models": ["src/models"],
       "models/*": ["src/models/*"],

@@ -1,10 +1,12 @@
-import { User as UserProps } from 'types/user';
+import { IUser } from 'types/user';
 
-export class User {
+export class User implements IUser {
   name;
   image;
 
-  constructor({ name, image }: UserProps) {
+  constructor(props: IUser) {
+    const { name, image } = props;
+
     this.name = name;
     this.image = image;
   }

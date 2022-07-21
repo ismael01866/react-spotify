@@ -13,13 +13,16 @@ export default async function handler(
 
   const { access_token } = await getSpotifyToken(refresh_token);
 
-  const data = await fetch('https://api.spotify.com/v1/me', {
-    headers: {
-      Authorization: `Bearer ${access_token}`
+  const data = await fetch(
+    'https://api.spotify.com/v1/me/player/devices',
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`
+      }
     }
-  }).then((res) => res.json());
+  ).then((res: any) => res.json());
 
-  console.log(data);
+  const result = data?.devices || [];
 
-  return res.status(200).json(data);
+  return res.status(200).json(result);
 }
