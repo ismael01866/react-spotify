@@ -1,6 +1,9 @@
 import 'styles/globals.css';
-import { theme } from '../../theme';
 
+import { theme } from '../../theme';
+import { store } from './../store';
+
+import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
 import { SessionProvider } from 'next-auth/react';
 
@@ -13,7 +16,9 @@ function App({
   return (
     <SessionProvider session={session}>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </ChakraProvider>
     </SessionProvider>
   );

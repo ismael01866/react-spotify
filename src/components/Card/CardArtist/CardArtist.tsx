@@ -10,6 +10,7 @@ import {
 
 import { Card } from 'components/Card';
 import { FaPlay } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 import { Artist } from 'src/models';
 import { IArtist } from 'src/types/artist';
@@ -23,24 +24,16 @@ export function CardArtist(props: CardArtistProps) {
   const { artist, ...others } = props;
   const { name, uri, images, totalFollowers } = new Artist(artist);
 
+  const deviceID = useSelector((state: any) => state.player.deviceID);
+
   const handleOnClick = async () => {
-    await fetch('api/spotify/me/player/devices')
-      .then((res) => res.json())
-      .then((data) => {
-        const devices = data.filter((device) => {
-          return device.id === window.device_id;
-        });
-
-        const device_id = devices[0].id;
-
-        fetch('api/spotify/me/player/play', {
-          method: 'POST',
-          body: JSON.stringify({
-            device_id,
-            context_uri: uri
-          })
-        });
-      });
+    fetch('api/spotify/me/player/play', {
+      method: 'POST',
+      body: JSON.stringify({
+        device_id: deviceID,
+        context_uri: uri
+      })
+    });
   };
 
   return (

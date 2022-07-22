@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 import { Grid, GridItem } from '@chakra-ui/react';
-import { Navbar, Sidebar, Player } from './components';
+import { Navbar, Player, Sidebar } from './components';
 
 export interface LayoutProps {
   children: ReactNode;
@@ -9,6 +9,19 @@ export interface LayoutProps {
 
 export function Layout(props: LayoutProps) {
   const { children } = props;
+
+  useEffect(() => {
+    const script = document.createElement('script');
+
+    script.src = 'https://sdk.scdn.co/spotify-player.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <Grid

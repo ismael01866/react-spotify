@@ -14,6 +14,12 @@ export function FeaturedGrid() {
     });
   }, []);
 
+  const fetchData = () => {
+    return fetch('api/spotify/me/top/artists').then((res) =>
+      res.json()
+    );
+  };
+
   return (
     <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4}>
       {artists.map((artist) => {
@@ -22,7 +28,3 @@ export function FeaturedGrid() {
     </SimpleGrid>
   );
 }
-
-const fetchData = () => {
-  return fetch('api/spotify/me/top/artists').then((res) => res.json());
-};
