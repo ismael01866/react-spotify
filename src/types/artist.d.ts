@@ -1,16 +1,15 @@
 export interface IArtist {
-  id: number;
-  uri: string;
+  id?: number;
+  name?: string;
+  uri?: string;
 
-  name: string;
-
-  images: {
-    url: string;
+  images?: {
+    url?: string;
   }[];
 
-  followers: {
-    total: number;
+  followers?: {
+    total?: number;
   };
 
-  popularity: number;
+  popularity?: number;
 }

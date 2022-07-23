@@ -18,6 +18,8 @@ export function Layout(props: LayoutProps) {
 
     document.body.appendChild(script);
 
+    window.onSpotifyWebPlaybackSDKReady = () => {};
+
     return () => {
       document.body.removeChild(script);
     };
