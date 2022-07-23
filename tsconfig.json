@@ -33,9 +33,6 @@
       "features": ["src/features"],
       "features/*": ["src/features/*"],
 
-      "models": ["src/models"],
-      "models/*": ["src/models/*"],
-
       "lib": ["src/lib"],
       "lib/*": ["src/lib/*"],
 

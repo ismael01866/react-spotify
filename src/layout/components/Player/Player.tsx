@@ -1,93 +1,76 @@
+import { useCallback, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
 
-import { HStack, Image } from '@chakra-ui/react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setDeviceID } from './playerSlice';
+
+import { AspectRatio, HStack, Image } from '@chakra-ui/react';
+
+import { IAlbum } from 'src/types/album';
 
 export interface PlayerProps {}
 
 export function Player(props: PlayerProps) {
+  const dispatch = useDispatch();
   const { data: session, status }: any = useSession();
 
-  const dispatch = useDispatch();
-  // const [player, setPlayer] = useState();
+  const [album, setAlbum] = useState<IAlbum>({});
+  const [playbackID, setPlaybackID] = useState();
 
-  useEffect(() => {
-    console.log('SESSION', session);
-    if (status !== 'authenticated') return;
-
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = session?.access_token;
-      const player = buildPlayer(token);
-
-      player.connect();
-    };
-  }, [session, status]);
-
-  // useEffect(() => {
-  // dispatch(setDeviceID());
-  // }, [deviceID, dispatch]);
-
-  const buildPlayer = (token: string) => {
-    const windowPlayer = new window.Spotify.Player({
+  const buildPlayer = useCallback((token: string) => {
+    return new window.Spotify.Player({
       name: 'Spotify Web Player',
       volume: 0.5,
       getOAuthToken: (cb: (token: string) => {}) => {
         cb(token);
       }
     });
+  }, []);
 
-    windowPlayer.addListener('ready', ({ device_id }) => {
-      console.log('Ready with Device ID', device_id);
+  useEffect(() => {
+    // console.log('SESSION', session);
 
-      dispatch(setDeviceID(device_id));
-    });
+    if (status !== 'authenticated') return;
 
-    windowPlayer.addListener('not_ready', ({ device_id }) => {
-      console.log('Device ID has gone offline', device_id);
-    });
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      const token = session?.access_token;
+      const player = buildPlayer(token);
 
-    windowPlayer.addListener('player_state_changed', (state) => {
-      console.log(state);
+      player.addListener(
+        'ready',
+        ({ device_id }: { device_id: string }) => {
+          dispatch(setDeviceID(device_id));
+        }
+      );
 
-      if (!state) return;
+      player.addListener('player_state_changed', (state: any) => {
+        if (!state) return;
 
-      // console.log(state.context.metadata.current_item.group.uri);
+        const album = state?.track_window?.current_track?.album;
+        setAlbum(album);
 
-      // setTrack(state.track_window.current_track);
-      // setPaused(state.paused);
+        setPlaybackID(state.playback_id);
+      });
 
-      // player.getCurrentState().then((state) => {
-      // !state ? setActive(false) : setActive(true);
-      // });
-    });
+      player.connect();
+    };
+  }, [session, status, buildPlayer, dispatch]);
 
-    windowPlayer.addListener('initialization_error', ({ message }) => {
-      console.error(message);
-    });
-
-    windowPlayer.addListener('authentication_error', ({ message }) => {
-      console.error(message);
-    });
-
-    windowPlayer.addListener('account_error', ({ message }) => {
-      console.error(message);
-    });
-
-    return windowPlayer;
-  };
+  const { name, images = [] } = album;
 
   return (
-    <HStack
-      bg={'bg.base'}
-      borderTop={'1px solid'}
-      borderColor={'bg.800'}
-      h={'7xs'}
-      w={'full'}
-    >
-      <Image src={''} alt={''} />
-    </HStack>
+    playbackID && (
+      <HStack
+        bg={'bg.base'}
+        borderTop={'1px solid'}
+        borderColor={'bg.800'}
+        h={'7xs'}
+        w={'full'}
+      >
+        <AspectRatio h={'full'} ratio={4 / 3} w={'7xs'}>
+          <Image maxHeight={'full'} src={images[0]?.url} alt={name} />
+        </AspectRatio>
+      </HStack>
+    )
   );
 }

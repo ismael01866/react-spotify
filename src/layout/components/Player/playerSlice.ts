@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from 'src/store';
 
 export const playerSlice = createSlice({
   name: 'player',
@@ -9,13 +10,11 @@ export const playerSlice = createSlice({
     setDeviceID: (state, action) => {
       state.deviceID = action.payload;
     }
-
-    // incrementByAmount: (state, action) => {
-    //   state.value += action.payload;
-    // }
   }
 });
 
 export const playerReducer = playerSlice.reducer;
-
 export const { setDeviceID } = playerSlice.actions;
+
+export const selectDeviceID = (state: RootState) =>
+  state.player.deviceID;

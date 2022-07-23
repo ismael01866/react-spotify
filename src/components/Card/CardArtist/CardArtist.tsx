@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import { selectDeviceID } from 'src/layout/components/Player/playerSlice';
+
 import {
   AspectRatio,
   Heading,
@@ -10,9 +13,7 @@ import {
 
 import { Card } from 'components/Card';
 import { FaPlay } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
 
-import { Artist } from 'src/models';
 import { IArtist } from 'src/types/artist';
 
 export interface CardArtistProps {
@@ -22,17 +23,15 @@ export interface CardArtistProps {
 
 export function CardArtist(props: CardArtistProps) {
   const { artist, ...others } = props;
-  const { name, uri, images, totalFollowers } = new Artist(artist);
+  const { name, uri, images, followers } = artist;
 
-  const deviceID = useSelector((state: any) => state.player.deviceID);
+  const device_id = useSelector(selectDeviceID);
+  const context_uri = uri;
 
   const handleOnClick = async () => {
     fetch('api/spotify/me/player/play', {
       method: 'POST',
-      body: JSON.stringify({
-        device_id: deviceID,
-        context_uri: uri
-      })
+      body: JSON.stringify({ device_id, context_uri })
     });
   };
 
@@ -62,7 +61,7 @@ export function CardArtist(props: CardArtistProps) {
             {name}
           </Heading>
           <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-            {totalFollowers} followers
+            {followers.total.toLocaleString()} followers
           </Text>
         </VStack>
 

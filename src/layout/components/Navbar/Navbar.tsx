@@ -15,23 +15,24 @@ import {
 
 import { FaAngleDown } from 'react-icons/fa';
 
-import { User } from 'models';
 import { IUser } from 'types/user';
 
 export interface NavbarProps {}
 
 export function Navbar(props: NavbarProps) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [user, setUser] = useState<IUser>({});
 
   useEffect(() => {
-    setUser(
-      new User({
-        name: session?.user?.name,
-        image: session?.user?.image
-      })
-    );
-  }, [session]);
+    if (status !== 'authenticated') return;
+
+    const user = {
+      name: session?.user?.name || '',
+      image: session?.user?.image || ''
+    };
+
+    setUser(user);
+  }, [session, status]);
 
   const handleLogout = () => signOut();
 
