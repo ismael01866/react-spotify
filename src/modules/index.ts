@@ -1,4 +1,3 @@
-export { Home } from './home';
-export { Search } from './search';
-
-export { SignIn } from './auth';
+export * from './auth';
+export * from './home';
+export * from './search';

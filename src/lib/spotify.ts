@@ -5,7 +5,7 @@ const basic = Buffer.from(`${client_id}:${client_secret}`).toString(
   'base64'
 );
 
-export const getSpotifyToken = async function (refresh_token: string) {
+export async function getSpotifyToken(refresh_token: string) {
   const data = await fetch(`https://accounts.spotify.com/api/token`, {
     method: 'POST',
     headers: {
@@ -19,4 +19,66 @@ export const getSpotifyToken = async function (refresh_token: string) {
   }).then((res) => res.json());
 
   return data;
-};
+}
+
+export function buildSpotifyPlayer(
+  token: string,
+  {
+    onReady,
+    onStateChange
+  }: {
+    onReady?: (args: any) => void;
+    onStateChange?: (args: any) => void;
+  }
+) {
+  const player = new window.Spotify.Player({
+    name: 'Spotify Web Player',
+    volume: 0.5,
+    getOAuthToken: (cb: (token: string) => {}) => {
+      cb(token);
+    }
+  });
+
+  player.addListener(
+    'ready',
+    ({ device_id }: { device_id: string }) => {
+      if (typeof onReady === 'function') onReady(device_id);
+    }
+  );
+
+  player.addListener(
+    'not_ready',
+    ({ device_id }: { device_id: string }) => {
+      console.log('Device ID has gone offline', device_id);
+    }
+  );
+
+  player.addListener('player_state_changed', (state: any) => {
+    if (!state) return;
+
+    if (typeof onStateChange === 'function') onStateChange(state);
+  });
+
+  player.addListener(
+    'initialization_error',
+    ({ message }: { message: string }) => {
+      console.error(message);
+    }
+  );
+
+  player.addListener(
+    'authentication_error',
+    ({ message }: { message: string }) => {
+      console.error(message);
+    }
+  );
+
+  player.addListener(
+    'account_error',
+    ({ message }: { message: string }) => {
+      console.error(message);
+    }
+  );
+
+  return player;
+}

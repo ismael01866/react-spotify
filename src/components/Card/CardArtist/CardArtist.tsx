@@ -1,18 +1,14 @@
-import { useSelector } from 'react-redux';
-import { selectDeviceID } from 'src/layout/components/Player/playerSlice';
-
 import {
   AspectRatio,
   Heading,
   HStack,
-  IconButton,
   Image,
   Text,
   VStack
 } from '@chakra-ui/react';
 
 import { Card } from 'components/Card';
-import { FaPlay } from 'react-icons/fa';
+import { ButtonPlay } from './components';
 
 import { IArtist } from 'src/types/artist';
 
@@ -25,16 +21,6 @@ export function CardArtist(props: CardArtistProps) {
   const { artist, ...others } = props;
   const { name, uri, images, followers } = artist;
 
-  const device_id = useSelector(selectDeviceID);
-  const context_uri = uri;
-
-  const handleOnClick = async () => {
-    fetch('api/spotify/me/player/play', {
-      method: 'POST',
-      body: JSON.stringify({ device_id, context_uri })
-    });
-  };
-
   return (
     <Card position={'relative'} role={'group'} {...others}>
       <AspectRatio
@@ -42,7 +28,7 @@ export function CardArtist(props: CardArtistProps) {
         overflow={'hidden'}
         ratio={4 / 3}
       >
-        <Image alt={name} src={images[0].url} />
+        <Image alt={name} src={images && images[0].url} />
       </AspectRatio>
 
       <HStack
@@ -61,18 +47,11 @@ export function CardArtist(props: CardArtistProps) {
             {name}
           </Heading>
           <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-            {followers.total.toLocaleString()} followers
+            {followers?.total?.toLocaleString()} followers
           </Text>
         </VStack>
 
-        <IconButton
-          aria-label={'play'}
-          colorScheme={'spotify'}
-          icon={<FaPlay />}
-          opacity={0}
-          _groupHover={{ opacity: 1 }}
-          onClick={handleOnClick}
-        />
+        <ButtonPlay uri={uri} />
       </HStack>
     </Card>
   );

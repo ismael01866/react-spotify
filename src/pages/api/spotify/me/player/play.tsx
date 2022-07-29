@@ -16,7 +16,6 @@ export default async function handler(
   const { access_token } = await getSpotifyToken(refresh_token);
 
   const body = JSON.parse(req.body || '{}');
-
   const query = querystring.stringify({ device_id: body.device_id });
 
   await fetch(`https://api.spotify.com/v1/me/player/play?${query}`, {
