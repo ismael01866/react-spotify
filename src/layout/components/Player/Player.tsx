@@ -3,11 +3,16 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTrack } from 'src/features/player/PlayerSlice';
 
-import { SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid, VStack } from '@chakra-ui/react';
 
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
-import { Controls, TrackMeta } from './components';
+import {
+  PlayControls,
+  TrackMeta,
+  TrackProgress,
+  VolumeBar
+} from './components';
 
 export interface PlayerProps {}
 
@@ -22,23 +27,6 @@ export function Player(props: PlayerProps) {
     if (track.artists) setArtist(track.artists[0]);
   }, [track]);
 
-  // useEffect(() => {
-  //   if (!player) return;
-
-  //   player.getCurrentState().then((state: any) => {
-  //     if (!state) return;
-
-  //     let counter = 0;
-  //     const durationInSeconds = state.duration / 1000;
-
-  //     setInterval(() => {
-  //       setTest((counter++ * 100) / durationInSeconds);
-  //     }, 1000);
-  //   });
-  // }, [player, playbackID]);
-
-  /* <Progress colorScheme={'spotify'} size={'xs'} value={test} /> */
-
   return (
     <SimpleGrid
       bg={'bg.base'}
@@ -48,8 +36,13 @@ export function Player(props: PlayerProps) {
       spacing={8}
     >
       <TrackMeta album={album} artist={artist} track={track} />
-      <Controls />
-      <div></div>
+
+      <VStack alignSelf={'center'} spacing={2}>
+        <PlayControls />
+        <TrackProgress />
+      </VStack>
+
+      <VolumeBar />
     </SimpleGrid>
   );
 }

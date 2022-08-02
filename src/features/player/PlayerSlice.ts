@@ -7,6 +7,8 @@ export const playerSlice = createSlice({
   name: 'player',
   initialState: {
     paused: true,
+    duration: 0,
+    position: 0,
 
     deviceID: '',
     playbackID: '',
@@ -28,20 +30,37 @@ export const playerSlice = createSlice({
 
     setPaused: (state, action) => {
       state.paused = action.payload;
+    },
+
+    setDuration: (state, action) => {
+      state.duration = action.payload;
+    },
+
+    setPosition: (state, action) => {
+      state.position = action.payload;
     }
   }
 });
 
 export const playerReducer = playerSlice.reducer;
-export const { setDeviceID, setPlaybackID, setTrack, setPaused } =
-  playerSlice.actions;
+export const {
+  setDeviceID,
+  setPlaybackID,
+  setTrack,
+  setPaused,
+  setDuration,
+  setPosition
+} = playerSlice.actions;
 
 export const selectDeviceID = (state: RootState) =>
   state.player.deviceID;
-
 export const selectPlaybackID = (state: RootState) =>
   state.player.playbackID;
 
 export const selectTrack = (state: RootState) => state.player.track;
 
 export const selectPaused = (state: RootState) => state.player.paused;
+export const selectDuration = (state: RootState) =>
+  state.player.duration;
+export const selectPosition = (state: RootState) =>
+  state.player.position;

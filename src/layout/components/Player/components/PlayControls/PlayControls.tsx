@@ -12,9 +12,9 @@ import { ButtonPlay } from './components';
 
 import { ON_CLICK_WAIT } from 'src/lib/constants';
 
-export interface ControlsProps {}
+export interface PlayControlsProps {}
 
-export function Controls(props: ControlsProps) {
+export function PlayControls(props: PlayControlsProps) {
   const paused = useSelector(selectPaused);
 
   const { player } = useContext(PlayerContext);
@@ -28,7 +28,7 @@ export function Controls(props: ControlsProps) {
   }, ON_CLICK_WAIT);
 
   return (
-    <HStack justifyContent={'center'} spacing={4}>
+    <HStack spacing={3}>
       <IconButton
         aria-label={'stepbackward'}
         icon={<FaStepBackward />}

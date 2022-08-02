@@ -22,7 +22,6 @@ export function ButtonPlay(props: ButtonPlayProps) {
       <IconButton
         aria-label={'play'}
         icon={paused ? <FaPlay /> : <FaPause />}
-        size={'lg'}
         onClick={handleOnClick}
       />
     </>

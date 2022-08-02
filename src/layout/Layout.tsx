@@ -1,14 +1,16 @@
 import { useSession } from 'next-auth/react';
 import { ReactNode, useEffect, useState } from 'react';
 
-import { PlayerContext } from 'src/features/player/PlayerContext';
 import { useDispatch, useSelector } from 'react-redux';
+import { PlayerContext } from 'src/features/player/PlayerContext';
 
 import {
   selectPlaybackID,
   setDeviceID,
+  setDuration,
   setPaused,
   setPlaybackID,
+  setPosition,
   setTrack
 } from 'src/features/player/PlayerSlice';
 
@@ -60,9 +62,11 @@ export function Layout(props: LayoutProps) {
 
           dispatch(setPlaybackID(state?.playback_id));
 
-          dispatch(setTrack(state?.track_window?.current_track));
-
           dispatch(setPaused(state?.paused));
+          dispatch(setDuration(state?.duration));
+          dispatch(setPosition(state?.position));
+
+          dispatch(setTrack(state?.track_window?.current_track));
         }
       });
 
