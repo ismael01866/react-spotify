@@ -3,6 +3,7 @@ import {
   Heading,
   HStack,
   Image,
+  Skeleton,
   Text,
   VStack
 } from '@chakra-ui/react';
@@ -28,7 +29,11 @@ export function CardArtist(props: CardArtistProps) {
         overflow={'hidden'}
         ratio={4 / 3}
       >
-        <Image alt={name} src={images && images[0].url} />
+        <Image
+          alt={name}
+          src={images && images[0].url}
+          fallback={<Skeleton />}
+        />
       </AspectRatio>
 
       <HStack

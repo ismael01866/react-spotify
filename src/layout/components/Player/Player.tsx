@@ -37,7 +37,7 @@ export function Player(props: PlayerProps) {
     >
       <TrackMeta album={album} artist={artist} track={track} />
 
-      <VStack alignSelf={'center'} spacing={2}>
+      <VStack alignSelf={'center'} mt={2} spacing={0}>
         <PlayControls />
         <TrackProgress />
       </VStack>

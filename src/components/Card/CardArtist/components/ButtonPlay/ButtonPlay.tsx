@@ -43,7 +43,7 @@ export function ButtonPlay(props: ButtonPlayProps) {
   }, ON_CLICK_WAIT);
 
   return (
-    deviceID && (
+    (deviceID && (
       <IconButton
         aria-label={'play'}
         colorScheme={'spotify'}
@@ -52,6 +52,6 @@ export function ButtonPlay(props: ButtonPlayProps) {
         _groupHover={{ opacity: 1 }}
         onClick={handleOnClick}
       />
-    )
+    )) || <></>
   );
 }

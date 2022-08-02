@@ -28,16 +28,14 @@ export function PlayControls(props: PlayControlsProps) {
   }, ON_CLICK_WAIT);
 
   return (
-    <HStack spacing={3}>
+    <HStack spacing={2}>
       <IconButton
         aria-label={'stepbackward'}
         icon={<FaStepBackward />}
         variant={'ghost'}
         onClick={handleOnClickPrevTrack}
       />
-
       <ButtonPlay paused={paused} player={player} />
-
       <IconButton
         aria-label={'stepbackward'}
         icon={<FaStepForward />}

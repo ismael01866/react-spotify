@@ -1,29 +1,20 @@
-import { useEffect, useState } from 'react';
-
-import { SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid, Skeleton } from '@chakra-ui/react';
 import { CardArtist } from 'src/components/Card/CardArtist';
 
-import { IArtist } from 'src/types/artist';
+import { useTopArtists } from 'src/lib';
 
 export function FeaturedGrid() {
-  const [artists, setArtists] = useState<IArtist[]>([]);
-
-  useEffect(() => {
-    fetchData().then((data) => {
-      setArtists(data);
-    });
-  }, []);
-
-  const fetchData = () => {
-    return fetch('api/spotify/me/top/artists').then((res) =>
-      res.json()
-    );
-  };
+  const skeletonArtists = new Array(12).fill('');
+  const { artists, isLoading } = useTopArtists(skeletonArtists);
 
   return (
     <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4}>
       {artists.map((artist) => {
-        return <CardArtist key={artist.id} artist={artist} />;
+        return (
+          <Skeleton key={artist.id} isLoaded={!isLoading}>
+            <CardArtist artist={artist} />
+          </Skeleton>
+        );
       })}
     </SimpleGrid>
   );
