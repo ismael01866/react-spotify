@@ -17,7 +17,7 @@ export default async function handler(
   const query = querystring.stringify({ limit: body.limit || 20 });
 
   const data = await fetch(
-    `https://api.spotify.com/v1/me/top/artists?${query}`,
+    `https://api.spotify.com/v1/me/top/tracks?${query}`,
     {
       headers: {
         Authorization: `Bearer ${access_token}`

@@ -1,1 +1,2 @@
-export * from './FeaturedGrid';
+export * from './FeaturedGridArtists';
+export * from './FeaturedGridTracks';
