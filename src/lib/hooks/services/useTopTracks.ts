@@ -7,7 +7,7 @@ export const useTopTracks = (
   opts: any = {}
 ) => {
   const { data, error } = useSWR<ITrack[]>(
-    ['api/spotify/me/top/tracks', opts],
+    ['/api/spotify/me/top/tracks', opts],
     fetcher
   );
 

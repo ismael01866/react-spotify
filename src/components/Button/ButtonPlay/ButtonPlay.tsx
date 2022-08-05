@@ -17,10 +17,11 @@ import { ON_CLICK_WAIT } from 'src/lib/constants';
 
 export interface ButtonPlayProps {
   uri?: string;
+  context_uri?: string;
 }
 
 export function ButtonPlay(props: ButtonPlayProps) {
-  const { uri } = props;
+  const { uri, context_uri } = props;
 
   const track = useSelector(selectTrack);
   const paused = useSelector(selectPaused);
@@ -28,17 +29,35 @@ export function ButtonPlay(props: ButtonPlayProps) {
 
   const { player } = useContext(PlayerContext);
 
-  const artistIsPlaying =
-    track?.artists && track?.artists[0].uri === uri;
+  // let trackIsPlaying = false;
+  // let artistIsPlaying = false;
 
-  const icon = paused || !artistIsPlaying ? <FaPlay /> : <FaPause />;
+  // if (track.uri) {
+  //   trackIsPlaying = track.uri === uri;
+  // }
+
+  // if (track?.artists?.[0].uri) {
+  //   artistIsPlaying = track.artists[0].uri === context_uri;
+  // }
+
+  // const icon =
+  //   paused || (!artistIsPlaying && !trackIsPlaying) ? (
+  //     <FaPlay />
+  //   ) : (
+  //     <FaPause />
+  //   );
+
+  const icon = <FaPlay />;
 
   const handleOnClick = debounce(async () => {
-    if (artistIsPlaying) return player?.togglePlay();
+    // if (artistIsPlaying || trackIsPlaying) return player?.togglePlay();
+
+    const device_id = deviceID;
+    const uris = uri && [uri];
 
     fetch('api/spotify/me/player/play', {
       method: 'POST',
-      body: JSON.stringify({ device_id: deviceID, context_uri: uri })
+      body: JSON.stringify({ device_id, uris, context_uri })
     });
   }, ON_CLICK_WAIT);
 

@@ -1,21 +1,21 @@
 import { SimpleGrid, Skeleton } from '@chakra-ui/react';
 import { CardArtist } from 'src/components/Card/CardArtist';
 
-import { useTopArtists } from 'src/lib/hooks/services';
+import { IArtist } from 'src/types/artist';
 
-export function FeaturedGridArtists() {
-  const skeletonArtists = new Array(12).fill('');
+export interface FeaturedGridArtists {
+  artists: IArtist[];
+  isLoading: Boolean;
+}
 
-  const { artists, isLoading } = useTopArtists(skeletonArtists, {
-    method: 'POST',
-    body: JSON.stringify({ limit: 8 })
-  });
+export function FeaturedGridArtists(props: FeaturedGridArtists) {
+  const { artists, isLoading } = props;
 
   return (
-    <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4}>
-      {artists.map((artist) => {
+    <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={4}>
+      {artists.map((artist, index) => {
         return (
-          <Skeleton key={artist.id} isLoaded={!isLoading}>
+          <Skeleton key={artist.id || index} isLoaded={!isLoading}>
             <CardArtist artist={artist} />
           </Skeleton>
         );

@@ -11,16 +11,16 @@ import {
 import { Card } from 'components/Card';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 
-import { IArtist } from 'src/types/artist';
+import { ITrack } from 'src/types/track';
 
-export interface CardArtistProps {
-  artist: IArtist;
+export interface CardTrackProps {
+  track: ITrack;
   [others: string]: any;
 }
 
-export function CardArtist(props: CardArtistProps) {
-  const { artist, ...others } = props;
-  const { name, uri, images, followers } = artist;
+export function CardTrack(props: CardTrackProps) {
+  const { track, ...others } = props;
+  const { name, uri, album, artists = [] } = track;
 
   return (
     <Card position={'relative'} role={'group'} {...others}>
@@ -31,7 +31,7 @@ export function CardArtist(props: CardArtistProps) {
       >
         <Image
           alt={name}
-          src={images && images[0].url}
+          src={album?.images && album.images[0].url}
           fallback={<Skeleton />}
         />
       </AspectRatio>
@@ -52,11 +52,11 @@ export function CardArtist(props: CardArtistProps) {
             {name}
           </Heading>
           <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-            {followers?.total?.toLocaleString()} followers
+            {artists.map((artist) => artist.name).join(', ')}
           </Text>
         </VStack>
 
-        <ButtonPlay context_uri={uri} />
+        <ButtonPlay uri={uri} />
       </HStack>
     </Card>
   );

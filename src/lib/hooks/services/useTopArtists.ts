@@ -7,7 +7,7 @@ export const useTopArtists = (
   opts: any = {}
 ) => {
   const { data, error } = useSWR<IArtist[]>(
-    ['api/spotify/me/top/artists', opts],
+    ['/api/spotify/me/top/artists', opts],
     fetcher
   );
 

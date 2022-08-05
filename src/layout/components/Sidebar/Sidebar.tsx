@@ -5,7 +5,8 @@ import {
   List,
   ListItem
 } from '@chakra-ui/react';
-import Link from 'next/link';
+
+import { default as NextLink } from 'next/link';
 
 import { IconType } from 'react-icons';
 import { data } from './data';
@@ -37,20 +38,18 @@ function Item(props: { item: SidebarItemProps }) {
 
   return (
     <ListItem>
-      <IconButton
-        aria-label={label}
-        color={'text.muted'}
-        variant={'ghost'}
-        _hover={{
-          color: 'text.base'
-        }}
-      >
-        <Link href={href}>
-          <>
-            <Icon as={icon} boxSize={6} />
-          </>
-        </Link>
-      </IconButton>
+      <NextLink href={href}>
+        <IconButton
+          aria-label={label}
+          color={'text.muted'}
+          variant={'ghost'}
+          _hover={{
+            color: 'text.base'
+          }}
+        >
+          <Icon as={icon} boxSize={6} />
+        </IconButton>
+      </NextLink>
     </ListItem>
   );
 }

@@ -18,15 +18,31 @@ export default async function handler(
   const body = JSON.parse(req.body || '{}');
   const query = querystring.stringify({ device_id: body.device_id });
 
+  console.log(`https://api.spotify.com/v1/me/player/play?${query}`, {
+    body: JSON.stringify({
+      uris: body.uris,
+      context_uri: body.context_uri
+    })
+  });
+
   await fetch(`https://api.spotify.com/v1/me/player/play?${query}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${access_token}`
     },
     body: JSON.stringify({
+      uris: body.uris,
       context_uri: body.context_uri
     })
-  });
+  })
+    .then((response) => {
+      if (!response.ok) throw Error(response.statusText);
+
+      return response;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   return res.status(200).send('success');
 }
