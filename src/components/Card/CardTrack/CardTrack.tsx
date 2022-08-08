@@ -48,7 +48,7 @@ export function CardTrack(props: CardTrackProps) {
         _groupHover={{ bg: 'blackAlpha.800' }}
       >
         <VStack alignItems={'flex-start'} spacing={1}>
-          <Heading fontSize={'md'} noOfLines={1}>
+          <Heading fontSize={'sm'} noOfLines={1}>
             {name}
           </Heading>
           <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>

@@ -4,8 +4,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { getSpotifyToken } from 'src/lib/spotify';
 
-import fetch from 'node-fetch';
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -15,27 +13,18 @@ export default async function handler(
 
   const { access_token } = await getSpotifyToken(refresh_token);
 
-  const body = JSON.parse(req.body || '{}');
-  const query = querystring.stringify({ device_id: body.device_id });
+  const { id } = req.query;
 
-  await fetch(`https://api.spotify.com/v1/me/player/play?${query}`, {
-    method: 'PUT',
+  const body = JSON.parse(req.body || '{}');
+  const query = querystring.stringify({ limit: body.limit || 20 });
+
+  const data = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
     headers: {
       Authorization: `Bearer ${access_token}`
-    },
-    body: JSON.stringify({
-      uris: body.uris,
-      context_uri: body.context_uri
-    })
-  })
-    .then((response) => {
-      if (!response.ok) throw Error(response.statusText);
+    }
+  }).then((res: any) => res.json());
 
-      return response;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const result = data || {};
 
-  return res.status(200).send('success');
+  return res.status(200).json(result);
 }

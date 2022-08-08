@@ -4,7 +4,7 @@ import { useTopTracks } from 'src/lib/hooks/services';
 import { CardTrack } from 'src/components/Card/CardTrack';
 
 export function FeaturedGridTracks() {
-  const skeletonTracks = new Array(12).fill('');
+  const skeletonTracks = new Array(6).fill('');
 
   const { tracks, isLoading } = useTopTracks(skeletonTracks, {
     method: 'POST',

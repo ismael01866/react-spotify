@@ -1,6 +1,6 @@
-import useSWR from 'swr';
 import { fetcher } from 'src/lib/fetch';
 import { ITrack } from 'src/types/track';
+import useSWR from 'swr';
 
 export const useTopTracks = (
   defaultValue: ITrack[] = [],

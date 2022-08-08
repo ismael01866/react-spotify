@@ -18,10 +18,11 @@ import { ON_CLICK_WAIT } from 'src/lib/constants';
 export interface ButtonPlayProps {
   uri?: string;
   context_uri?: string;
+  [other: string]: any;
 }
 
 export function ButtonPlay(props: ButtonPlayProps) {
-  const { uri, context_uri } = props;
+  const { uri, context_uri, ...others } = props;
 
   const track = useSelector(selectTrack);
   const paused = useSelector(selectPaused);
@@ -68,8 +69,9 @@ export function ButtonPlay(props: ButtonPlayProps) {
         colorScheme={'spotify'}
         icon={icon}
         opacity={0}
-        _groupHover={{ opacity: 1 }}
         onClick={handleOnClick}
+        _groupHover={{ cursor: 'default', opacity: 1 }}
+        {...others}
       />
     )) || <></>
   );

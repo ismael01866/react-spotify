@@ -12,6 +12,7 @@ export interface ButtonPlayProps {
 
 export function ButtonPlay(props: ButtonPlayProps) {
   const { paused, player } = props;
+  console.log(player);
 
   const handleOnClick = debounce(() => {
     player?.togglePlay();

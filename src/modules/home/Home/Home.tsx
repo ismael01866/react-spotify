@@ -15,7 +15,7 @@ export function Home() {
 
   const { artists, isLoading } = useTopArtists(skeletonArtists, {
     method: 'POST',
-    body: JSON.stringify({ limit: 4 })
+    body: JSON.stringify({ limit: 12 })
   });
 
   return (
