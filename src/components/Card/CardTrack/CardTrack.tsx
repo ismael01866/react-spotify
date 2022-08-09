@@ -56,7 +56,11 @@ export function CardTrack(props: CardTrackProps) {
           </Text>
         </VStack>
 
-        <ButtonPlay uri={uri} />
+        <ButtonPlay
+          uri={uri}
+          opacity={0}
+          _groupHover={{ opacity: 1 }}
+        />
       </HStack>
     </Card>
   );

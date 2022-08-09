@@ -1,5 +1,3 @@
-import { Layout } from 'layout';
-
 import { Box, Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
 
@@ -19,7 +17,7 @@ export function Home() {
   });
 
   return (
-    <Layout>
+    <>
       <Box p={12}>
         <Heading fontSize={'2xl'}>Your Top Tracks</Heading>
 
@@ -39,6 +37,6 @@ export function Home() {
         <br />
         <FeaturedGridArtists artists={artists} isLoading={isLoading} />
       </Box>
-    </Layout>
+    </>
   );
 }

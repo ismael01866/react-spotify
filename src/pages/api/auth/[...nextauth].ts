@@ -1,5 +1,4 @@
-import NextAuth, { Account, User } from 'next-auth';
-import { JWT } from 'next-auth/jwt';
+import NextAuth, { User } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
 import { getSpotifyToken } from 'src/lib/spotify';
 
@@ -7,7 +6,7 @@ const clientId = process.env.CLIENT_ID || '';
 const clientSecret = process.env.CLIENT_SECRET || '';
 
 const scope =
-  'streaming user-read-email user-read-private user-read-recently-played user-top-read user-read-playback-state user-modify-playback-state';
+  'streaming user-read-email user-read-private user-read-recently-played user-top-read user-read-playback-state user-modify-playback-state user-follow-modify user-follow-read';
 
 export default NextAuth({
   providers: [

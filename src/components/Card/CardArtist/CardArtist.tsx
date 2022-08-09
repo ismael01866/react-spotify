@@ -61,7 +61,11 @@ export function CardArtist(props: CardArtistProps) {
             </Heading>
           </VStack>
 
-          <ButtonPlay context_uri={uri} />
+          <ButtonPlay
+            context_uri={uri}
+            opacity={0}
+            _groupHover={{ opacity: 1 }}
+          />
         </HStack>
       </Card>
     </LinkBox>

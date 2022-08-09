@@ -1,4 +1,4 @@
-import { Flex, Heading, SkeletonText, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 import { IArtist } from 'src/types/artist';
 
@@ -10,15 +10,15 @@ export interface ArtistMetaProps {
 export function ArtistMeta(props: ArtistMetaProps) {
   const { artist, isLoading } = props;
 
-  console.log(artist);
-
   return (
     (!isLoading && (
       <Flex direction={'column'}>
-        <Text color={'text.base'}>ARTIST</Text>
+        <Text color={'text.muted'} fontSize={'sm'} letterSpacing={2}>
+          ARTIST
+        </Text>
         <Heading noOfLines={1}>{artist.name}</Heading>
 
-        <Text color={'text.base'} mt={4}>
+        <Text color={'text.base'} fontSize={'sm'} mt={4}>
           {artist?.followers?.total?.toLocaleString()} followers
         </Text>
       </Flex>

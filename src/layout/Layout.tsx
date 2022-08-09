@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { PlayerContext } from 'src/features/player/PlayerContext';
@@ -33,6 +33,10 @@ export function Layout(props: LayoutProps) {
 
   const [player, setPlayer] = useState(null);
 
+  const contentEl = useRef<HTMLDivElement>(null);
+
+  // Script embed
+
   useEffect(() => {
     if (status !== 'authenticated') return;
 
@@ -47,6 +51,8 @@ export function Layout(props: LayoutProps) {
       document.body.removeChild(script);
     };
   }, [status]);
+
+  // Player setup
 
   useEffect(() => {
     if (status !== 'authenticated') return;
@@ -74,14 +80,28 @@ export function Layout(props: LayoutProps) {
     };
   }, [session, status, dispatch]);
 
+  // Scroll to top
+
+  useEffect(() => {
+    contentEl?.current?.scrollTo({ top: 0 });
+  }, [children]);
+
+  // Render
+
+  if (status === 'loading') {
+    return <>loading...</>;
+  }
+
+  if (status !== 'authenticated') {
+    return <>{children}</>;
+  }
+
   return (
     <PlayerContext.Provider value={{ player }}>
       <Grid
-        templateAreas={`
-        "sidebar navbar"
-        "sidebar content"
-        "player player"
-      `}
+        templateAreas={`"sidebar navbar"
+                          "sidebar content"
+                          "player player"`}
         gridTemplateRows={'auto 1fr auto'}
         gridTemplateColumns={'auto 1fr'}
         height={'100vh'}
@@ -94,7 +114,7 @@ export function Layout(props: LayoutProps) {
           <Sidebar />
         </GridItem>
 
-        <GridItem area={'content'} overflow={'auto'}>
+        <GridItem area={'content'} overflow={'auto'} ref={contentEl}>
           {children}
         </GridItem>
 

@@ -1,19 +1,18 @@
-import { fetcher } from 'src/lib/fetch';
+import { fetcher } from 'src/lib/fetcher';
 import { ITrack } from 'src/types/track';
 import useSWR from 'swr';
 
-export const useTopTracks = (
-  defaultValue: ITrack[] = [],
-  opts: any = {}
-) => {
-  const { data, error } = useSWR<ITrack[]>(
-    ['/api/spotify/me/top/tracks', opts],
-    fetcher
-  );
+const URL = '/api/spotify/me/top/tracks';
+
+export const useTopTracks = (query = {}, opts = {}) => {
+  const params = new URLSearchParams(query);
+  const url = `${URL}?${params.toString()}`;
+
+  const { data, error } = useSWR<ITrack[]>([url, opts], fetcher);
 
   return {
     error,
-    tracks: data || defaultValue,
+    tracks: data,
     isLoading: !error && !data
   };
 };

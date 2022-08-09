@@ -1,4 +1,4 @@
-import { fetcher } from 'src/lib/fetch';
+import { fetcher } from 'src/lib/fetcher';
 import { IArtist } from 'src/types/artist';
 import useSWR from 'swr';
 

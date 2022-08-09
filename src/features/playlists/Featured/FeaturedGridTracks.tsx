@@ -4,16 +4,15 @@ import { useTopTracks } from 'src/lib/hooks/services';
 import { CardTrack } from 'src/components/Card/CardTrack';
 
 export function FeaturedGridTracks() {
-  const skeletonTracks = new Array(6).fill('');
+  const limit = 6;
+  const { tracks, isLoading } = useTopTracks({ limit });
 
-  const { tracks, isLoading } = useTopTracks(skeletonTracks, {
-    method: 'POST',
-    body: JSON.stringify({ limit: 6 })
-  });
+  const skeletonTracks = new Array(limit).fill('');
+  const data = isLoading ? skeletonTracks : tracks;
 
   return (
     <SimpleGrid columns={{ base: 1, sm: 2, md: 6 }} spacing={4}>
-      {tracks.map((track, index) => {
+      {data?.map((track, index) => {
         return (
           <Skeleton key={track.id || index} isLoaded={!isLoading}>
             <CardTrack track={track} />

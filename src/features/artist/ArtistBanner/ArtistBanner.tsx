@@ -14,8 +14,9 @@ export function ArtistBanner(props: ArtistBannerProps) {
     <AspectRatio
       ratio={16 / 9}
       h={'3xs'}
+      overflow={'hidden'}
       _after={{
-        bgColor: 'blackAlpha.900',
+        bgColor: 'blackAlpha.800',
         content: '""',
         position: 'absolute',
         top: 0,

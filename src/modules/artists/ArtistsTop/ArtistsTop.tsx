@@ -1,5 +1,3 @@
-import { Layout } from 'layout';
-
 import { Box, Heading } from '@chakra-ui/react';
 
 import { FeaturedGridArtists } from 'src/features/playlists';
@@ -14,13 +12,13 @@ export function ArtistsTop() {
   });
 
   return (
-    <Layout>
+    <>
       <Box p={12}>
         <Heading fontSize={'2xl'}>Your Top Artists</Heading>
 
         <br />
         <FeaturedGridArtists artists={artists} isLoading={isLoading} />
       </Box>
-    </Layout>
+    </>
   );
 }

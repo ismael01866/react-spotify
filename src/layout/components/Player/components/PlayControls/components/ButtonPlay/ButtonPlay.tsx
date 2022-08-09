@@ -3,7 +3,7 @@ import { debounce } from 'lodash';
 import { IconButton } from '@chakra-ui/react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 
-import { ON_CLICK_WAIT } from 'src/lib/constants';
+import { DEBOUNCE_WAIT } from 'src/lib/constants';
 
 export interface ButtonPlayProps {
   paused: boolean;
@@ -12,11 +12,9 @@ export interface ButtonPlayProps {
 
 export function ButtonPlay(props: ButtonPlayProps) {
   const { paused, player } = props;
-  console.log(player);
-
   const handleOnClick = debounce(() => {
     player?.togglePlay();
-  }, ON_CLICK_WAIT);
+  }, DEBOUNCE_WAIT);
 
   return (
     <>

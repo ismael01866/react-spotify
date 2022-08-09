@@ -10,7 +10,7 @@ import { FaStepBackward, FaStepForward } from 'react-icons/fa';
 
 import { ButtonPlay } from './components';
 
-import { ON_CLICK_WAIT } from 'src/lib/constants';
+import { DEBOUNCE_WAIT } from 'src/lib/constants';
 
 export interface PlayControlsProps {}
 
@@ -21,11 +21,11 @@ export function PlayControls(props: PlayControlsProps) {
 
   const handleOnClickPrevTrack = debounce(() => {
     player?.previousTrack();
-  }, ON_CLICK_WAIT);
+  }, DEBOUNCE_WAIT);
 
   const handleOnClickNextTrack = debounce(() => {
     player?.nextTrack();
-  }, ON_CLICK_WAIT);
+  }, DEBOUNCE_WAIT);
 
   return (
     <HStack spacing={2}>

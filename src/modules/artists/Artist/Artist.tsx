@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
 
 import { Box, HStack, VStack } from '@chakra-ui/react';
-import { Layout } from 'layout';
 
+import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import {
   ArtistAvatar,
   ArtistBanner,
+  ArtistButtonFollow,
   ArtistMeta
 } from 'src/features/artist';
 import { useArtist } from 'src/lib/hooks/services/useArtist';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 
 export function Artist() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export function Artist() {
   const { artist, isLoading } = useArtist(id);
 
   return (
-    <Layout>
+    <>
       <Box mb={-56} pt={12}>
         <ArtistBanner artist={artist} isLoading={isLoading} />
       </Box>
@@ -31,11 +31,13 @@ export function Artist() {
             <ArtistMeta artist={artist} isLoading={isLoading} />
 
             <HStack>
-              <ButtonPlay uri={artist.uri} opacity={1} />
+              <ButtonPlay uri={artist.uri} />
+
+              <ArtistButtonFollow artist={artist} />
             </HStack>
           </VStack>
         </HStack>
       </Box>
-    </Layout>
+    </>
   );
 }
