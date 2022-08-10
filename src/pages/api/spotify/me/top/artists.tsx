@@ -1,31 +1,18 @@
-const querystring = require('querystring');
-
+import { fetchWithToken } from 'src/lib/fetch';
+import { withQueryParams } from 'src/lib/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import { getSpotifyToken } from 'src/lib/spotify';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const token = await getToken({ req });
-  const refresh_token = token?.refresh_token as string;
+  const url = withQueryParams(
+    'https://api.spotify.com/v1/me/top/artists',
+    req.query
+  );
 
-  const { access_token } = await getSpotifyToken(refresh_token);
-
-  const body = JSON.parse(req.body || '{}');
-  const query = querystring.stringify({ limit: body.limit || 20 });
-
-  const data = await fetch(
-    `https://api.spotify.com/v1/me/top/artists?${query}`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`
-      }
-    }
-  ).then((res: any) => res.json());
-
-  const result = data?.items || [];
+  const { items } = await fetchWithToken(req, url);
+  const result = items || [];
 
   return res.status(200).json(result);
 }

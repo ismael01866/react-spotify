@@ -4,7 +4,6 @@ import { IArtist } from 'src/types/artist';
 
 export interface ArtistAvatarProps {
   artist: IArtist;
-  isLoading: boolean;
 }
 
 export function ArtistAvatar(props: ArtistAvatarProps) {

@@ -1,41 +1,22 @@
-const querystring = require('querystring');
-
+import { fetchWithToken } from 'src/lib/fetch';
+import { withQueryParams } from 'src/lib/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import { getSpotifyToken } from 'src/lib/spotify';
-
-import fetch from 'node-fetch';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const token = await getToken({ req });
-  const refresh_token = token?.refresh_token as string;
+  const url = withQueryParams(
+    'https://api.spotify.com/v1/me/player/play',
+    req.query
+  );
 
-  const { access_token } = await getSpotifyToken(refresh_token);
+  const { uris, context_uri } = JSON.parse(req.body);
 
-  const body = JSON.parse(req.body || '{}');
-  const query = querystring.stringify({ device_id: body.device_id });
-
-  await fetch(`https://api.spotify.com/v1/me/player/play?${query}`, {
+  await fetchWithToken(req, url, {
     method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${access_token}`
-    },
-    body: JSON.stringify({
-      uris: body.uris,
-      context_uri: body.context_uri
-    })
-  })
-    .then((response) => {
-      if (!response.ok) throw Error(response.statusText);
+    body: JSON.stringify({ uris, context_uri })
+  });
 
-      return response;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  return res.status(200).send('success');
+  return res.status(200).json('success');
 }

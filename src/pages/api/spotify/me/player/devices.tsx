@@ -1,28 +1,14 @@
+import { fetchWithToken } from 'src/lib/fetch';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import { getSpotifyToken } from 'src/lib/spotify';
-
-import fetch from 'node-fetch';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const token = await getToken({ req });
-  const refresh_token = token?.refresh_token as string;
+  const url = 'https://api.spotify.com/v1/me/player/devices';
+  const { devices } = await fetchWithToken(req, url);
 
-  const { access_token } = await getSpotifyToken(refresh_token);
-
-  const data = await fetch(
-    'https://api.spotify.com/v1/me/player/devices',
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`
-      }
-    }
-  ).then((res: any) => res.json());
-
-  const result = data?.devices || [];
+  const result = devices || [];
 
   return res.status(200).json(result);
 }

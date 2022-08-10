@@ -14,7 +14,7 @@ import {
   setTrack
 } from 'src/features/player/PlayerSlice';
 
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import { Navbar, Player, Sidebar } from './components';
 
 import { buildSpotifyPlayer } from 'src/lib/spotify';
@@ -115,7 +115,7 @@ export function Layout(props: LayoutProps) {
         </GridItem>
 
         <GridItem area={'content'} overflow={'auto'} ref={contentEl}>
-          {children}
+          <Box p={12}>{children}</Box>
         </GridItem>
 
         {playbackID && (

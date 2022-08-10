@@ -1,20 +1,18 @@
-import { fetcher } from 'src/lib/fetcher';
+import { fetcher } from 'src/lib/fetch';
 import { IArtist } from 'src/types/artist';
 import useSWR from 'swr';
 
 export const useArtist = (
   id: string | string[] | undefined,
-  defaultValue: IArtist = {},
-  opts: any = {}
+  opts = {}
 ) => {
-  const { data, error } = useSWR<IArtist>(
-    [`/api/spotify/artists/${id}`, opts],
-    fetcher
-  );
+  const url = `/api/spotify/artists/${id}`;
+
+  const { data, error } = useSWR<IArtist>([url, opts], fetcher);
 
   return {
     error,
-    artist: data || defaultValue,
+    artist: data,
     isLoading: !error && !data
   };
 };

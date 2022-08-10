@@ -7,12 +7,15 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const url = withQueryParams(
-    'https://api.spotify.com/v1/me/following/contains',
+    'https://api.spotify.com/v1/me/following',
     req.query
   );
 
-  const { data } = await fetchWithToken(req, url);
-  const result = data || false;
+  let isFollowing = false;
 
-  return res.status(200).json(result);
+  await fetchWithToken(req, url, { method: req.method }).then(() => {
+    isFollowing = req.method === 'PUT' ? true : false;
+  });
+
+  return res.status(200).json({ isFollowing });
 }

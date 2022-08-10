@@ -1,19 +1,15 @@
-import { fetcher } from 'src/lib/fetcher';
+import { fetcher } from 'src/lib/fetch';
+import { withQueryParams } from 'src/lib/utils';
 import { IArtist } from 'src/types/artist';
 import useSWR from 'swr';
 
-export const useTopArtists = (
-  defaultValue: IArtist[] = [],
-  opts: any = {}
-) => {
-  const { data, error } = useSWR<IArtist[]>(
-    ['/api/spotify/me/top/artists', opts],
-    fetcher
-  );
+export const useTopArtists = (query = {}, opts = {}) => {
+  const url = withQueryParams('/api/spotify/me/top/artists', query);
+  const { data, error } = useSWR<IArtist[]>([url, opts], fetcher);
 
   return {
     error,
-    artists: data || defaultValue,
+    artists: data,
     isLoading: !error && !data
   };
 };

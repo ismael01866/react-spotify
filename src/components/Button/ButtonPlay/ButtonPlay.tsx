@@ -10,10 +10,12 @@ import {
 
 import { useSelector } from 'react-redux';
 
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, Skeleton } from '@chakra-ui/react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 
 import { DEBOUNCE_WAIT } from 'src/lib/constants';
+import { withQueryParams } from 'src/lib/utils';
+import { fetcher } from 'src/lib/fetch';
 
 export interface ButtonPlayProps {
   uri?: string;
@@ -52,17 +54,18 @@ export function ButtonPlay(props: ButtonPlayProps) {
   const handleOnClick = debounce(async () => {
     if (artistIsPlaying || trackIsPlaying) return player?.togglePlay();
 
-    const device_id = deviceID;
-    const uris = uri && [uri];
+    const url = withQueryParams('/api/spotify/me/player/play', {
+      device_id: deviceID
+    });
 
-    fetch('/api/spotify/me/player/play', {
+    fetcher(url, {
       method: 'POST',
-      body: JSON.stringify({ device_id, uris, context_uri })
+      body: JSON.stringify({ uris: uri && [uri], context_uri })
     });
   }, DEBOUNCE_WAIT);
 
   return (
-    (deviceID && (
+    <Skeleton isLoaded={!!deviceID}>
       <IconButton
         aria-label={'play'}
         colorScheme={'spotify'}
@@ -70,6 +73,6 @@ export function ButtonPlay(props: ButtonPlayProps) {
         onClick={handleOnClick}
         {...others}
       />
-    )) || <></>
+    </Skeleton>
   );
 }

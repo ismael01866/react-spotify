@@ -1,13 +1,10 @@
-import { fetcher } from 'src/lib/fetcher';
+import { fetcher } from 'src/lib/fetch';
+import { withQueryParams } from 'src/lib/utils';
 import { ITrack } from 'src/types/track';
 import useSWR from 'swr';
 
-const URL = '/api/spotify/me/top/tracks';
-
 export const useTopTracks = (query = {}, opts = {}) => {
-  const params = new URLSearchParams(query);
-  const url = `${URL}?${params.toString()}`;
-
+  const url = withQueryParams('/api/spotify/me/top/tracks', query);
   const { data, error } = useSWR<ITrack[]>([url, opts], fetcher);
 
   return {

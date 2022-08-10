@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, Link } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
 
 import {
@@ -6,26 +6,17 @@ import {
   FeaturedGridTracks
 } from 'src/features/playlists';
 
-import { useTopArtists } from 'src/lib/hooks/services';
-
 export function Home() {
-  const skeletonArtists = new Array(12).fill('');
-
-  const { artists, isLoading } = useTopArtists(skeletonArtists, {
-    method: 'POST',
-    body: JSON.stringify({ limit: 12 })
-  });
-
   return (
-    <>
-      <Box p={12}>
+    <Flex flexDirection={'column'} gap={12}>
+      <Box>
         <Heading fontSize={'2xl'}>Your Top Tracks</Heading>
 
         <br />
-        <FeaturedGridTracks />
+        <FeaturedGridTracks limit={6} />
       </Box>
 
-      <Box p={12}>
+      <Box>
         <HStack justifyContent={'space-between'}>
           <Heading fontSize={'2xl'}>Your Top Artists</Heading>
 
@@ -35,8 +26,8 @@ export function Home() {
         </HStack>
 
         <br />
-        <FeaturedGridArtists artists={artists} isLoading={isLoading} />
+        <FeaturedGridArtists limit={8} />
       </Box>
-    </>
+    </Flex>
   );
 }

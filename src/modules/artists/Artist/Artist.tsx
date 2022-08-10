@@ -9,35 +9,37 @@ import {
   ArtistButtonFollow,
   ArtistMeta
 } from 'src/features/artist';
+
 import { useArtist } from 'src/lib/hooks/services/useArtist';
 
 export function Artist() {
   const router = useRouter();
-  const { id } = router.query;
 
-  const { artist, isLoading } = useArtist(id);
+  const { id } = router.query;
+  const { artist } = useArtist(id);
 
   return (
-    <>
-      <Box mb={-56} pt={12}>
-        <ArtistBanner artist={artist} isLoading={isLoading} />
-      </Box>
+    (artist && (
+      <>
+        <Box mb={-56}>
+          <ArtistBanner artist={artist} />
+        </Box>
 
-      <Box p={12} pos={'relative'}>
-        <HStack spacing={8}>
-          <ArtistAvatar artist={artist} isLoading={isLoading} />
+        <Box pos={'relative'}>
+          <HStack spacing={8}>
+            <ArtistAvatar artist={artist} />
 
-          <VStack alignItems={'flex-start'} spacing={8}>
-            <ArtistMeta artist={artist} isLoading={isLoading} />
+            <VStack alignItems={'flex-start'} spacing={8}>
+              <ArtistMeta artist={artist} />
 
-            <HStack>
-              <ButtonPlay uri={artist.uri} />
-
-              <ArtistButtonFollow artist={artist} />
-            </HStack>
-          </VStack>
-        </HStack>
-      </Box>
-    </>
+              <HStack spacing={4}>
+                <ButtonPlay uri={artist.uri} />
+                <ArtistButtonFollow artist={artist} />
+              </HStack>
+            </VStack>
+          </HStack>
+        </Box>
+      </>
+    )) || <></>
   );
 }

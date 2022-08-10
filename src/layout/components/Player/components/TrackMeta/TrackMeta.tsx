@@ -4,6 +4,7 @@ import {
   Heading,
   HStack,
   Image,
+  Skeleton,
   Text,
   VStack
 } from '@chakra-ui/react';
@@ -28,6 +29,7 @@ export function TrackMeta(props: TrackMetaProps) {
           maxHeight={'full'}
           src={album.images && album.images[0].url}
           alt={album.name}
+          fallback={<Skeleton />}
         />
       </AspectRatio>
 
