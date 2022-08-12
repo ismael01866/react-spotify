@@ -6,13 +6,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const { id } = req.query;
+
   const url = withQueryParams(
-    'https://api.spotify.com/v1/me/top/artists',
+    `https://api.spotify.com/v1/artists/${id}/top-tracks`,
     req.query
   );
 
-  const { items } = await fetchWithToken(req, url);
-  const result = items || [];
+  const { tracks } = await fetchWithToken(req, url);
+
+  const result = tracks || [];
 
   return res.status(200).json(result);
 }

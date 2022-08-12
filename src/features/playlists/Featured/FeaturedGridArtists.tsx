@@ -14,16 +14,14 @@ export function FeaturedGridArtists(props: FeaturedGridArtistsProps) {
   const data = isLoading ? skeletonData : artists;
 
   return (
-    (data && (
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={4}>
-        {data.map((artist, index) => {
-          return (
-            <Skeleton key={artist.id || index} isLoaded={!isLoading}>
-              <CardArtist artist={artist} />
-            </Skeleton>
-          );
-        })}
-      </SimpleGrid>
-    )) || <></>
+    <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={4}>
+      {data?.map((artist, index) => {
+        return (
+          <Skeleton key={artist.id || index} isLoaded={!isLoading}>
+            <CardArtist artist={artist} />
+          </Skeleton>
+        );
+      })}
+    </SimpleGrid>
   );
 }

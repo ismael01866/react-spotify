@@ -8,12 +8,9 @@ import {
   Skeleton,
   VStack
 } from '@chakra-ui/react';
-
-import { default as NextLink } from 'next/link';
-
 import { Card } from 'components/Card';
+import { default as NextLink } from 'next/link';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-
 import { IArtist } from 'src/types/artist';
 
 export interface CardArtistProps {

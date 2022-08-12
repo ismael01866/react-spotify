@@ -7,10 +7,8 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react';
-
 import { Card } from 'components/Card';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-
 import { ITrack } from 'src/types/track';
 
 export interface CardTrackProps {

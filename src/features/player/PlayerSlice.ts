@@ -62,5 +62,6 @@ export const selectTrack = (state: RootState) => state.player.track;
 export const selectPaused = (state: RootState) => state.player.paused;
 export const selectDuration = (state: RootState) =>
   state.player.duration;
+
 export const selectPosition = (state: RootState) =>
   state.player.position;

@@ -1,4 +1,8 @@
 export interface IUser {
-  name: string;
-  image: string;
+  email?: string;
+  display_name?: string;
+  country?: string;
+  images?: {
+    url?: string;
+  }[];
 }

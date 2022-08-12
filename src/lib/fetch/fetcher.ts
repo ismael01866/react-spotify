@@ -8,5 +8,7 @@ export const fetcher = (...args: any) => {
 
       return res.json();
     })
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err);
+    });
 };

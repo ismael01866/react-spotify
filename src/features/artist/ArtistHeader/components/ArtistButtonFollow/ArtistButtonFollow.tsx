@@ -1,11 +1,9 @@
-import { fetcher } from 'src/lib/fetch';
-
 import { Button, Skeleton } from '@chakra-ui/react';
+import { useState } from 'react';
+import { fetcher } from 'src/lib/fetch';
 import { useArtistFollow } from 'src/lib/hooks/services/useArtistFollow';
 import { withQueryParams } from 'src/lib/utils';
-
 import { IArtist } from 'src/types/artist';
-import { useState } from 'react';
 
 export interface ArtistButtonFollowProps {
   artist: IArtist;

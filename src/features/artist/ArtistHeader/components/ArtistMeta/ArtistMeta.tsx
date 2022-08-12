@@ -1,5 +1,4 @@
-import { Flex, Heading, Text } from '@chakra-ui/react';
-
+import { Flex, Heading } from '@chakra-ui/react';
 import { IArtist } from 'src/types/artist';
 
 export interface ArtistMetaProps {
@@ -11,14 +10,14 @@ export function ArtistMeta(props: ArtistMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Text color={'text.muted'} fontSize={'sm'} letterSpacing={2}>
+      <Heading color={'text.muted'} fontSize={'xs'} letterSpacing={2}>
         ARTIST
-      </Text>
+      </Heading>
       <Heading noOfLines={1}>{artist.name}</Heading>
 
-      <Text color={'text.base'} fontSize={'sm'} mt={4}>
+      <Heading color={'text.base'} fontSize={'sm'} mt={4}>
         {artist?.followers?.total?.toLocaleString()} followers
-      </Text>
+      </Heading>
     </Flex>
   );
 }

@@ -8,7 +8,6 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react';
-
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';

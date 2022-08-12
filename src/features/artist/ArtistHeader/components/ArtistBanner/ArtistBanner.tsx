@@ -1,5 +1,4 @@
 import { AspectRatio, Image, Skeleton } from '@chakra-ui/react';
-
 import { IArtist } from 'src/types/artist';
 
 export interface ArtistBannerProps {
@@ -12,7 +11,7 @@ export function ArtistBanner(props: ArtistBannerProps) {
   return (
     <AspectRatio
       ratio={16 / 9}
-      h={'3xs'}
+      h={'4xs'}
       overflow={'hidden'}
       _after={{
         bgColor: 'blackAlpha.800',

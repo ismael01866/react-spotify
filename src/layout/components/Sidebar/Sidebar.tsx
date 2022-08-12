@@ -1,27 +1,23 @@
 import {
-  Box,
+  Flex,
   Icon,
   IconButton,
   List,
   ListItem
 } from '@chakra-ui/react';
-
 import { default as NextLink } from 'next/link';
-
 import { IconType } from 'react-icons';
 import { data } from './data';
 
-export interface SidebarProps {}
-
-export function Sidebar(props: SidebarProps) {
+export function Sidebar() {
   return (
-    <Box p={4} w={20}>
+    <Flex bg={'bg.900'} h={'full'} p={4} w={20}>
       <List spacing={4}>
         {data.map((item, index) => {
           return <Item key={index} item={item} />;
         })}
       </List>
-    </Box>
+    </Flex>
   );
 }
 

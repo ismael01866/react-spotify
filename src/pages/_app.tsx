@@ -1,15 +1,12 @@
 import 'styles/globals.css';
 
-import { theme } from '../../theme';
-import { store } from './../store';
-
-import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
 import { SessionProvider } from 'next-auth/react';
-
+import { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
 import { Layout } from 'src/layout';
-
-import type { AppProps } from 'next/app';
+import { theme } from '../../theme';
+import { store } from './../store';
 
 function App({
   Component,

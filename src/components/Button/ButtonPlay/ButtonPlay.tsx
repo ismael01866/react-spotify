@@ -1,21 +1,17 @@
+import { IconButton, Skeleton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import { useContext } from 'react';
-
+import { FaPause, FaPlay } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import {
   PlayerContext,
   selectDeviceID,
   selectPaused,
   selectTrack
-} from 'src/features';
-
-import { useSelector } from 'react-redux';
-
-import { IconButton, Skeleton } from '@chakra-ui/react';
-import { FaPause, FaPlay } from 'react-icons/fa';
-
+} from 'src/features/player';
 import { DEBOUNCE_WAIT } from 'src/lib/constants';
-import { withQueryParams } from 'src/lib/utils';
 import { fetcher } from 'src/lib/fetch';
+import { withQueryParams } from 'src/lib/utils';
 
 export interface ButtonPlayProps {
   uri?: string;

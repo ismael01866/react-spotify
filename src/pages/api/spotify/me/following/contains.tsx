@@ -1,6 +1,6 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { fetchWithToken } from 'src/lib/fetch';
 import { withQueryParams } from 'src/lib/utils';
-import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,

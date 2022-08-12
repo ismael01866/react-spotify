@@ -1,16 +1,3 @@
-import moment from 'moment';
-
-import { useContext, useEffect, useRef, useState } from 'react';
-
-import { useSelector } from 'react-redux';
-import {
-  PlayerContext,
-  selectDuration,
-  selectPaused,
-  selectPlaybackID,
-  selectPosition
-} from 'src/features';
-
 import {
   HStack,
   Slider,
@@ -19,10 +6,18 @@ import {
   SliderTrack,
   Text
 } from '@chakra-ui/react';
+import moment from 'moment';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import {
+  PlayerContext,
+  selectDuration,
+  selectPaused,
+  selectPlaybackID,
+  selectPosition
+} from 'src/features/player';
 
-export interface TrackProgressProps {}
-
-export function TrackProgress(props: TrackProgressProps) {
+export function TrackProgress() {
   let timer = useRef({});
 
   const { player } = useContext(PlayerContext);

@@ -1,14 +1,6 @@
+import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-
-import { Box, HStack, VStack } from '@chakra-ui/react';
-
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import {
-  ArtistAvatar,
-  ArtistBanner,
-  ArtistButtonFollow,
-  ArtistMeta
-} from 'src/features/artist';
+import { ArtistContent, ArtistHeader } from 'src/features/artist';
 
 import { useArtist } from 'src/lib/hooks/services/useArtist';
 
@@ -20,26 +12,10 @@ export function Artist() {
 
   return (
     (artist && (
-      <>
-        <Box mb={-56}>
-          <ArtistBanner artist={artist} />
-        </Box>
-
-        <Box pos={'relative'}>
-          <HStack spacing={8}>
-            <ArtistAvatar artist={artist} />
-
-            <VStack alignItems={'flex-start'} spacing={8}>
-              <ArtistMeta artist={artist} />
-
-              <HStack spacing={4}>
-                <ButtonPlay uri={artist.uri} />
-                <ArtistButtonFollow artist={artist} />
-              </HStack>
-            </VStack>
-          </HStack>
-        </Box>
-      </>
+      <Flex flexDirection={'column'} gap={12}>
+        <ArtistHeader artist={artist} />
+        <ArtistContent />
+      </Flex>
     )) || <></>
   );
 }

@@ -1,20 +1,13 @@
-import { debounce } from 'lodash';
-
-import { useContext } from 'react';
-import { PlayerContext, selectPaused } from 'src/features';
-
-import { useSelector } from 'react-redux';
-
 import { HStack, IconButton } from '@chakra-ui/react';
+import { debounce } from 'lodash';
+import { useContext } from 'react';
 import { FaStepBackward, FaStepForward } from 'react-icons/fa';
-
+import { useSelector } from 'react-redux';
+import { PlayerContext, selectPaused } from 'src/features/player';
+import { DEBOUNCE_WAIT } from 'src/lib/constants';
 import { ButtonPlay } from './components';
 
-import { DEBOUNCE_WAIT } from 'src/lib/constants';
-
-export interface PlayControlsProps {}
-
-export function PlayControls(props: PlayControlsProps) {
+export function PlayControls() {
   const paused = useSelector(selectPaused);
 
   const { player } = useContext(PlayerContext);

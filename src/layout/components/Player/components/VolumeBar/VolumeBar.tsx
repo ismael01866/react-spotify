@@ -1,6 +1,3 @@
-import { useContext, useEffect, useState } from 'react';
-import { PlayerContext } from 'src/features';
-
 import {
   HStack,
   Icon,
@@ -9,11 +6,11 @@ import {
   SliderThumb,
   SliderTrack
 } from '@chakra-ui/react';
+import { useContext, useEffect, useState } from 'react';
 import { FaVolumeDown } from 'react-icons/fa';
+import { PlayerContext } from 'src/features/player';
 
-export interface VolumeBarProps {}
-
-export function VolumeBar(props: VolumeBarProps) {
+export function VolumeBar() {
   const { player } = useContext(PlayerContext);
 
   const [volume, setVolume] = useState(0);

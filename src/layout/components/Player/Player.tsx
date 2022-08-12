@@ -1,10 +1,7 @@
+import { SimpleGrid, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-
 import { useSelector } from 'react-redux';
 import { selectTrack } from 'src/features/player/PlayerSlice';
-
-import { SimpleGrid, VStack } from '@chakra-ui/react';
-
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import {
@@ -14,9 +11,7 @@ import {
   VolumeBar
 } from './components';
 
-export interface PlayerProps {}
-
-export function Player(props: PlayerProps) {
+export function Player() {
   const track = useSelector(selectTrack);
 
   const [album, setAlbum] = useState<IAlbum>({});

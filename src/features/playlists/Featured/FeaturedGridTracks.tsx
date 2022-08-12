@@ -14,16 +14,14 @@ export function FeaturedGridTracks(props: FeaturedGridTracksProps) {
   const data = isLoading ? skeletonData : tracks;
 
   return (
-    (data && (
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 6 }} spacing={4}>
-        {data.map((track, index) => {
-          return (
-            <Skeleton key={track.id || index} isLoaded={!isLoading}>
-              <CardTrack track={track} />
-            </Skeleton>
-          );
-        })}
-      </SimpleGrid>
-    )) || <></>
+    <SimpleGrid columns={{ base: 1, sm: 2, md: 6 }} spacing={4}>
+      {data?.map((track, index) => {
+        return (
+          <Skeleton key={track.id || index} isLoaded={!isLoading}>
+            <CardTrack track={track} />
+          </Skeleton>
+        );
+      })}
+    </SimpleGrid>
   );
 }

@@ -1,9 +1,7 @@
 import { HStack, IconButton } from '@chakra-ui/react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-export interface NavigationProps {}
-
-export function Navigation(props: NavigationProps) {
+export function Navigation() {
   return (
     <HStack>
       <IconButton

@@ -1,5 +1,4 @@
 import { AspectRatio, Image, Skeleton } from '@chakra-ui/react';
-
 import { IArtist } from 'src/types/artist';
 
 export interface ArtistAvatarProps {
