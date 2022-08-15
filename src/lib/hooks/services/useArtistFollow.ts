@@ -12,7 +12,7 @@ export const useArtistFollow = (query: {}, opts: any = {}) => {
 
   return {
     error,
-    isFollowingArtist: data,
-    isLoading: !error && data
+    isFollowingArtist: data === 'true',
+    isLoading: !error && !data
   };
 };

@@ -11,8 +11,8 @@ export default async function handler(
     req.query
   );
 
-  const { data } = await fetchWithToken(req, url);
-  const result = data || false;
+  const data = await fetchWithToken(req, url);
+  const result = data[0] || false;
 
-  return res.status(200).json(result);
+  return res.status(200).json(`${result}`);
 }

@@ -1,6 +1,7 @@
 import { Box, HStack, VStack } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { IArtist } from 'src/types/artist';
+import { useArtist } from 'src/lib/hooks/services';
 import {
   ArtistAvatar,
   ArtistBanner,
@@ -8,42 +9,43 @@ import {
   ArtistMeta
 } from './components';
 
-export interface ArtistHeaderProps {
-  artist: IArtist;
-}
+export function ArtistHeader() {
+  const router = useRouter();
 
-export function ArtistHeader(props: ArtistHeaderProps) {
-  const { artist } = props;
+  const { id } = router.query;
+  const { artist } = useArtist(id);
 
   return (
-    <Box pos={'relative'}>
-      <Box
-        className={'box'}
-        left={0}
-        top={0}
-        pos={'absolute'}
-        w={'full'}
-        sx={{ transform: 'scale(1.5)' }}
-      >
-        <ArtistBanner artist={artist} />
-      </Box>
-
+    (artist && (
       <Box pos={'relative'}>
-        <HStack spacing={8}>
-          <Box mt={8}>
-            <ArtistAvatar artist={artist} />
-          </Box>
+        <Box
+          className={'box'}
+          left={0}
+          top={0}
+          pos={'absolute'}
+          w={'full'}
+          sx={{ transform: 'scale(1.5)' }}
+        >
+          <ArtistBanner artist={artist} />
+        </Box>
 
-          <VStack alignItems={'flex-start'} pt={6} spacing={8}>
-            <ArtistMeta artist={artist} />
+        <Box pos={'relative'}>
+          <HStack spacing={8}>
+            <Box mt={8}>
+              <ArtistAvatar artist={artist} />
+            </Box>
 
-            <HStack spacing={2}>
-              <ButtonPlay uri={artist.uri} />
-              <ArtistButtonFollow artist={artist} />
-            </HStack>
-          </VStack>
-        </HStack>
+            <VStack alignItems={'flex-start'} pt={6} spacing={8}>
+              <ArtistMeta artist={artist} />
+
+              <HStack spacing={2}>
+                <ButtonPlay context_uri={artist.uri} />
+                <ArtistButtonFollow artist={artist} />
+              </HStack>
+            </VStack>
+          </HStack>
+        </Box>
       </Box>
-    </Box>
+    )) || <></>
   );
 }

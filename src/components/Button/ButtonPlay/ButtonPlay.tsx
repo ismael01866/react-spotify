@@ -1,4 +1,4 @@
-import { IconButton, Skeleton } from '@chakra-ui/react';
+import { ButtonProps, IconButton, Skeleton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import { useContext } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
@@ -13,15 +13,25 @@ import { DEBOUNCE_WAIT } from 'src/lib/constants';
 import { fetcher } from 'src/lib/fetch';
 import { withQueryParams } from 'src/lib/utils';
 
-export interface ButtonPlayProps {
-  uri?: string;
-  context_uri?: string;
-  variant?: 'compact' | 'full';
+export interface BaseButtonPlayProps extends ButtonProps {
   [other: string]: any;
 }
 
+export interface ButtonPlayPropsWithURI extends BaseButtonPlayProps {
+  uri: string | undefined;
+}
+
+export interface ButtonPlayPropsWithContextURI
+  extends BaseButtonPlayProps {
+  context_uri: string | undefined;
+}
+
+export type ButtonPlayProps =
+  | ButtonPlayPropsWithURI
+  | ButtonPlayPropsWithContextURI;
+
 export function ButtonPlay(props: ButtonPlayProps) {
-  const { uri, context_uri, variant, ...others } = props;
+  const { uri, context_uri, ...others } = props;
 
   const track = useSelector(selectTrack);
   const paused = useSelector(selectPaused);
@@ -72,3 +82,11 @@ export function ButtonPlay(props: ButtonPlayProps) {
     </Skeleton>
   );
 }
+
+// const ChakraComponent = chakra(ButtonPlayComponent);
+
+// export function ButtonPlay(props: any) {
+//   const { ...others } = props;
+
+//   return <ChakraComponent {...others} />;
+// }

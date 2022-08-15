@@ -1,5 +1,5 @@
 import { Button, Skeleton } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetcher } from 'src/lib/fetch';
 import { useArtistFollow } from 'src/lib/hooks/services/useArtistFollow';
 import { withQueryParams } from 'src/lib/utils';
@@ -15,6 +15,10 @@ export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
 
   const { isFollowingArtist, isLoading } = useArtistFollow({ ids });
   const [isFollowing, setIsFollowing] = useState(isFollowingArtist);
+
+  useEffect(() => {
+    setIsFollowing(isFollowingArtist);
+  }, [isFollowingArtist]);
 
   const handleOnClick = () => {
     const url = withQueryParams(

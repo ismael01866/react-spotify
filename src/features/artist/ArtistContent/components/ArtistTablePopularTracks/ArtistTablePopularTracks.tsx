@@ -1,9 +1,4 @@
-import {
-  Skeleton,
-  Table,
-  TableContainer,
-  Tbody
-} from '@chakra-ui/react';
+import { Table, TableContainer, Tbody } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'src/features/user';
@@ -24,19 +19,18 @@ export function ArtistTablePopularTracks() {
 
   return (
     <TableContainer>
-      <Table size={'sm'} sx={{ tableLayout: 'fixed' }}>
+      <Table sx={{ tableLayout: 'fixed' }}>
         <colgroup>
           <col style={{ width: '4rem' }} />
           <col style={{ width: '100%' }} />
-          <col style={{ width: '6rem' }} />
+          <col style={{ width: '4rem' }} />
         </colgroup>
 
         <Tbody>
           {data?.map((track, index) => {
             return (
               <ArtistRowPopularTrack
-                key={track.id}
-                index={++index}
+                key={track.id || index}
                 track={track}
               />
             );
