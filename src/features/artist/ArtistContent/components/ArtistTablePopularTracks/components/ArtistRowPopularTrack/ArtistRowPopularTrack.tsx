@@ -10,6 +10,7 @@ import {
   Tr
 } from '@chakra-ui/react';
 import moment from 'moment';
+import { useRef } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { ITrack } from 'src/types/track';
 
@@ -21,11 +22,18 @@ export function ArtistRowPopularTrack(
   props: ArtistRowPopularTrackProps
 ) {
   const { track } = props;
-  const { uri, name, duration_ms, album } = track;
+  const { uri, name, duration_ms, album, is_playable } = track;
+
+  const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <Tr role={'group'}>
-      <Td px={0}>
+    <Tr
+      role={'group'}
+      onDoubleClick={() => {
+        buttonPlayRef.current?.click();
+      }}
+    >
+      <Td>
         <Flex alignContent={'center'} pos={'relative'} w={'full'}>
           <AspectRatio boxSize={10} ratio={4 / 3}>
             <Image
@@ -50,7 +58,10 @@ export function ArtistRowPopularTrack(
           >
             <ButtonPlay
               uri={uri}
+              ref={buttonPlayRef}
+              disabled={!is_playable}
               colorScheme={'gray'}
+              pointerEvents={is_playable ? 'initial' : 'none'}
               variant={'ghost'}
             />
           </Box>
@@ -63,7 +74,7 @@ export function ArtistRowPopularTrack(
         </Heading>
       </Td>
 
-      <Td px={0} textAlign={'right'}>
+      <Td textAlign={'right'}>
         <Text fontSize={'sm'}>
           {moment(duration_ms).format('mm:ss')}
         </Text>

@@ -4,6 +4,7 @@ import { RootState } from 'src/store';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
+    id: '',
     email: '',
     display_name: '',
     country: '',
@@ -11,8 +12,10 @@ export const userSlice = createSlice({
   },
   reducers: {
     setUser: (state, action) => {
-      const { email, display_name, country, images } = action.payload;
+      const { id, email, display_name, country, images } =
+        action.payload;
 
+      state.id = id;
       state.email = email;
       state.images = images;
       state.country = country;

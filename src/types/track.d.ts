@@ -8,4 +8,5 @@ export interface ITrack {
   duration_ms?: number;
   album?: IAlbum;
   artists?: IArtist[];
+  is_playable?: boolean;
 }

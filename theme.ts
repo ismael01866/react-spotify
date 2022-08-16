@@ -1,3 +1,6 @@
+import defaultTheme from '@chakra-ui/theme';
+import { StyleFunctionProps } from '@chakra-ui/theme-tools';
+
 import {
   ComponentStyleConfig,
   extendTheme,
@@ -82,6 +85,20 @@ const Menu: ComponentStyleConfig = {
   }
 };
 
+const Table: ComponentStyleConfig = {
+  variants: {
+    'simple-with-hover': (props: StyleFunctionProps) => ({
+      ...defaultTheme.components.Table.variants.simple(props),
+
+      tr: {
+        _hover: {
+          bg: 'whiteAlpha.200'
+        }
+      }
+    })
+  }
+};
+
 export const theme = extendTheme(
   {
     config,
@@ -91,8 +108,9 @@ export const theme = extendTheme(
     sizes,
 
     components: {
-      Menu,
       Button,
+      Menu,
+      Table,
 
       // Custom
 

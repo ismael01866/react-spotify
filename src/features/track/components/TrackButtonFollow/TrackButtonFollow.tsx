@@ -1,29 +1,29 @@
 import { Button, Skeleton } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { fetcher } from 'src/lib/fetch';
-import { useArtistFollow } from 'src/lib/hooks/services/useArtistFollow';
+import { useTrackFollow } from 'src/lib/hooks/services/useTrackFollow';
 import { withQueryParams } from 'src/lib/utils';
-import { IArtist } from 'src/types/artist';
+import { ITrack } from 'src/types/track';
 
-export interface ArtistButtonFollowProps {
-  artist: IArtist;
+export interface TrackButtonFollowProps {
+  track: ITrack;
 }
 
-export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
-  const { artist } = props;
-  const ids = artist.id;
+export function TrackButtonFollow(props: TrackButtonFollowProps) {
+  const { track } = props;
+  const ids = track.id;
 
-  const { artistsFollowed = [], isLoading } = useArtistFollow({ ids });
-  const [isFollowing, setIsFollowing] = useState(artistsFollowed[0]);
+  const { tracksFollowed = [], isLoading } = useTrackFollow({ ids });
+  const [isFollowing, setIsFollowing] = useState(tracksFollowed[0]);
 
   useEffect(() => {
-    setIsFollowing(artistsFollowed[0]);
-  }, [artistsFollowed]);
+    setIsFollowing(tracksFollowed[0]);
+  }, [tracksFollowed]);
 
   const handleOnClick = () => {
     const url = withQueryParams(
       '/api/spotify/me/following',
-      Object.assign({ type: 'artist' }, { ids })
+      Object.assign({ type: 'track' }, { ids })
     );
 
     const method = isFollowing ? 'DELETE' : 'PUT';

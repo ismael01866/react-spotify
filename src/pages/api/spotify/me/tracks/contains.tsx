@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const url = withQueryParams(
-    'https://api.spotify.com/v1/me/following/contains',
+    'https://api.spotify.com/v1/me/tracks/contains',
     req.query
   );
 

@@ -1,33 +1,27 @@
 import { Table, TableContainer, Tbody } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'src/features/user';
-import { useArtistTopTracks } from 'src/lib/hooks/services';
+import { ITrack } from 'src/types/track';
 import { ArtistRowPopularTrack } from './components';
 
-export function ArtistTablePopularTracks() {
-  const router = useRouter();
-  const { id } = router.query;
+export interface ArtistTablePopularTracksProps {
+  tracks: ITrack[];
+}
 
-  const user = useSelector(selectUser);
-  const { tracks, isLoading } = useArtistTopTracks(id, {
-    market: user.country
-  });
-
-  const skeletonData = new Array(10).fill('');
-  const data = isLoading ? skeletonData : tracks;
+export function ArtistTablePopularTracks(
+  props: ArtistTablePopularTracksProps
+) {
+  const { tracks } = props;
 
   return (
     <TableContainer>
-      <Table sx={{ tableLayout: 'fixed' }}>
+      <Table variant={'simple-with-hover'}>
         <colgroup>
-          <col style={{ width: '4rem' }} />
+          <col style={{ width: 'auto' }} />
           <col style={{ width: '100%' }} />
-          <col style={{ width: '4rem' }} />
+          <col style={{ width: 'auto' }} />
         </colgroup>
 
         <Tbody>
-          {data?.map((track, index) => {
+          {tracks?.map((track, index) => {
             return (
               <ArtistRowPopularTrack
                 key={track.id || index}

@@ -142,6 +142,7 @@ export function Layout(props: LayoutProps) {
         >
           {children}
         </GridItem>
+
         {playbackID && (
           <GridItem area={'player'}>
             <Player />

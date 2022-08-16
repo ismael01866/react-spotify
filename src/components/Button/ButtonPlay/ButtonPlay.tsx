@@ -1,6 +1,6 @@
 import { ButtonProps, IconButton, Skeleton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
-import { useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import {
@@ -30,7 +30,10 @@ export type ButtonPlayProps =
   | ButtonPlayPropsWithURI
   | ButtonPlayPropsWithContextURI;
 
-export function ButtonPlay(props: ButtonPlayProps) {
+export const ButtonPlay = forwardRef<
+  HTMLButtonElement,
+  ButtonPlayProps
+>((props, ref) => {
   const { uri, context_uri, ...others } = props;
 
   const track = useSelector(selectTrack);
@@ -73,6 +76,7 @@ export function ButtonPlay(props: ButtonPlayProps) {
   return (
     <Skeleton isLoaded={!!deviceID}>
       <IconButton
+        ref={ref}
         aria-label={'play'}
         colorScheme={'spotify'}
         icon={icon}
@@ -81,12 +85,6 @@ export function ButtonPlay(props: ButtonPlayProps) {
       />
     </Skeleton>
   );
-}
+});
 
-// const ChakraComponent = chakra(ButtonPlayComponent);
-
-// export function ButtonPlay(props: any) {
-//   const { ...others } = props;
-
-//   return <ChakraComponent {...others} />;
-// }
+ButtonPlay.displayName = 'ButtonPlay';
