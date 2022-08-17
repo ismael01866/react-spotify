@@ -21,16 +21,14 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
   }, [tracksFollowed]);
 
   const handleOnClick = () => {
-    const url = withQueryParams(
-      '/api/spotify/me/following',
-      Object.assign({ type: 'track' }, { ids })
-    );
-
-    const method = isFollowing ? 'DELETE' : 'PUT';
-
-    fetcher(url, { method }).then(({ isFollowing }) => {
-      setIsFollowing(isFollowing);
-    });
+    // const url = withQueryParams(
+    //   '/api/spotify/me/following',
+    //   Object.assign({ type: 'track' }, { ids })
+    // );
+    // const method = isFollowing ? 'DELETE' : 'PUT';
+    // fetcher(url, { method }).then(({ isFollowing }) => {
+    //   setIsFollowing(isFollowing);
+    // });
   };
 
   return (

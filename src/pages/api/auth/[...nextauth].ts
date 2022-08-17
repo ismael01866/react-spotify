@@ -5,8 +5,17 @@ import { getSpotifyToken } from 'src/lib/spotify';
 const clientId = process.env.CLIENT_ID || '';
 const clientSecret = process.env.CLIENT_SECRET || '';
 
-const scope =
-  'streaming user-read-email user-read-private user-read-recently-played user-top-read user-read-playback-state user-modify-playback-state user-follow-modify user-follow-read';
+const scope = `streaming 
+               user-library-read 
+               user-library-modify 
+               user-modify-playback-state 
+               user-top-read 
+               user-read-email 
+               user-read-private 
+               user-read-recently-played 
+               user-read-playback-state 
+               user-follow-read
+               user-follow-modify`;
 
 export default NextAuth({
   providers: [

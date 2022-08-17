@@ -114,13 +114,7 @@ export function Layout(props: LayoutProps) {
         gridTemplateColumns={'auto 1fr'}
         height={'100vh'}
       >
-        <GridItem
-          area={'navbar'}
-          pos={'relative'}
-          overflowY="scroll"
-          zIndex={1}
-          sx={{ scrollbarWidth: 'thin' }}
-        >
+        <GridItem area={'navbar'} pos={'relative'} zIndex={1}>
           <Navbar />
         </GridItem>
 

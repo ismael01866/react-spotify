@@ -9,4 +9,8 @@ export interface ITrack {
   album?: IAlbum;
   artists?: IArtist[];
   is_playable?: boolean;
+
+  // custom
+
+  is_following?: boolean;
 }

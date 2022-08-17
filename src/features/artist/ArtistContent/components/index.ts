@@ -1,1 +1,1 @@
-// export * from './ArtistAvatar';
+export * from './ArtistTablePopularTracks';
