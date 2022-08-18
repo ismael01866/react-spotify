@@ -1,7 +1,7 @@
-import { Button, Skeleton } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { IconButton } from '@chakra-ui/react';
+import { useState } from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { fetcher } from 'src/lib/fetch';
-import { useTrackFollow } from 'src/lib/hooks/services/useTrackFollow';
 import { withQueryParams } from 'src/lib/utils';
 import { ITrack } from 'src/types/track';
 
@@ -11,31 +11,29 @@ export interface TrackButtonFollowProps {
 
 export function TrackButtonFollow(props: TrackButtonFollowProps) {
   const { track } = props;
-  const ids = track.id;
+  const { id: ids, is_following } = track;
 
-  const { tracksFollowed = [], isLoading } = useTrackFollow({ ids });
-  const [isFollowing, setIsFollowing] = useState(tracksFollowed[0]);
-
-  useEffect(() => {
-    setIsFollowing(tracksFollowed[0]);
-  }, [tracksFollowed]);
+  const [isFollowing, setIsFollowing] = useState(is_following);
 
   const handleOnClick = () => {
-    // const url = withQueryParams(
-    //   '/api/spotify/me/following',
-    //   Object.assign({ type: 'track' }, { ids })
-    // );
-    // const method = isFollowing ? 'DELETE' : 'PUT';
-    // fetcher(url, { method }).then(({ isFollowing }) => {
-    //   setIsFollowing(isFollowing);
-    // });
+    const url = withQueryParams('/api/spotify/me/tracks', { ids });
+    const method = isFollowing ? 'DELETE' : 'PUT';
+
+    fetcher(url, { method }).then(({ isFollowing }) => {
+      console.log(isFollowing);
+
+      setIsFollowing(isFollowing);
+    });
   };
 
   return (
-    <Skeleton isLoaded={!isLoading}>
-      <Button onClick={handleOnClick} variant={'outline'}>
-        {isFollowing ? 'Following' : 'Follow'}
-      </Button>
-    </Skeleton>
+    <IconButton
+      aria-label={'follow-track'}
+      colorScheme={isFollowing ? 'spotify' : ''}
+      icon={isFollowing ? <FaHeart /> : <FaRegHeart />}
+      variant={'fade'}
+      style={{ opacity: (isFollowing && '1') || '' }}
+      onClick={handleOnClick}
+    />
   );
 }

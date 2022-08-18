@@ -6,7 +6,15 @@ export const fetcher = (...args: any) => {
     .then((res) => {
       if (!res.ok) throw Error(res.statusText);
 
-      return res.json();
+      const contentType = res.headers.get('content-type');
+
+      if (contentType?.startsWith('text/plain;')) {
+        return res.text();
+      }
+
+      if (contentType?.startsWith('application/json;')) {
+        return res.json();
+      }
     })
     .catch((err) => {
       console.log(err);

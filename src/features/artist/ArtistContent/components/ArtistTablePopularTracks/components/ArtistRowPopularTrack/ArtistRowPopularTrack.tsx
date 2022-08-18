@@ -12,6 +12,7 @@ import {
 import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { TrackButtonFollow } from 'src/features/track';
 import { ITrack } from 'src/types/track';
 
 export interface ArtistRowPopularTrackProps {
@@ -72,6 +73,10 @@ export function ArtistRowPopularTrack(
         <Heading fontSize={'sm'} noOfLines={1}>
           {name}
         </Heading>
+      </Td>
+
+      <Td>
+        <TrackButtonFollow track={track} />
       </Td>
 
       <Td textAlign={'right'}>

@@ -66,6 +66,19 @@ const sizes = {
 const Button: ComponentStyleConfig = {
   baseStyle: {
     borderRadius: 'base'
+  },
+
+  variants: {
+    fade: (props: StyleFunctionProps) => ({
+      ...defaultTheme.components.Button.variants.ghost(props),
+      opacity: 0.6,
+
+      _hover: {
+        opacity: 1
+      },
+
+      _active: {}
+    })
   }
 };
 

@@ -18,6 +18,7 @@ export function ArtistTablePopularTracks(
           <col style={{ width: 'auto' }} />
           <col style={{ width: '100%' }} />
           <col style={{ width: 'auto' }} />
+          <col style={{ width: 'auto' }} />
         </colgroup>
 
         <Tbody>
