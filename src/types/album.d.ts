@@ -5,4 +5,6 @@ export interface IAlbum {
   images?: {
     url?: string;
   }[];
+  release_date?: string;
+  type?: string;
 }

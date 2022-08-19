@@ -13,7 +13,10 @@ export function Home() {
         <Heading fontSize={'2xl'}>Your Top Tracks</Heading>
 
         <br />
-        <FeaturedGridTracks limit={6} />
+        <FeaturedGridTracks
+          limit={6}
+          columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
+        />
       </Box>
 
       <Box>
@@ -26,7 +29,10 @@ export function Home() {
         </HStack>
 
         <br />
-        <FeaturedGridArtists limit={8} />
+        <FeaturedGridArtists
+          limit={6}
+          columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
+        />
       </Box>
     </Flex>
   );

@@ -4,17 +4,18 @@ import { useTopTracks } from 'src/lib/hooks/services';
 
 export interface FeaturedGridTracksProps {
   limit?: number;
+  [others: string]: any;
 }
 
 export function FeaturedGridTracks(props: FeaturedGridTracksProps) {
-  const { limit } = props;
+  const { limit, ...others } = props;
   const { tracks, isLoading } = useTopTracks({ limit });
 
   const skeletonData = new Array(limit).fill('');
   const data = isLoading ? skeletonData : tracks;
 
   return (
-    <SimpleGrid columns={{ base: 1, sm: 2, md: 6 }} spacing={4}>
+    <SimpleGrid spacing={4} {...others}>
       {data?.map((track, index) => {
         return (
           <Skeleton key={track.id || index} isLoaded={!isLoading}>

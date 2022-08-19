@@ -22,14 +22,14 @@ export function ArtistTablePopularTracks(
         </colgroup>
 
         <Tbody>
-          {tracks?.map((track, index) => {
-            return (
+          {tracks
+            .filter((track) => track.is_visible)
+            .map((track, index) => (
               <ArtistRowPopularTrack
                 key={track.id || index}
                 track={track}
               />
-            );
-          })}
+            ))}
         </Tbody>
       </Table>
     </TableContainer>

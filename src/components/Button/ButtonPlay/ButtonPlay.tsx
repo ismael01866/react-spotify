@@ -43,22 +43,25 @@ export const ButtonPlay = forwardRef<
   const { player } = useContext(PlayerContext);
 
   let trackIsPlaying = false;
+  let albumIsPlaying = false;
   let artistIsPlaying = false;
 
   if (track.uri) {
     trackIsPlaying = track.uri === uri;
   }
 
+  if (track?.album?.uri) {
+    albumIsPlaying = track.album.uri === context_uri;
+  }
+
   if (track?.artists?.[0].uri) {
     artistIsPlaying = track.artists[0].uri === context_uri;
   }
 
-  const icon =
-    paused || (!artistIsPlaying && !trackIsPlaying) ? (
-      <FaPlay />
-    ) : (
-      <FaPause />
-    );
+  const isPlaying =
+    !artistIsPlaying && !albumIsPlaying && !trackIsPlaying;
+
+  const icon = paused || isPlaying ? <FaPlay /> : <FaPause />;
 
   const handleOnClick = debounce(async () => {
     if (artistIsPlaying || trackIsPlaying) return player?.togglePlay();

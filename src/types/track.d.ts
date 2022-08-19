@@ -13,4 +13,5 @@ export interface ITrack {
   // custom
 
   is_following?: boolean;
+  is_visible?: boolean;
 }

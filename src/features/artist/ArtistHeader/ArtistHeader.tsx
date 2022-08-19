@@ -1,6 +1,8 @@
 import { Box, HStack, Skeleton, VStack } from '@chakra-ui/react';
+import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { useArtist } from 'src/lib/hooks/services';
+import { ArtistContext } from '../ArtistContext';
 import {
   ArtistAvatar,
   ArtistBanner,
@@ -8,12 +10,8 @@ import {
   ArtistMeta
 } from './components';
 
-export interface ArtistHeaderProps {
-  artistID: string | string[];
-}
-
-export function ArtistHeader(props: ArtistHeaderProps) {
-  const { artistID } = props;
+export function ArtistHeader() {
+  const { artistID } = useContext(ArtistContext);
   const { artist, isLoading } = useArtist(artistID);
 
   return (

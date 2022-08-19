@@ -1,1 +1,2 @@
-export * from './ArtistTablePopularTracks';
+export * from './ArtistAlbums';
+export * from './ArtistPopularTracks';

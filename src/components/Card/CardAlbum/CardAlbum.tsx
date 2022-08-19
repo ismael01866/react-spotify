@@ -8,30 +8,31 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { Card } from 'components/Card';
-import { ITrack } from 'src/types/track';
+import moment from 'moment';
+import { IAlbum } from 'src/types/album';
 import { CardButtonPlay, CardMeta } from '../components';
 
-export interface CardTrackProps {
-  track: ITrack;
+export interface CardAlbumProps {
+  album: IAlbum;
   [others: string]: any;
 }
 
-export function CardTrack(props: CardTrackProps) {
-  const { track, ...others } = props;
-  const { name, uri, album, artists = [] } = track;
+export function CardAlbum(props: CardAlbumProps) {
+  const { album, ...others } = props;
+  const { uri, name, images, release_date } = album;
 
   return (
-    <Card role={'group'} {...others}>
+    <Card position={'relative'} role={'group'} {...others}>
       <Box boxShadow={'base'} position={'relative'}>
         <AspectRatio overflow={'hidden'} ratio={4 / 3}>
           <Image
             alt={name}
-            src={album?.images?.[0].url}
+            src={images?.[0].url}
             fallback={<Skeleton />}
           />
         </AspectRatio>
 
-        <CardButtonPlay uri={uri} />
+        <CardButtonPlay context_uri={uri} />
       </Box>
 
       <CardMeta>
@@ -40,7 +41,7 @@ export function CardTrack(props: CardTrackProps) {
             {name}
           </Heading>
           <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-            {artists.map((artist) => artist.name).join(', ')}
+            {moment(release_date).format('YYYY')}
           </Text>
         </VStack>
       </CardMeta>

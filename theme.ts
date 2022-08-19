@@ -71,7 +71,9 @@ const Button: ComponentStyleConfig = {
   variants: {
     fade: (props: StyleFunctionProps) => ({
       ...defaultTheme.components.Button.variants.ghost(props),
+
       opacity: 0.6,
+      padding: 0,
 
       _hover: {
         opacity: 1
@@ -112,6 +114,18 @@ const Table: ComponentStyleConfig = {
   }
 };
 
+const Tabs: ComponentStyleConfig = {
+  variants: {
+    line: {
+      tab: {
+        _focus: {
+          bg: 'none'
+        }
+      }
+    }
+  }
+};
+
 export const theme = extendTheme(
   {
     config,
@@ -124,6 +138,7 @@ export const theme = extendTheme(
       Button,
       Menu,
       Table,
+      Tabs,
 
       // Custom
 

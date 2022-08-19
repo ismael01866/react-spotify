@@ -1,32 +1,25 @@
-import { Box, Flex, Heading } from '@chakra-ui/react';
-import { useArtistTopTracksWithFollow } from 'src/lib/hooks/services';
-import { ITrack } from 'src/types/track';
-import { ArtistTablePopularTracks } from './components/ArtistTablePopularTracks';
+import { Flex, Grid, GridItem } from '@chakra-ui/react';
+import { ArtistAlbums } from './components/ArtistAlbums';
+import { ArtistPopularTracks } from './components/ArtistPopularTracks/ArtistPopularTracks';
 
-export interface ArtistContentProps {
-  country: string;
-  artistID: string | string[];
-}
-
-export function ArtistContent(props: ArtistContentProps) {
-  const { country, artistID } = props;
-
-  const { tracks, isLoading } = useArtistTopTracksWithFollow(
-    artistID,
-    country
-  );
-
-  const skeletonData = new Array(10).fill('');
-  const data = isLoading ? skeletonData : (tracks as ITrack[]);
-
+export function ArtistContent() {
   return (
-    <Flex flexDirection={'column'} gap={12}>
-      <Box>
-        <Heading fontSize={'2xl'}>Popular</Heading>
+    <Flex flexDirection={'column'}>
+      <Grid
+        gridTemplateColumns="repeat(12, 1fr)"
+        gap={{ base: 0, md: 12 }}
+      >
+        <GridItem colSpan={{ base: 12, md: 6, lg: 8 }}>
+          <ArtistPopularTracks />
+        </GridItem>
 
-        <br />
-        <ArtistTablePopularTracks tracks={data} />
-      </Box>
+        <GridItem
+          className={'popo'}
+          colSpan={{ base: 12, md: 6, lg: 4 }}
+        >
+          <ArtistAlbums />
+        </GridItem>
+      </Grid>
     </Flex>
   );
 }

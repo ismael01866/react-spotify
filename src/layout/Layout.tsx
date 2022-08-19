@@ -12,7 +12,7 @@ import {
   setPosition,
   setTrack
 } from 'src/features/player/PlayerSlice';
-import { setUser } from 'src/features/user';
+import { setUser, UserContext } from 'src/features/user';
 import { useMe } from 'src/lib/hooks/services';
 import { buildSpotifyPlayer } from 'src/lib/spotify';
 import { Navbar, Player, Sidebar } from './components';
@@ -105,44 +105,49 @@ export function Layout(props: LayoutProps) {
   }
 
   return (
-    <PlayerContext.Provider value={{ player }}>
-      <Grid
-        templateAreas={`"sidebar navbar"
-                        "sidebar content"
-                        "player player"`}
-        gridTemplateRows={'auto 1fr auto'}
-        gridTemplateColumns={'auto 1fr'}
-        height={'100vh'}
-      >
-        <GridItem area={'navbar'} pos={'relative'} zIndex={1}>
-          <Navbar />
-        </GridItem>
+    user && (
+      <UserContext.Provider value={{ ...user }}>
+        <PlayerContext.Provider value={{ player }}>
+          <Grid
+            templateAreas={`
+            "sidebar navbar"
+            "sidebar content"
+            "player player"`}
+            gridTemplateRows={'auto 1fr auto'}
+            gridTemplateColumns={'auto 1fr'}
+            height={'100vh'}
+          >
+            <GridItem area={'navbar'} pos={'relative'} zIndex={1}>
+              <Navbar />
+            </GridItem>
 
-        <GridItem area={'sidebar'} pos={'relative'} zIndex={1}>
-          <Sidebar />
-        </GridItem>
+            <GridItem area={'sidebar'} pos={'relative'} zIndex={1}>
+              <Sidebar />
+            </GridItem>
 
-        <GridItem
-          area={'content'}
-          pb={8}
-          px={12}
-          ref={contentEl}
-          overflowX={'hidden'}
-          overflowY={'auto'}
-          zIndex={0}
-          sx={{
-            scrollbarWidth: 'thin'
-          }}
-        >
-          {children}
-        </GridItem>
+            <GridItem
+              area={'content'}
+              pb={8}
+              px={12}
+              ref={contentEl}
+              overflowX={'hidden'}
+              overflowY={'auto'}
+              zIndex={0}
+              sx={{
+                scrollbarWidth: 'thin'
+              }}
+            >
+              {children}
+            </GridItem>
 
-        {playbackID && (
-          <GridItem area={'player'}>
-            <Player />
-          </GridItem>
-        )}
-      </Grid>
-    </PlayerContext.Provider>
+            {playbackID && (
+              <GridItem area={'player'}>
+                <Player />
+              </GridItem>
+            )}
+          </Grid>
+        </PlayerContext.Provider>
+      </UserContext.Provider>
+    )
   );
 }

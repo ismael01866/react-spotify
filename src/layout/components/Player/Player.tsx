@@ -23,13 +23,7 @@ export function Player() {
   }, [track]);
 
   return (
-    <SimpleGrid
-      bg={'bg.base'}
-      h={'6xs'}
-      w={'full'}
-      columns={3}
-      spacing={8}
-    >
+    <SimpleGrid h={'6xs'} w={'full'} columns={3} spacing={8}>
       <TrackMeta album={album} artist={artist} track={track} />
 
       <VStack alignSelf={'center'} mt={2} spacing={0}>

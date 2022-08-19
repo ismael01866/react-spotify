@@ -1,17 +1,16 @@
 import {
   AspectRatio,
+  Box,
   Heading,
-  HStack,
   Image,
   LinkBox,
   LinkOverlay,
-  Skeleton,
-  VStack
+  Skeleton
 } from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { default as NextLink } from 'next/link';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { IArtist } from 'src/types/artist';
+import { CardButtonPlay, CardMeta } from '../components';
 
 export interface CardArtistProps {
   artist: IArtist;
@@ -24,46 +23,28 @@ export function CardArtist(props: CardArtistProps) {
 
   return (
     <LinkBox>
-      <Card position={'relative'} role={'group'} {...others}>
+      <Card role={'group'} {...others}>
         <NextLink href={`/artists/${id}`} passHref>
           <LinkOverlay>
-            <AspectRatio
-              borderRadius={'base'}
-              overflow={'hidden'}
-              ratio={4 / 3}
-            >
-              <Image
-                alt={name}
-                src={images && images[0].url}
-                fallback={<Skeleton />}
-              />
-            </AspectRatio>
+            <Box boxShadow={'base'} position={'relative'}>
+              <AspectRatio overflow={'hidden'} ratio={4 / 3}>
+                <Image
+                  alt={name}
+                  src={images?.[0].url}
+                  fallback={<Skeleton />}
+                />
+              </AspectRatio>
+
+              <CardButtonPlay context_uri={uri} />
+            </Box>
           </LinkOverlay>
         </NextLink>
 
-        <HStack
-          bg={'blackAlpha.700'}
-          pos={'absolute'}
-          bottom={0}
-          left={0}
-          justifyContent={'space-between'}
-          p={4}
-          spacing={4}
-          w={'full'}
-          _groupHover={{ bg: 'blackAlpha.800' }}
-        >
-          <VStack alignItems={'flex-start'} spacing={1}>
-            <Heading fontSize={'sm'} noOfLines={1}>
-              {name}
-            </Heading>
-          </VStack>
-
-          <ButtonPlay
-            context_uri={uri}
-            opacity={0}
-            _groupHover={{ opacity: 1 }}
-          />
-        </HStack>
+        <CardMeta>
+          <Heading fontSize={'sm'} noOfLines={1}>
+            {name}
+          </Heading>
+        </CardMeta>
       </Card>
     </LinkBox>
   );

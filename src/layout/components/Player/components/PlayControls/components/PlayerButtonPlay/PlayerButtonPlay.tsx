@@ -3,12 +3,12 @@ import { debounce } from 'lodash';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { DEBOUNCE_WAIT } from 'src/lib/constants';
 
-export interface ButtonPlayProps {
+export interface PlayerButtonPlayProps {
   paused: boolean;
   player: any;
 }
 
-export function ButtonPlay(props: ButtonPlayProps) {
+export function PlayerButtonPlay(props: PlayerButtonPlayProps) {
   const { paused, player } = props;
   const handleOnClick = debounce(() => {
     player?.togglePlay();

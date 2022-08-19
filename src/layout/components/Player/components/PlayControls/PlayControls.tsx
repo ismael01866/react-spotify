@@ -5,7 +5,7 @@ import { FaStepBackward, FaStepForward } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { PlayerContext, selectPaused } from 'src/features/player';
 import { DEBOUNCE_WAIT } from 'src/lib/constants';
-import { ButtonPlay } from './components';
+import { PlayerButtonPlay } from './components';
 
 export function PlayControls() {
   const paused = useSelector(selectPaused);
@@ -28,7 +28,7 @@ export function PlayControls() {
         variant={'ghost'}
         onClick={handleOnClickPrevTrack}
       />
-      <ButtonPlay paused={paused} player={player} />
+      <PlayerButtonPlay paused={paused} player={player} />
       <IconButton
         aria-label={'stepbackward'}
         icon={<FaStepForward />}

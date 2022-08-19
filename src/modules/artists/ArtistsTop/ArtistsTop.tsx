@@ -7,7 +7,10 @@ export function ArtistsTop() {
       <Heading fontSize={'2xl'}>Your Top Artists</Heading>
 
       <br />
-      <FeaturedGridArtists limit={20} />
+      <FeaturedGridArtists
+        limit={20}
+        columns={{ base: 1, sm: 2, md: 3, lg: 5 }}
+      />
     </Box>
   );
 }
