@@ -24,9 +24,9 @@ export function ArtistBanner(props: ArtistBannerProps) {
       }}
     >
       <Image
-        src={artist?.images?.[0].url}
+        src={artist?.images?.[0]?.url}
         alt={artist.name}
-        fallback={<Skeleton />}
+        fallback={<Skeleton startColor={''} />}
       />
     </AspectRatio>
   );

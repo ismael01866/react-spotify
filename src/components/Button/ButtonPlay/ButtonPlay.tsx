@@ -63,7 +63,7 @@ export const ButtonPlay = forwardRef<
 
   const icon = paused || isPlaying ? <FaPlay /> : <FaPause />;
 
-  const handleOnClick = debounce(async () => {
+  const handleOnClick = debounce(async (e) => {
     if (artistIsPlaying || trackIsPlaying) return player?.togglePlay();
 
     const url = withQueryParams('/api/spotify/me/player/play', {

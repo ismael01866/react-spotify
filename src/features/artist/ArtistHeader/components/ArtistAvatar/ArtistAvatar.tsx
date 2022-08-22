@@ -11,9 +11,9 @@ export function ArtistAvatar(props: ArtistAvatarProps) {
   return (
     <AspectRatio boxSize={'3xs'} ratio={4 / 3}>
       <Image
-        src={artist?.images?.[0].url}
+        src={artist?.images?.[0]?.url}
         alt={artist.name}
-        fallback={<Skeleton />}
+        fallback={<Skeleton startColor={''} />}
       />
     </AspectRatio>
   );

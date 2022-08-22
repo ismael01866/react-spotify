@@ -1,6 +1,7 @@
 import { Flex, Grid, GridItem } from '@chakra-ui/react';
 import { ArtistAlbums } from './components/ArtistAlbums';
 import { ArtistPopularTracks } from './components/ArtistPopularTracks/ArtistPopularTracks';
+import { ArtistRelatedArtists } from './components/ArtistRelatedArtists';
 
 export function ArtistContent() {
   return (
@@ -18,6 +19,10 @@ export function ArtistContent() {
           colSpan={{ base: 12, md: 6, lg: 4 }}
         >
           <ArtistAlbums />
+
+          <br />
+          <br />
+          <ArtistRelatedArtists />
         </GridItem>
       </Grid>
     </Flex>

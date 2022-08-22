@@ -3,8 +3,7 @@ import {
   Box,
   Heading,
   Image,
-  LinkBox,
-  LinkOverlay,
+  Link,
   Skeleton
 } from '@chakra-ui/react';
 import { Card } from 'components/Card';
@@ -22,23 +21,23 @@ export function CardArtist(props: CardArtistProps) {
   const { id, name, uri, images } = artist;
 
   return (
-    <LinkBox>
+    <Skeleton isLoaded={!!artist.id}>
       <Card role={'group'} {...others}>
-        <NextLink href={`/artists/${id}`} passHref>
-          <LinkOverlay>
-            <Box boxShadow={'base'} position={'relative'}>
-              <AspectRatio overflow={'hidden'} ratio={4 / 3}>
+        <Box boxShadow={'base'} position={'relative'}>
+          <AspectRatio overflow={'hidden'} ratio={4 / 3}>
+            <NextLink href={`/artists/${id}`} passHref>
+              <Link>
                 <Image
                   alt={name}
-                  src={images?.[0].url}
-                  fallback={<Skeleton />}
+                  src={images?.[0]?.url}
+                  fallback={<Skeleton startColor={''} />}
                 />
-              </AspectRatio>
+              </Link>
+            </NextLink>
+          </AspectRatio>
 
-              <CardButtonPlay context_uri={uri} />
-            </Box>
-          </LinkOverlay>
-        </NextLink>
+          <CardButtonPlay context_uri={uri} />
+        </Box>
 
         <CardMeta>
           <Heading fontSize={'sm'} noOfLines={1}>
@@ -46,6 +45,6 @@ export function CardArtist(props: CardArtistProps) {
           </Heading>
         </CardMeta>
       </Card>
-    </LinkBox>
+    </Skeleton>
   );
 }

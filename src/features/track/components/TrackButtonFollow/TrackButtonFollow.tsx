@@ -20,8 +20,6 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
     const method = isFollowing ? 'DELETE' : 'PUT';
 
     fetcher(url, { method }).then(({ isFollowing }) => {
-      console.log(isFollowing);
-
       setIsFollowing(isFollowing);
     });
   };

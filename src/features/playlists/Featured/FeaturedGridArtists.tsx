@@ -1,4 +1,4 @@
-import { SimpleGrid, Skeleton } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 import { CardArtist } from 'src/components/Card/CardArtist';
 import { useTopArtists } from 'src/lib/hooks/services';
 
@@ -17,11 +17,7 @@ export function FeaturedGridArtists(props: FeaturedGridArtistsProps) {
   return (
     <SimpleGrid spacing={4} {...others}>
       {data?.map((artist, index) => {
-        return (
-          <Skeleton key={artist.id || index} isLoaded={!isLoading}>
-            <CardArtist artist={artist} />
-          </Skeleton>
-        );
+        return <CardArtist key={artist.id || index} artist={artist} />;
       })}
     </SimpleGrid>
   );

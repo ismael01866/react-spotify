@@ -1,3 +1,5 @@
+import { IArtist } from './artist';
+
 export interface IAlbum {
   id?: string;
   uri?: string;
@@ -7,4 +9,6 @@ export interface IAlbum {
   }[];
   release_date?: string;
   type?: string;
+  total_tracks?: number;
+  artists?: IArtist[];
 }

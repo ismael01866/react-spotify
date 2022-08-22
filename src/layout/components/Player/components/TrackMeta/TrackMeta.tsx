@@ -26,9 +26,9 @@ export function TrackMeta(props: TrackMetaProps) {
       <AspectRatio h={'full'} ratio={4 / 3} w={'7xs'}>
         <Image
           maxHeight={'full'}
-          src={album.images && album.images[0].url}
+          src={album?.images?.[0]?.url}
           alt={album.name}
-          fallback={<Skeleton />}
+          fallback={<Skeleton startColor={''} />}
         />
       </AspectRatio>
 
