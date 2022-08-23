@@ -4,7 +4,6 @@ import useSWR from 'swr';
 
 export const useMe = (opts = {}) => {
   const url = `/api/spotify/me`;
-
   const { data, error } = useSWR<IUser>([url, opts], fetcher);
 
   return {

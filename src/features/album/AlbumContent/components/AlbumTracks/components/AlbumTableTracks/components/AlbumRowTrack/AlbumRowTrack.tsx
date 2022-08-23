@@ -1,29 +1,18 @@
-import {
-  AspectRatio,
-  Box,
-  Flex,
-  Heading,
-  Image,
-  Skeleton,
-  Td,
-  Text,
-  Tr
-} from '@chakra-ui/react';
+import { Box, Flex, Heading, Td, Text, Tr } from '@chakra-ui/react';
 import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonFollowTrack } from 'src/components/Button/ButtonFollow';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { ITrack } from 'src/types/track';
 
-export interface ArtistRowPopularTrackProps {
+export interface AlbumRowTrackProps {
+  index: number;
   track: ITrack;
 }
 
-export function ArtistRowPopularTrack(
-  props: ArtistRowPopularTrackProps
-) {
-  const { track } = props;
-  const { uri, name, duration_ms, album, is_playable } = track;
+export function AlbumRowTrack(props: AlbumRowTrackProps) {
+  const { index, track } = props;
+  const { uri, name, duration_ms, is_playable = true } = track;
 
   const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
@@ -34,26 +23,20 @@ export function ArtistRowPopularTrack(
         buttonPlayRef.current?.click();
       }}
     >
-      <Td>
-        <Flex alignContent={'center'} pos={'relative'} w={'full'}>
-          <AspectRatio boxSize={10} ratio={4 / 3}>
-            <Image
-              src={album?.images?.[0]?.url}
-              alt={name}
-              fallback={<Skeleton startColor={''} />}
-            />
-          </AspectRatio>
+      <Td textAlign={'right'}>
+        <Box pos={'relative'}>
+          {index}
 
           {/* On Hover */}
 
           <Box
             display={'none'}
-            left={0}
+            left={'50%'}
             top={'50%'}
             pos={'absolute'}
-            sx={{ transform: 'translateY(-50%)' }}
+            sx={{ transform: 'translate(-50%, -50%)' }}
             _groupHover={{
-              bgColor: 'blackAlpha.500',
+              bgColor: 'black',
               display: 'unset'
             }}
           >
@@ -66,7 +49,7 @@ export function ArtistRowPopularTrack(
               variant={'ghost'}
             />
           </Box>
-        </Flex>
+        </Box>
       </Td>
 
       <Td px={0} whiteSpace={'normal'}>

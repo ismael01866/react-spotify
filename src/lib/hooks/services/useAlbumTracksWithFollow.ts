@@ -3,13 +3,13 @@ import { withQueryParams } from 'src/lib/utils';
 import { ITrack } from 'src/types/track';
 import useSWR from 'swr';
 
-export const useArtistTopTracksWithFollow = (
+export const useAlbumTracksWithFollow = (
   id: string | string[] | undefined,
   query = {},
   opts = {}
 ) => {
   const url = withQueryParams(
-    `/api/spotify/custom/artists/${id}/top-tracks-with-follow`,
+    `/api/spotify/custom/albums/${id}/tracks-with-follow`,
     query
   );
 

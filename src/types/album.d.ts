@@ -11,4 +11,8 @@ export interface IAlbum {
   type?: string;
   total_tracks?: number;
   artists?: IArtist[];
+
+  // custom
+
+  is_following?: boolean;
 }

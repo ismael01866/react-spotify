@@ -1,14 +1,15 @@
 import { Box, HStack, Skeleton, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
+import { ButtonFollowAlbum } from 'src/components/Button/ButtonFollow';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { ImageAlbum } from 'src/components/Image/ImageAlbum';
-import { useAlbum } from 'src/lib/hooks/services';
+import { useAlbumWithFollow } from 'src/lib/hooks/services';
 import { AlbumContext } from '../AlbumContext';
 import { AlbumBanner, AlbumMeta } from './components';
 
 export function AlbumHeader() {
   const { albumID } = useContext(AlbumContext);
-  const { album = {}, isLoading } = useAlbum(albumID);
+  const { album = {}, isLoading } = useAlbumWithFollow(albumID);
 
   return (
     <Skeleton isLoaded={!isLoading}>
@@ -34,7 +35,7 @@ export function AlbumHeader() {
 
               <HStack spacing={2}>
                 <ButtonPlay context_uri={album.uri} />
-                {/* <AlbumButtonFollow album={album} /> */}
+                <ButtonFollowAlbum album={album} />
               </HStack>
             </VStack>
           </HStack>

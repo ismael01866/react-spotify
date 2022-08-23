@@ -1,18 +1,15 @@
 import { Box, HStack, Skeleton, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
+import { ButtonFollowArtist } from 'src/components/Button/ButtonFollow';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { ImageArtist } from 'src/components/Image/ImageArtist';
-import { useArtist } from 'src/lib/hooks/services';
+import { useArtistWithFollow } from 'src/lib/hooks/services';
 import { ArtistContext } from '../ArtistContext';
-import {
-  ArtistBanner,
-  ArtistButtonFollow,
-  ArtistMeta
-} from './components';
+import { ArtistBanner, ArtistMeta } from './components';
 
 export function ArtistHeader() {
   const { artistID } = useContext(ArtistContext);
-  const { artist = {}, isLoading } = useArtist(artistID);
+  const { artist = {}, isLoading } = useArtistWithFollow(artistID);
 
   return (
     <Skeleton isLoaded={!isLoading}>
@@ -38,7 +35,7 @@ export function ArtistHeader() {
 
               <HStack spacing={2}>
                 <ButtonPlay context_uri={artist.uri} />
-                <ArtistButtonFollow artist={artist} />
+                <ButtonFollowArtist artist={artist} />
               </HStack>
             </VStack>
           </HStack>

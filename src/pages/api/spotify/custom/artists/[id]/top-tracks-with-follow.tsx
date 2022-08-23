@@ -7,11 +7,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { id, market } = req.query;
+  const { id, ...others } = req.query;
 
   const topTracksURL = withQueryParams(
     `https://api.spotify.com/v1/artists/${id}/top-tracks`,
-    { market }
+    { ...others }
   );
 
   const { tracks }: { tracks: ITrack[] } = await fetchWithToken(

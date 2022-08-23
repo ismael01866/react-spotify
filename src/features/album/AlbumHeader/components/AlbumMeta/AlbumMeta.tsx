@@ -16,16 +16,16 @@ export function AlbumMeta(props: AlbumMetaProps) {
       <Heading color={'text.muted'} fontSize={'xs'} letterSpacing={2}>
         ALBUM
       </Heading>
-      <Heading noOfLines={2}>{album.name}</Heading>
+      <Heading noOfLines={1}>{album.name}</Heading>
 
       <HStack
         alignItems={'center'}
         color={'text.base'}
         divider={<span>&bull;</span>}
         mt={4}
-        gap={2}
+        gap={1}
       >
-        <Heading fontSize={'sm'}>
+        <Heading fontSize={'sm'} noOfLines={1}>
           {album.artists?.map((artist, index) => (
             <span key={artist.id}>
               {index !== 0 && <>, </>}
@@ -40,7 +40,7 @@ export function AlbumMeta(props: AlbumMetaProps) {
           {moment(album.release_date).format('YYYY')}
         </Heading>
 
-        <Heading fontSize={'sm'}>
+        <Heading fontSize={'sm'} noOfLines={1}>
           {pluralize('song', album.total_tracks)}
         </Heading>
       </HStack>

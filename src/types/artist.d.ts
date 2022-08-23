@@ -9,4 +9,8 @@ export interface IArtist {
   followers?: {
     total?: number;
   };
+
+  // custom
+
+  is_following?: boolean;
 }
