@@ -1,8 +1,6 @@
 import {
-  AspectRatio,
   Box,
   Heading,
-  Image,
   Link,
   Skeleton,
   Text,
@@ -10,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { default as NextLink } from 'next/link';
+import { ImageTrack } from 'src/components/Image/ImageTrack';
 import { ITrack } from 'src/types/track';
 import { CardButtonPlay, CardMeta } from '../components';
 
@@ -20,23 +19,17 @@ export interface CardTrackProps {
 
 export function CardTrack(props: CardTrackProps) {
   const { track, ...others } = props;
-  const { name, uri, album, artists = [] } = track;
+  const { id, name, uri, album, artists = [] } = track;
 
   return (
-    <Skeleton isLoaded={!!track.id}>
+    <Skeleton isLoaded={!!id}>
       <Card role={'group'} {...others}>
         <Box boxShadow={'base'} position={'relative'}>
-          <AspectRatio overflow={'hidden'} ratio={4 / 3}>
-            <NextLink href={`/albums/${album?.id}`} passHref>
-              <Link>
-                <Image
-                  alt={name}
-                  src={album?.images?.[0]?.url}
-                  fallback={<Skeleton startColor={''} />}
-                />
-              </Link>
-            </NextLink>
-          </AspectRatio>
+          <NextLink href={`/albums/${album?.id}`} passHref>
+            <Link>
+              <ImageTrack track={track} />
+            </Link>
+          </NextLink>
 
           <CardButtonPlay uri={uri} />
         </Box>

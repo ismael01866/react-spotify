@@ -1,9 +1,10 @@
 import { Box, HStack, Skeleton, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { ImageAlbum } from 'src/components/Image/ImageAlbum';
 import { useAlbum } from 'src/lib/hooks/services';
 import { AlbumContext } from '../AlbumContext';
-import { AlbumAvatar, AlbumBanner, AlbumMeta } from './components';
+import { AlbumBanner, AlbumMeta } from './components';
 
 export function AlbumHeader() {
   const { albumID } = useContext(AlbumContext);
@@ -24,8 +25,8 @@ export function AlbumHeader() {
 
         <Box pos={'relative'}>
           <HStack spacing={8}>
-            <Box mt={8}>
-              <AlbumAvatar album={album} />
+            <Box boxSize={'3xs'} mt={8}>
+              <ImageAlbum album={album} />
             </Box>
 
             <VStack alignItems={'flex-start'} pt={6} spacing={8}>

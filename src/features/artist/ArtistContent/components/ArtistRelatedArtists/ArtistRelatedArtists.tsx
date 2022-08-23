@@ -3,8 +3,6 @@ import { default as NextLink } from 'next/link';
 import { ArtistGridRelatedArtists } from './components';
 
 export function ArtistRelatedArtists() {
-  // const { artistID } = useContext(ArtistContext);
-
   return (
     <>
       <HStack justifyContent={'space-between'}>
@@ -17,7 +15,7 @@ export function ArtistRelatedArtists() {
 
       <br />
       <ArtistGridRelatedArtists
-        limit={20}
+        limit={6}
         columns={{ base: 1, sm: 2, xl: 3 }}
       />
     </>

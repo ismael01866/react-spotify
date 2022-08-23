@@ -1,13 +1,7 @@
-import {
-  AspectRatio,
-  Box,
-  Heading,
-  Image,
-  Link,
-  Skeleton
-} from '@chakra-ui/react';
+import { Box, Heading, Link, Skeleton } from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { default as NextLink } from 'next/link';
+import { ImageArtist } from 'src/components/Image/ImageArtist';
 import { IArtist } from 'src/types/artist';
 import { CardButtonPlay, CardMeta } from '../components';
 
@@ -18,23 +12,17 @@ export interface CardArtistProps {
 
 export function CardArtist(props: CardArtistProps) {
   const { artist, ...others } = props;
-  const { id, name, uri, images } = artist;
+  const { id, name, uri } = artist;
 
   return (
-    <Skeleton isLoaded={!!artist.id}>
+    <Skeleton isLoaded={!!id}>
       <Card role={'group'} {...others}>
         <Box boxShadow={'base'} position={'relative'}>
-          <AspectRatio overflow={'hidden'} ratio={4 / 3}>
-            <NextLink href={`/artists/${id}`} passHref>
-              <Link>
-                <Image
-                  alt={name}
-                  src={images?.[0]?.url}
-                  fallback={<Skeleton startColor={''} />}
-                />
-              </Link>
-            </NextLink>
-          </AspectRatio>
+          <NextLink href={`/artists/${id}`} passHref>
+            <Link>
+              <ImageArtist artist={artist} />
+            </Link>
+          </NextLink>
 
           <CardButtonPlay context_uri={uri} />
         </Box>
