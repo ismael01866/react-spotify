@@ -1,4 +1,11 @@
-import { Table, TableContainer, Tbody } from '@chakra-ui/react';
+import {
+  Table,
+  TableContainer,
+  Tbody,
+  Th,
+  Thead,
+  Tr
+} from '@chakra-ui/react';
 import { ITrack } from 'src/types/track';
 import { AlbumRowTrack } from './components';
 
@@ -18,6 +25,15 @@ export function AlbumTableTracks(props: AlbumTableTracksProps) {
           <col style={{ width: 'auto' }} />
           <col style={{ width: 'auto' }} />
         </colgroup>
+
+        <Thead>
+          <Tr>
+            <Th textAlign={'right'}>#</Th>
+            <Th>Title</Th>
+            <Th></Th>
+            <Th>Duration</Th>
+          </Tr>
+        </Thead>
 
         <Tbody>
           {tracks.map((track, index) => (

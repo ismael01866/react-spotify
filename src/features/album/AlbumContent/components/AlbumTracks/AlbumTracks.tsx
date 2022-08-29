@@ -33,13 +33,6 @@ export function AlbumTracks() {
       {(!isLoading && (
         <>
           <AlbumTableTracks tracks={data} />
-
-          <br />
-          {/* <ArtistButtonTogglePopularTracks
-            tracks={data}
-            setTracks={setTracks}
-            toggleCount={initialVisibleCount}
-          /> */}
         </>
       )) || <EmptyContent />}
     </>

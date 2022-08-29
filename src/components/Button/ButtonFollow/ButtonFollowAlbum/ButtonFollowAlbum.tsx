@@ -1,6 +1,7 @@
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { TOOLTIP_OPEN_DELAY } from 'src/lib/constants';
 import { fetcher } from 'src/lib/fetch';
 import { withQueryParams } from 'src/lib/utils';
 import { IAlbum } from 'src/types/album';
@@ -31,10 +32,18 @@ export function ButtonFollowAlbum(props: ButtonFollowAlbumProps) {
   };
 
   return (
-    <IconButton
-      aria-label={'follow-album'}
-      icon={isFollowing ? <FaHeart /> : <FaRegHeart />}
-      onClick={handleOnClick}
-    />
+    <Tooltip
+      label={
+        (isFollowing ? 'Remove from' : 'Save to') + ' your library'
+      }
+      openDelay={TOOLTIP_OPEN_DELAY}
+      placement="top"
+    >
+      <IconButton
+        aria-label={'follow-album'}
+        icon={isFollowing ? <FaHeart /> : <FaRegHeart />}
+        onClick={handleOnClick}
+      />
+    </Tooltip>
   );
 }

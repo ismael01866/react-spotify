@@ -21,7 +21,7 @@ export function AlbumHeader() {
           w={'full'}
           sx={{ transform: 'scale(1.5)' }}
         >
-          <AlbumBanner album={album} />
+          <AlbumBanner />
         </Box>
 
         <Box pos={'relative'}>

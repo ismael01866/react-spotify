@@ -1,6 +1,7 @@
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { TOOLTIP_OPEN_DELAY } from 'src/lib/constants';
 import { fetcher } from 'src/lib/fetch';
 import { withQueryParams } from 'src/lib/utils';
 import { ITrack } from 'src/types/track';
@@ -31,13 +32,21 @@ export function ButtonFollowTrack(props: ButtonFollowTrackProps) {
   };
 
   return (
-    <IconButton
-      aria-label={'follow-track'}
-      colorScheme={isFollowing ? 'spotify' : ''}
-      icon={isFollowing ? <FaHeart /> : <FaRegHeart />}
-      variant={'fade'}
-      style={{ opacity: (isFollowing && '1') || '' }}
-      onClick={handleOnClick}
-    />
+    <Tooltip
+      label={
+        (isFollowing ? 'Remove from' : 'Save to') + ' your library'
+      }
+      openDelay={TOOLTIP_OPEN_DELAY}
+      placement="top"
+    >
+      <IconButton
+        aria-label={'follow-track'}
+        colorScheme={isFollowing ? 'spotify' : ''}
+        icon={isFollowing ? <FaHeart /> : <FaRegHeart />}
+        variant={'fade'}
+        style={{ opacity: (isFollowing && '1') || '' }}
+        onClick={handleOnClick}
+      />
+    </Tooltip>
   );
 }

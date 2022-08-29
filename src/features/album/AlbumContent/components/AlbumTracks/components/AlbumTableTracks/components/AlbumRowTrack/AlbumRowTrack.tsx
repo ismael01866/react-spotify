@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Td, Text, Tr } from '@chakra-ui/react';
+import { Box, Heading, Td, Text, Tr } from '@chakra-ui/react';
 import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonFollowTrack } from 'src/components/Button/ButtonFollow';

@@ -54,9 +54,6 @@ export function ArtistPopularTracks() {
 
   return (
     <>
-      <Heading fontSize={'2xl'}>Popular Tracks</Heading>
-
-      <br />
       {(!isLoading && (
         <>
           <ArtistTablePopularTracks tracks={data} />
