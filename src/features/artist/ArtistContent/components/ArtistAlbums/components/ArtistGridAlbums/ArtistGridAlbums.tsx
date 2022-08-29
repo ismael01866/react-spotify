@@ -1,18 +1,15 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { useContext } from 'react';
 import { CardAlbum } from 'src/components/Card/CardAlbum';
-import { ArtistContext } from 'src/features/artist/ArtistContext';
 import { useArtistAlbums } from 'src/lib/hooks/services';
 
 export interface ArtistGridAlbumsProps {
+  artistID: string | string[];
   limit?: number;
   [others: string]: any;
 }
 
 export function ArtistGridAlbums(props: ArtistGridAlbumsProps) {
-  const { artistID } = useContext(ArtistContext);
-
-  const { limit, ...others } = props;
+  const { artistID, limit, ...others } = props;
 
   const { albums, isLoading } = useArtistAlbums(artistID, {
     limit,

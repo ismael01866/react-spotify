@@ -46,6 +46,7 @@ export function AlbumContent() {
           {artistID && (
             <ArtistContext.Provider value={{ artistID }}>
               <ArtistGridAlbums
+                artistID={artistID}
                 limit={6}
                 columns={{ base: 1, sm: 2, md: 3 }}
               />

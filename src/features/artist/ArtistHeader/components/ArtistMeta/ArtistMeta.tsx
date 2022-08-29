@@ -10,7 +10,12 @@ export function ArtistMeta(props: ArtistMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Heading color={'text.muted'} fontSize={'xs'} letterSpacing={2}>
+      <Heading
+        color={'text.muted'}
+        fontSize={'xs'}
+        letterSpacing={2}
+        mb={1}
+      >
         ARTIST
       </Heading>
 

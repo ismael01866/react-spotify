@@ -13,7 +13,12 @@ export function AlbumMeta(props: AlbumMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Heading color={'text.muted'} fontSize={'xs'} letterSpacing={2}>
+      <Heading
+        color={'text.muted'}
+        fontSize={'xs'}
+        letterSpacing={2}
+        mb={1}
+      >
         ALBUM
       </Heading>
       <Heading noOfLines={1}>{album.name}</Heading>

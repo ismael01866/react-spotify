@@ -1,10 +1,9 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { useContext } from 'react';
 import { CardArtist } from 'src/components/Card/CardArtist';
-import { ArtistContext } from 'src/features/artist/ArtistContext';
 import { useArtistRelatedArtists } from 'src/lib/hooks/services';
 
 export interface ArtistGridRelatedArtistsProps {
+  artistID: string | string[];
   limit?: number;
   [others: string]: any;
 }
@@ -12,9 +11,7 @@ export interface ArtistGridRelatedArtistsProps {
 export function ArtistGridRelatedArtists(
   props: ArtistGridRelatedArtistsProps
 ) {
-  const { artistID } = useContext(ArtistContext);
-
-  const { limit, ...others } = props;
+  const { artistID, limit, ...others } = props;
   const { artists, isLoading } = useArtistRelatedArtists(artistID);
 
   const skeletonData = new Array(limit).fill('');
