@@ -1,6 +1,6 @@
-// import { ArtistsTop } from 'modules';
 import type { NextPage } from 'next';
+import { ArtistAlbums } from 'src/modules/artists/ArtistAlbums';
 
-const ArtistAlbums: NextPage = () => <>lorem...</>;
+const ArtistAlbumsPage: NextPage = () => <ArtistAlbums />;
 
-export default ArtistAlbums;
+export default ArtistAlbumsPage;

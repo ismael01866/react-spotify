@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
-import { ArtistGridRelatedArtists } from 'src/modules/artists/components';
+import { ArtistGridAlbums } from 'src/modules/artists/components';
 
-export function ArtistRelatedArtists() {
+export function ArtistAlbumsContent() {
   const { id: artistID } = useContext(ArtistContext);
 
   return (
     (artistID && (
-      <ArtistGridRelatedArtists
+      <ArtistGridAlbums
         artistID={artistID}
-        limit={6}
-        columns={{ base: 1, sm: 2, xl: 3 }}
+        limit={20}
+        columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
       />
     )) || <></>
   );

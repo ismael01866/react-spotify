@@ -29,7 +29,7 @@ export function ArtistAlbums() {
             <ArtistGridAlbums
               artistID={artistID}
               limit={3}
-              columns={{ base: 1, sm: 2, md: 3 }}
+              columns={{ base: 1, sm: 2, xl: 3 }}
             />
           )}
         </TabPanel>
@@ -39,7 +39,7 @@ export function ArtistAlbums() {
             <ArtistGridSingles
               artistID={artistID}
               limit={3}
-              columns={{ base: 1, sm: 2, md: 3 }}
+              columns={{ base: 1, sm: 2, xl: 3 }}
             />
           )}
         </TabPanel>

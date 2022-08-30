@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
-import { ArtistGridAlbums } from 'src/modules/artists/Artist/components/ArtistContent/components/ArtistAlbums/components';
+import { ArtistGridAlbums } from 'src/modules/artists/components';
 import { AlbumContext } from '../../AlbumContext';
 import { AlbumTracks } from './components';
 
@@ -43,7 +43,7 @@ export function AlbumContent() {
             <ArtistGridAlbums
               artistID={artistID}
               limit={6}
-              columns={{ base: 1, sm: 2, md: 3 }}
+              columns={{ base: 1, sm: 2, xl: 3 }}
             />
           )}
         </GridItem>
