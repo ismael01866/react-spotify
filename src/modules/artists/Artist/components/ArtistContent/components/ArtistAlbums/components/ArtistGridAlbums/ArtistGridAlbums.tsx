@@ -1,5 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { CardAlbum } from 'src/components/Card/CardAlbum';
+import { AlbumCard } from 'src/modules/albums/components/AlbumCard';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export interface ArtistGridAlbumsProps {
@@ -22,7 +22,7 @@ export function ArtistGridAlbums(props: ArtistGridAlbumsProps) {
   return (
     <SimpleGrid spacing={4} {...others}>
       {data?.map((album, index) => {
-        return <CardAlbum key={album.id || index} album={album} />;
+        return <AlbumCard key={album.id || index} album={album} />;
       })}
     </SimpleGrid>
   );

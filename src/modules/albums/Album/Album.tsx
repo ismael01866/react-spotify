@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useAlbumWithFollow } from 'src/utils/hooks/services';
 import { AlbumContext } from './AlbumContext';
@@ -11,16 +11,13 @@ export function Album() {
   const { album = {}, isLoading } = useAlbumWithFollow(albumID);
 
   return (
-    <Flex flexDirection={'column'} gap={12}>
-      {!isLoading && (
+    (!isLoading && (
+      <Flex flexDirection={'column'} gap={12}>
         <AlbumContext.Provider value={album}>
-          <Skeleton isLoaded={!isLoading}>
-            <AlbumHeader />
-          </Skeleton>
-
+          <AlbumHeader />
           <AlbumContent />
         </AlbumContext.Provider>
-      )}
-    </Flex>
+      </Flex>
+    )) || <></>
   );
 }

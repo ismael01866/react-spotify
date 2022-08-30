@@ -11,8 +11,8 @@ import {
 } from '@chakra-ui/react';
 import moment from 'moment';
 import { useRef } from 'react';
-import { ButtonFollowTrack } from 'src/components/Button/ButtonFollow';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
 export interface ArtistRowPopularTrackProps {
@@ -76,7 +76,7 @@ export function ArtistRowPopularTrack(
       </Td>
 
       <Td>
-        <ButtonFollowTrack track={track} />
+        <TrackButtonFollow track={track} />
       </Td>
 
       <Td textAlign={'right'}>

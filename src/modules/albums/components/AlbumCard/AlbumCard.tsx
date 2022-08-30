@@ -9,16 +9,19 @@ import {
 import { Card } from 'components/Card';
 import moment from 'moment';
 import { default as NextLink } from 'next/link';
+import {
+  CardButtonPlay,
+  CardMeta
+} from 'src/components/Card/components';
 import { ImageAlbum } from 'src/components/Image/ImageAlbum';
 import { IAlbum } from 'src/types/album';
-import { CardButtonPlay, CardMeta } from '../components';
 
-export interface CardAlbumProps {
+export interface AlbumCardProps {
   album: IAlbum;
   [others: string]: any;
 }
 
-export function CardAlbum(props: CardAlbumProps) {
+export function AlbumCard(props: AlbumCardProps) {
   const { album, ...others } = props;
   const { id, uri, name, release_date } = album;
 

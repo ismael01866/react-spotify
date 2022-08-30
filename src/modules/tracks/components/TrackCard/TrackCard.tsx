@@ -8,16 +8,19 @@ import {
 } from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { default as NextLink } from 'next/link';
+import {
+  CardButtonPlay,
+  CardMeta
+} from 'src/components/Card/components';
 import { ImageTrack } from 'src/components/Image/ImageTrack';
 import { ITrack } from 'src/types/track';
-import { CardButtonPlay, CardMeta } from '../components';
 
-export interface CardTrackProps {
+export interface TrackCardProps {
   track: ITrack;
   [others: string]: any;
 }
 
-export function CardTrack(props: CardTrackProps) {
+export function TrackCard(props: TrackCardProps) {
   const { track, ...others } = props;
   const { id, name, uri, album, artists = [] } = track;
 

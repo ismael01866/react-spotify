@@ -1,15 +1,15 @@
 import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
+import { IArtist } from 'src/types/artist';
 import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/utils';
-import { IArtist } from 'src/types/artist';
-import { useButtonFollowToast } from '../hooks/useButtonFollowToast';
 
-export interface ButtonFollowArtistProps {
+export interface ArtistButtonFollowProps {
   artist: IArtist;
 }
 
-export function ButtonFollowArtist(props: ButtonFollowArtistProps) {
+export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
   const { toast } = useButtonFollowToast();
 
   const { artist } = props;

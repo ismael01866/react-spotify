@@ -1,5 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { CardTrack } from 'src/components/Card/CardTrack';
+import { TrackCard } from 'src/modules/tracks/components';
 import { useTopTracks } from 'src/utils/hooks/services';
 
 export interface FeaturedGridTracksProps {
@@ -17,7 +17,7 @@ export function FeaturedGridTracks(props: FeaturedGridTracksProps) {
   return (
     <SimpleGrid spacing={4} {...others}>
       {data?.map((track, index) => {
-        return <CardTrack key={track.id || index} track={track} />;
+        return <TrackCard key={track.id || index} track={track} />;
       })}
     </SimpleGrid>
   );

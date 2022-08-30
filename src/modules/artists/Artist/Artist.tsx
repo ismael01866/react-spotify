@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useArtistWithFollow } from 'src/utils/hooks/services';
 import { ArtistContext } from './ArtistContext';
@@ -11,16 +11,13 @@ export function Artist() {
   const { artist = {}, isLoading } = useArtistWithFollow(artistID);
 
   return (
-    <Flex flexDirection={'column'} gap={12}>
-      {artistID && (
+    (!isLoading && (
+      <Flex flexDirection={'column'} gap={12}>
         <ArtistContext.Provider value={artist}>
-          <Skeleton isLoaded={!isLoading}>
-            <ArtistHeader />
-          </Skeleton>
-
+          <ArtistHeader />
           <ArtistContent />
         </ArtistContext.Provider>
-      )}
-    </Flex>
+      </Flex>
+    )) || <></>
   );
 }

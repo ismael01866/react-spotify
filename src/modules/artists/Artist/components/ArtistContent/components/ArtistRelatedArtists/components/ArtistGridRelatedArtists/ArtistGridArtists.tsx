@@ -1,5 +1,5 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { CardArtist } from 'src/components/Card/CardArtist';
+import { ArtistCard } from 'src/modules/artists/components';
 import { useArtistRelatedArtists } from 'src/utils/hooks/services';
 
 export interface ArtistGridRelatedArtistsProps {
@@ -22,7 +22,7 @@ export function ArtistGridRelatedArtists(
   return (
     <SimpleGrid spacing={4} {...others}>
       {data?.map((artist, index) => {
-        return <CardArtist key={artist.id || index} artist={artist} />;
+        return <ArtistCard key={artist.id || index} artist={artist} />;
       })}
     </SimpleGrid>
   );

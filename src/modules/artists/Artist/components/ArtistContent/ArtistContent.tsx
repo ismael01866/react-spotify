@@ -9,8 +9,8 @@ import {
 import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
 import { ArtistContext } from '../../ArtistContext';
+import { ArtistPopularTracks } from './components';
 import { ArtistAlbums } from './components/ArtistAlbums';
-import { ArtistPopularTracks } from './components/ArtistPopularTracks/ArtistPopularTracks';
 import { ArtistRelatedArtists } from './components/ArtistRelatedArtists';
 
 export function ArtistContent() {

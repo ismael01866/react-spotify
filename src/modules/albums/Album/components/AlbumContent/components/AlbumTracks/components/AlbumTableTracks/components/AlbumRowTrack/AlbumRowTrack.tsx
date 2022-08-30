@@ -1,8 +1,8 @@
 import { Box, Heading, Td, Text, Tr } from '@chakra-ui/react';
 import moment from 'moment';
 import { useRef } from 'react';
-import { ButtonFollowTrack } from 'src/components/Button/ButtonFollow';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
 export interface AlbumRowTrackProps {
@@ -59,7 +59,7 @@ export function AlbumRowTrack(props: AlbumRowTrackProps) {
       </Td>
 
       <Td>
-        <ButtonFollowTrack track={track} />
+        <TrackButtonFollow track={track} />
       </Td>
 
       <Td textAlign={'right'}>
