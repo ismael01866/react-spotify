@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
-import { ArtistGridRelatedArtists } from './components';
+import { ArtistGridRelatedArtists } from 'src/modules/artists/components';
 
 export function ArtistRelatedArtists() {
   const { id: artistID } = useContext(ArtistContext);

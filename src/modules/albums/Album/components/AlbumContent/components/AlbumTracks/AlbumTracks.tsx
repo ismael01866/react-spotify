@@ -1,10 +1,10 @@
 import { Skeleton, Stack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { useAlbumTracksWithFollow } from 'src/utils/hooks/services';
 import { AlbumContext } from 'src/modules/albums/Album/AlbumContext';
+import { AlbumTableTracks } from 'src/modules/albums/components';
 import { UserContext } from 'src/modules/users';
 import { ITrack } from 'src/types/track';
-import { AlbumTableTracks } from './components';
+import { useAlbumTracksWithFollow } from 'src/utils/hooks/services';
 
 export function AlbumTracks() {
   const { country } = useContext(UserContext);
@@ -18,7 +18,7 @@ export function AlbumTracks() {
   const skeletonData = new Array(20).fill('');
   const data = isLoading ? skeletonData : (tracks as ITrack[]);
 
-  const EmptyContent = () => {
+  const LoadingContent = () => {
     return (
       <Stack spacing={4}>
         {data.map((_, index) => (
@@ -29,12 +29,8 @@ export function AlbumTracks() {
   };
 
   return (
-    <>
-      {(!isLoading && (
-        <>
-          <AlbumTableTracks tracks={data} />
-        </>
-      )) || <EmptyContent />}
-    </>
+    (!isLoading && <AlbumTableTracks tracks={data} />) || (
+      <LoadingContent />
+    )
   );
 }

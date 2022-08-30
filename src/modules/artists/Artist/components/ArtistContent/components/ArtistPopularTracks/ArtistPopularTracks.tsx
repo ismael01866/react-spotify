@@ -1,11 +1,11 @@
 import { Skeleton, Stack } from '@chakra-ui/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { useArtistTopTracksWithFollow } from 'src/utils/hooks/services';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
+import { ArtistTablePopularTracks } from 'src/modules/artists/components';
 import { UserContext } from 'src/modules/users';
 import { ITrack } from 'src/types/track';
+import { useArtistTopTracksWithFollow } from 'src/utils/hooks/services';
 import { ArtistButtonTogglePopularTracks } from './components/ArtistButtonTogglePopularTracks';
-import { ArtistTablePopularTracks } from './components/ArtistTablePopularTracks';
 
 export function ArtistPopularTracks() {
   const { country } = useContext(UserContext);
@@ -42,7 +42,7 @@ export function ArtistPopularTracks() {
     ); // Show the top { initialVisibleCount } tracks, hide the rest
   }, [oTracks, hideTracks]);
 
-  const EmptyContent = () => {
+  const LoadingContent = () => {
     return (
       <Stack spacing={4}>
         {data.map((_, index) => (
@@ -53,19 +53,17 @@ export function ArtistPopularTracks() {
   };
 
   return (
-    <>
-      {(!isLoading && (
-        <>
-          <ArtistTablePopularTracks tracks={data} />
+    (!isLoading && (
+      <>
+        <ArtistTablePopularTracks tracks={data} />
 
-          <br />
-          <ArtistButtonTogglePopularTracks
-            tracks={data}
-            setTracks={setTracks}
-            toggleCount={initialVisibleCount}
-          />
-        </>
-      )) || <EmptyContent />}
-    </>
+        <br />
+        <ArtistButtonTogglePopularTracks
+          tracks={data}
+          setTracks={setTracks}
+          toggleCount={initialVisibleCount}
+        />
+      </>
+    )) || <LoadingContent />
   );
 }
