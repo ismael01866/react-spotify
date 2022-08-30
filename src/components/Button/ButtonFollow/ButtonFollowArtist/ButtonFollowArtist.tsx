@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
-import { fetcher } from 'src/lib/fetch';
-import { withQueryParams } from 'src/lib/utils';
+import { fetcher } from 'src/utils/fetch';
+import { withQueryParams } from 'src/utils/utils';
 import { IArtist } from 'src/types/artist';
 import { useButtonFollowToast } from '../hooks/useButtonFollowToast';
 

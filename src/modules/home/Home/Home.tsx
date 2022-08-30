@@ -1,10 +1,6 @@
 import { Box, Flex, Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-
-import {
-  FeaturedGridArtists,
-  FeaturedGridTracks
-} from 'src/features/playlists';
+import { FeaturedGridArtists, FeaturedGridTracks } from './components';
 
 export function Home() {
   return (

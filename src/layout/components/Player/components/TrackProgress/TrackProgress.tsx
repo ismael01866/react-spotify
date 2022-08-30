@@ -15,7 +15,7 @@ import {
   selectPaused,
   selectPlaybackID,
   selectPosition
-} from 'src/features/player';
+} from 'src/modules';
 
 export function TrackProgress() {
   let timer = useRef({});

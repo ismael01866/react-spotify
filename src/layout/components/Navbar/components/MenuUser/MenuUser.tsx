@@ -1,6 +1,5 @@
 import { signOut } from 'next-auth/react';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'src/features/user';
 import {
   Avatar,
   Button,
@@ -13,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { FaAngleDown } from 'react-icons/fa';
 import { IUser } from 'src/types/user';
+import { selectUser } from 'src/modules';
 
 export function MenuUser() {
   const user = useSelector(selectUser);

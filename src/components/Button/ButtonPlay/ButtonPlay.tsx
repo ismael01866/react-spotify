@@ -3,15 +3,15 @@ import { debounce } from 'lodash';
 import { forwardRef, useContext } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { DEBOUNCE_WAIT } from 'src/utils/constants';
+import { fetcher } from 'src/utils/fetch';
+import { withQueryParams } from 'src/utils/utils';
 import {
   PlayerContext,
   selectDeviceID,
   selectPaused,
   selectTrack
-} from 'src/features/player';
-import { DEBOUNCE_WAIT } from 'src/lib/constants';
-import { fetcher } from 'src/lib/fetch';
-import { withQueryParams } from 'src/lib/utils';
+} from 'src/modules';
 
 export interface BaseButtonPlayProps extends ButtonProps {
   [other: string]: any;

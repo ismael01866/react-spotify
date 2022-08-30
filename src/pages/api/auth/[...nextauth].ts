@@ -1,6 +1,6 @@
 import NextAuth, { User } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import { getSpotifyToken } from 'src/lib/spotify';
+import { getSpotifyToken } from 'src/utils/spotify';
 
 const clientId = process.env.CLIENT_ID || '';
 const clientSecret = process.env.CLIENT_SECRET || '';

@@ -4,9 +4,9 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import { Layout } from 'src/layout';
 import { theme } from '../../theme';
 import { store } from './../store';
+import { Layout } from 'src/layout';
 
 function App({
   Component,

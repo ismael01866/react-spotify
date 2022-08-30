@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { useContext, useEffect, useState } from 'react';
 import { FaVolumeDown } from 'react-icons/fa';
-import { PlayerContext } from 'src/features/player';
+import { PlayerContext } from 'src/modules';
 
 export function VolumeBar() {
   const { player } = useContext(PlayerContext);

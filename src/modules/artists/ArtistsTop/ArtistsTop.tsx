@@ -1,5 +1,5 @@
 import { Box, Heading } from '@chakra-ui/react';
-import { FeaturedGridArtists } from 'src/features/playlists';
+import { FeaturedGridArtists } from 'src/modules/home/Home/components';
 
 export function ArtistsTop() {
   return (

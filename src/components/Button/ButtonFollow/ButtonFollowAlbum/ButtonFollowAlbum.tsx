@@ -1,9 +1,9 @@
 import { IconButton, Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { TOOLTIP_OPEN_DELAY } from 'src/lib/constants';
-import { fetcher } from 'src/lib/fetch';
-import { withQueryParams } from 'src/lib/utils';
+import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
+import { fetcher } from 'src/utils/fetch';
+import { withQueryParams } from 'src/utils/utils';
 import { IAlbum } from 'src/types/album';
 import { useButtonFollowToast } from '../hooks/useButtonFollowToast';
 

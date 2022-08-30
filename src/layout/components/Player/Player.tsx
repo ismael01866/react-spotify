@@ -1,7 +1,7 @@
 import { SimpleGrid, VStack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectTrack } from 'src/features/player/PlayerSlice';
+import { selectTrack } from 'src/modules';
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import {

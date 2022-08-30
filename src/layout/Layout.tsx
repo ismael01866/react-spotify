@@ -2,19 +2,20 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PlayerContext } from 'src/features/player/PlayerContext';
+import { useMe } from 'src/utils/hooks/services';
+import { buildSpotifyPlayer } from 'src/utils/spotify';
 import {
+  PlayerContext,
   selectPlaybackID,
   setDeviceID,
   setDuration,
   setPaused,
   setPlaybackID,
   setPosition,
-  setTrack
-} from 'src/features/player/PlayerSlice';
-import { setUser, UserContext } from 'src/features/user';
-import { useMe } from 'src/lib/hooks/services';
-import { buildSpotifyPlayer } from 'src/lib/spotify';
+  setTrack,
+  setUser,
+  UserContext
+} from 'src/modules';
 import { Navbar, Player, Sidebar } from './components';
 
 export interface LayoutProps {
@@ -105,7 +106,7 @@ export function Layout(props: LayoutProps) {
   }
 
   return (
-    user && (
+    (user && (
       <UserContext.Provider value={{ ...user }}>
         <PlayerContext.Provider value={{ player }}>
           <Grid
@@ -148,6 +149,6 @@ export function Layout(props: LayoutProps) {
           </Grid>
         </PlayerContext.Provider>
       </UserContext.Provider>
-    )
+    )) || <></>
   );
 }
