@@ -1,1 +1,1 @@
-export * from './ArtistGridArtists';
+export * from './ArtistGridRelatedArtists';

@@ -1,12 +1,12 @@
 import { AspectRatio, Image } from '@chakra-ui/react';
-import { EmptySkeletonAlbum } from 'src/components/Skeleton';
 import { IAlbum } from 'src/types/album';
+import { AlbumEmptySkeleton } from '../AlbumEmptySkeleton';
 
-export interface ImageAlbumProps {
+export interface AlbumImageProps {
   album: IAlbum;
 }
 
-export function ImageAlbum(props: ImageAlbumProps) {
+export function AlbumImage(props: AlbumImageProps) {
   const { album } = props;
   const { name, images } = album;
 
@@ -15,7 +15,7 @@ export function ImageAlbum(props: ImageAlbumProps) {
       <Image
         src={images?.[0]?.url}
         alt={name}
-        fallback={<EmptySkeletonAlbum />}
+        fallback={<AlbumEmptySkeleton />}
       />
     </AspectRatio>
   );

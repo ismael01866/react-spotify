@@ -1,11 +1,11 @@
 import { Box, Center, Icon, useStyleConfig } from '@chakra-ui/react';
 
-export interface CardTrackProps {
+export interface EmptySkeletonProps {
   icon?: any;
   [others: string]: any;
 }
 
-export function EmptySkeleton(props: CardTrackProps) {
+export function EmptySkeleton(props: EmptySkeletonProps) {
   const { icon, ...others } = props;
   const styles = useStyleConfig('Skeleton');
 

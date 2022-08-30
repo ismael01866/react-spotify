@@ -13,8 +13,8 @@ import {
   CardButtonPlay,
   CardMeta
 } from 'src/components/Card/components';
-import { ImageAlbum } from 'src/components/Image/ImageAlbum';
 import { IAlbum } from 'src/types/album';
+import { AlbumImage } from '../AlbumImage';
 
 export interface AlbumCardProps {
   album: IAlbum;
@@ -31,7 +31,7 @@ export function AlbumCard(props: AlbumCardProps) {
         <Box boxShadow={'base'} position={'relative'}>
           <NextLink href={`/albums/${id}`} passHref>
             <Link>
-              <ImageAlbum album={album} />
+              <AlbumImage album={album} />
             </Link>
           </NextLink>
 

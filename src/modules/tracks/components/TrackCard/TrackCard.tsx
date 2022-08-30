@@ -12,8 +12,8 @@ import {
   CardButtonPlay,
   CardMeta
 } from 'src/components/Card/components';
-import { ImageTrack } from 'src/components/Image/ImageTrack';
 import { ITrack } from 'src/types/track';
+import { TrackImage } from '../TrackImage';
 
 export interface TrackCardProps {
   track: ITrack;
@@ -30,7 +30,7 @@ export function TrackCard(props: TrackCardProps) {
         <Box boxShadow={'base'} position={'relative'}>
           <NextLink href={`/albums/${album?.id}`} passHref>
             <Link>
-              <ImageTrack track={track} />
+              <TrackImage track={track} />
             </Link>
           </NextLink>
 

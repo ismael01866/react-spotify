@@ -5,8 +5,8 @@ import {
   CardButtonPlay,
   CardMeta
 } from 'src/components/Card/components';
-import { ImageArtist } from 'src/components/Image/ImageArtist';
 import { IArtist } from 'src/types/artist';
+import { ArtistImage } from '../ArtistImage';
 
 export interface ArtistCardProps {
   artist: IArtist;
@@ -23,7 +23,7 @@ export function ArtistCard(props: ArtistCardProps) {
         <Box boxShadow={'base'} position={'relative'}>
           <NextLink href={`/artists/${id}`} passHref>
             <Link>
-              <ImageArtist artist={artist} />
+              <ArtistImage artist={artist} />
             </Link>
           </NextLink>
 

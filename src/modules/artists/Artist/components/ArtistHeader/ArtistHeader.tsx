@@ -1,8 +1,10 @@
 import { Box, HStack, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { ImageArtist } from 'src/components/Image/ImageArtist';
-import { ArtistButtonFollow } from 'src/modules/artists/components';
+import {
+  ArtistButtonFollow,
+  ArtistImage
+} from 'src/modules/artists/components';
 import { ArtistContext } from '../../ArtistContext';
 import { ArtistBanner, ArtistMeta } from './components';
 
@@ -24,7 +26,7 @@ export function ArtistHeader() {
       <Box pos={'relative'}>
         <HStack spacing={8}>
           <Box boxSize={'3xs'} mt={8}>
-            <ImageArtist artist={artist} />
+            <ArtistImage artist={artist} />
           </Box>
 
           <VStack alignItems={'flex-start'} pt={6} spacing={8}>
