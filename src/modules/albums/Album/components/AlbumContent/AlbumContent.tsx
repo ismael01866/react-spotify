@@ -7,15 +7,9 @@ import {
   Link
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
-import { ArtistGridAlbums } from 'src/modules/artists/components';
-import { AlbumContext } from '../../AlbumContext';
-import { AlbumTracks } from './components';
+import { AlbumTracks, ArtistAlbums } from './components';
 
 export function AlbumContent() {
-  const album = useContext(AlbumContext);
-  const artistID = album?.artists?.[0].id;
-
   return (
     <Flex flexDirection={'column'}>
       <Grid
@@ -39,13 +33,7 @@ export function AlbumContent() {
           </HStack>
 
           <br />
-          {artistID && (
-            <ArtistGridAlbums
-              artistID={artistID}
-              limit={6}
-              columns={{ base: 1, sm: 2, xl: 3 }}
-            />
-          )}
+          <ArtistAlbums />
         </GridItem>
       </Grid>
     </Flex>

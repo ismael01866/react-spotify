@@ -1,23 +1,16 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import { ArtistCard } from 'src/modules/artists/components';
-import { useArtistRelatedArtists } from 'src/utils/hooks/services';
+import { IArtist } from 'src/types/artist';
 
 export interface ArtistGridRelatedArtistsProps {
-  artistID: string | string[];
-  limit?: number;
+  data: IArtist[];
   [others: string]: any;
 }
 
 export function ArtistGridRelatedArtists(
   props: ArtistGridRelatedArtistsProps
 ) {
-  const { artistID, limit, ...others } = props;
-  const { artists, isLoading } = useArtistRelatedArtists(artistID);
-
-  const skeletonData = new Array(limit).fill('');
-  const data = isLoading
-    ? skeletonData
-    : artists && [...artists].splice(0, limit);
+  const { data, ...others } = props;
 
   return (
     <SimpleGrid spacing={4} {...others}>
