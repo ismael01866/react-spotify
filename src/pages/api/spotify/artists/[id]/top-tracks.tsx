@@ -14,7 +14,6 @@ export default async function handler(
   );
 
   const { tracks } = await fetchWithToken(req, url);
-
   const result = tracks || [];
 
   return res.status(200).json(result);

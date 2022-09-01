@@ -13,15 +13,11 @@ export const useArtistAlbums = (
     query
   );
 
-  const { data, error } = useSWR<{ items: IAlbum[]; next: string }>(
-    [url, opts],
-    fetcher
-  );
+  const { data, error } = useSWR<IAlbum[]>([url, opts], fetcher);
 
   return {
     error,
-    next: data?.next,
-    albums: data?.items,
+    albums: data,
     isLoading: !error && !data
   };
 };
