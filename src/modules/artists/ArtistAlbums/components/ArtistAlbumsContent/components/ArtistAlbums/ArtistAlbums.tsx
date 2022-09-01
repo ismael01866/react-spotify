@@ -1,69 +1,62 @@
-import {
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs
-} from '@chakra-ui/react';
-import { useContext } from 'react';
+import { Box } from '@chakra-ui/react';
+import { useContext, useEffect, useRef } from 'react';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
-import {
-  ArtistGridAlbums,
-  ArtistGridSingles
-} from 'src/modules/artists/components';
+import { ArtistGridAlbums } from 'src/modules/artists/components';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export function ArtistAlbums() {
   const { id: artistID } = useContext(ArtistContext);
+  const { albums, isLoading, next } = useArtistAlbums(artistID, {
+    limit: 50
+  });
 
-  const limit = 6;
+  const skeletonData = new Array(20).fill('');
+  const data = isLoading ? skeletonData : albums;
 
-  const { albums, isLoading: isLoadingAlbums } = useArtistAlbums(
-    artistID,
-    {
-      limit,
-      include_groups: 'album'
-    }
-  );
+  // Scroll event
 
-  const { albums: singles, isLoading: isLoadingSingles } =
-    useArtistAlbums(artistID, {
-      limit,
-      include_groups: 'single'
+  const contentEl = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = contentEl?.current;
+
+    el?.addEventListener('scroll', handleScroll, {
+      passive: true
     });
 
-  const skeletonData = new Array(limit).fill('');
+    return () => {
+      el?.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
-  const albumsData = isLoadingAlbums ? skeletonData : albums;
-  const singlesData = isLoadingSingles ? skeletonData : singles;
+  const handleScroll: EventListener = (event: Event) => {
+    const element = event?.target as HTMLElement;
+    const scrollThreshold = 200;
+
+    const scrollReachedBottom =
+      element?.scrollHeight - element.scrollTop <=
+      element?.clientHeight + scrollThreshold;
+
+    if (scrollReachedBottom) {
+      console.log('scrolled');
+    }
+  };
 
   return (
-    <Tabs colorScheme={'gray'} size={'sm'} variant={'solid-rounded'}>
-      <TabList>
-        <Tab>Albums</Tab>
-        <Tab>Singles and EPs</Tab>
-      </TabList>
-
-      <br />
-      <TabPanels>
-        <TabPanel p={0}>
-          {albumsData && (
-            <ArtistGridAlbums
-              data={albumsData}
-              columns={{ base: 1, sm: 2, xl: 3 }}
-            />
-          )}
-        </TabPanel>
-
-        <TabPanel p={0}>
-          {singlesData && (
-            <ArtistGridSingles
-              data={singlesData}
-              columns={{ base: 1, sm: 2, xl: 3 }}
-            />
-          )}
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
+    <Box
+      overflowY={'scroll'}
+      ref={contentEl}
+      px={12}
+      sx={{
+        scrollbarWidth: 'thin'
+      }}
+    >
+      {data && (
+        <ArtistGridAlbums
+          data={data}
+          columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
+        />
+      )}
+    </Box>
   );
 }

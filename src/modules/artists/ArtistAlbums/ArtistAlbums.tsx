@@ -12,7 +12,13 @@ export function ArtistAlbums() {
 
   return (
     (!isLoading && (
-      <Flex flexDirection={'column'} gap={12}>
+      <Flex
+        flexDirection={'column'}
+        gap={12}
+        height={'full'}
+        overflow={'hidden'}
+        mx={-12}
+      >
         <ArtistContext.Provider value={artist}>
           <ArtistAlbumsHeader />
           <ArtistAlbumsContent />
