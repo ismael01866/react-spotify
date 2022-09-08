@@ -24,10 +24,8 @@ export function AlbumRowTrack(props: AlbumRowTrackProps) {
       }}
     >
       <Td textAlign={'right'}>
-        <Box pos={'relative'}>
+        <Box pos={'relative'} pl={2}>
           {index}
-
-          {/* On Hover */}
 
           <Box
             display={'none'}

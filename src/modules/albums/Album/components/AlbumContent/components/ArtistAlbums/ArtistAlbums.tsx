@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AlbumContext } from 'src/modules/albums/Album/AlbumContext';
-import { ArtistGridAlbums } from 'src/modules/artists/components';
+import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export function ArtistAlbums() {
@@ -17,10 +17,7 @@ export function ArtistAlbums() {
 
   return (
     (data && (
-      <ArtistGridAlbums
-        data={data}
-        columns={{ base: 1, sm: 2, xl: 3 }}
-      />
+      <AlbumGrid data={data} columns={{ base: 1, sm: 2, xl: 3 }} />
     )) || <></>
   );
 }

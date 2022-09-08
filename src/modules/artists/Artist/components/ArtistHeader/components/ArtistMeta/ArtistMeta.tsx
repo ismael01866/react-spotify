@@ -18,8 +18,8 @@ export function ArtistMeta(props: ArtistMetaProps) {
       >
         ARTIST
       </Heading>
-
       <Heading noOfLines={1}>{artist.name}</Heading>
+
       <Heading color={'text.base'} fontSize={'sm'} mt={4}>
         {artist?.followers?.total?.toLocaleString()} followers
       </Heading>

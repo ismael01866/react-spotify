@@ -2,8 +2,6 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useMe } from 'src/utils/hooks/services';
-import { buildSpotifyPlayer } from 'src/utils/spotify';
 import {
   PlayerContext,
   selectPlaybackID,
@@ -16,7 +14,9 @@ import {
   setUser,
   UserContext
 } from 'src/modules';
-import { Navbar, Player, Sidebar } from './components';
+import { useMe } from 'src/utils/hooks/services';
+import { buildSpotifyPlayer } from 'src/utils/spotify';
+import { Player, Sidebar } from './components';
 
 export interface LayoutProps {
   children: ReactNode;
@@ -111,24 +111,19 @@ export function Layout(props: LayoutProps) {
         <PlayerContext.Provider value={{ player }}>
           <Grid
             templateAreas={`
-            "sidebar navbar"
             "sidebar content"
             "player player"`}
-            gridTemplateRows={'auto 1fr auto'}
+            gridTemplateRows={'1fr auto'}
             gridTemplateColumns={'auto 1fr'}
             height={'100vh'}
           >
-            <GridItem area={'navbar'} pos={'relative'} zIndex={1}>
-              <Navbar />
-            </GridItem>
-
             <GridItem area={'sidebar'} pos={'relative'} zIndex={1}>
               <Sidebar />
             </GridItem>
 
             <GridItem
               area={'content'}
-              pb={8}
+              py={12}
               px={12}
               ref={contentEl}
               overflowX={'hidden'}

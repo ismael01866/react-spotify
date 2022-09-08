@@ -46,7 +46,7 @@ export function ArtistContent() {
           <HStack justifyContent={'space-between'}>
             <Heading fontSize={'2xl'}>Related Artists</Heading>
 
-            <NextLink href={`#`}>
+            <NextLink href={`/artists/${artistID}/related-artists`}>
               <Link ml={'auto'}>See all</Link>
             </NextLink>
           </HStack>

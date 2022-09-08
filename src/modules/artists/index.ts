@@ -1,2 +1,3 @@
 export * from './Artist';
-export * from './ArtistsTop';
+export * from './ArtistAlbums';
+export * from './ArtistRelatedArtists';

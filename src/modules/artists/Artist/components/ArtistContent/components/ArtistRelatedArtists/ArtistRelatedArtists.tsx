@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
-import { ArtistGridRelatedArtists } from 'src/modules/artists/components';
+import { ArtistGrid } from 'src/modules/artists/components';
 import { useArtistRelatedArtists } from 'src/utils/hooks/services';
 
 export function ArtistRelatedArtists() {
@@ -16,10 +16,7 @@ export function ArtistRelatedArtists() {
 
   return (
     (data && (
-      <ArtistGridRelatedArtists
-        data={data}
-        columns={{ base: 1, sm: 2, xl: 3 }}
-      />
+      <ArtistGrid data={data} columns={{ base: 1, sm: 2, xl: 3 }} />
     )) || <></>
   );
 }

@@ -9,7 +9,7 @@ export function ArtistAlbumsHeader() {
 
   return (
     <Box flexShrink={0} px={12}>
-      <Heading noOfLines={2}>
+      <Heading fontSize={'3xl'} noOfLines={2}>
         <NextLink href={`/artists/${artist.id}`} passHref>
           <Link>{artist.name}</Link>
         </NextLink>

@@ -6,4 +6,8 @@ export interface IUser {
   images?: {
     url?: string;
   }[];
+
+  followers?: {
+    total?: number;
+  };
 }

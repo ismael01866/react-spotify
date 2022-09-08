@@ -1,7 +1,7 @@
 export * from './useMe';
 
-export * from './useTopTracks';
-export * from './useTopArtists';
+export * from './useMeTopTracks';
+export * from './useMeTopArtists';
 
 export * from './useAlbum';
 export * from './useAlbumWithFollow';

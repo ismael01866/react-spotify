@@ -6,18 +6,14 @@ import {
   Tabs
 } from '@chakra-ui/react';
 import { useContext } from 'react';
+import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
-import {
-  ArtistGridAlbums,
-  ArtistGridSingles
-} from 'src/modules/artists/components';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export function ArtistAlbums() {
   const { id: artistID } = useContext(ArtistContext);
 
   const limit = 6;
-
   const { albums, isLoading: isLoadingAlbums } = useArtistAlbums(
     artistID,
     {
@@ -48,7 +44,7 @@ export function ArtistAlbums() {
       <TabPanels>
         <TabPanel p={0}>
           {albumsData && (
-            <ArtistGridAlbums
+            <AlbumGrid
               data={albumsData}
               columns={{ base: 1, sm: 2, xl: 3 }}
             />
@@ -57,7 +53,7 @@ export function ArtistAlbums() {
 
         <TabPanel p={0}>
           {singlesData && (
-            <ArtistGridSingles
+            <AlbumGrid
               data={singlesData}
               columns={{ base: 1, sm: 2, xl: 3 }}
             />
