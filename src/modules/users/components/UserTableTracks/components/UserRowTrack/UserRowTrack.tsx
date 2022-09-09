@@ -5,12 +5,12 @@ import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
-export interface UserMeRowTopTrackProps {
+export interface UserRowTrackProps {
   index: number;
   track: ITrack;
 }
 
-export function UserMeRowTopTrack(props: UserMeRowTopTrackProps) {
+export function UserRowTrack(props: UserRowTrackProps) {
   const { index, track } = props;
   const { uri, name, duration_ms, album, is_playable = true } = track;
 
@@ -26,7 +26,7 @@ export function UserMeRowTopTrack(props: UserMeRowTopTrackProps) {
       }}
     >
       <Td textAlign={'right'}>
-        <Box pos={'relative'} pl={2}>
+        <Box pos={'relative'} px={2}>
           {index}
 
           <Box

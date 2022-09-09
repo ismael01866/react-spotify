@@ -1,17 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/utils';
-import { ITrack } from 'src/types/track';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { id, ...query } = req.query;
-
   let tracksURL = withQueryParams(
-    `https://api.spotify.com/v1/albums/${id}/tracks`,
-    { ...query }
+    'https://api.spotify.com/v1/me/top/tracks',
+    req.query
   );
 
   const tracks: ITrack[] = [];

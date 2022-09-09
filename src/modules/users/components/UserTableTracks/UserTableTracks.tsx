@@ -7,13 +7,13 @@ import {
   Tr
 } from '@chakra-ui/react';
 import { ITrack } from 'src/types/track';
-import { UserMeRowTopTrack } from './components';
+import { UserRowTrack } from './components';
 
-export interface UserMeTableTopTracksProps {
+export interface UserTableTracksProps {
   tracks: ITrack[];
 }
 
-export function UserMeTableTopTracks(props: UserMeTableTopTracksProps) {
+export function UserTableTracks(props: UserTableTracksProps) {
   const { tracks } = props;
 
   return (
@@ -39,7 +39,7 @@ export function UserMeTableTopTracks(props: UserMeTableTopTracksProps) {
 
         <Tbody>
           {tracks.map((track, index) => (
-            <UserMeRowTopTrack
+            <UserRowTrack
               key={track.id || index}
               index={index + 1}
               track={track}
