@@ -20,7 +20,7 @@ export function AlbumTableTracks(props: AlbumTableTracksProps) {
     <TableContainer>
       <Table variant={'simple-with-hover'}>
         <colgroup>
-          <col style={{ width: 'auto' }} />
+          <col style={{ minWidth: '4rem' }} />
           <col style={{ width: '100%' }} />
           <col style={{ width: 'auto' }} />
           <col style={{ width: 'auto' }} />
@@ -28,7 +28,7 @@ export function AlbumTableTracks(props: AlbumTableTracksProps) {
 
         <Thead>
           <Tr>
-            <Th textAlign={'right'}>#</Th>
+            <Th></Th>
             <Th px={0}>Title</Th>
             <Th></Th>
             <Th>Duration</Th>
@@ -38,7 +38,7 @@ export function AlbumTableTracks(props: AlbumTableTracksProps) {
         <Tbody>
           {tracks.map((track, index) => (
             <AlbumRowTrack
-              key={track.id || index}
+              key={track.id}
               index={index + 1}
               track={track}
             />

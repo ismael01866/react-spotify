@@ -20,4 +20,6 @@ export * from './useArtistRelatedArtists';
 export * from './useArtistTopTracks';
 export * from './useArtistTopTracksWithFollow';
 
+export * from './usePlaylist';
+
 export * from './useTrackFollow';

@@ -8,7 +8,6 @@ export interface IAlbum {
     url?: string;
   }[];
   release_date?: string;
-  type?: string;
   total_tracks?: number;
   artists?: IArtist[];
 

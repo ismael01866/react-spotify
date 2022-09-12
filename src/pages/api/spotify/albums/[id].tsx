@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { IAlbum } from 'src/types/album';
 import { fetchWithToken } from 'src/utils/fetch';
 
 export default async function handler(
@@ -8,7 +9,7 @@ export default async function handler(
   const { id } = req.query;
   const url = `https://api.spotify.com/v1/albums/${id}`;
 
-  const data = await fetchWithToken(req, url);
+  const data: IAlbum = await fetchWithToken(req, url);
   const result = data || {};
 
   return res.status(200).json(result);

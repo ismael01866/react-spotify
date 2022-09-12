@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
 import { IArtist } from 'src/types/artist';
+import { fetchWithToken } from 'src/utils/fetch';
+import { withQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,9 +17,12 @@ export default async function handler(
     { ids: id, type: 'artist' }
   );
 
-  const artistsFollowed = await fetchWithToken(req, artistsFollowURL);
+  const artistsFollowed: IArtist[] = await fetchWithToken(
+    req,
+    artistsFollowURL
+  );
 
-  artist.is_following = artistsFollowed?.[0];
+  artist.is_following = !!artistsFollowed?.[0];
 
   const result = artist || {};
 

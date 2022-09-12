@@ -6,12 +6,13 @@ import { default as NextLink } from 'next/link';
 
 export function ArtistAlbumsHeader() {
   const artist = useContext(ArtistContext);
+  const { id, name } = artist;
 
   return (
     <Box flexShrink={0} px={12}>
       <Heading fontSize={'3xl'} noOfLines={2}>
-        <NextLink href={`/artists/${artist.id}`} passHref>
-          <Link>{artist.name}</Link>
+        <NextLink href={`/artists/${id}`} passHref>
+          <Link>{name}</Link>
         </NextLink>
       </Heading>
     </Box>

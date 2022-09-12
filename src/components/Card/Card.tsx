@@ -1,14 +1,13 @@
-import { Box, useStyleConfig } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import {
+  Box,
+  BoxProps,
+  forwardRef,
+  useStyleConfig
+} from '@chakra-ui/react';
 
-export interface CardProps {
-  children: ReactNode;
-  [others: string]: any;
-}
-
-export function Card(props: CardProps) {
+export const Card = forwardRef<BoxProps, 'div'>((props, ref) => {
   const { ...others } = props;
   const styles = useStyleConfig('Card');
 
-  return <Box __css={styles} {...others}></Box>;
-}
+  return <Box __css={styles} ref={ref} {...others}></Box>;
+});

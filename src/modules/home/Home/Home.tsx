@@ -7,19 +7,6 @@ export function Home() {
     <Flex flexDirection={'column'} gap={12}>
       <Box>
         <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Your top tracks</Heading>
-
-          <NextLink href={'/users/me/top/tracks'}>
-            <Link ml={'auto'}>See all</Link>
-          </NextLink>
-        </HStack>
-
-        <br />
-        {/* <HomeUserMeTopTracks /> */}
-      </Box>
-
-      <Box>
-        <HStack justifyContent={'space-between'}>
           <Heading fontSize={'2xl'}>Your top artists</Heading>
 
           <NextLink href={'/users/me/top/artists'}>

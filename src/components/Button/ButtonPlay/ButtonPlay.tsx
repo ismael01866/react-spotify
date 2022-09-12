@@ -5,7 +5,7 @@ import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 import {
   PlayerContext,
   selectDeviceID,

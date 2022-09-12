@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,10 +24,13 @@ export default async function handler(
       { ids: items?.map((track) => track.id).join(',') }
     );
 
-    const tracksFollowed = await fetchWithToken(req, tracksFollowURL);
+    const tracksFollowed: ITrack[] = await fetchWithToken(
+      req,
+      tracksFollowURL
+    );
 
     const data = items?.map((track, index) => {
-      track.is_following = tracksFollowed?.[index];
+      track.is_following = !!tracksFollowed?.[index];
       return track;
     });
 

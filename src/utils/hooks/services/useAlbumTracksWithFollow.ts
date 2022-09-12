@@ -1,7 +1,8 @@
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 import { ITrack } from 'src/types/track';
 import useSWR from 'swr';
+import { useId } from 'react';
 
 export const useAlbumTracksWithFollow = (
   id: string | string[] | undefined,
@@ -13,7 +14,12 @@ export const useAlbumTracksWithFollow = (
     query
   );
 
-  const { data, error } = useSWR<ITrack[]>([url, opts], fetcher);
+  const cacheID = useId(); // used to prevent this request from getting cached
+
+  const { data, error } = useSWR<ITrack[]>(
+    [url, { cacheID, ...opts }],
+    fetcher
+  );
 
   return {
     error,

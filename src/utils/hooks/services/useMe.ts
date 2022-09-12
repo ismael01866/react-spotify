@@ -1,5 +1,5 @@
-import { fetcher } from 'src/utils/fetch';
 import { IUser } from 'src/types/user';
+import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
 
 export const useMe = (opts = {}) => {

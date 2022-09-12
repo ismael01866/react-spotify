@@ -16,7 +16,8 @@ const config: ThemeConfig = {
 const styles = {
   global: {
     body: {
-      bg: 'bg.base'
+      bg: 'bg.base',
+      overflow: 'hidden'
     }
   }
 };

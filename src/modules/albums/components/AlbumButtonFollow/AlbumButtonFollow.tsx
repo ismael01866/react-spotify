@@ -5,7 +5,7 @@ import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IAlbum } from 'src/types/album';
 import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 
 export interface AlbumButtonFollowProps {
   album: IAlbum;

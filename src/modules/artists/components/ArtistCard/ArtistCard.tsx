@@ -1,4 +1,11 @@
-import { Box, Heading, Link, Skeleton } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Link,
+  MenuItem,
+  MenuList,
+  Skeleton
+} from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { default as NextLink } from 'next/link';
 import {

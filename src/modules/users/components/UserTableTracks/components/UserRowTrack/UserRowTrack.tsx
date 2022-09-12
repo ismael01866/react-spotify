@@ -14,8 +14,6 @@ export function UserRowTrack(props: UserRowTrackProps) {
   const { index, track } = props;
   const { uri, name, duration_ms, album, is_playable = true } = track;
 
-  console.log(track);
-
   const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
   return (

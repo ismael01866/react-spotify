@@ -1,6 +1,7 @@
-import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { useId } from 'react';
 import { ITrack } from 'src/types/track';
+import { fetcher } from 'src/utils/fetch';
+import { withQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
 export const useMeTopTracksWithFollow = (query = {}, opts = {}) => {
@@ -9,7 +10,12 @@ export const useMeTopTracksWithFollow = (query = {}, opts = {}) => {
     query
   );
 
-  const { data, error } = useSWR<ITrack[]>([url, opts], fetcher);
+  const cacheID = useId(); // used to prevent this request from getting cached
+
+  const { data, error } = useSWR<ITrack[]>(
+    [url, { cacheID, ...opts }],
+    fetcher
+  );
 
   return {
     error,

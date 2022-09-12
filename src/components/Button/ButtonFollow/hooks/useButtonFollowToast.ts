@@ -6,7 +6,7 @@ export const useButtonFollowToast = () => {
 
   const toastDefaultOptions: UseToastOptions = {
     status: 'success',
-    variant: 'subtle',
+    variant: 'top-accent',
     duration: TOAST_DURATION
   };
 

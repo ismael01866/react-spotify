@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function handler(
     req.query
   );
 
-  const data = await fetchWithToken(req, url);
+  const data: boolean[] = await fetchWithToken(req, url);
   const result = data || [];
 
   return res.status(200).json(result);

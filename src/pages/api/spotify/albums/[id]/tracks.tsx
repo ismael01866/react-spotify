@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +14,7 @@ export default async function handler(
     req.query
   );
 
-  const { items } = await fetchWithToken(req, url);
+  const { items }: { items: ITrack[] } = await fetchWithToken(req, url);
 
   const result = items || [];
 

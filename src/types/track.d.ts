@@ -9,6 +9,7 @@ export interface ITrack {
   album?: IAlbum;
   artists?: IArtist[];
   is_playable?: boolean;
+  track?: ITrack;
 
   // custom
 

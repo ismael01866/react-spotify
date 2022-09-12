@@ -1,6 +1,6 @@
-import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
 import { IArtist } from 'src/types/artist';
+import { fetcher } from 'src/utils/fetch';
+import { withQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
 export const useMeTopArtists = (query = {}, opts = {}) => {

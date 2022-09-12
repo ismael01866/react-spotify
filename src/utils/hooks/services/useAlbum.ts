@@ -1,5 +1,5 @@
-import { fetcher } from 'src/utils/fetch';
 import { IAlbum } from 'src/types/album';
+import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
 
 export const useAlbum = (

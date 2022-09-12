@@ -1,16 +1,10 @@
-import {
-  Box,
-  Skeleton,
-  Stack,
-  Table,
-  TableContainer,
-  Tbody,
-  Th,
-  Thead,
-  Tr
-} from '@chakra-ui/react';
-import { UserRowTrack } from 'src/modules/users/components/UserTableTracks/components';
+import { Box, Flex, Skeleton, Stack } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import { useMeTopTracksWithFollow } from 'src/utils/hooks/services';
+import {
+  UserMeTopTracksContentTableBody,
+  UserMeTopTracksContentTableHead
+} from './components';
 
 export function UserMeTopTracksContent() {
   const limit = 50;
@@ -33,47 +27,42 @@ export function UserMeTopTracksContent() {
       </Stack>
     );
   };
+
+  const TableColGroups = useMemo(
+    () => (
+      <colgroup>
+        <col style={{ minWidth: '4rem' }} />
+        <col style={{ width: '60%' }} />
+        <col style={{ width: '40%' }} />
+        <col style={{ width: 'auto' }} />
+        <col style={{ width: 'auto' }} />
+      </colgroup>
+    ),
+    []
+  );
+
   return (
-    <Box
-      overflowY={'scroll'}
-      px={12}
-      sx={{
-        scrollbarWidth: 'thin'
-      }}
-    >
-      {(!isLoading && (
-        <TableContainer>
-          <Table size={'sm'} variant={'simple-with-hover'}>
-            <colgroup>
-              <col style={{ width: 'auto' }} />
-              <col style={{ width: '60%' }} />
-              <col style={{ width: '40%' }} />
-              <col style={{ width: 'auto' }} />
-              <col style={{ width: 'auto' }} />
-            </colgroup>
+    <Flex direction={'column'} overflow={'hidden'}>
+      <Box px={12}>
+        <UserMeTopTracksContentTableHead
+          tableColGroups={TableColGroups}
+        />
+      </Box>
 
-            <Thead>
-              <Tr>
-                <Th textAlign={'right'}>#</Th>
-                <Th px={0}>Title</Th>
-                <Th px={0}>Album</Th>
-                <Th></Th>
-                <Th>Duration</Th>
-              </Tr>
-            </Thead>
-
-            <Tbody>
-              {data?.map((track, index) => (
-                <UserRowTrack
-                  key={track.id || index}
-                  index={index + 1}
-                  track={track}
-                />
-              ))}
-            </Tbody>
-          </Table>
-        </TableContainer>
-      )) || <LoadingContent />}
-    </Box>
+      <Box
+        overflowY={'scroll'}
+        px={12}
+        sx={{
+          scrollbarWidth: 'thin'
+        }}
+      >
+        {(!isLoading && data && (
+          <UserMeTopTracksContentTableBody
+            data={data}
+            tableColGroups={TableColGroups}
+          />
+        )) || <LoadingContent />}
+      </Box>
+    </Flex>
   );
 }

@@ -5,7 +5,7 @@ import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
 import { useInfiniteScroll } from 'src/utils/hooks';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 
 export function ArtistAlbumsContent() {
   const { id: artistID } = useContext(ArtistContext);

@@ -5,7 +5,7 @@ import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { ITrack } from 'src/types/track';
 import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 
 export interface TrackButtonFollowProps {
   track: ITrack;

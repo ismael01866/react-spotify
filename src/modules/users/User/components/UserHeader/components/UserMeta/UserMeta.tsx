@@ -1,6 +1,6 @@
 import { Flex, Heading, HStack } from '@chakra-ui/react';
 import { IUser } from 'src/types/user';
-import { pluralize } from 'src/utils/utils';
+import { pluralize } from 'src/utils/helpers';
 
 export interface UserMetaProps {
   user: IUser;
@@ -8,6 +8,7 @@ export interface UserMetaProps {
 
 export function UserMeta(props: UserMetaProps) {
   const { user } = props;
+  const { display_name, followers } = user;
 
   return (
     <Flex direction={'column'}>
@@ -19,11 +20,11 @@ export function UserMeta(props: UserMetaProps) {
       >
         PROFILE
       </Heading>
-      <Heading noOfLines={1}>{user.display_name}</Heading>
+      <Heading noOfLines={1}>{display_name}</Heading>
 
       <HStack color={'text.base'} mt={4}>
         <Heading fontSize={'sm'} noOfLines={1}>
-          {pluralize('Follower', user.followers?.total)}
+          {pluralize('Follower', followers?.total)}
         </Heading>
       </HStack>
     </Flex>

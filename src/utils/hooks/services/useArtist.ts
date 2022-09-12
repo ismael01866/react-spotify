@@ -1,5 +1,5 @@
-import { fetcher } from 'src/utils/fetch';
 import { IArtist } from 'src/types/artist';
+import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
 
 export const useArtist = (

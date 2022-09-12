@@ -1,5 +1,5 @@
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/utils';
+import { withQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
 export const useAlbumFollow = (query: {}, opts: any = {}) => {

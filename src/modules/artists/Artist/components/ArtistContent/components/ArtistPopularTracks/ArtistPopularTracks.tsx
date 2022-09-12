@@ -13,9 +13,7 @@ export function ArtistPopularTracks() {
 
   const { tracks: oTracks, isLoading } = useArtistTopTracksWithFollow(
     artistID,
-    {
-      country
-    }
+    { country }
   );
 
   const initialVisibleCount = 6;

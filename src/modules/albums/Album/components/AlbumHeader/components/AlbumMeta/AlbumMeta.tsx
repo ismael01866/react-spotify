@@ -1,7 +1,7 @@
 import { Flex, Heading, HStack, Link } from '@chakra-ui/react';
 import moment from 'moment';
 import { default as NextLink } from 'next/link';
-import { pluralize } from 'src/utils/utils';
+import { pluralize } from 'src/utils/helpers';
 import { IAlbum } from 'src/types/album';
 
 export interface AlbumMetaProps {
@@ -10,6 +10,7 @@ export interface AlbumMetaProps {
 
 export function AlbumMeta(props: AlbumMetaProps) {
   const { album } = props;
+  const { name, artists, release_date, total_tracks } = album;
 
   return (
     <Flex direction={'column'}>
@@ -21,7 +22,7 @@ export function AlbumMeta(props: AlbumMetaProps) {
       >
         ALBUM
       </Heading>
-      <Heading noOfLines={1}>{album.name}</Heading>
+      <Heading noOfLines={1}>{name}</Heading>
 
       <HStack
         alignItems={'center'}
@@ -31,7 +32,7 @@ export function AlbumMeta(props: AlbumMetaProps) {
         gap={1}
       >
         <Heading fontSize={'sm'} noOfLines={1}>
-          {album.artists?.map((artist, index) => (
+          {artists?.map((artist, index) => (
             <span key={artist.id}>
               {index !== 0 && <>, </>}
               <NextLink href={`/artists/${artist.id}`} passHref>
@@ -42,11 +43,11 @@ export function AlbumMeta(props: AlbumMetaProps) {
         </Heading>
 
         <Heading fontSize={'sm'}>
-          {moment(album.release_date).format('YYYY')}
+          {moment(release_date).format('YYYY')}
         </Heading>
 
         <Heading fontSize={'sm'} noOfLines={1}>
-          {pluralize('song', album.total_tracks)}
+          {pluralize('song', total_tracks)}
         </Heading>
       </HStack>
     </Flex>
