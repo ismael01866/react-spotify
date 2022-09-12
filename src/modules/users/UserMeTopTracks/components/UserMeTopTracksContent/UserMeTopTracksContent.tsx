@@ -1,5 +1,4 @@
 import { Box, Flex, Skeleton, Stack } from '@chakra-ui/react';
-import { useMemo } from 'react';
 import { useMeTopTracksWithFollow } from 'src/utils/hooks/services';
 import {
   UserMeTopTracksContentTableBody,
@@ -28,17 +27,14 @@ export function UserMeTopTracksContent() {
     );
   };
 
-  const TableColGroups = useMemo(
-    () => (
-      <colgroup>
-        <col style={{ minWidth: '4rem' }} />
-        <col style={{ width: '60%' }} />
-        <col style={{ width: '40%' }} />
-        <col style={{ width: 'auto' }} />
-        <col style={{ width: 'auto' }} />
-      </colgroup>
-    ),
-    []
+  const TableColGroups = (
+    <colgroup>
+      <col style={{ minWidth: '4rem' }} />
+      <col style={{ width: '60%' }} />
+      <col style={{ width: '40%' }} />
+      <col style={{ width: 'auto' }} />
+      <col style={{ width: 'auto' }} />
+    </colgroup>
   );
 
   return (

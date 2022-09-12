@@ -7,29 +7,31 @@ import {
   Tr
 } from '@chakra-ui/react';
 import { ITrack } from 'src/types/track';
-import { AlbumRowTrack } from './components';
+import { PlaylistRowTrack } from './components';
 
-export interface AlbumTableTracksProps {
+export interface PlaylistTableTracksProps {
   tracks: ITrack[];
 }
 
-export function AlbumTableTracks(props: AlbumTableTracksProps) {
+export function PlaylistTableTracks(props: PlaylistTableTracksProps) {
   const { tracks } = props;
 
   return (
     <TableContainer>
       <Table variant={'simple-with-hover'}>
         <colgroup>
-          <col style={{ minWidth: '4rem' }} />
-          <col style={{ width: '100%' }} />
+          <col style={{ width: 'auto' }} />
+          <col style={{ width: '60%' }} />
+          <col style={{ width: '40%' }} />
           <col style={{ width: 'auto' }} />
           <col style={{ width: 'auto' }} />
         </colgroup>
 
         <Thead>
           <Tr>
-            <Th></Th>
+            <Th textAlign={'right'}>#</Th>
             <Th px={0}>Title</Th>
+            <Th px={0}>Album</Th>
             <Th></Th>
             <Th>Duration</Th>
           </Tr>
@@ -37,7 +39,7 @@ export function AlbumTableTracks(props: AlbumTableTracksProps) {
 
         <Tbody>
           {tracks.map((track, index) => (
-            <AlbumRowTrack
+            <PlaylistRowTrack
               key={track.id || index}
               index={index + 1}
               track={track}

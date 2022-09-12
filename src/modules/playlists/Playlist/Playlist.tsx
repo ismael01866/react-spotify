@@ -15,7 +15,7 @@ export function Playlist() {
       <Flex flexDirection={'column'} gap={12}>
         <PlaylistContext.Provider value={playlist}>
           <PlaylistHeader />
-          {/* <PlaylistContent /> */}
+          <PlaylistContent />
         </PlaylistContext.Provider>
       </Flex>
     )) || <></>

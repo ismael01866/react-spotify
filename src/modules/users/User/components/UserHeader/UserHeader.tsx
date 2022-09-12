@@ -9,17 +9,15 @@ export function UserHeader() {
 
   return (
     <Box minH={'2xs'} pos={'relative'}>
-      <Box pos={'relative'}>
-        <HStack spacing={8}>
-          <Box boxSize={'3xs'} mt={8}>
-            <UserImage user={user} />
-          </Box>
+      <HStack spacing={8}>
+        <Box boxSize={'3xs'} mt={8}>
+          <UserImage user={user} />
+        </Box>
 
-          <Box pt={6}>
-            <UserMeta user={user} />
-          </Box>
-        </HStack>
-      </Box>
+        <Box pt={6}>
+          <UserMeta user={user} />
+        </Box>
+      </HStack>
     </Box>
   );
 }

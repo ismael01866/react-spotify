@@ -4,10 +4,12 @@ import {
   Heading,
   HStack,
   Image,
+  Link,
   Skeleton,
   Text,
   VStack
 } from '@chakra-ui/react';
+import { default as NextLink } from 'next/link';
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';
@@ -34,13 +36,15 @@ export function TrackMeta(props: TrackMetaProps) {
 
       <VStack>
         <Box fontSize={'xs'}>
-          <Text color={'text.base'} noOfLines={1}>
-            {artist.name}
-          </Text>
+          <NextLink href={`/artists/${artist.id}`} passHref>
+            <Link noOfLines={1}>{artist.name}</Link>
+          </NextLink>
 
-          <Heading fontSize={'xs'} noOfLines={1} mt={1} mb={2}>
-            {track.name}
-          </Heading>
+          <NextLink href={`/albums/${album.id}`} passHref>
+            <Heading fontSize={'xs'} noOfLines={1} mt={1} mb={2}>
+              <Link>{track.name}</Link>
+            </Heading>
+          </NextLink>
         </Box>
       </VStack>
     </HStack>

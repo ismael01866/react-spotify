@@ -39,7 +39,8 @@ const colors = {
 
   text: {
     muted: '#6A6A6A',
-    base: '#B3B3B3'
+    base: '#B3B3B3',
+    body: 'var(--chakra-colors-chakra-body-text)'
   },
 
   spotify: {

@@ -1,7 +1,10 @@
-import { Flex, Heading, HStack } from '@chakra-ui/react';
+import { Avatar, Flex, Heading, HStack, Link } from '@chakra-ui/react';
 import moment from 'moment';
+import { default as NextLink } from 'next/link';
 import { IPlaylist } from 'src/types/playlist';
 import { pluralize } from 'src/utils/helpers';
+import { useUserIsMe } from 'src/utils/hooks';
+import { useUser } from 'src/utils/hooks/services';
 
 export interface PlaylistMetaProps {
   playlist: IPlaylist;
@@ -10,6 +13,9 @@ export interface PlaylistMetaProps {
 export function PlaylistMeta(props: PlaylistMetaProps) {
   const { playlist } = props;
   const { name, owner, tracks, total_duration } = playlist;
+
+  const { user } = useUser(owner?.id);
+  const { userIsMe } = useUserIsMe(user?.id);
 
   return (
     <Flex direction={'column'}>
@@ -30,9 +36,23 @@ export function PlaylistMeta(props: PlaylistMetaProps) {
         mt={4}
         gap={1}
       >
-        <Heading fontSize={'sm'} noOfLines={1}>
-          {owner?.display_name}
-        </Heading>
+        {user?.id && (
+          <HStack>
+            <Avatar
+              name={user?.display_name}
+              src={user?.images?.[0]?.url}
+              size={'xs'}
+            />
+            <Heading fontSize={'sm'} noOfLines={1}>
+              <NextLink
+                href={userIsMe ? '/users/me' : `users/${user?.id}`}
+                passHref
+              >
+                <Link color={'text.body'}>{user?.display_name}</Link>
+              </NextLink>
+            </Heading>
+          </HStack>
+        )}
 
         <Heading fontSize={'sm'}>
           {pluralize('song', tracks?.total)}

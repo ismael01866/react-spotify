@@ -10,21 +10,19 @@ export function PlaylistHeader() {
 
   return (
     <Box minH={'2xs'} pos={'relative'}>
-      <Box pos={'relative'}>
-        <HStack spacing={8}>
-          <Box boxSize={'3xs'} mt={8}>
-            <PlaylistImage playlist={playlist} />
-          </Box>
+      <HStack spacing={8}>
+        <Box boxSize={'3xs'} mt={8}>
+          <PlaylistImage playlist={playlist} />
+        </Box>
 
-          <VStack alignItems={'flex-start'} pt={6} spacing={8}>
-            <PlaylistMeta playlist={playlist} />
+        <VStack alignItems={'flex-start'} pt={6} spacing={8}>
+          <PlaylistMeta playlist={playlist} />
 
-            <HStack spacing={2}>
-              <ButtonPlay context_uri={playlist.uri} />
-            </HStack>
-          </VStack>
-        </HStack>
-      </Box>
+          <HStack spacing={2}>
+            <ButtonPlay context_uri={playlist.uri} />
+          </HStack>
+        </VStack>
+      </HStack>
     </Box>
   );
 }

@@ -21,7 +21,7 @@ export function UserMeTopTracksContentTableBody(
         <Tbody>
           {data?.map((track, index) => (
             <UserRowTrack
-              key={track.id}
+              key={track.id || index}
               index={index + 1}
               track={track}
             />

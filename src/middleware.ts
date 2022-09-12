@@ -6,6 +6,7 @@ export const config = {
     '/albums/:album*',
     '/artists/:artist*',
     '/playlists/:playlist*',
-    '/users/:me*'
+    '/users/me',
+    '/users/:user*'
   ]
 };

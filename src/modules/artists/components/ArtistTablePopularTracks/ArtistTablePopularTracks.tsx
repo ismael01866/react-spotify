@@ -24,11 +24,8 @@ export function ArtistTablePopularTracks(
         <Tbody>
           {tracks
             .filter((track) => track.is_visible)
-            .map((track, index) => (
-              <ArtistRowPopularTrack
-                key={track.id || index}
-                track={track}
-              />
+            .map((track) => (
+              <ArtistRowPopularTrack key={track.id} track={track} />
             ))}
         </Tbody>
       </Table>
