@@ -4,14 +4,14 @@ import { UserRowTrack } from 'src/modules/users/components/UserTableTracks/compo
 import { ITrack } from 'src/types/track';
 
 export interface UserMeTopTracksContentTableBody {
-  data: ITrack[];
+  tracks: ITrack[];
   tableColGroups: ReactNode;
 }
 
 export function UserMeTopTracksContentTableBody(
   props: UserMeTopTracksContentTableBody
 ) {
-  const { data, tableColGroups } = props;
+  const { tracks, tableColGroups } = props;
 
   return (
     <TableContainer>
@@ -19,7 +19,7 @@ export function UserMeTopTracksContentTableBody(
         {tableColGroups}
 
         <Tbody>
-          {data?.map((track, index) => (
+          {tracks?.map((track, index) => (
             <UserRowTrack
               key={track.id || index}
               index={index + 1}

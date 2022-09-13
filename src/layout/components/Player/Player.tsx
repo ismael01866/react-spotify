@@ -1,7 +1,7 @@
 import { SimpleGrid, VStack } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { selectTrack } from 'src/modules';
-import { useMeCurrentlyPlaying } from 'src/utils/hooks/services';
+import { useMePlayerCurrentlyPlaying } from 'src/utils/hooks/services';
 import {
   PlayControls,
   TrackMeta,
@@ -11,7 +11,7 @@ import {
 
 export function Player() {
   const track = useSelector(selectTrack);
-  const { item } = useMeCurrentlyPlaying();
+  const { item } = useMePlayerCurrentlyPlaying();
 
   return (
     <SimpleGrid h={'6xs'} w={'full'} columns={3} spacing={8}>

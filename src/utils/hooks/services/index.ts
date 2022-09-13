@@ -3,7 +3,9 @@ export * from './useMe';
 export * from './useMeTopTracks';
 export * from './useMeTopArtists';
 export * from './useMeTopTracksWithFollow';
-export * from './useMeCurrentlyPlaying';
+
+export * from './useMePlayerCurrentlyPlaying';
+export * from './useMePlayerRecentlyPlayed';
 
 export * from './useAlbum';
 export * from './useAlbumWithFollow';

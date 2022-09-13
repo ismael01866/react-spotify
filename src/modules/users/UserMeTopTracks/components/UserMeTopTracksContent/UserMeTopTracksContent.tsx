@@ -54,7 +54,7 @@ export function UserMeTopTracksContent() {
       >
         {(!isLoading && data && (
           <UserMeTopTracksContentTableBody
-            data={data}
+            tracks={data}
             tableColGroups={TableColGroups}
           />
         )) || <LoadingContent />}

@@ -17,7 +17,7 @@ export function ArtistAlbums() {
 
   return (
     (data && (
-      <AlbumGrid data={data} columns={{ base: 1, sm: 2, xl: 3 }} />
+      <AlbumGrid albums={data} columns={{ base: 1, sm: 2, xl: 3 }} />
     )) || <></>
   );
 }

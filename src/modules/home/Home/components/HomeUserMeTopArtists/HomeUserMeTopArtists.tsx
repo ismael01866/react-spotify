@@ -10,5 +10,5 @@ export function HomeUserMeTopArtists() {
   const skeletonData = new Array(limit).fill('');
   const data = isLoading ? skeletonData : artists;
 
-  return (data && <ArtistGrid data={data} />) || <></>;
+  return (data && <ArtistGrid artists={data} />) || <></>;
 }

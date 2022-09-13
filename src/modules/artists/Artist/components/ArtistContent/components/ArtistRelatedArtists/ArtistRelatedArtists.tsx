@@ -16,7 +16,7 @@ export function ArtistRelatedArtists() {
 
   return (
     (data && (
-      <ArtistGrid data={data} columns={{ base: 1, sm: 2, xl: 3 }} />
+      <ArtistGrid artists={data} columns={{ base: 1, sm: 2, xl: 3 }} />
     )) || <></>
   );
 }

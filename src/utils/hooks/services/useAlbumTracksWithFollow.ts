@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { ITrack } from 'src/types/track';
 import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/helpers';
@@ -14,12 +13,7 @@ export const useAlbumTracksWithFollow = (
     query
   );
 
-  const cacheID = useId(); // used to prevent this request from getting cached
-
-  const { data, error } = useSWR<ITrack[]>(
-    [url, { cacheID, ...opts }],
-    fetcher
-  );
+  const { data, error } = useSWR<ITrack[]>([url, { ...opts }], fetcher);
 
   return {
     error,

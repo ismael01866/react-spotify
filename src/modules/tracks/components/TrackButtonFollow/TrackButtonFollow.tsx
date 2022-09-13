@@ -6,6 +6,7 @@ import { ITrack } from 'src/types/track';
 import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/helpers';
+import { mutate } from 'swr';
 
 export interface TrackButtonFollowProps {
   track: ITrack;
@@ -21,13 +22,24 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
 
   const handleOnClick = () => {
     const method = isFollowing ? 'DELETE' : 'PUT';
-    const url = withQueryParams('/api/spotify/me/tracks', { ids });
+    const updateURL = withQueryParams('/api/spotify/me/tracks', {
+      ids
+    });
 
-    fetcher(url, { method }).then(({ isFollowing }) => {
-      const msg = isFollowing ? 'Added to' : 'Removed from';
+    // update SWR's cache regarding
+    // the 'is_following' prop for a given track
 
-      setIsFollowing(isFollowing);
-      toast({ description: `${msg} your liked songs` });
+    mutate(async () => {
+      await fetcher(updateURL, { method }).then(({ isFollowing }) => {
+        const msg = isFollowing ? 'Added to' : 'Removed from';
+
+        setIsFollowing(isFollowing);
+        track.is_following = isFollowing;
+
+        toast({ description: `${msg} your liked songs` });
+      });
+
+      return track;
     });
   };
 

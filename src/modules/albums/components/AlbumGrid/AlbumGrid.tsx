@@ -3,12 +3,12 @@ import { AlbumCard } from 'src/modules/albums/components';
 import { IAlbum } from 'src/types/album';
 
 export interface AlbumGridProps {
-  data: IAlbum[];
+  albums: IAlbum[];
   [others: string]: any;
 }
 
 export function AlbumGrid(props: AlbumGridProps) {
-  const { data, ...others } = props;
+  const { albums, ...others } = props;
 
   return (
     <SimpleGrid
@@ -16,7 +16,7 @@ export function AlbumGrid(props: AlbumGridProps) {
       spacing={4}
       {...others}
     >
-      {data?.map((album, index) => {
+      {albums?.map((album, index) => {
         return <AlbumCard key={album.id || index} album={album} />;
       })}
     </SimpleGrid>

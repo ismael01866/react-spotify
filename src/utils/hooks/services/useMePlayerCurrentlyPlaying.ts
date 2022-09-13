@@ -3,7 +3,7 @@ import { IArtist } from 'src/types/artist';
 import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
 
-export const useMeCurrentlyPlaying = (opts = {}) => {
+export const useMePlayerCurrentlyPlaying = (opts = {}) => {
   const url = `/api/spotify/me/player/currently-playing`;
   const { data, error } = useSWR<{ album: IAlbum; artists: IArtist[] }>(
     [url, opts],

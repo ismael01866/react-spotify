@@ -3,12 +3,12 @@ import { PlaylistCard } from 'src/modules/playlists/components';
 import { IPlaylist } from 'src/types/playlist';
 
 export interface PlaylistGridProps {
-  data: IPlaylist[];
+  playlists: IPlaylist[];
   [others: string]: any;
 }
 
 export function PlaylistGrid(props: PlaylistGridProps) {
-  const { data, ...others } = props;
+  const { playlists, ...others } = props;
 
   return (
     <SimpleGrid
@@ -16,7 +16,7 @@ export function PlaylistGrid(props: PlaylistGridProps) {
       spacing={4}
       {...others}
     >
-      {data?.map((playlist, index) => {
+      {playlists?.map((playlist, index) => {
         return (
           <PlaylistCard
             key={playlist.id || index}

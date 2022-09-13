@@ -45,7 +45,7 @@ export function ArtistAlbums() {
         <TabPanel p={0}>
           {albumsData && (
             <AlbumGrid
-              data={albumsData}
+              albums={albumsData}
               columns={{ base: 1, sm: 2, xl: 3 }}
             />
           )}
@@ -54,7 +54,7 @@ export function ArtistAlbums() {
         <TabPanel p={0}>
           {singlesData && (
             <AlbumGrid
-              data={singlesData}
+              albums={singlesData}
               columns={{ base: 1, sm: 2, xl: 3 }}
             />
           )}

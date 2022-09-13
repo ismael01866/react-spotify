@@ -9,5 +9,5 @@ export function UserMeContentGridPlaylists() {
   const skeletonData = new Array(limit).fill('');
   const data = isLoading ? skeletonData : playlists;
 
-  return (data && <PlaylistGrid data={data} />) || <></>;
+  return (data && <PlaylistGrid playlists={data} />) || <></>;
 }
