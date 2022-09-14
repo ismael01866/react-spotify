@@ -10,6 +10,10 @@ export interface ITrack {
   artists?: IArtist[];
   is_playable?: boolean;
   track?: ITrack;
+  context?: {
+    uri?: string;
+    type?: string;
+  };
 
   // custom
 

@@ -32,9 +32,8 @@ export function AlbumMeta(props: AlbumMetaProps) {
         gap={1}
       >
         <Heading fontSize={'sm'} noOfLines={1}>
-          {artists?.map((artist, index) => (
+          {artists?.map((artist) => (
             <span key={artist.id}>
-              {index !== 0 && <>, </>}
               <NextLink href={`/artists/${artist.id}`} passHref>
                 <Link>{artist.name}</Link>
               </NextLink>

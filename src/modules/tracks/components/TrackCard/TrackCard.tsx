@@ -7,12 +7,14 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { Card } from 'components/Card';
+import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
 import {
   CardButtonPlay,
   CardMeta
 } from 'src/components/Card/components';
 import { ITrack } from 'src/types/track';
+import { getPositionOfSubstring } from 'src/utils/helpers';
 import { TrackImage } from '../TrackImage';
 
 export interface TrackCardProps {
@@ -22,13 +24,43 @@ export interface TrackCardProps {
 
 export function TrackCard(props: TrackCardProps) {
   const { track, ...others } = props;
-  const { id, name, uri, album, artists = [] } = track;
+  const { id, name, uri, context } = track;
+
+  const getContextURL = (track: ITrack) => {
+    if (!track.context) return;
+
+    const {
+      context: { type, uri = '' }
+    } = track;
+
+    switch (type) {
+      case 'album':
+        return `/albums/${track.album?.id}`;
+
+      case 'artist':
+        return `/artists/${track.artists?.[0].id}`;
+
+      case 'playlist':
+        // since the payload doesnt contain a proper playlist
+        // object from where we can extract the playlist ID, we need
+        // to parse the context uri ex. ('spotify:playlist:12345')
+
+        const playlistID = uri.substring(
+          getPositionOfSubstring(uri, ':', 2) + 1
+        );
+
+        return `/playlists/${playlistID}`;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <Skeleton isLoaded={!!id}>
       <Card role={'group'} {...others}>
         <Box boxShadow={'base'} position={'relative'}>
-          <NextLink href={`/albums/${album?.id}`} passHref>
+          <NextLink href={`${getContextURL(track)}`} passHref>
             <Link>
               <TrackImage track={track} />
             </Link>
@@ -43,14 +75,7 @@ export function TrackCard(props: TrackCardProps) {
               {name}
             </Heading>
             <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-              {artists.map((artist, index) => (
-                <span key={artist.id}>
-                  {index !== 0 && <>, </>}
-                  <NextLink href={`/artists/${artist.id}`} passHref>
-                    <Link>{artist.name}</Link>
-                  </NextLink>
-                </span>
-              ))}
+              {capitalize(context?.type)}
             </Text>
           </VStack>
         </CardMeta>
