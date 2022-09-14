@@ -9,18 +9,17 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { IAlbum } from 'src/types/album';
-import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';
 
 interface TrackMetaProps {
   track: ITrack;
-  album: IAlbum;
-  artist: IArtist;
 }
 
 export function TrackMeta(props: TrackMetaProps) {
-  const { album, artist, track } = props;
+  const { track } = props;
+  const { album, artists } = track;
+
+  console.log(track);
 
   return (
     <HStack spacing={12}>
@@ -28,18 +27,18 @@ export function TrackMeta(props: TrackMetaProps) {
         <Image
           maxHeight={'full'}
           src={album?.images?.[0]?.url}
-          alt={album.name}
+          alt={album?.name}
           fallback={<Skeleton startColor={''} />}
         />
       </AspectRatio>
 
       <VStack>
         <Box fontSize={'xs'}>
-          <NextLink href={`/artists/${artist.id}`} passHref>
-            <Link noOfLines={1}>{artist.name}</Link>
+          <NextLink href={`/artists/${artists?.[0]?.id}`} passHref>
+            <Link noOfLines={1}>{artists?.[0]?.name}</Link>
           </NextLink>
 
-          <NextLink href={`/albums/${album.id}`} passHref>
+          <NextLink href={`/albums/${album?.id}`} passHref>
             <Heading fontSize={'xs'} noOfLines={1} mt={1} mb={2}>
               <Link>{track.name}</Link>
             </Heading>

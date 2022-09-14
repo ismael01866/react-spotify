@@ -2,7 +2,7 @@ import { AspectRatio, Image } from '@chakra-ui/react';
 import { ITrack } from 'src/types/track';
 import { TrackEmptySkeleton } from '../TrackEmptySkeleton';
 
-interface TrackImageProps {
+export interface TrackImageProps {
   track: ITrack;
 }
 

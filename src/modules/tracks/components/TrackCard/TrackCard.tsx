@@ -9,12 +9,12 @@ import {
 import { Card } from 'components/Card';
 import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
+import { useCallback } from 'react';
 import {
   CardButtonPlay,
   CardMeta
 } from 'src/components/Card/components';
 import { ITrack } from 'src/types/track';
-import { getPositionOfSubstring } from 'src/utils/helpers';
 import { TrackImage } from '../TrackImage';
 
 interface TrackCardProps {
@@ -24,43 +24,51 @@ interface TrackCardProps {
 
 export function TrackCard(props: TrackCardProps) {
   const { track, ...others } = props;
-  const { id, name, uri, context } = track;
+  const { id, uri, context } = track;
 
-  const getContextURL = (track: ITrack) => {
+  const getNameByContext = useCallback((track: ITrack) => {
     if (!track.context) return;
 
     const {
-      context: { type, uri = '' }
+      context: { type }
     } = track;
 
     switch (type) {
       case 'album':
-        return `/albums/${track.album?.id}`;
+        return track?.album?.name;
 
       case 'artist':
-        return `/artists/${track.artists?.[0].id}`;
-
-      case 'playlist':
-        // since the payload doesnt contain a proper playlist
-        // object from where we can extract the playlist ID, we need
-        // to parse the context uri, ex. ('spotify:playlist:12345')
-
-        const playlistID = uri.substring(
-          getPositionOfSubstring(uri, ':', 2) + 1
-        );
-
-        return `/playlists/${playlistID}`;
+        return track?.artists?.[0]?.name;
 
       default:
         break;
     }
-  };
+  }, []);
+
+  const getURLByContext = useCallback((track: ITrack) => {
+    if (!track.context) return;
+
+    const {
+      context: { type }
+    } = track;
+
+    switch (type) {
+      case 'album':
+        return `/albums/${track?.album?.id}`;
+
+      case 'artist':
+        return `/artists/${track?.artists?.[0]?.id}`;
+
+      default:
+        break;
+    }
+  }, []);
 
   return (
     <Skeleton isLoaded={!!id}>
       <Card role={'group'} {...others}>
         <Box boxShadow={'base'} position={'relative'}>
-          <NextLink href={`${getContextURL(track)}`} passHref>
+          <NextLink href={`${getURLByContext(track)}`} passHref>
             <Link>
               <TrackImage track={track} />
             </Link>
@@ -72,7 +80,7 @@ export function TrackCard(props: TrackCardProps) {
         <CardMeta>
           <VStack alignItems={'flex-start'} spacing={1}>
             <Heading fontSize={'sm'} noOfLines={1}>
-              {name}
+              {getNameByContext(track)}
             </Heading>
             <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
               {capitalize(context?.type)}

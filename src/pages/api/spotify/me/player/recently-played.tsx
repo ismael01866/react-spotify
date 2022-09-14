@@ -1,4 +1,4 @@
-import { uniqBy, uniqWith } from 'lodash';
+import { uniqBy } from 'lodash';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
@@ -8,60 +8,72 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const url = withQueryParams(
+  const { limit } = req.query;
+
+  let tracksURL = withQueryParams(
     'https://api.spotify.com/v1/me/player/recently-played',
     req.query
   );
 
-  const { items }: { items: ITrack[] } = await fetchWithToken(req, url);
+  let tracks: ITrack[] = [];
 
-  const parsedTracks =
-    items.map((item) => {
-      (item.track || {}).context = item?.context;
-      return item.track;
-    }) || [];
+  do {
+    const { items, next }: { items: ITrack[]; next: string } =
+      await fetchWithToken(req, tracksURL);
 
-  const albums: ITrack[] = [];
-  const artists: ITrack[] = [];
-  const playlists: ITrack[] = [];
+    const albums: ITrack[] = [];
+    const artists: ITrack[] = [];
 
-  parsedTracks.forEach((track) => {
-    if (!track?.context) return;
+    // remove the playlist type since spotify doesn't provide
+    // enough metadada to properly use this type of entity
 
-    const {
-      context: { type }
-    } = track;
+    const filteredItems = items.filter(
+      (item) => item?.context?.type !== 'playlist'
+    );
 
-    if (type === 'album') {
-      albums.push(track);
-    }
+    const parsedTracks =
+      filteredItems.map((item) => {
+        (item.track || {}).context = item?.context;
+        return item.track;
+      }) || [];
 
-    if (type === 'artist') {
-      artists.push(track);
-    }
+    parsedTracks.forEach((track) => {
+      if (!track?.context) return;
 
-    if (type === 'playlist') {
-      playlists.push(track);
-    }
-  });
+      const {
+        context: { type }
+      } = track;
 
-  const uniqueAlbums = uniqBy(albums, ({ context }) => {
-    return context?.uri;
-  });
+      if (type === 'album') {
+        albums.push(track);
+      }
 
-  const uniqueArtists = uniqBy(artists, ({ context }) => {
-    return context?.uri;
-  });
+      if (type === 'artist') {
+        artists.push(track);
+      }
+    });
 
-  const uniquePlaylists = uniqBy(playlists, ({ context }) => {
-    return context?.uri;
-  });
+    const uniqAlbums = uniqBy(albums, ({ context }) => {
+      return context?.uri;
+    });
 
-  const result = [
-    ...uniqueAlbums,
-    ...uniqueArtists,
-    ...uniquePlaylists
-  ];
+    const uniqArtists = uniqBy(artists, ({ context }) => {
+      return context?.uri;
+    });
+
+    // we filter the absolute unique entities per track,
+    // this means that albums, artists, etc, will not be
+    // repeated, the final payload will only have unique artists, albums
+
+    tracks = uniqBy(
+      [...tracks, ...uniqAlbums, ...uniqArtists],
+      ({ context }) => context?.uri
+    );
+
+    tracksURL = next;
+  } while (tracksURL && tracks.length < Number(limit));
+
+  const result = tracks || [];
 
   return res.status(200).json(result);
 }

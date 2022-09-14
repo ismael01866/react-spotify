@@ -1,8 +1,8 @@
 import { Flex } from '@chakra-ui/react';
-// import {
-//   UserMeTopArtistsContent,
-//   UserMeTopArtistsHeader
-// } from './components';
+import {
+  UserMePlayerRecentlyPlayedContent,
+  UserMePlayerRecentlyPlayedHeader
+} from './components';
 
 export function UserMePlayerRecentlyPlayed() {
   return (
@@ -13,8 +13,8 @@ export function UserMePlayerRecentlyPlayed() {
       overflow={'hidden'}
       mx={-12}
     >
-      {/* <UserMeTopArtistsHeader /> */}
-      {/* <UserMeTopArtistsContent /> */}
+      <UserMePlayerRecentlyPlayedHeader />
+      <UserMePlayerRecentlyPlayedContent />
     </Flex>
   );
 }

@@ -34,8 +34,9 @@ export default async function handler(
       return track;
     });
 
-    tracksURL = next;
     tracks.push(...data);
+
+    tracksURL = next;
   } while (tracksURL && tracks.length < Number(limit));
 
   const result = tracks || [];

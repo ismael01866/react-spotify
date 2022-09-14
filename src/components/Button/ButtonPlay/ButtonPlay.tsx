@@ -45,7 +45,7 @@ export const ButtonPlay = forwardRef<
   let albumIsPlaying = false;
   let artistIsPlaying = false;
 
-  if (track.uri) {
+  if (track?.uri) {
     trackIsPlaying = track.uri === uri;
   }
 
