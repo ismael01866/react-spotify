@@ -1,11 +1,4 @@
-import {
-  Box,
-  Heading,
-  Link,
-  MenuItem,
-  MenuList,
-  Skeleton
-} from '@chakra-ui/react';
+import { Box, Heading, Link, Skeleton } from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { default as NextLink } from 'next/link';
 import {
@@ -15,7 +8,7 @@ import {
 import { IArtist } from 'src/types/artist';
 import { ArtistImage } from '../ArtistImage';
 
-export interface ArtistCardProps {
+interface ArtistCardProps {
   artist: IArtist;
   [others: string]: any;
 }

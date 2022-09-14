@@ -2,7 +2,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import { AlbumCard } from 'src/modules/albums/components';
 import { IAlbum } from 'src/types/album';
 
-export interface AlbumGridProps {
+interface AlbumGridProps {
   albums: IAlbum[];
   [others: string]: any;
 }

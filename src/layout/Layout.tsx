@@ -18,7 +18,7 @@ import { useMe } from 'src/utils/hooks/services';
 import { buildSpotifyPlayer } from 'src/utils/spotify';
 import { Player, Sidebar } from './components';
 
-export interface LayoutProps {
+interface LayoutProps {
   children: ReactNode;
 }
 

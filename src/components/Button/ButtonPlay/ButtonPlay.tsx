@@ -13,20 +13,19 @@ import {
   selectTrack
 } from 'src/modules';
 
-export interface BaseButtonPlayProps extends ButtonProps {
+interface BaseButtonPlayProps extends ButtonProps {
   [other: string]: any;
 }
 
-export interface ButtonPlayPropsWithURI extends BaseButtonPlayProps {
+interface ButtonPlayPropsWithURI extends BaseButtonPlayProps {
   uri: string | undefined;
 }
 
-export interface ButtonPlayPropsWithContextURI
-  extends BaseButtonPlayProps {
+interface ButtonPlayPropsWithContextURI extends BaseButtonPlayProps {
   context_uri: string | undefined;
 }
 
-export type ButtonPlayProps =
+type ButtonPlayProps =
   | ButtonPlayPropsWithURI
   | ButtonPlayPropsWithContextURI;
 

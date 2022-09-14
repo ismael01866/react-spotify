@@ -7,7 +7,7 @@ import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/helpers';
 import { mutate } from 'swr';
 
-export interface AlbumButtonFollowProps {
+interface AlbumButtonFollowProps {
   album: IAlbum;
 }
 

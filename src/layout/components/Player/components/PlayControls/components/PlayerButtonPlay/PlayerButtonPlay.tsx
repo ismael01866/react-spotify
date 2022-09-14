@@ -3,7 +3,7 @@ import { debounce } from 'lodash';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 
-export interface PlayerButtonPlayProps {
+interface PlayerButtonPlayProps {
   paused: boolean;
   player: any;
 }

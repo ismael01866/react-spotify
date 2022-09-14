@@ -15,7 +15,7 @@ import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
-export interface ArtistRowPopularTrackProps {
+interface ArtistRowPopularTrackProps {
   track: ITrack;
 }
 

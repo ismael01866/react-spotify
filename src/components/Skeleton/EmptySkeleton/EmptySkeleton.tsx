@@ -1,6 +1,6 @@
 import { Box, Center, Icon, useStyleConfig } from '@chakra-ui/react';
 
-export interface EmptySkeletonProps {
+interface EmptySkeletonProps {
   icon?: any;
   [others: string]: any;
 }

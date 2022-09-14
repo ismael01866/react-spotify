@@ -2,7 +2,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import { ArtistCard } from 'src/modules/artists/components';
 import { IArtist } from 'src/types/artist';
 
-export interface ArtistGridProps {
+interface ArtistGridProps {
   artists: IArtist[];
   [others: string]: any;
 }

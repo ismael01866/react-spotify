@@ -2,7 +2,7 @@ import { Flex, Heading, HStack } from '@chakra-ui/react';
 import { IUser } from 'src/types/user';
 import { pluralize } from 'src/utils/helpers';
 
-export interface UserMetaProps {
+interface UserMetaProps {
   user: IUser;
 }
 

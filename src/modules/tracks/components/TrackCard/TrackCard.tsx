@@ -17,7 +17,7 @@ import { ITrack } from 'src/types/track';
 import { getPositionOfSubstring } from 'src/utils/helpers';
 import { TrackImage } from '../TrackImage';
 
-export interface TrackCardProps {
+interface TrackCardProps {
   track: ITrack;
   [others: string]: any;
 }
@@ -43,7 +43,7 @@ export function TrackCard(props: TrackCardProps) {
       case 'playlist':
         // since the payload doesnt contain a proper playlist
         // object from where we can extract the playlist ID, we need
-        // to parse the context uri ex. ('spotify:playlist:12345')
+        // to parse the context uri, ex. ('spotify:playlist:12345')
 
         const playlistID = uri.substring(
           getPositionOfSubstring(uri, ':', 2) + 1

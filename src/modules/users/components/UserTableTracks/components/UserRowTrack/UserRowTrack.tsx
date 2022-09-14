@@ -5,7 +5,7 @@ import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
-export interface UserRowTrackProps {
+interface UserRowTrackProps {
   index: number;
   track: ITrack;
 }

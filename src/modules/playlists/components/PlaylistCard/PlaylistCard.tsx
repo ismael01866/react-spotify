@@ -8,7 +8,7 @@ import {
 import { IPlaylist } from 'src/types/playlist';
 import { PlaylistImage } from '../PlaylistImage';
 
-export interface PlaylistCardProps {
+interface PlaylistCardProps {
   playlist: IPlaylist;
   [others: string]: any;
 }

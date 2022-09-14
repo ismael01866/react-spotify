@@ -4,7 +4,7 @@ import { default as NextLink } from 'next/link';
 import { pluralize } from 'src/utils/helpers';
 import { IAlbum } from 'src/types/album';
 
-export interface AlbumMetaProps {
+interface AlbumMetaProps {
   album: IAlbum;
 }
 

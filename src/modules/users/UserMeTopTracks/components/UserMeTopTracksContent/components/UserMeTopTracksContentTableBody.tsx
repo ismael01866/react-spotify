@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { UserRowTrack } from 'src/modules/users/components/UserTableTracks/components';
 import { ITrack } from 'src/types/track';
 
-export interface UserMeTopTracksContentTableBody {
+interface UserMeTopTracksContentTableBody {
   tracks: ITrack[];
   tableColGroups: ReactNode;
 }

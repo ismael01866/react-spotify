@@ -9,7 +9,7 @@ import {
 import { ITrack } from 'src/types/track';
 import { PlaylistRowTrack } from './components';
 
-export interface PlaylistTableTracksProps {
+interface PlaylistTableTracksProps {
   tracks: ITrack[];
 }
 

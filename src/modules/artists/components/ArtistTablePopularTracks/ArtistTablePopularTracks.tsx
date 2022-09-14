@@ -2,7 +2,7 @@ import { Table, TableContainer, Tbody } from '@chakra-ui/react';
 import { ITrack } from 'src/types/track';
 import { ArtistRowPopularTrack } from './components';
 
-export interface ArtistTablePopularTracksProps {
+interface ArtistTablePopularTracksProps {
   tracks: ITrack[];
 }
 

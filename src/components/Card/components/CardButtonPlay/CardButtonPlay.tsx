@@ -1,6 +1,6 @@
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 
-export interface CardButtonPlayProps {
+interface CardButtonPlayProps {
   [others: string]: any;
 }
 

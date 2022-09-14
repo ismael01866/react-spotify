@@ -6,7 +6,6 @@ import {
   Image,
   Link,
   Skeleton,
-  Text,
   VStack
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
@@ -14,7 +13,7 @@ import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';
 
-export interface TrackMetaProps {
+interface TrackMetaProps {
   track: ITrack;
   album: IAlbum;
   artist: IArtist;

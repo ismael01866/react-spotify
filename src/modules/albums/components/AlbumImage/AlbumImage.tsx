@@ -2,7 +2,7 @@ import { AspectRatio, Image } from '@chakra-ui/react';
 import { IAlbum } from 'src/types/album';
 import { AlbumEmptySkeleton } from '../AlbumEmptySkeleton';
 
-export interface AlbumImageProps {
+interface AlbumImageProps {
   album: IAlbum;
 }
 

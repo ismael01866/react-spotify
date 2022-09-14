@@ -1,7 +1,7 @@
 import { Flex, Heading } from '@chakra-ui/react';
 import { IArtist } from 'src/types/artist';
 
-export interface ArtistMetaProps {
+interface ArtistMetaProps {
   artist: IArtist;
 }
 

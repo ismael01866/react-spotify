@@ -2,7 +2,7 @@ import { AspectRatio, Image } from '@chakra-ui/react';
 import { IArtist } from 'src/types/artist';
 import { ArtistEmptySkeleton } from '../ArtistEmptySkeleton';
 
-export interface ArtistImageProps {
+interface ArtistImageProps {
   artist: IArtist;
 }
 

@@ -1,52 +1,13 @@
-import {
-  Icon,
-  IconButton,
-  List,
-  ListItem,
-  Tooltip
-} from '@chakra-ui/react';
-import { capitalize } from 'lodash';
-import { default as NextLink } from 'next/link';
-import { IconType } from 'react-icons';
+import { List } from '@chakra-ui/react';
+import { SidebarListNavigationItem } from './components';
 import { data } from './data';
 
 export function SidebarListNavigation() {
   return (
     <List spacing={4}>
       {data.map((item, index) => {
-        return <NavigationItem key={index} item={item} />;
+        return <SidebarListNavigationItem key={index} item={item} />;
       })}
     </List>
-  );
-}
-
-export interface NavigationItemProps {
-  label: string;
-  href: string;
-  icon: IconType;
-}
-
-function NavigationItem(props: { item: NavigationItemProps }) {
-  const {
-    item: { label, href, icon }
-  } = props;
-
-  return (
-    <Tooltip label={capitalize(label)} placement={'end'}>
-      <ListItem>
-        <NextLink href={href}>
-          <IconButton
-            aria-label={label}
-            color={'text.muted'}
-            variant={'ghost'}
-            _hover={{
-              color: 'text.base'
-            }}
-          >
-            <Icon as={icon} boxSize={6} />
-          </IconButton>
-        </NextLink>
-      </ListItem>
-    </Tooltip>
   );
 }

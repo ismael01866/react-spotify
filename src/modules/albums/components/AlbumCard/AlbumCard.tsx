@@ -16,7 +16,7 @@ import {
 import { IAlbum } from 'src/types/album';
 import { AlbumImage } from '../AlbumImage';
 
-export interface AlbumCardProps {
+interface AlbumCardProps {
   album: IAlbum;
   [others: string]: any;
 }

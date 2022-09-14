@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 
-export interface CardMetaProps {
+interface CardMetaProps {
   [others: string]: any;
 }
 

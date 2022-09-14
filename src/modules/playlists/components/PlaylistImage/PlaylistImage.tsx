@@ -2,7 +2,7 @@ import { AspectRatio, Image } from '@chakra-ui/react';
 import { IPlaylist } from 'src/types/playlist';
 import { PlaylistEmptySkeleton } from '../PlaylistEmptySkeleton';
 
-export interface PlaylistImageProps {
+interface PlaylistImageProps {
   playlist: IPlaylist;
 }
 

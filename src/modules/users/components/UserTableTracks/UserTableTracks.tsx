@@ -9,7 +9,7 @@ import {
 import { ITrack } from 'src/types/track';
 import { UserRowTrack } from './components';
 
-export interface UserTableTracksProps {
+interface UserTableTracksProps {
   tracks: ITrack[];
 }
 

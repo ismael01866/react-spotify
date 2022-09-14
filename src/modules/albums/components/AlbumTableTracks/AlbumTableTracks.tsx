@@ -9,7 +9,7 @@ import {
 import { ITrack } from 'src/types/track';
 import { AlbumRowTrack } from './components';
 
-export interface AlbumTableTracksProps {
+interface AlbumTableTracksProps {
   tracks: ITrack[];
 }
 

@@ -8,7 +8,7 @@ import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/helpers';
 import { mutate } from 'swr';
 
-export interface TrackButtonFollowProps {
+interface TrackButtonFollowProps {
   track: ITrack;
 }
 

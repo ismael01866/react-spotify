@@ -2,7 +2,7 @@ import { Button, useBoolean } from '@chakra-ui/react';
 import { Dispatch, SetStateAction } from 'react';
 import { ITrack } from 'src/types/track';
 
-export interface ArtistButtonTogglePopularTracksProps {
+interface ArtistButtonTogglePopularTracksProps {
   tracks: ITrack[];
   setTracks: Dispatch<SetStateAction<ITrack[]>>;
   toggleCount: number;

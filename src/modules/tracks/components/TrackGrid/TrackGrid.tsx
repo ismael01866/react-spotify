@@ -2,7 +2,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import { TrackCard } from 'src/modules/tracks/components';
 import { ITrack } from 'src/types/track';
 
-export interface TrackGridProps {
+interface TrackGridProps {
   tracks: ITrack[];
   [others: string]: any;
 }

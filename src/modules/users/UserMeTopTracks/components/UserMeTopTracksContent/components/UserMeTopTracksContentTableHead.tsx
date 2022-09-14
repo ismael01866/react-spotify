@@ -1,7 +1,7 @@
 import { Table, Th, Thead, Tr } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 
-export interface UserMeTopTracksContentTableHead {
+interface UserMeTopTracksContentTableHead {
   tableColGroups: ReactNode;
 }
 

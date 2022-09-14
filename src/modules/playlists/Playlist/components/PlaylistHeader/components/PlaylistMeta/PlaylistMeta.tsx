@@ -6,7 +6,7 @@ import { pluralize } from 'src/utils/helpers';
 import { useUserIsMe } from 'src/utils/hooks';
 import { useUser } from 'src/utils/hooks/services';
 
-export interface PlaylistMetaProps {
+interface PlaylistMetaProps {
   playlist: IPlaylist;
 }
 
