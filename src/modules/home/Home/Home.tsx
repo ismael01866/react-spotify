@@ -1,36 +1,22 @@
-import { Box, Flex, Heading, HStack, Link } from '@chakra-ui/react';
-import { default as NextLink } from 'next/link';
+import { Box, Flex } from '@chakra-ui/react';
 import {
   HomeUserMePlayerRecentlyPlayed,
   HomeUserMeTopArtists
 } from './components';
+import { HomeBrowseFeaturedPlaylists } from './components/HomeBrowseFeaturedPlaylists';
 
 export function Home() {
   return (
     <Flex flexDirection={'column'} gap={12}>
       <Box>
-        <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Recently played</Heading>
-
-          <NextLink href={'/users/me/player/recently-played'}>
-            <Link ml={'auto'}>See all</Link>
-          </NextLink>
-        </HStack>
-
-        <br />
         <HomeUserMePlayerRecentlyPlayed />
       </Box>
 
       <Box>
-        <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Your top artists</Heading>
+        <HomeBrowseFeaturedPlaylists />
+      </Box>
 
-          <NextLink href={'/users/me/top/artists'}>
-            <Link ml={'auto'}>See all</Link>
-          </NextLink>
-        </HStack>
-
-        <br />
+      <Box>
         <HomeUserMeTopArtists />
       </Box>
     </Flex>

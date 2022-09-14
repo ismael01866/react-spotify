@@ -21,6 +21,8 @@ export * from './useArtistRelatedArtists';
 export * from './useArtistTopTracks';
 export * from './useArtistTopTracksWithFollow';
 
+export * from './useBrowseFeaturedPlaylist';
+
 export * from './useUser';
 
 export * from './usePlaylist';

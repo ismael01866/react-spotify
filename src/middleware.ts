@@ -5,6 +5,7 @@ export const config = {
     '/',
     '/albums/:album*',
     '/artists/:artist*',
+    '/browse/featured-playlists',
     '/playlists/:playlist*',
     '/users/me',
     '/users/:user*'
