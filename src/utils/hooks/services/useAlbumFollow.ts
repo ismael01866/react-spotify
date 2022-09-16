@@ -2,7 +2,7 @@ import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
-export const useAlbumFollow = (query: {}, opts: any = {}) => {
+export const useAlbumFollow = (query = {}, opts: any = {}) => {
   const url = withQueryParams('/api/spotify/me/albums/contains', query);
 
   const { data, error } = useSWR([url, opts], fetcher);

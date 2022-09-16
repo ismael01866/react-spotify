@@ -2,7 +2,7 @@ import { fetcher } from 'src/utils/fetch';
 import { withQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
-export const useArtistFollow = (query: {}, opts: any = {}) => {
+export const useArtistFollow = (query = {}, opts: any = {}) => {
   const url = withQueryParams(
     '/api/spotify/me/following/contains',
     Object.assign({ type: 'artist' }, query)
@@ -12,7 +12,7 @@ export const useArtistFollow = (query: {}, opts: any = {}) => {
 
   return {
     error,
-    artistsFollowed: data,
+    artists: data,
     isLoading: !error && !data?.length
   };
 };

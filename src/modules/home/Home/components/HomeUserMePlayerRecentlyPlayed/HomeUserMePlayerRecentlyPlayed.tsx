@@ -17,9 +17,9 @@ export function HomeUserMePlayerRecentlyPlayed() {
     (data && (
       <>
         <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Your top artists</Heading>
+          <Heading fontSize={'2xl'}>Recently played</Heading>
 
-          <NextLink href={'/users/me/top/artists'}>
+          <NextLink href={'/users/me/player/recently-played'}>
             <Link ml={'auto'}>See all</Link>
           </NextLink>
         </HStack>

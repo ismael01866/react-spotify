@@ -16,9 +16,9 @@ export function HomeUserMeTopArtists() {
     (data && (
       <>
         <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Recently played</Heading>
+          <Heading fontSize={'2xl'}>Top artists</Heading>
 
-          <NextLink href={'/users/me/player/recently-played'}>
+          <NextLink href={'/users/me/top/artists'}>
             <Link ml={'auto'}>See all</Link>
           </NextLink>
         </HStack>
