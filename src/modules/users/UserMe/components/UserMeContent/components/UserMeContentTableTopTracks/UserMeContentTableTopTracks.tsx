@@ -1,10 +1,5 @@
-import {
-  Skeleton,
-  Stack,
-  Table,
-  TableContainer,
-  Tbody
-} from '@chakra-ui/react';
+import { Stack, Table, TableContainer, Tbody } from '@chakra-ui/react';
+import { Skeleton } from 'src/components/Skeleton';
 import { UserRowTrack } from 'src/modules/users/components/UserTableTracks/components';
 import { useMeTopTracksWithFollow } from 'src/utils/hooks/services';
 

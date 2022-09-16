@@ -1,4 +1,5 @@
-import { AspectRatio, Image, Skeleton } from '@chakra-ui/react';
+import { AspectRatio, Image } from '@chakra-ui/react';
+import { Skeleton } from 'src/components/Skeleton';
 import { IArtist } from 'src/types/artist';
 
 interface ArtistBannerProps {

@@ -1,4 +1,5 @@
-import { Box, Flex, Skeleton, Stack } from '@chakra-ui/react';
+import { Box, Flex, Stack } from '@chakra-ui/react';
+import { Skeleton } from 'src/components/Skeleton';
 import { useMeTopTracksWithFollow } from 'src/utils/hooks/services';
 import {
   UserMeTopTracksContentTableBody,

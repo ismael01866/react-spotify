@@ -1,5 +1,6 @@
-import { Skeleton, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
+import { Skeleton } from 'src/components/Skeleton';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { ArtistTablePopularTracks } from 'src/modules/artists/components';
 import { UserContext } from 'src/modules/users';

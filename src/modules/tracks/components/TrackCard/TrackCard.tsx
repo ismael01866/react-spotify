@@ -1,11 +1,4 @@
-import {
-  Box,
-  Heading,
-  Link,
-  Skeleton,
-  Text,
-  VStack
-} from '@chakra-ui/react';
+import { Box, Heading, Link, Text, VStack } from '@chakra-ui/react';
 import { Card } from 'components/Card';
 import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
@@ -14,6 +7,7 @@ import {
   CardButtonPlay,
   CardMeta
 } from 'src/components/Card/components';
+import { Skeleton } from 'src/components/Skeleton';
 import { ITrack } from 'src/types/track';
 import { TrackImage } from '../TrackImage';
 

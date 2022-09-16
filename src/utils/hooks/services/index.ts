@@ -22,6 +22,7 @@ export * from './useArtistTopTracks';
 export * from './useArtistTopTracksWithFollow';
 
 export * from './useBrowseFeaturedPlaylist';
+export * from './useRecommendationsAvailableGenreSeeds';
 
 export * from './useUser';
 

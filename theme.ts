@@ -94,11 +94,17 @@ const Card: ComponentStyleConfig = {
 };
 
 const Menu: ComponentStyleConfig = {
-  baseStyle: {
+  baseStyle: (props: StyleFunctionProps) => ({
     list: {
-      bg: 'bg.900',
+      bg: props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`,
       border: '0'
     }
+  })
+};
+
+const Skeleton: ComponentStyleConfig = {
+  defaultProps: {
+    colorScheme: 'bg'
   }
 };
 
@@ -109,10 +115,15 @@ const Table: ComponentStyleConfig = {
 
       tr: {
         _hover: {
-          bg: 'whiteAlpha.200'
+          bg:
+            props.colorMode === 'dark' &&
+            `var(--chakra-colors-${props.colorScheme}-900)`
         }
       }
     })
+  },
+  defaultProps: {
+    colorScheme: 'bg'
   }
 };
 
@@ -124,7 +135,29 @@ const Tabs: ComponentStyleConfig = {
           bg: 'none'
         }
       }
-    }
+    },
+    'solid-rounded': (props: StyleFunctionProps) => ({
+      tab: {
+        bg:
+          props.colorMode === 'dark' &&
+          `var(--chakra-colors-${props.colorScheme}-900)`,
+
+        borderRadius: 'sm',
+
+        _selected: {
+          bg:
+            props.colorMode === 'dark' &&
+            `var(--chakra-colors-${props.colorScheme}-100)`
+        }
+      },
+      tablist: {
+        gap: 2
+      }
+    })
+  },
+
+  defaultProps: {
+    colorScheme: 'bg'
   }
 };
 
@@ -139,6 +172,7 @@ export const theme = extendTheme(
     components: {
       Button,
       Menu,
+      Skeleton,
       Table,
       Tabs,
 

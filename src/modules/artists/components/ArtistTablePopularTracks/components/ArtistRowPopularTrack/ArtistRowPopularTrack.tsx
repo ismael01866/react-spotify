@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   Image,
-  Skeleton,
   Td,
   Text,
   Tr
@@ -12,6 +11,7 @@ import {
 import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { Skeleton } from 'src/components/Skeleton';
 import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 

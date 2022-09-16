@@ -1,5 +1,6 @@
-import { Skeleton, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import { useContext } from 'react';
+import { Skeleton } from 'src/components/Skeleton';
 import { AlbumContext } from 'src/modules/albums/Album/AlbumContext';
 import { AlbumTableTracks } from 'src/modules/albums/components';
 import { UserContext } from 'src/modules/users';

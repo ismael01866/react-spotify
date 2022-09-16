@@ -34,7 +34,7 @@ export function ArtistAlbums() {
   const singlesData = isLoadingSingles ? skeletonData : singles;
 
   return (
-    <Tabs colorScheme={'gray'} size={'sm'} variant={'solid-rounded'}>
+    <Tabs size={'sm'} variant={'solid-rounded'}>
       <TabList>
         <Tab>Albums</Tab>
         <Tab>Singles and EPs</Tab>

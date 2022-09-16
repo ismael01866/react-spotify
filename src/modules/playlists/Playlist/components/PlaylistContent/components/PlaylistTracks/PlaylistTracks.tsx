@@ -1,5 +1,6 @@
-import { Skeleton, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import { useContext } from 'react';
+import { Skeleton } from 'src/components/Skeleton';
 import { PlaylistTableTracks } from 'src/modules/playlists/components';
 import { PlaylistContext } from 'src/modules/playlists/Playlist/PlaylistContext';
 import { ITrack } from 'src/types/track';
