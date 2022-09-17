@@ -1,8 +1,7 @@
-import { Stack } from '@chakra-ui/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { Skeleton } from 'src/components/Skeleton';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { ArtistTablePopularTracks } from 'src/modules/artists/components';
+import { TrackLoadingStack } from 'src/modules/tracks/components';
 import { UserContext } from 'src/modules/users';
 import { ITrack } from 'src/types/track';
 import { useArtistTopTracksWithFollow } from 'src/utils/hooks/services';
@@ -41,16 +40,6 @@ export function ArtistPopularTracks() {
     ); // Show the top { initialVisibleCount } tracks, hide the rest
   }, [oTracks, hideTracks]);
 
-  const LoadingContent = () => {
-    return (
-      <Stack spacing={4}>
-        {data.map((_, index) => (
-          <Skeleton key={index} height={20} />
-        ))}
-      </Stack>
-    );
-  };
-
   return (
     (!isLoading && (
       <>
@@ -63,6 +52,6 @@ export function ArtistPopularTracks() {
           toggleCount={initialVisibleCount}
         />
       </>
-    )) || <LoadingContent />
+    )) || <TrackLoadingStack />
   );
 }

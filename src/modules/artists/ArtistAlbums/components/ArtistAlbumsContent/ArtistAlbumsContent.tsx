@@ -8,13 +8,17 @@ import { useInfiniteScroll } from 'src/utils/hooks';
 import { withQueryParams } from 'src/utils/helpers';
 
 export function ArtistAlbumsContent() {
-  const { id: artistID } = useContext(ArtistContext);
   const contentEl = useRef<HTMLDivElement>(null);
+
+  const { id: artistID } = useContext(ArtistContext);
 
   const [albums, setAlbums] = useState<IAlbum[]>([]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+
+  const skeletonData = new Array(20).fill('');
+  const data = !albums.length ? skeletonData : albums;
 
   useEffect(() => {
     fetchData();
@@ -58,9 +62,9 @@ export function ArtistAlbumsContent() {
         scrollbarWidth: 'thin'
       }}
     >
-      {albums && (
+      {data && (
         <AlbumGrid
-          albums={albums}
+          albums={data}
           columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
         />
       )}

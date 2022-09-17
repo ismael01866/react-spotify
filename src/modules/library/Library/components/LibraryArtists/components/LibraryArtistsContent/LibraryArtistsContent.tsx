@@ -1,51 +1,29 @@
 import { Box } from '@chakra-ui/react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ArtistGrid } from 'src/modules/artists/components/ArtistGrid';
-import { IArtist } from 'src/types/artist';
-import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
 import { useInfiniteScroll } from 'src/utils/hooks';
+import { useMeArtists } from 'src/utils/hooks/services';
 
 export function LibraryArtistsContent() {
-  const [artists, setArtists] = useState<IArtist[]>([]);
-
   const contentEl = useRef<HTMLDivElement>(null);
 
-  const [after, setAfter] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
+  const {
+    artists,
+    size,
+    setSize,
+    isLoadingMore,
+    isLoadingInitialData
+  } = useMeArtists({ limit: 50 });
 
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const skeletonData = new Array(20).fill('');
+  const data = isLoadingInitialData ? skeletonData : artists;
 
   useInfiniteScroll(contentEl, fetchData);
 
-  // Data fetch
-
   function fetchData() {
-    if (isLoading || isFinished) return;
+    if (isLoadingMore) return;
 
-    const url = withQueryParams(`/api/spotify/me/following`, {
-      after,
-      type: 'artist',
-      limit: 50
-    });
-
-    setIsLoading(true);
-
-    return fetcher(url)
-      .then((data) => {
-        const { items, total, after } = data;
-        if (!artists.length >= total) return setIsFinished(true);
-
-        setAfter(after);
-        setArtists((artists) => [...artists, ...items]);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    setSize(size + 1);
   }
 
   return (
@@ -57,9 +35,9 @@ export function LibraryArtistsContent() {
         scrollbarWidth: 'thin'
       }}
     >
-      {artists && (
+      {data && (
         <ArtistGrid
-          artists={artists}
+          artists={data}
           columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
         />
       )}
