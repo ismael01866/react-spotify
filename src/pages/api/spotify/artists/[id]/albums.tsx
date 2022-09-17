@@ -14,8 +14,18 @@ export default async function handler(
     req.query
   );
 
-  const { items }: { items: IAlbum[] } = await fetchWithToken(req, url);
-  const result = items || [];
+  const {
+    items,
+    limit,
+    offset
+  }: { items: IAlbum[]; limit: number; offset: number } =
+    await fetchWithToken(req, url);
+
+  const result = {
+    items: items || [],
+    limit: limit || 0,
+    offset: offset || 0
+  };
 
   return res.status(200).json(result);
 }

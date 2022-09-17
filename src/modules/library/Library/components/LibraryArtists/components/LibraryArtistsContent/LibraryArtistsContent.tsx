@@ -11,6 +11,7 @@ export function LibraryArtistsContent() {
     artists,
     size,
     setSize,
+    isEmpty,
     isLoadingMore,
     isLoadingInitialData
   } = useMeArtists({ limit: 50 });
@@ -21,7 +22,7 @@ export function LibraryArtistsContent() {
   useInfiniteScroll(contentEl, fetchData);
 
   function fetchData() {
-    if (isLoadingMore) return;
+    if (isEmpty || isLoadingMore) return;
 
     setSize(size + 1);
   }

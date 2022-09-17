@@ -7,10 +7,13 @@ export function ArtistAlbums() {
   const album = useContext(AlbumContext);
   const artistID = album?.artists?.[0].id;
 
-  const { albums, isLoading } = useArtistAlbums(artistID, {
-    limit: 6,
-    include_groups: 'album'
-  });
+  const { albums, isLoadingInitialData: isLoading } = useArtistAlbums(
+    artistID,
+    {
+      limit: 6,
+      include_groups: 'album'
+    }
+  );
 
   const skeletonData = new Array(6).fill('');
   const data = isLoading ? skeletonData : albums;

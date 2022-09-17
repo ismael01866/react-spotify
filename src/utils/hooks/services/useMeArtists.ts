@@ -4,15 +4,15 @@ import { withQueryParams } from 'src/utils/helpers';
 import useSWRInfinite from 'swr/infinite';
 
 export const useMeArtists = (query = {}, opts = {}) => {
+  const url = withQueryParams('/api/spotify/me/following', {
+    type: 'artist',
+    ...query
+  });
+
   const { data, error, size, setSize } = useSWRInfinite<{
     items: IArtist[];
     after: string;
   }>((pageIndex, previousPageData) => {
-    const url = withQueryParams('/api/spotify/me/following', {
-      type: 'artist',
-      ...query
-    });
-
     // reached the end
     if (previousPageData && !previousPageData.items) return null;
 
@@ -30,11 +30,15 @@ export const useMeArtists = (query = {}, opts = {}) => {
     isLoadingInitialData ||
     (size > 0 && data && typeof data[size - 1] === 'undefined');
 
+  const isEmpty =
+    !isLoadingInitialData && data?.[size - 1]?.items.length === 0;
+
   return {
     error,
     artists,
     size,
     setSize,
+    isEmpty,
     isLoadingMore,
     isLoadingInitialData
   };

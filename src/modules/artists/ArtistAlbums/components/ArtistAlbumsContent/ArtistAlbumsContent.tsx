@@ -1,56 +1,37 @@
 import { Box } from '@chakra-ui/react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
-import { IAlbum } from 'src/types/album';
-import { fetcher } from 'src/utils/fetch';
 import { useInfiniteScroll } from 'src/utils/hooks';
-import { withQueryParams } from 'src/utils/helpers';
+import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export function ArtistAlbumsContent() {
   const contentEl = useRef<HTMLDivElement>(null);
 
   const { id: artistID } = useContext(ArtistContext);
 
-  const [albums, setAlbums] = useState<IAlbum[]>([]);
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
+  const {
+    albums,
+    size,
+    setSize,
+    isEmpty,
+    isLoadingMore,
+    isLoadingInitialData
+  } = useArtistAlbums(artistID, {
+    limit: 50,
+    include_groups: ['album', 'single']
+  });
 
   const skeletonData = new Array(20).fill('');
-  const data = !albums.length ? skeletonData : albums;
-
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const data = isLoadingInitialData ? skeletonData : albums;
 
   useInfiniteScroll(contentEl, fetchData);
 
   // Data fetch
 
   function fetchData() {
-    if (isLoading || isFinished) return;
-
-    const url = withQueryParams(
-      `/api/spotify/artists/${artistID}/albums`,
-      {
-        offset: albums.length,
-        limit: 50,
-        include_groups: ['album', 'single']
-      }
-    );
-
-    setIsLoading(true);
-
-    return fetcher(url)
-      .then((data) => {
-        if (!data.length) return setIsFinished(true);
-        setAlbums((albums) => [...albums, ...data]);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    if (isEmpty || isLoadingMore) return;
+    setSize(size + 1);
   }
 
   return (
