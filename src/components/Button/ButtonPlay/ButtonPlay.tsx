@@ -5,7 +5,7 @@ import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import {
   PlayerContext,
   selectDeviceID,
@@ -65,7 +65,7 @@ export const ButtonPlay = forwardRef<
   const handleOnClick = debounce(async () => {
     if (artistIsPlaying || trackIsPlaying) return player?.togglePlay();
 
-    const url = withQueryParams('/api/spotify/me/player/play', {
+    const url = utilWithQueryParams('/api/spotify/me/player/play', {
       device_id: deviceID
     });
 

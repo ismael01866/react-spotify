@@ -1,10 +1,10 @@
 import { IArtist } from 'src/types/artist';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWRInfinite from 'swr/infinite';
 
 export const useMeArtists = (query = {}, opts = {}) => {
-  const url = withQueryParams('/api/spotify/me/following', {
+  const url = utilWithQueryParams('/api/spotify/me/following', {
     type: 'artist',
     ...query
   });

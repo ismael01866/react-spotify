@@ -5,7 +5,7 @@ import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { ITrack } from 'src/types/track';
 import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import { mutate } from 'swr';
 
 interface TrackButtonFollowProps {
@@ -22,7 +22,7 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
 
   const handleOnClick = () => {
     const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = withQueryParams('/api/spotify/me/tracks', {
+    const updateURL = utilWithQueryParams('/api/spotify/me/tracks', {
       ids
     });
 

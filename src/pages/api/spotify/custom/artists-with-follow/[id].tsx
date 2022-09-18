@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IArtist } from 'src/types/artist';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +12,7 @@ export default async function handler(
   const artistsURL = `https://api.spotify.com/v1/artists/${id}`;
   const artist: IArtist = await fetchWithToken(req, artistsURL);
 
-  const artistsFollowURL = withQueryParams(
+  const artistsFollowURL = utilWithQueryParams(
     `https://api.spotify.com/v1/me/following/contains`,
     { ids: id, type: 'artist' }
   );

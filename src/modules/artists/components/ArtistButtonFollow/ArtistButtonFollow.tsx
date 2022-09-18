@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IArtist } from 'src/types/artist';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import { mutate } from 'swr';
 
 interface ArtistButtonFollowProps {
@@ -21,7 +21,7 @@ export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
 
   const handleOnClick = () => {
     const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = withQueryParams('/api/spotify/me/following', {
+    const updateURL = utilWithQueryParams('/api/spotify/me/following', {
       ids,
       type: 'artist'
     });

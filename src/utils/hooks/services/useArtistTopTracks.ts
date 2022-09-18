@@ -1,6 +1,6 @@
 import { ITrack } from 'src/types/track';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
 export const useArtistTopTracks = (
@@ -8,7 +8,7 @@ export const useArtistTopTracks = (
   query = {},
   opts = {}
 ) => {
-  const url = withQueryParams(
+  const url = utilWithQueryParams(
     `/api/spotify/artists/${id}/top-tracks`,
     query
   );

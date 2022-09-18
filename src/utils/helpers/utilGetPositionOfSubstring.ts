@@ -1,4 +1,4 @@
-export const getPositionOfSubstring = (
+export const utilGetPositionOfSubstring = (
   string: string,
   subString: string,
   index: number

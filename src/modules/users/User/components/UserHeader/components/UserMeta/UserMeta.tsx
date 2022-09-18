@@ -1,6 +1,6 @@
 import { Flex, Heading, HStack } from '@chakra-ui/react';
 import { IUser } from 'src/types/user';
-import { pluralize } from 'src/utils/helpers';
+import { utilPluralize } from 'src/utils/helpers';
 
 interface UserMetaProps {
   user: IUser;
@@ -24,7 +24,7 @@ export function UserMeta(props: UserMetaProps) {
 
       <HStack color={'text.base'} mt={4}>
         <Heading fontSize={'sm'} noOfLines={1}>
-          {pluralize('Follower', followers?.total)}
+          {utilPluralize('Follower', followers?.total)}
         </Heading>
       </HStack>
     </Flex>

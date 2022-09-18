@@ -1,9 +1,9 @@
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
 export const useArtistFollow = (query = {}, opts: any = {}) => {
-  const url = withQueryParams(
+  const url = utilWithQueryParams(
     '/api/spotify/me/following/contains',
     Object.assign({ type: 'artist' }, query)
   );

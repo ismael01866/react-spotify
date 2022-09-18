@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const { id } = req.query;
 
-  const url = withQueryParams(
+  const url = utilWithQueryParams(
     `https://api.spotify.com/v1/artists/${id}/top-tracks`,
     req.query
   );

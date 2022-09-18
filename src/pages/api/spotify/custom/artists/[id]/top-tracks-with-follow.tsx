@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const { id, ...others } = req.query;
 
-  const topTracksURL = withQueryParams(
+  const topTracksURL = utilWithQueryParams(
     `https://api.spotify.com/v1/artists/${id}/top-tracks`,
     { ...others }
   );
@@ -19,7 +19,7 @@ export default async function handler(
     topTracksURL
   );
 
-  const tracksFollowURL = withQueryParams(
+  const tracksFollowURL = utilWithQueryParams(
     `https://api.spotify.com/v1/me/tracks/contains`,
     { ids: tracks?.map((track) => track.id).join(',') }
   );

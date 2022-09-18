@@ -1,3 +1,3 @@
-export * from './pluralize';
-export * from './withQueryParams';
-export * from './getPositionFromSubstring';
+export * from './utilPluralize';
+export * from './utilWithQueryParams';
+export * from './utilGetPositionOfSubstring';

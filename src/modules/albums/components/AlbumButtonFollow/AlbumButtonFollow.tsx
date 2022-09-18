@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import { mutate } from 'swr';
 
 interface AlbumButtonFollowProps {
@@ -21,7 +21,7 @@ export function AlbumButtonFollow(props: AlbumButtonFollowProps) {
 
   const handleOnClick = () => {
     const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = withQueryParams('/api/spotify/me/albums', {
+    const updateURL = utilWithQueryParams('/api/spotify/me/albums', {
       ids
     });
 

@@ -2,9 +2,9 @@ export * from './useMe';
 
 export * from './useMeAlbums';
 export * from './useMeArtists';
+export * from './useMeArtistsAll';
 
 export * from './useMeTopTracks';
-export * from './useMeTopArtists';
 export * from './useMeTopTracksWithFollow';
 
 export * from './useMePlayerCurrentlyPlaying';

@@ -3,17 +3,19 @@ import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
-export const useArtistRelatedArtists = (
-  id: string | string[] | undefined,
-  query = {},
-  opts = {}
-) => {
+export const useMeArtistsAll = (query = {}, opts = {}) => {
   const url = utilWithQueryParams(
-    `/api/spotify/artists/${id}/related-artists`,
-    query
+    '/api/spotify/custom/me/following/artists-all',
+    {
+      type: 'artist',
+      ...query
+    }
   );
 
-  const { data, error } = useSWR<IArtist[]>([url, opts], fetcher);
+  const { data, error } = useSWR<IArtist[]>(
+    [url, { ...opts }],
+    fetcher
+  );
 
   return {
     error,

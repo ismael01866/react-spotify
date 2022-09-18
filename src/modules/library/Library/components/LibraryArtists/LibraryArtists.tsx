@@ -5,12 +5,7 @@ import {
 } from './components';
 export function LibraryArtists() {
   return (
-    <Flex
-      flexDirection={'column'}
-      gap={12}
-      height={'full'}
-      overflow={'hidden'}
-    >
+    <Flex flexDirection={'column'} gap={12}>
       <LibraryArtistsHeader />
       <LibraryArtistsContent />
     </Flex>

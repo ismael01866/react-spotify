@@ -19,8 +19,6 @@ export function TrackMeta(props: TrackMetaProps) {
   const { track } = props;
   const { album, artists } = track;
 
-  console.log(track);
-
   return (
     <HStack spacing={12}>
       <AspectRatio h={'full'} ratio={4 / 3} w={'7xs'}>

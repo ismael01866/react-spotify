@@ -1,15 +1,11 @@
 import { Box } from '@chakra-ui/react';
+import { useContext } from 'react';
 import { ArtistGrid } from 'src/modules/artists/components';
-import { useMeTopArtists } from 'src/utils/hooks/services';
+import { UserMeTopArtistsContext } from '../../UserMeTopArtistsContext';
 
 export function UserMeTopArtistsContent() {
-  const limit = 50;
-  const time_range = 'short_term';
-
-  const { artists, isLoading } = useMeTopArtists({ limit, time_range });
-
-  const skeletonData = new Array(limit).fill('');
-  const data = isLoading ? skeletonData : artists;
+  const skeletonData = new Array(20).fill('');
+  const data = useContext(UserMeTopArtistsContext) || skeletonData;
 
   return (
     <Box

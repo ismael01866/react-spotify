@@ -1,6 +1,6 @@
 import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWRInfinite from 'swr/infinite';
 
 export const useArtistAlbums = (
@@ -8,7 +8,7 @@ export const useArtistAlbums = (
   query = {},
   opts = {}
 ) => {
-  const url = withQueryParams(
+  const url = utilWithQueryParams(
     `/api/spotify/artists/${id}/albums`,
     query
   );

@@ -13,13 +13,11 @@ export function Library() {
       display={'flex'}
       flexDirection={'column'}
       gap={12}
-      height={'full'}
-      mx={-12}
-      overflow={'hidden'}
       variant={'solid-rounded'}
       isLazy
+      lazyBehavior={'keepMounted'}
     >
-      <TabList px={12}>
+      <TabList>
         <Tab>Playlists</Tab>
         <Tab>Podcasts</Tab>
         <Tab>Artists</Tab>

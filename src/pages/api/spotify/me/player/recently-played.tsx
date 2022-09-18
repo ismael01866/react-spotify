@@ -2,7 +2,7 @@ import { uniqBy } from 'lodash';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
-import { withQueryParams } from 'src/utils/helpers';
+import { utilWithQueryParams } from 'src/utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   const { limit } = req.query;
 
-  let tracksURL = withQueryParams(
+  let tracksURL = utilWithQueryParams(
     'https://api.spotify.com/v1/me/player/recently-played',
     req.query
   );
@@ -24,7 +24,7 @@ export default async function handler(
     const albums: ITrack[] = [];
     const artists: ITrack[] = [];
 
-    // remove the playlist type since spotify doesn't provide
+    // remove the 'playlist' type since spotify doesn't provide
     // enough metadada to properly use this type of entity
 
     const filteredItems = items.filter(
@@ -73,7 +73,7 @@ export default async function handler(
     tracksURL = next;
   } while (tracksURL && tracks.length < Number(limit));
 
-  const result = tracks || [];
+  const result = tracks.splice(0, Number(limit)) || [];
 
   return res.status(200).json(result);
 }
