@@ -3,6 +3,7 @@ import {
   LibraryArtistsContent,
   LibraryArtistsHeader
 } from './components';
+
 export function LibraryArtists() {
   return (
     <Flex flexDirection={'column'} gap={12}>

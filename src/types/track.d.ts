@@ -1,17 +1,23 @@
 import { IAlbum } from './album';
 import { IArtist } from './artist';
+import { IPlaylist } from './playlist';
 
 export interface ITrack {
   id?: string;
   uri?: string;
   name?: string;
   duration_ms?: number;
+
+  track?: ITrack;
   album?: IAlbum;
   artists?: IArtist[];
+  playlist?: IPlaylist;
+
   is_playable?: boolean;
-  track?: ITrack;
+
   context?: {
     uri?: string;
+    href?: string;
     type?: string;
   };
 

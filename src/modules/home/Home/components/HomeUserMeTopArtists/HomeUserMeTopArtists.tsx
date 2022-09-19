@@ -1,14 +1,17 @@
 import { Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
 import { ArtistGrid } from 'src/modules/artists/components';
-import { HomeContext } from '../../HomeContext';
+import { useMeTopArtists } from 'src/utils/hooks/services';
 
 export function HomeUserMeTopArtists() {
-  const skeletonData = new Array(6).fill('');
-  const { topArtists } = useContext(HomeContext);
+  const limit = 6;
 
-  const data = topArtists || skeletonData;
+  const { artists, isLoading } = useMeTopArtists({
+    limit
+  });
+
+  const skeletonData = new Array(limit).fill('');
+  const data = isLoading ? skeletonData : artists;
 
   return (
     (data && (

@@ -5,7 +5,7 @@ import useSWR from 'swr';
 
 export const useMePlayerRecentlyPlayed = (query = {}, opts = {}) => {
   const url = utilWithQueryParams(
-    `/api/spotify/me/player/recently-played`,
+    `/api/spotify/custom/me/player/recently-played`,
     query
   );
 

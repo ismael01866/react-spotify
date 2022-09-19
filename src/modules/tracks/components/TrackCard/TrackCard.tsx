@@ -34,6 +34,12 @@ export function TrackCard(props: TrackCardProps) {
       case 'artist':
         return track?.artists?.[0]?.name;
 
+      case 'track':
+        return track?.name;
+
+      case 'playlist':
+        return track?.playlist?.name;
+
       default:
         break;
     }
@@ -47,11 +53,15 @@ export function TrackCard(props: TrackCardProps) {
     } = track;
 
     switch (type) {
+      case 'track':
       case 'album':
         return `/albums/${track?.album?.id}`;
 
       case 'artist':
         return `/artists/${track?.artists?.[0]?.id}`;
+
+      case 'playlist':
+        return `/playlists/${track?.playlist?.id}`;
 
       default:
         break;
