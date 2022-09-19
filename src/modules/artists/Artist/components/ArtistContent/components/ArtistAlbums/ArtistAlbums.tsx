@@ -1,4 +1,5 @@
 import {
+  Heading,
   Tab,
   TabList,
   TabPanel,
@@ -32,32 +33,41 @@ export function ArtistAlbums() {
   const singlesData = isLoadingSingles ? skeletonData : singles;
 
   return (
-    <Tabs size={'sm'} variant={'solid-rounded'}>
-      <TabList>
-        <Tab>Albums</Tab>
-        <Tab>Singles and EPs</Tab>
-      </TabList>
+    !!albumsData?.length ||
+    (!!singlesData?.length && (
+      <Tabs size={'sm'} variant={'solid-rounded'}>
+        <TabList>
+          {!!albumsData?.length && <Tab>Albums</Tab>}
+          {!!singlesData?.length && <Tab>Singles and EPs</Tab>}
+        </TabList>
 
-      <br />
-      <TabPanels>
-        <TabPanel p={0}>
-          {albumsData && (
-            <AlbumGrid
-              albums={albumsData}
-              columns={{ base: 1, sm: 2, xl: 3 }}
-            />
+        <br />
+        <TabPanels>
+          {!!albumsData?.length && (
+            <TabPanel p={0}>
+              <AlbumGrid
+                albums={albumsData}
+                columns={{ base: 1, sm: 2, xl: 3 }}
+              />
+            </TabPanel>
           )}
-        </TabPanel>
 
-        <TabPanel p={0}>
-          {singlesData && (
-            <AlbumGrid
-              albums={singlesData}
-              columns={{ base: 1, sm: 2, xl: 3 }}
-            />
+          {!!singlesData?.length && (
+            <TabPanel p={0}>
+              {singlesData && (
+                <AlbumGrid
+                  albums={singlesData}
+                  columns={{ base: 1, sm: 2, xl: 3 }}
+                />
+              )}
+            </TabPanel>
           )}
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
+        </TabPanels>
+      </Tabs>
+    )) || (
+      <Heading color={'text.muted'} size={'sm'}>
+        No information available
+      </Heading>
+    )
   );
 }

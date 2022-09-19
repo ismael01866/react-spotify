@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { TrackGrid } from 'src/modules/tracks/components';
 import { useMePlayerRecentlyPlayed } from 'src/utils/hooks/services';
 
-export function UserMePlayerRecentlyPlayedContent() {
+export function UserMeRecentlyPlayedContent() {
   const limit = 50;
 
   const { tracks, isLoading } = useMePlayerRecentlyPlayed({
@@ -19,15 +19,5 @@ export function UserMePlayerRecentlyPlayedContent() {
     ? skeletonData
     : [...(tracks || [])].splice(0, limit);
 
-  return (
-    <Box
-      overflowY={'scroll'}
-      px={12}
-      sx={{
-        scrollbarWidth: 'thin'
-      }}
-    >
-      {data && <TrackGrid tracks={data} />}
-    </Box>
-  );
+  return <Box>{data && <TrackGrid tracks={data} />}</Box>;
 }

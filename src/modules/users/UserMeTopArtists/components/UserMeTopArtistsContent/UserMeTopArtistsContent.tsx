@@ -7,15 +7,5 @@ export function UserMeTopArtistsContent() {
   const skeletonData = new Array(20).fill('');
   const data = useContext(UserMeTopArtistsContext) || skeletonData;
 
-  return (
-    <Box
-      overflowY={'scroll'}
-      px={12}
-      sx={{
-        scrollbarWidth: 'thin'
-      }}
-    >
-      {data && <ArtistGrid artists={data} />}
-    </Box>
-  );
+  return <Box>{data && <ArtistGrid artists={data} />}</Box>;
 }

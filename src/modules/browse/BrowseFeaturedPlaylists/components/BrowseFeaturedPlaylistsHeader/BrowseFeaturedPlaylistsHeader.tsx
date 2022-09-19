@@ -7,7 +7,7 @@ export function BrowseFeaturedPlaylistsHeader() {
   const { message } = useContext(BrowseFeaturedPlaylistsContext);
 
   return (
-    <Box flexShrink={0} px={12}>
+    <Box>
       <Heading fontSize={'3xl'} noOfLines={2}>
         {message}
       </Heading>

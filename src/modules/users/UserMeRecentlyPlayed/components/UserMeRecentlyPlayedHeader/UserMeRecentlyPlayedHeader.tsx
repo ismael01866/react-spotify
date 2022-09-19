@@ -1,8 +1,8 @@
 import { Box, Heading } from '@chakra-ui/react';
 
-export function UserMePlayerRecentlyPlayedHeader() {
+export function UserMeRecentlyPlayedHeader() {
   return (
-    <Box flexShrink={0} px={12}>
+    <Box>
       <Heading fontSize={'3xl'}>Recently played</Heading>
     </Box>
   );

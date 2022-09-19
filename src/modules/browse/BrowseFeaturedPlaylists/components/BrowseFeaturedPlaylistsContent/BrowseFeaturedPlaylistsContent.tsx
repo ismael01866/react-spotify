@@ -7,13 +7,7 @@ export function BrowseFeaturedPlaylistsContent() {
   const { playlists } = useContext(BrowseFeaturedPlaylistsContext);
 
   return (
-    <Box
-      overflowY={'scroll'}
-      px={12}
-      sx={{
-        scrollbarWidth: 'thin'
-      }}
-    >
+    <Box>
       {playlists && (
         <PlaylistGrid
           playlists={playlists}

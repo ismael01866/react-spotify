@@ -12,13 +12,7 @@ export function ArtistRelatedArtistsContent() {
   const data = isLoading ? skeletonData : artists;
 
   return (
-    <Box
-      overflowY={'scroll'}
-      px={12}
-      sx={{
-        scrollbarWidth: 'thin'
-      }}
-    >
+    <Box>
       {data && (
         <ArtistGrid
           artists={data}

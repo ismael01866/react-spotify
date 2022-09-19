@@ -1,13 +1,13 @@
 import { Box } from '@chakra-ui/react';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
+import { LayoutContext } from 'src/layout';
 import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { useInfiniteScroll } from 'src/utils/hooks';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export function ArtistAlbumsContent() {
-  const contentEl = useRef<HTMLDivElement>(null);
-
+  const { contentElRef } = useContext(LayoutContext);
   const { id: artistID } = useContext(ArtistContext);
 
   const {
@@ -25,7 +25,7 @@ export function ArtistAlbumsContent() {
   const skeletonData = new Array(20).fill('');
   const data = isLoadingInitialData ? skeletonData : albums;
 
-  useInfiniteScroll(contentEl, fetchData);
+  useInfiniteScroll(contentElRef, fetchData);
 
   // Data fetch
 
@@ -35,14 +35,7 @@ export function ArtistAlbumsContent() {
   }
 
   return (
-    <Box
-      overflowY={'scroll'}
-      px={12}
-      ref={contentEl}
-      sx={{
-        scrollbarWidth: 'thin'
-      }}
-    >
+    <Box>
       {data && (
         <AlbumGrid
           albums={data}

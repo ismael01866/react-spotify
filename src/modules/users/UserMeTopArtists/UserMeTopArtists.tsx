@@ -6,13 +6,7 @@ import {
 
 export function UserMeTopArtists() {
   return (
-    <Flex
-      flexDirection={'column'}
-      gap={12}
-      height={'full'}
-      overflow={'hidden'}
-      mx={-12}
-    >
+    <Flex flexDirection={'column'} gap={12}>
       <UserMeTopArtistsHeader />
       <UserMeTopArtistsContent />
     </Flex>

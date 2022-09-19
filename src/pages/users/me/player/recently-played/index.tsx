@@ -1,8 +1,8 @@
-import { UserMePlayerRecentlyPlayed } from 'modules';
+import { UserMeRecentlyPlayed } from 'modules';
 import type { NextPage } from 'next';
 
-const UserMePlayerRecentlyPlayedPage: NextPage = () => (
-  <UserMePlayerRecentlyPlayed />
+const UserMeRecentlyPlayedPage: NextPage = () => (
+  <UserMeRecentlyPlayed />
 );
 
-export default UserMePlayerRecentlyPlayedPage;
+export default UserMeRecentlyPlayedPage;

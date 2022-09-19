@@ -15,13 +15,7 @@ export function ArtistRelatedArtists() {
 
   return (
     (!isLoading && (
-      <Flex
-        flexDirection={'column'}
-        gap={12}
-        height={'full'}
-        overflow={'hidden'}
-        mx={-12}
-      >
+      <Flex flexDirection={'column'} gap={12}>
         <ArtistContext.Provider value={artist}>
           <ArtistRelatedArtistsHeader />
           <ArtistRelatedArtistsContent />
