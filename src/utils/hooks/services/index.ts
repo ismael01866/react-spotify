@@ -9,6 +9,12 @@ export * from './useMeTopArtists';
 export * from './useMeTopTracks';
 export * from './useMeTopTracksWithFollow';
 
+export * from './useMePlaylists';
+export * from './useMePlaylistsAll';
+
+export * from './useMeTracks';
+export * from './useMeTracksAll';
+
 export * from './useMePlayerCurrentlyPlaying';
 export * from './useMePlayerRecentlyPlayed';
 

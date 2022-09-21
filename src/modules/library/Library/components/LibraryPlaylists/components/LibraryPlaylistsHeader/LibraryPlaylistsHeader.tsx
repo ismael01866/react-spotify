@@ -2,39 +2,38 @@ import { Box, Flex, Heading, Input } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import { FormEvent, useContext, useTransition } from 'react';
 import { DEBOUNCE_WAIT_FAST } from 'src/utils/constants';
-import { LibraryArtistsContext } from '../../LibraryArtistsContext';
+import { LibraryPlaylistsContext } from '../../LibraryPlaylistsContext';
 
-export function LibraryArtistsHeader() {
-  const { artists, artistsFiltered, setArtistsFiltered } = useContext(
-    LibraryArtistsContext
-  );
+export function LibraryPlaylistsHeader() {
+  const { playlists, playlistsFiltered, setPlaylistsFiltered } =
+    useContext(LibraryPlaylistsContext);
 
   const [_, startTransition] = useTransition();
 
   const handleOnChange = (event: FormEvent<HTMLInputElement>) => {
-    filterArtistsByName(event.currentTarget.value);
+    filterPlaylistsByName(event.currentTarget.value);
   };
 
-  const filterArtistsByName = debounce((value: string) => {
-    const filtered = artistsFiltered?.filter((artist) =>
+  const filterPlaylistsByName = debounce((value: string) => {
+    const filtered = playlistsFiltered?.filter((artist) =>
       artist.name?.toLowerCase()?.includes(value.toLowerCase())
     );
 
     startTransition(() => {
       value
-        ? setArtistsFiltered(filtered)
-        : setArtistsFiltered(artists);
+        ? setPlaylistsFiltered(filtered)
+        : setPlaylistsFiltered(playlists);
     });
   }, DEBOUNCE_WAIT_FAST);
 
   return (
     <Flex>
-      <Heading fontSize={'2xl'}>Artists</Heading>
+      <Heading fontSize={'2xl'}>Playlists</Heading>
 
-      {artistsFiltered && (
+      {playlistsFiltered && (
         <Box ml={'auto'}>
           <Input
-            placeholder={'Search in artists'}
+            placeholder={'Search in playlists'}
             size={'sm'}
             variant={'filled'}
             onChange={handleOnChange}

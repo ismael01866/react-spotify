@@ -25,6 +25,19 @@ export default async function handler(
     artistsURL = next;
   } while (artistsURL);
 
+  if (req.query.sort) {
+    artists.sort((a, b) => {
+      const prop = req.query.sort as keyof IArtist;
+
+      if (!a[prop] || !b[prop]) return 0;
+
+      const aProp = a[prop] as keyof IArtist;
+      const bProp = b[prop] as keyof IArtist;
+
+      return aProp < bProp ? -1 : 1;
+    });
+  }
+
   const result = artists || [];
 
   return res.status(200).json(result);

@@ -1,27 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
 import { IAlbum } from 'src/types/album';
-import { TABS_RENDER_WAIT_DURATION } from 'src/utils/constants';
-import { useMeAlbumsAll } from 'src/utils/hooks/services';
-import { setTimeout } from 'timers';
+import { LibraryAlbumsContext } from '../../LibraryAlbumsContext';
 
 export function LibraryAlbumsContent() {
-  const { albums } = useMeAlbumsAll();
+  const { albumsFiltered } = useContext(LibraryAlbumsContext);
 
   const skeletonData = new Array(20).fill('');
-  const [data, setData] = useState<IAlbum[]>(skeletonData);
+  const [albums, setAlbums] = useState<IAlbum[]>(skeletonData);
 
   useEffect(() => {
-    if (!albums?.length) return;
-
-    setTimeout(() => {
-      setData(albums);
-    }, TABS_RENDER_WAIT_DURATION);
-  }, [albums]);
+    if (albumsFiltered) setAlbums(albumsFiltered);
+  }, [albumsFiltered]);
 
   return (
     <AlbumGrid
-      albums={data}
+      albums={albums}
       columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
     />
   );

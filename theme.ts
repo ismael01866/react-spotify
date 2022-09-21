@@ -19,6 +19,16 @@ const styles = {
       bg: 'bg.base',
       overflow: 'hidden'
     }
+
+    // '.chakra-form-control': {
+    //   select: {
+    //     backgroundColor: 'bg.900',
+
+    //     option: {
+    //       backgroundColor: 'bg.800'
+    //     }
+    //   }
+    // }
   }
 };
 
@@ -96,10 +106,61 @@ const Card: ComponentStyleConfig = {
 const Menu: ComponentStyleConfig = {
   baseStyle: (props: StyleFunctionProps) => ({
     list: {
-      bg: props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`,
+      background:
+        props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`,
       border: '0'
     }
   })
+};
+
+const Input: ComponentStyleConfig = {
+  variants: {
+    filled: (props: StyleFunctionProps) => ({
+      field: {
+        background:
+          props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`,
+
+        border: '0',
+
+        _hover: {
+          background:
+            props.colorMode === 'dark' && `var(--chakra-colors-bg-800)`
+        },
+
+        _focus: {
+          background:
+            props.colorMode === 'dark' && `var(--chakra-colors-bg-800)`
+        },
+
+        _placeholder: {
+          color:
+            props.colorMode === 'dark' &&
+            `var(--chakra-colors-text-base)`
+        }
+      }
+    })
+  }
+};
+
+const Select: ComponentStyleConfig = {
+  variants: {
+    filled: (props: StyleFunctionProps) => ({
+      field: {
+        background:
+          props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`,
+
+        _hover: {
+          background:
+            props.colorMode === 'dark' && `var(--chakra-colors-bg-800)`
+        },
+
+        option: {
+          background:
+            props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`
+        }
+      }
+    })
+  }
 };
 
 const Skeleton: ComponentStyleConfig = {
@@ -115,7 +176,7 @@ const Table: ComponentStyleConfig = {
 
       tr: {
         _hover: {
-          bg:
+          background:
             props.colorMode === 'dark' &&
             `var(--chakra-colors-${props.colorScheme}-900)`
         }
@@ -132,20 +193,25 @@ const Tabs: ComponentStyleConfig = {
     line: {
       tab: {
         _focus: {
-          bg: 'none'
+          background: 'none'
         }
       }
     },
     'solid-rounded': (props: StyleFunctionProps) => ({
       tab: {
-        bg:
+        background:
           props.colorMode === 'dark' &&
           `var(--chakra-colors-${props.colorScheme}-900)`,
 
         borderRadius: 'sm',
 
+        ':hover:not([aria-selected="true"])': {
+          background:
+            props.colorMode === 'dark' && `var(--chakra-colors-bg-800)`
+        },
+
         _selected: {
-          bg:
+          background:
             props.colorMode === 'dark' &&
             `var(--chakra-colors-${props.colorScheme}-100)`
         }
@@ -171,7 +237,9 @@ export const theme = extendTheme(
 
     components: {
       Button,
+      Input,
       Menu,
+      Select,
       Skeleton,
       Table,
       Tabs,

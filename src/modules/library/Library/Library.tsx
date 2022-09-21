@@ -5,7 +5,11 @@ import {
   TabPanels,
   Tabs
 } from '@chakra-ui/react';
-import { LibraryAlbums, LibraryArtists } from './components';
+import {
+  LibraryAlbums,
+  LibraryArtists,
+  LibraryPlaylists
+} from './components';
 
 export function Library() {
   return (
@@ -19,19 +23,15 @@ export function Library() {
     >
       <TabList>
         <Tab>Playlists</Tab>
-        <Tab>Podcasts</Tab>
         <Tab>Artists</Tab>
         <Tab>Albums</Tab>
       </TabList>
 
-      <TabPanels height={'full'} overflow={'hidden'}>
+      <TabPanels>
         <TabPanel>
-          <p>one!</p>
+          <LibraryPlaylists />
         </TabPanel>
         <TabPanel>
-          <p>two!</p>
-        </TabPanel>
-        <TabPanel height={'full'} overflow={'hidden'} p={0}>
           <LibraryArtists />
         </TabPanel>
         <TabPanel>
