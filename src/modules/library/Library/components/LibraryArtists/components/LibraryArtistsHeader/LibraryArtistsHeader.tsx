@@ -1,7 +1,15 @@
-import { Box, Flex, Heading, Input } from '@chakra-ui/react';
-import { debounce } from 'lodash';
+import {
+  Box,
+  Heading,
+  HStack,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement
+} from '@chakra-ui/react';
 import { FormEvent, useContext, useTransition } from 'react';
-import { DEBOUNCE_WAIT_FAST } from 'src/utils/constants';
+import { FaSearch } from 'react-icons/fa';
+import { IArtist } from 'src/types/artist';
 import { LibraryArtistsContext } from '../../LibraryArtistsContext';
 
 export function LibraryArtistsHeader() {
@@ -12,35 +20,44 @@ export function LibraryArtistsHeader() {
   const [_, startTransition] = useTransition();
 
   const handleOnChange = (event: FormEvent<HTMLInputElement>) => {
-    filterArtistsByName(event.currentTarget.value);
+    const value = event.currentTarget.value;
+
+    if (artists && value) {
+      const filtered = filterArtistsByName(artists, value);
+
+      startTransition(() => {
+        setArtistsFiltered(filtered);
+      });
+
+      return;
+    }
+
+    setArtistsFiltered(artists);
   };
 
-  const filterArtistsByName = debounce((value: string) => {
-    const filtered = artistsFiltered?.filter((artist) =>
+  const filterArtistsByName = (artists: IArtist[], value: string) => {
+    return artists?.filter((artist) =>
       artist.name?.toLowerCase()?.includes(value.toLowerCase())
     );
-
-    startTransition(() => {
-      value
-        ? setArtistsFiltered(filtered)
-        : setArtistsFiltered(artists);
-    });
-  }, DEBOUNCE_WAIT_FAST);
+  };
 
   return (
-    <Flex>
+    <HStack justifyContent={'space-between'}>
       <Heading fontSize={'2xl'}>Artists</Heading>
 
-      {artistsFiltered && (
-        <Box ml={'auto'}>
+      <Box visibility={artistsFiltered ? 'visible' : 'hidden'}>
+        <InputGroup>
+          <InputLeftElement mt={'1px'}>
+            <Icon as={FaSearch} color={'text.muted'} />
+          </InputLeftElement>
+
           <Input
             placeholder={'Search in artists'}
-            size={'sm'}
             variant={'filled'}
             onChange={handleOnChange}
           ></Input>
-        </Box>
-      )}
-    </Flex>
+        </InputGroup>
+      </Box>
+    </HStack>
   );
 }

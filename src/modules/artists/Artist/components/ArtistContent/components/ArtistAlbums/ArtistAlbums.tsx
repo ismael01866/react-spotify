@@ -33,8 +33,7 @@ export function ArtistAlbums() {
   const singlesData = isLoadingSingles ? skeletonData : singles;
 
   return (
-    !!albumsData?.length ||
-    (!!singlesData?.length && (
+    ((!!albumsData?.length || !!singlesData?.length) && (
       <Tabs size={'sm'} variant={'solid-rounded'}>
         <TabList>
           {!!albumsData?.length && <Tab>Albums</Tab>}

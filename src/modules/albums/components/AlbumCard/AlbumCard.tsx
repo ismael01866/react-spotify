@@ -33,11 +33,11 @@ export function AlbumCard(props: AlbumCardProps) {
         </Box>
 
         <CardMeta>
-          <VStack alignItems={'flex-start'} spacing={1}>
+          <VStack alignItems={'flex-start'} noOfLines={1} spacing={1}>
             <Heading fontSize={'sm'} noOfLines={1}>
               {name}
             </Heading>
-            <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
+            <Text color={'text.base'} fontSize={'sm'}>
               {moment(release_date).format('YYYY')}
             </Text>
           </VStack>

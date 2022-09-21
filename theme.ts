@@ -19,16 +19,6 @@ const styles = {
       bg: 'bg.base',
       overflow: 'hidden'
     }
-
-    // '.chakra-form-control': {
-    //   select: {
-    //     backgroundColor: 'bg.900',
-
-    //     option: {
-    //       backgroundColor: 'bg.800'
-    //     }
-    //   }
-    // }
   }
 };
 

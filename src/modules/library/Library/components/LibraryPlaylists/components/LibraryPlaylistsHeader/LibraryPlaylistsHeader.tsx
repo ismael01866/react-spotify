@@ -1,7 +1,15 @@
-import { Box, Flex, Heading, Input } from '@chakra-ui/react';
-import { debounce } from 'lodash';
+import {
+  Box,
+  Heading,
+  HStack,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement
+} from '@chakra-ui/react';
 import { FormEvent, useContext, useTransition } from 'react';
-import { DEBOUNCE_WAIT_FAST } from 'src/utils/constants';
+import { FaSearch } from 'react-icons/fa';
+import { IPlaylist } from 'src/types/playlist';
 import { LibraryPlaylistsContext } from '../../LibraryPlaylistsContext';
 
 export function LibraryPlaylistsHeader() {
@@ -11,35 +19,46 @@ export function LibraryPlaylistsHeader() {
   const [_, startTransition] = useTransition();
 
   const handleOnChange = (event: FormEvent<HTMLInputElement>) => {
-    filterPlaylistsByName(event.currentTarget.value);
+    const value = event.currentTarget.value;
+
+    if (playlists && value) {
+      const filtered = filterPlaylistsByName(playlists, value);
+
+      startTransition(() => {
+        setPlaylistsFiltered(filtered);
+      });
+
+      return;
+    }
+
+    setPlaylistsFiltered(playlists);
   };
 
-  const filterPlaylistsByName = debounce((value: string) => {
-    const filtered = playlistsFiltered?.filter((artist) =>
+  const filterPlaylistsByName = (
+    playlists: IPlaylist[],
+    value: string
+  ) => {
+    return playlists?.filter((artist) =>
       artist.name?.toLowerCase()?.includes(value.toLowerCase())
     );
-
-    startTransition(() => {
-      value
-        ? setPlaylistsFiltered(filtered)
-        : setPlaylistsFiltered(playlists);
-    });
-  }, DEBOUNCE_WAIT_FAST);
+  };
 
   return (
-    <Flex>
+    <HStack justifyContent={'space-between'}>
       <Heading fontSize={'2xl'}>Playlists</Heading>
 
-      {playlistsFiltered && (
-        <Box ml={'auto'}>
+      <Box visibility={playlistsFiltered ? 'visible' : 'hidden'}>
+        <InputGroup>
+          <InputLeftElement mt={'1px'}>
+            <Icon as={FaSearch} color={'text.muted'} />
+          </InputLeftElement>
           <Input
             placeholder={'Search in playlists'}
-            size={'sm'}
             variant={'filled'}
             onChange={handleOnChange}
           ></Input>
-        </Box>
-      )}
-    </Flex>
+        </InputGroup>
+      </Box>
+    </HStack>
   );
 }
