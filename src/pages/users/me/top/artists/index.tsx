@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   req
 }) => {
   const url = utilWithQueryParams(
-    'https://api.spotify.com/v1/me/top/artists',
+    `${process.env.NEXT_PUBLIC_SPOTIFY_API}/me/top/artists`,
     {
       limit: 50,
       time_range: 'short_term'

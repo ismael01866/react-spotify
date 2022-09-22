@@ -4,8 +4,11 @@ import { ArtistGrid } from 'src/modules/artists/components';
 import { UserMeTopArtistsContext } from '../../UserMeTopArtistsContext';
 
 export function UserMeTopArtistsContent() {
-  const skeletonData = new Array(20).fill('');
-  const data = useContext(UserMeTopArtistsContext) || skeletonData;
+  const data = useContext(UserMeTopArtistsContext);
 
-  return <Box>{data && <ArtistGrid artists={data} />}</Box>;
+  return (
+    <Box>
+      <ArtistGrid artists={data} />
+    </Box>
+  );
 }

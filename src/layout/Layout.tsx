@@ -1,5 +1,5 @@
 import { Grid, GridItem } from '@chakra-ui/react';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -37,7 +37,7 @@ export function Layout(props: LayoutProps) {
 
   const contentElRef = useRef<HTMLDivElement>(null);
 
-  // Script embed
+  // script embed
 
   useEffect(() => {
     if (status !== 'authenticated') return;
@@ -54,7 +54,15 @@ export function Layout(props: LayoutProps) {
     };
   }, [status]);
 
-  // Player setup
+  // handle session expiration
+
+  useEffect(() => {
+    if (session?.error === 'RefreshAccessTokenError') {
+      signIn();
+    }
+  }, [session]);
+
+  // player setup
 
   useEffect(() => {
     if (status !== 'authenticated') return;
@@ -82,7 +90,7 @@ export function Layout(props: LayoutProps) {
     };
   }, [session, status, dispatch]);
 
-  // Profile setup
+  // profile setup
 
   useEffect(() => {
     if (!user) return;
@@ -90,13 +98,13 @@ export function Layout(props: LayoutProps) {
     dispatch(setUser(user));
   }, [user, dispatch]);
 
-  // Scroll to top
+  // scroll to top
 
   useEffect(() => {
     contentElRef?.current?.scrollTo({ top: 0 });
   }, [children]);
 
-  // Render
+  // render
 
   if (status === 'loading') {
     return <>loading...</>;

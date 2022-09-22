@@ -1,4 +1,3 @@
-import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWRInfinite from 'swr/infinite';

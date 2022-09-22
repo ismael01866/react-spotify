@@ -20,7 +20,6 @@ export * from './useMePlayerRecentlyPlayed';
 
 export * from './useAlbum';
 export * from './useAlbumWithFollow';
-export * from './useAlbumFollow';
 export * from './useAlbumTracksWithFollow';
 
 export * from './useArtist';
