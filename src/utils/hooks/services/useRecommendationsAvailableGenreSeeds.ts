@@ -1,10 +1,17 @@
+import { SPOTIFY_API } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
+import { useAccessHeaders } from '../useAccessHeaders';
 
 export const useRecommendationsAvailableGenreSeeds = (opts = {}) => {
-  const url = '/api/spotify/recommendations/available-genre-seeds';
+  const url = `${SPOTIFY_API}/recommendations/available-genre-seeds`;
 
-  const { data, error } = useSWR<string[]>([url, opts], fetcher);
+  const headers = useAccessHeaders();
+
+  const { data, error } = useSWR<string[]>(
+    [url, { ...headers, ...opts }],
+    fetcher
+  );
 
   return {
     error,

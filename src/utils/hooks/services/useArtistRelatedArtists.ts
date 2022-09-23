@@ -1,21 +1,19 @@
 import { IArtist } from 'src/types/artist';
-import { SPOTIFY_API } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
-import { useAccessHeaders } from '../useAccessHeaders';
+import { useSpotifyApi } from '../useSpotifyApi';
 
 export const useArtistRelatedArtists = (
   id: string | string[] | undefined,
   query = {},
   opts = {}
 ) => {
-  const url = utilWithQueryParams(
-    `${SPOTIFY_API}/artists/${id}/related-artists`,
-    query
+  const { headers, url: baseURL } = useSpotifyApi(
+    `/artists/${id}/related-artists`
   );
 
-  const headers = useAccessHeaders();
+  const url = utilWithQueryParams(baseURL, query);
 
   const { data, error } = useSWR<{
     artists: IArtist[];

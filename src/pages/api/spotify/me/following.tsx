@@ -12,7 +12,7 @@ export default async function handler(
     req.query
   );
 
-  if (req.method === ('PUT' || 'DELETE')) {
+  if (req.method === 'PUT' || req.method === 'DELETE') {
     let isFollowing = false;
 
     await fetchWithToken(req, url, {

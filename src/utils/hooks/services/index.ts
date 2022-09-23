@@ -23,7 +23,6 @@ export * from './useAlbumWithFollow';
 export * from './useAlbumTracksWithFollow';
 
 export * from './useArtist';
-export * from './useArtistFollow';
 export * from './useArtistWithFollow';
 
 export * from './useArtistAlbums';

@@ -2,14 +2,20 @@ import { ITrack } from 'src/types/track';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+import { useSpotifyApi } from '../useSpotifyApi';
 
 export const useMeTopTracks = (query = {}, opts = {}) => {
-  const url = utilWithQueryParams('/api/spotify/me/top/tracks', query);
-  const { data, error } = useSWR<ITrack[]>([url, opts], fetcher);
+  const { headers, url: baseURL } = useSpotifyApi(`/me/top/tracks`);
+  const url = utilWithQueryParams(baseURL, query);
+
+  const { data, error } = useSWR<{ items: ITrack[] }>(
+    [url, { ...headers, ...opts }],
+    fetcher
+  );
 
   return {
     error,
-    tracks: data,
+    tracks: data?.items,
     isLoading: !error && !data
   };
 };

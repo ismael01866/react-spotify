@@ -12,7 +12,7 @@ export default async function handler(
     req.query
   );
 
-  if (req.method === ('PUT' || 'DELETE')) {
+  if (req.method === 'PUT' || req.method === 'DELETE') {
     let isFollowing = false;
 
     await fetchWithToken(req, url, {
@@ -25,6 +25,8 @@ export default async function handler(
   }
 
   const { items }: { items: IAlbum[] } = await fetchWithToken(req, url);
+
+  console.log(items);
 
   const result = items || [];
 
