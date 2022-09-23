@@ -15,6 +15,7 @@ export default async function handler(
   );
 
   const tracks: ITrack[] = [];
+  const { limit = 50 } = req.query;
 
   const {
     tracks: { items }
@@ -24,25 +25,29 @@ export default async function handler(
     };
   } = await fetchWithToken(req, playlistURL);
 
-  const tracksFollowURL = utilWithQueryParams(
-    `https://api.spotify.com/v1/me/tracks/contains`,
-    { ids: items?.map((track) => track?.track?.id).join(',') }
-  );
+  do {
+    const splicedItems = items.splice(0, limit as number);
 
-  const tracksFollowed: ITrack[] = await fetchWithToken(
-    req,
-    tracksFollowURL
-  );
+    const tracksFollowURL = utilWithQueryParams(
+      `https://api.spotify.com/v1/me/tracks/contains`,
+      { ids: splicedItems?.map((track) => track?.track?.id).join(',') }
+    );
 
-  const data = items?.map((track, index) => {
-    if (track.track) {
-      track.track.is_following = !!tracksFollowed?.[index];
-    }
+    const tracksFollowed: ITrack[] = await fetchWithToken(
+      req,
+      tracksFollowURL
+    );
 
-    return track;
-  });
+    const data = splicedItems?.map((track, index) => {
+      if (track.track) {
+        track.track.is_following = !!tracksFollowed?.[index];
+      }
 
-  tracks.push(...data);
+      return track;
+    });
+
+    tracks.push(...data);
+  } while (items.length);
 
   const result = tracks || [];
 

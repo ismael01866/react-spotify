@@ -15,6 +15,7 @@ export default async function handler(
 
   if (data.id) {
     const tracks = data?.tracks?.items || [];
+
     result.total_duration = calculatePlaylistDuration(tracks);
   }
 

@@ -28,7 +28,6 @@ export * from './useArtistWithFollow';
 
 export * from './useArtistAlbums';
 export * from './useArtistRelatedArtists';
-export * from './useArtistTopTracks';
 export * from './useArtistTopTracksWithFollow';
 
 export * from './useBrowseFeaturedPlaylist';

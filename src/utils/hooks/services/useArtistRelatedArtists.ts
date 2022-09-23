@@ -17,13 +17,13 @@ export const useArtistRelatedArtists = (
 
   const headers = useAccessHeaders();
 
-  const { data: { artists } = {}, error } = useSWR<{
+  const { data, error } = useSWR<{
     artists: IArtist[];
   }>([url, { ...headers, ...opts }], fetcher);
 
   return {
     error,
-    artists: artists,
-    isLoading: !error && !artists
+    artists: data?.artists,
+    isLoading: !error && !data
   };
 };

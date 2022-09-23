@@ -15,7 +15,6 @@ export default async function handler(
   );
 
   const tracks: ITrack[] = [];
-  const { limit } = req.query;
 
   do {
     const { items, next }: { items: ITrack[]; next: string } =
@@ -37,9 +36,8 @@ export default async function handler(
     });
 
     tracks.push(...data);
-
     tracksURL = next;
-  } while (tracksURL && tracks.length < Number(limit));
+  } while (tracksURL);
 
   const result = tracks || [];
 
