@@ -10,6 +10,7 @@ import { LibraryPlaylistsContext } from './LibraryPlaylistsContext';
 
 export function LibraryPlaylists() {
   const { playlists } = useMePlaylistsAll({ sort: 'name' });
+
   const [playlistsFiltered, setPlaylistsFiltered] =
     useState<IPlaylist[]>();
 

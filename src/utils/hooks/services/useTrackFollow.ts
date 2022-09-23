@@ -1,13 +1,19 @@
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+import { useSpotifyApi } from '../useSpotifyApi';
 
 export const useTrackFollow = (query = {}, opts: any = {}) => {
-  const url = utilWithQueryParams(
-    '/api/spotify/me/tracks/contains',
-    query
+  const { headers, url: baseURL } = useSpotifyApi(
+    `/me/tracks/contains`
   );
-  const { data, error } = useSWR([url, opts], fetcher);
+
+  const url = utilWithQueryParams(baseURL, query);
+
+  const { data, error } = useSWR(
+    [url, { ...headers, ...opts }],
+    fetcher
+  );
 
   return {
     error,

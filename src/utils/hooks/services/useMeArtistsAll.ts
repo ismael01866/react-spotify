@@ -12,10 +12,7 @@ export const useMeArtistsAll = (query = {}, opts = {}) => {
     }
   );
 
-  const { data, error } = useSWR<IArtist[]>(
-    [url, { ...opts }],
-    fetcher
-  );
+  const { data, error } = useSWR<IArtist[]>([url, opts], fetcher);
 
   return {
     error,

@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AlbumContext } from 'src/modules/albums/Album/AlbumContext';
 import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
@@ -19,8 +20,12 @@ export function ArtistAlbums() {
   const data = isLoading ? skeletonData : albums;
 
   return (
-    (data && (
+    (data?.length && (
       <AlbumGrid albums={data} columns={{ base: 1, sm: 2, xl: 3 }} />
-    )) || <></>
+    )) || (
+      <Heading color={'text.muted'} size={'sm'}>
+        No information available
+      </Heading>
+    )
   );
 }

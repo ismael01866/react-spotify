@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { ArtistGrid } from 'src/modules/artists/components';
@@ -15,8 +16,12 @@ export function ArtistRelatedArtists() {
     : artists && [...artists].splice(0, limit);
 
   return (
-    (data && (
+    (data?.length && (
       <ArtistGrid artists={data} columns={{ base: 1, sm: 2, xl: 3 }} />
-    )) || <></>
+    )) || (
+      <Heading color={'text.muted'} size={'sm'}>
+        No information available
+      </Heading>
+    )
   );
 }

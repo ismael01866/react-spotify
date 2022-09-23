@@ -13,7 +13,7 @@ function App({
   pageProps: { session, ...pageProps }
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={session} refetchOnWindowFocus={false}>
       <ChakraProvider theme={theme}>
         <Provider store={store}>
           <Layout>

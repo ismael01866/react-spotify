@@ -13,7 +13,7 @@ export default async function handler(
   const data: IPlaylist = await fetchWithToken(req, url);
   const result = data || {};
 
-  if (data.id) {
+  if (data?.id) {
     const tracks = data?.tracks?.items || [];
 
     result.total_duration = calculatePlaylistDuration(tracks);
@@ -22,10 +22,10 @@ export default async function handler(
   return res.status(200).json(result);
 }
 
-const calculatePlaylistDuration = (tracks: ITrack[]) => {
+function calculatePlaylistDuration(tracks: ITrack[]) {
   return tracks.reduce((totalDuration, { track }) => {
     return track?.duration_ms
       ? totalDuration + track.duration_ms
       : totalDuration;
   }, 0);
-};
+}

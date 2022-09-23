@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IAlbum } from 'src/types/album';
 import { fetchWithToken } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 
@@ -23,12 +22,4 @@ export default async function handler(
 
     return res.status(200).json({ isFollowing });
   }
-
-  const { items }: { items: IAlbum[] } = await fetchWithToken(req, url);
-
-  console.log(items);
-
-  const result = items || [];
-
-  return res.status(200).json(result);
 }

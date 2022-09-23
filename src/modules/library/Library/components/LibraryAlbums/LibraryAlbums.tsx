@@ -10,6 +10,7 @@ import { LibraryAlbumsContext } from './LibraryAlbumsContext';
 
 export function LibraryAlbums() {
   const { albums } = useMeAlbumsAll({ sort: 'name' });
+
   const [albumsFiltered, setAlbumsFiltered] = useState<IArtist[]>();
 
   useEffect(() => {

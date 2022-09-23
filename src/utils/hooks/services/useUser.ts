@@ -1,14 +1,18 @@
 import { IUser } from 'src/types/user';
 import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
+import { useSpotifyApi } from '../useSpotifyApi';
 
 export const useUser = (
   id: string | string[] | undefined,
   opts = {}
 ) => {
-  const url = `/api/spotify/users/${id}`;
+  const { headers, url } = useSpotifyApi(`/users/${id}`);
 
-  const { data, error } = useSWR<IUser>([url, opts], fetcher);
+  const { data, error } = useSWR<IUser>(
+    [url, { ...headers, ...opts }],
+    fetcher
+  );
 
   return {
     error,

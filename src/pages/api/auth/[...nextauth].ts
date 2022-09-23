@@ -30,10 +30,6 @@ export default NextAuth({
 
   secret: process.env.NEXTAUTH_SECRET,
 
-  session: {
-    maxAge: 60000
-  },
-
   pages: {
     signIn: '/auth/signin'
   },

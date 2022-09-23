@@ -13,7 +13,7 @@ export const useArtistTopTracksWithFollow = (
     query
   );
 
-  const { data, error } = useSWR<ITrack[]>([url, { ...opts }], fetcher);
+  const { data, error } = useSWR<ITrack[]>([url, opts], fetcher);
 
   return {
     error,

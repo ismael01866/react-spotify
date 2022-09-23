@@ -9,7 +9,7 @@ export const useMeAlbumsAll = (query = {}, opts = {}) => {
     ...query
   });
 
-  const { data, error } = useSWR<IAlbum[]>([url, { ...opts }], fetcher);
+  const { data, error } = useSWR<IAlbum[]>([url, opts], fetcher);
 
   return {
     error,

@@ -10,6 +10,7 @@ import { LibraryArtistsContext } from './LibraryArtistsContext';
 
 export function LibraryArtists() {
   const { artists } = useMeArtistsAll({ sort: 'name' });
+
   const [artistsFiltered, setArtistsFiltered] = useState<IArtist[]>();
 
   useEffect(() => {

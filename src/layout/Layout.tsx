@@ -74,6 +74,8 @@ export function Layout(props: LayoutProps) {
           dispatch(setDeviceID(device_id));
         },
         onStateChange: (state) => {
+          console.log(7);
+
           dispatch(setPlaybackID(state?.playback_id));
 
           dispatch(setPaused(state?.paused));
