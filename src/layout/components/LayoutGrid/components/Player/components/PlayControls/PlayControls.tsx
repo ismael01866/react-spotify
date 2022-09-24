@@ -3,8 +3,9 @@ import { debounce } from 'lodash';
 import { useContext } from 'react';
 import { FaStepBackward, FaStepForward } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { PlayerContext } from 'src/modules/player/Player/PlayerContext';
+import { selectPaused } from 'src/modules/player/Player/PlayerSlice';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
-import { PlayerContext, selectPaused } from 'src/modules';
 import { PlayerButtonPlay } from './components';
 
 export function PlayControls() {

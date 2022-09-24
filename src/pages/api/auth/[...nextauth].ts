@@ -1,3 +1,4 @@
+import moment from 'moment';
 import NextAuth, { User } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
 import { getSpotifyToken } from 'src/utils/spotify';
@@ -23,7 +24,7 @@ export default NextAuth({
       clientId,
       clientSecret,
       authorization: {
-        params: { scope }
+        params: { scope, show_dialog: true }
       }
     })
   ],
@@ -45,13 +46,20 @@ export default NextAuth({
         };
       }
 
-      const tokenHasExpired = Date.now() > (token.expires_at as Number);
+      const tokenHasExpired =
+        moment(Date.now()).unix() > (token.expires_at as Number);
+
       if (!tokenHasExpired) return token;
 
       // refresh token
 
-      const refreshToken = token.refresh_token as string;
-      const { access_token } = await getSpotifyToken(refreshToken);
+      const { access_token, expires_in } = await getSpotifyToken(
+        token.refresh_token as string
+      );
+
+      token.expires_at = moment(Date.now())
+        .add(expires_in / 60, 'minutes')
+        .unix();
 
       token.access_token = access_token;
 

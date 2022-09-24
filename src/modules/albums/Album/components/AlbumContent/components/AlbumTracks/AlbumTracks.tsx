@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AlbumContext } from 'src/modules/albums/Album/AlbumContext';
 import { AlbumTableTracks } from 'src/modules/albums/components';
 import { TrackLoadingStack } from 'src/modules/tracks/components';
-import { UserContext } from 'src/modules/users';
+import { UserContext } from 'src/modules/users/User/UserContext';
 import { ITrack } from 'src/types/track';
 import { useAlbumTracksWithFollow } from 'src/utils/hooks/services';
 

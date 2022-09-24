@@ -1,6 +1,6 @@
 import { SimpleGrid, VStack } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { selectTrack } from 'src/modules';
+import { selectTrack } from 'src/modules/player/Player/PlayerSlice';
 import {
   PlayControls,
   TrackMeta,

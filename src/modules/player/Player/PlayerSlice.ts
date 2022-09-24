@@ -54,6 +54,7 @@ export const {
 
 export const selectDeviceID = (state: RootState) =>
   state.player.deviceID;
+
 export const selectPlaybackID = (state: RootState) =>
   state.player.playbackID;
 

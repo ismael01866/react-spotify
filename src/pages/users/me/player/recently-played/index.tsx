@@ -1,4 +1,4 @@
-import { UserMeRecentlyPlayed } from 'modules';
+import { UserMeRecentlyPlayed } from 'modules/users';
 import type { NextPage } from 'next';
 
 const UserMeRecentlyPlayedPage: NextPage = () => (

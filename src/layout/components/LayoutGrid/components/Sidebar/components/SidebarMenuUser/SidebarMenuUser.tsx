@@ -7,12 +7,11 @@ import {
 } from '@chakra-ui/react';
 import { signOut } from 'next-auth/react';
 import { default as NextLink } from 'next/link';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'src/modules';
+import { useContext } from 'react';
+import { UserContext } from 'src/modules/users/User/UserContext';
 
 export function SidebarMenuUser() {
-  const user = useSelector(selectUser);
-  const { display_name, images } = user;
+  const { display_name, images } = useContext(UserContext);
 
   return (
     <Menu placement={'bottom-end'}>

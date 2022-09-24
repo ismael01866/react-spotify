@@ -1,6 +1,7 @@
-import { UserMeTopArtists, UserMeTopArtistsContext } from 'modules';
 import type { NextApiRequest, NextPage } from 'next';
 import { GetServerSideProps } from 'next';
+import { UserMeTopArtists } from 'src/modules/users';
+import { UserMeTopArtistsContext } from 'src/modules/users/UserMeTopArtists/UserMeTopArtistsContext';
 import { IArtist } from 'src/types/artist';
 import { fetchWithToken } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';

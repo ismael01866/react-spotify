@@ -9,13 +9,13 @@ import {
 import moment from 'moment';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { PlayerContext } from 'src/modules/player/Player/PlayerContext';
 import {
-  PlayerContext,
   selectDuration,
   selectPaused,
   selectPlaybackID,
   selectPosition
-} from 'src/modules';
+} from 'src/modules/player/Player/PlayerSlice';
 
 export function TrackProgress() {
   let timer = useRef({});

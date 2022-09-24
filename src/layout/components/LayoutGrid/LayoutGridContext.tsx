@@ -1,9 +1,9 @@
 import { createContext, RefObject } from 'react';
 
-interface LayoutContextProps {
+interface LayoutGridContextProps {
   contentElRef: RefObject<HTMLDivElement>;
 }
 
-export const LayoutContext = createContext<LayoutContextProps>({
+export const LayoutGridContext = createContext<LayoutGridContextProps>({
   contentElRef: { current: null } as RefObject<HTMLDivElement>
 });

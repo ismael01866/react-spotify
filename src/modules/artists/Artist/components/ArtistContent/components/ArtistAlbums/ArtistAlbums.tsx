@@ -7,7 +7,7 @@ import {
   Tabs
 } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { AlbumGrid } from 'src/modules/albums/components/AlbumGrid';
+import { AlbumGrid } from 'src/modules/albums/components';
 import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
