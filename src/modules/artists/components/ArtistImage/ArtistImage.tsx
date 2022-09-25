@@ -11,7 +11,12 @@ export function ArtistImage(props: ArtistImageProps) {
   const { name, images } = artist;
 
   return (
-    <AspectRatio boxSize={'full'} ratio={4 / 3}>
+    <AspectRatio
+      borderRadius={'base'}
+      boxSize={'full'}
+      overflow={'hidden'}
+      ratio={4 / 4}
+    >
       <Image
         src={images?.[0]?.url}
         alt={name}

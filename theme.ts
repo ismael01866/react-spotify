@@ -57,6 +57,11 @@ const colors = {
   }
 };
 
+const fonts = {
+  // heading: `'Open Sans', sans-serif`,
+  // body: `'Raleway', sans-serif`
+};
+
 const sizes = {
   '8xs': '4rem',
   '7xs': '5rem',
@@ -87,10 +92,14 @@ const Button: ComponentStyleConfig = {
 };
 
 const Card: ComponentStyleConfig = {
-  baseStyle: {
-    borderRadius: 'base',
+  baseStyle: (props: StyleFunctionProps) => ({
+    background:
+      props.colorMode === 'dark' && `var(--chakra-colors-bg-900)`,
+    borderRadius: 'lg',
+    padding: 4,
+    overflow: 'hidden',
     position: 'relative'
-  }
+  })
 };
 
 const Menu: ComponentStyleConfig = {
@@ -223,6 +232,7 @@ export const theme = extendTheme(
 
     styles,
     colors,
+    fonts,
     sizes,
 
     components: {

@@ -22,7 +22,7 @@ export function LayoutGrid({ children }: LayoutGridProps) {
 
   useEffect(() => {
     contentElRef?.current?.scrollTo({ top: 0 }); // scroll to top
-  }, []);
+  }, [children]);
 
   return (
     <UserContext.Provider value={{ ...user }}>

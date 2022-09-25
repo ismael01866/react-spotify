@@ -7,6 +7,10 @@ const clientId = process.env.CLIENT_ID || '';
 const clientSecret = process.env.CLIENT_SECRET || '';
 
 const scope = `streaming 
+               playlist-read-private
+               playlist-read-collaborative
+               playlist-modify-public
+               playlist-modify-private
                user-library-read 
                user-library-modify 
                user-modify-playback-state 
@@ -14,6 +18,7 @@ const scope = `streaming
                user-read-email 
                user-read-private 
                user-read-recently-played 
+               user-read-currently-playing 
                user-read-playback-state 
                user-follow-read
                user-follow-modify`;

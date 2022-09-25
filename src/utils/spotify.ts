@@ -46,16 +46,17 @@ export function buildSpotifyPlayer(
     }
   );
 
-  player.addListener('player_state_changed', (state: any) => {
-    if (!state) return;
-
-    if (typeof onStateChange === 'function') onStateChange(state);
-  });
-
   player.addListener(
     'not_ready',
     ({ device_id }: { device_id: string }) => {
       console.log('Device ID has gone offline', device_id);
+    }
+  );
+
+  player.addListener(
+    'playback_error',
+    ({ message }: { message: string }) => {
+      console.error(message);
     }
   );
 
@@ -79,6 +80,12 @@ export function buildSpotifyPlayer(
       console.error(message);
     }
   );
+
+  player.addListener('player_state_changed', (state: any) => {
+    if (!state) return;
+
+    if (typeof onStateChange === 'function') onStateChange(state);
+  });
 
   return player;
 }

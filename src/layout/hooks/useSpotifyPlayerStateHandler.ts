@@ -22,6 +22,7 @@ export const useSpotifyPlayerStateHandler = () => {
 
     window.onSpotifyWebPlaybackSDKReady = () => {
       const token = session?.access_token as string;
+
       const player = buildSpotifyPlayer(token, {
         onReady: (device_id) => {
           dispatch(setDeviceID(device_id));

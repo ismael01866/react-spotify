@@ -2,7 +2,7 @@ import { IArtist } from 'src/types/artist';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
-import { useSpotifyApi } from '../useSpotifyApi';
+import { useSpotifyApi } from '../api';
 
 export const useMeTopArtists = (query = {}, opts = {}) => {
   const { headers, url: baseURL } = useSpotifyApi(`/me/top/artists`);

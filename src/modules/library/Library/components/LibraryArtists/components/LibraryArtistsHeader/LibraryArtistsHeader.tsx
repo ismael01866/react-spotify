@@ -1,13 +1,18 @@
 import {
-  Box,
   Heading,
   HStack,
   Icon,
   Input,
   InputGroup,
-  InputLeftElement
+  InputLeftElement,
+  Select
 } from '@chakra-ui/react';
-import { FormEvent, useContext, useTransition } from 'react';
+import {
+  FormEvent,
+  startTransition,
+  useContext,
+  useState
+} from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { IArtist } from 'src/types/artist';
 import { LibraryArtistsContext } from '../../LibraryArtistsContext';
@@ -17,9 +22,9 @@ export function LibraryArtistsHeader() {
     LibraryArtistsContext
   );
 
-  const [_, startTransition] = useTransition();
+  const [sortProp, setSortProp] = useState<keyof IArtist>('name');
 
-  const handleOnChange = (event: FormEvent<HTMLInputElement>) => {
+  const handleOnChangeInput = (event: FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
 
     if (artists && value) {
@@ -32,7 +37,28 @@ export function LibraryArtistsHeader() {
       return;
     }
 
-    setArtistsFiltered(artists);
+    if (artists) {
+      const sorted = sortArtistsByProp(artists, sortProp);
+
+      startTransition(() => {
+        setArtistsFiltered(sorted);
+      });
+    }
+  };
+
+  const handleOnChangeSelect = (
+    event: FormEvent<HTMLSelectElement>
+  ) => {
+    const prop = event.currentTarget.value as keyof IArtist;
+    setSortProp(prop);
+
+    if (artistsFiltered) {
+      const sorted = sortArtistsByProp(artistsFiltered, prop);
+
+      startTransition(() => {
+        setArtistsFiltered(sorted);
+      });
+    }
   };
 
   const filterArtistsByName = (artists: IArtist[], value: string) => {
@@ -41,11 +67,37 @@ export function LibraryArtistsHeader() {
     );
   };
 
+  const sortArtistsByProp = (
+    artists: IArtist[],
+    prop: keyof IArtist
+  ) => {
+    if (!artists) return;
+
+    const sorted = [...artists].sort((a, b) => {
+      if (!a[prop] || !b[prop]) return 0;
+
+      const aProp = a[prop] as keyof IArtist;
+      const bProp = b[prop] as keyof IArtist;
+
+      if (prop === 'popularity') {
+        return aProp < bProp ? 1 : -1;
+      }
+
+      return aProp < bProp ? -1 : 1;
+    });
+
+    return sorted;
+  };
+
   return (
     <HStack justifyContent={'space-between'}>
       <Heading fontSize={'2xl'}>Artists</Heading>
 
-      <Box visibility={artistsFiltered ? 'visible' : 'hidden'}>
+      <HStack
+        ml={'auto'}
+        spacing={2}
+        visibility={artistsFiltered ? 'visible' : 'hidden'}
+      >
         <InputGroup>
           <InputLeftElement mt={'1px'}>
             <Icon as={FaSearch} color={'text.muted'} />
@@ -54,10 +106,15 @@ export function LibraryArtistsHeader() {
           <Input
             placeholder={'Search in artists'}
             variant={'filled'}
-            onChange={handleOnChange}
+            onChange={handleOnChangeInput}
           ></Input>
         </InputGroup>
-      </Box>
+
+        <Select variant={'filled'} onChange={handleOnChangeSelect}>
+          <option value="name">Name</option>
+          <option value="popularity">Popularity</option>
+        </Select>
+      </HStack>
     </HStack>
   );
 }

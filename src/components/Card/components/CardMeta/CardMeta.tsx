@@ -7,13 +7,5 @@ interface CardMetaProps {
 export function CardMeta(props: CardMetaProps) {
   const { ...others } = props;
 
-  return (
-    <Flex
-      bg={'bg.900'}
-      justifyContent={'space-between'}
-      p={4}
-      w={'full'}
-      {...others}
-    ></Flex>
-  );
+  return <Flex bg={'bg.900'} mt={4} w={'full'} {...others}></Flex>;
 }

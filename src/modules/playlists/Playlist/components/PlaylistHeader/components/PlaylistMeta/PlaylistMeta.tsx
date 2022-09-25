@@ -3,7 +3,7 @@ import moment from 'moment';
 import { default as NextLink } from 'next/link';
 import { IPlaylist } from 'src/types/playlist';
 import { utilPluralize } from 'src/utils/helpers';
-import { useUserIsMe } from 'src/utils/hooks';
+import { useUserIsMe } from 'src/utils/hooks/auth';
 import { useUser } from 'src/utils/hooks/services';
 
 interface PlaylistMetaProps {

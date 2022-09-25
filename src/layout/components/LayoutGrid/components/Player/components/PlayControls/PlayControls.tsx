@@ -14,11 +14,11 @@ export function PlayControls() {
   const { player } = useContext(PlayerContext);
 
   const handleOnClickPrevTrack = debounce(() => {
-    player?.previousTrack();
+    player.previousTrack();
   }, DEBOUNCE_WAIT);
 
   const handleOnClickNextTrack = debounce(() => {
-    player?.nextTrack();
+    player.nextTrack();
   }, DEBOUNCE_WAIT);
 
   return (

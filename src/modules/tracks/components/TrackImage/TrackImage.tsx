@@ -35,7 +35,12 @@ export function TrackImage(props: TrackImageProps) {
   }, []);
 
   return (
-    <AspectRatio boxSize={'full'} ratio={4 / 3}>
+    <AspectRatio
+      borderRadius={'base'}
+      boxSize={'full'}
+      overflow={'hidden'}
+      ratio={4 / 4}
+    >
       <Image
         src={getImageByContext(track)}
         alt={name}

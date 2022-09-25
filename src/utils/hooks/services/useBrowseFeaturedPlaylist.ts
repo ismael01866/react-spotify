@@ -2,7 +2,7 @@ import { IPlaylist } from 'src/types/playlist';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
-import { useSpotifyApi } from '../useSpotifyApi';
+import { useSpotifyApi } from '../api';
 
 export const useBrowseFeaturedPlaylist = (query = {}, opts = {}) => {
   const { headers, url: baseURL } = useSpotifyApi(

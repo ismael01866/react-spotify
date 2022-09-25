@@ -1,5 +1,5 @@
-import { SPOTIFY_API } from '../constants';
-import { useAccessHeaders } from './useAccessHeaders';
+import { SPOTIFY_API } from 'src/utils/constants';
+import { useAccessHeaders } from '../auth';
 
 export const useSpotifyApi = (url: string) => {
   const headers = useAccessHeaders() || {};

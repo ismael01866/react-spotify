@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { ArtistCard } from 'src/modules/artists/components';
 import { IArtist } from 'src/types/artist';
+import { ArtistCard } from '../ArtistCard';
 
 interface ArtistGridProps {
   artists: IArtist[];

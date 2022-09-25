@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { PlaylistCard } from 'src/modules/playlists/components';
 import { IPlaylist } from 'src/types/playlist';
+import { PlaylistCard } from '../PlaylistCard';
 
 interface PlaylistGridProps {
   playlists: IPlaylist[];

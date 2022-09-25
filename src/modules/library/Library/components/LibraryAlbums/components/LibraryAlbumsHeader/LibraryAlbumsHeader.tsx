@@ -78,6 +78,10 @@ export function LibraryAlbumsHeader() {
         return new Date(aProp) < new Date(bProp) ? -1 : 1;
       }
 
+      if (prop === 'popularity') {
+        return aProp < bProp ? 1 : -1;
+      }
+
       return aProp < bProp ? -1 : 1;
     });
 
@@ -107,6 +111,7 @@ export function LibraryAlbumsHeader() {
         <Select variant={'filled'} onChange={handleOnChangeSelect}>
           <option value="name">Name</option>
           <option value="release_date">Release date</option>
+          <option value="popularity">Popularity</option>
         </Select>
       </HStack>
     </HStack>

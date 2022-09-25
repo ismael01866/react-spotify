@@ -10,6 +10,7 @@ export interface IAlbum {
   release_date?: string;
   total_tracks?: number;
   artists?: IArtist[];
+  popularity?: number;
 
   // custom
 
