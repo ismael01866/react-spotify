@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/react';
+import { CardSpotify } from 'src/components/Card/CardSpotify';
 import { IPlaylist } from 'src/types/playlist';
-import { PlaylistCard } from '../PlaylistCard';
 
 interface PlaylistGridProps {
   playlists: IPlaylist[];
@@ -18,9 +18,10 @@ export function PlaylistGrid(props: PlaylistGridProps) {
     >
       {playlists?.map((playlist, index) => {
         return (
-          <PlaylistCard
+          <CardSpotify
             key={playlist.id || index}
-            playlist={playlist}
+            type={'playlist'}
+            data={playlist}
           />
         );
       })}

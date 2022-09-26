@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/react';
+import { CardSpotify } from 'src/components/Card/CardSpotify';
 import { IAlbum } from 'src/types/album';
-import { AlbumCard } from '../AlbumCard';
 
 interface AlbumGridProps {
   albums: IAlbum[];
@@ -17,7 +17,13 @@ export function AlbumGrid(props: AlbumGridProps) {
       {...others}
     >
       {albums?.map((album, index) => {
-        return <AlbumCard key={album.id || index} album={album} />;
+        return (
+          <CardSpotify
+            key={album.id || index}
+            type={'album'}
+            data={album}
+          />
+        );
       })}
     </SimpleGrid>
   );

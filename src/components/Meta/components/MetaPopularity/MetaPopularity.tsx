@@ -1,17 +1,20 @@
 import { HStack, Icon, Text, Tooltip } from '@chakra-ui/react';
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
-interface CardMetaProps {
+interface CardMetaPopularityProps {
   popularity?: number;
 }
 
-export function MetaPopularity(props: CardMetaProps) {
+export function MetaPopularity(props: CardMetaPopularityProps) {
   const { popularity = 0 } = props;
 
   const parsedPopularity = Math.round(popularity / 10);
-  const isPopular = parsedPopularity > 6;
-
-  const icon = isPopular ? FaStar : FaStarHalfAlt;
+  const icon =
+    parsedPopularity > 6
+      ? FaStar
+      : popularity === 0
+      ? FaRegStar
+      : FaStarHalfAlt;
 
   return (
     <Tooltip

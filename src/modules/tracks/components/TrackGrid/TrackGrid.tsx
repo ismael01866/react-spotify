@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/react';
+import { CardSpotify } from 'src/components/Card/CardSpotify';
 import { ITrack } from 'src/types/track';
-import { TrackCard } from '../TrackCard';
 
 interface TrackGridProps {
   tracks: ITrack[];
@@ -17,7 +17,13 @@ export function TrackGrid(props: TrackGridProps) {
       {...others}
     >
       {tracks?.map((track, index) => {
-        return <TrackCard key={track.id || index} track={track} />;
+        return (
+          <CardSpotify
+            key={track.id || index}
+            type={'track'}
+            data={track}
+          />
+        );
       })}
     </SimpleGrid>
   );

@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Box,
   Center,
   Icon,
@@ -27,13 +28,20 @@ export function EmptySkeleton(props: EmptySkeletonProps) {
       boxSize={'full'}
       {...others}
     >
-      <Center boxSize={'full'}>
-        <Icon
-          as={icon}
-          boxSize={'40%'}
-          color={`${defaultBackground}.400`}
-        />
-      </Center>
+      <AspectRatio
+        borderRadius={'base'}
+        boxSize={'full'}
+        overflow={'hidden'}
+        ratio={4 / 4}
+      >
+        <Center boxSize={'full'}>
+          <Icon
+            as={icon}
+            boxSize={'40%'}
+            color={`${defaultBackground}.400`}
+          />
+        </Center>
+      </AspectRatio>
     </Box>
   );
 }

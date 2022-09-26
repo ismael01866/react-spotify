@@ -1,6 +1,6 @@
 import { SimpleGrid } from '@chakra-ui/react';
+import { CardSpotify } from 'src/components/Card/CardSpotify';
 import { IArtist } from 'src/types/artist';
-import { ArtistCard } from '../ArtistCard';
 
 interface ArtistGridProps {
   artists: IArtist[];
@@ -17,7 +17,13 @@ export function ArtistGrid(props: ArtistGridProps) {
       {...others}
     >
       {artists?.map((artist, index) => {
-        return <ArtistCard key={artist.id || index} artist={artist} />;
+        return (
+          <CardSpotify
+            key={artist.id || index}
+            type="artist"
+            data={artist}
+          />
+        );
       })}
     </SimpleGrid>
   );
