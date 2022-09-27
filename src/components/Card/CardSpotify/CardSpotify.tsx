@@ -74,19 +74,41 @@ export const CardSpotify = (props: CardSpotifyProps) => {
     rootMargin: '400px 0px'
   });
 
-  const getURLByType = useCallback((type: CardSpotifyProps['type']) => {
-    if (!type) return;
+  const getURLByType = useCallback((item: any) => {
+    let type = item.type;
+
+    if (type === 'track') {
+      if (item.context.type !== 'track') {
+        const id = item?.context?.uri?.split(':')?.pop();
+
+        switch (item.context.type) {
+          case 'album':
+            return `/albums/${id}`;
+
+          case 'artist':
+            return `/artists/${id}`;
+
+          case 'playlist':
+            return `/playlists/${id}`;
+
+          default:
+            break;
+        }
+      }
+
+      return `/albums/${item.album?.id}`;
+    }
 
     switch (type) {
       case 'track':
       case 'album':
-        return `/albums`;
+        return `/albums/${item.id}`;
 
       case 'artist':
-        return `/artists`;
+        return `/artists/${item.id}`;
 
       case 'playlist':
-        return `/playlists`;
+        return `/playlists/${item.id}`;
 
       default:
         break;
@@ -121,11 +143,11 @@ export const CardSpotify = (props: CardSpotifyProps) => {
   return (
     <Box ref={containerEl}>
       <Skeleton isLoaded={!!id}>
-        <Card position={'relative'} role={'group'} {...others}>
-          <Box boxShadow={'dark-lg'} position={'relative'}>
-            {isIntersecting ? (
+        {isIntersecting ? (
+          <Card position={'relative'} role={'group'} {...others}>
+            <Box boxShadow={'dark-lg'} position={'relative'}>
               <>
-                <NextLink href={`${getURLByType(type)}/${id}`} passHref>
+                <NextLink href={`${getURLByType(data)}`} passHref>
                   <Link>
                     {(() => {
                       switch (type) {
@@ -170,121 +192,142 @@ export const CardSpotify = (props: CardSpotifyProps) => {
                   return <CardButtonPlay context_uri={uri} />;
                 })()}
               </>
-            ) : (
-              <>
-                {(() => {
-                  switch (type) {
-                    case 'album':
-                      return <AlbumEmptySkeleton />;
+            </Box>
 
-                    case 'artist':
-                      return <ArtistEmptySkeleton />;
-
-                    case 'playlist':
-                      return <PlaylistEmptySkeleton />;
-
-                    case 'track':
-                      return <TrackEmptySkeleton />;
-
-                    default:
-                      break;
-                  }
-                })()}
-              </>
-            )}
-          </Box>
-
-          <Flex bg={'bg.900'} mt={4} w={'full'}>
-            <VStack alignItems={'flex-start'} noOfLines={1} spacing={1}>
-              <>
-                {(() => {
-                  switch (type) {
-                    case 'track':
-                      return (
-                        <Heading fontSize={'sm'} noOfLines={1}>
-                          {getNameByTrackContext(data)}
-                        </Heading>
-                      );
-
-                    default:
-                      return (
-                        <Heading fontSize={'sm'} noOfLines={1}>
-                          {name}
-                        </Heading>
-                      );
-                  }
-                })()}
-
-                <HStack justifyContent={'space-between'}>
+            <Flex bg={'bg.900'} mt={4} w={'full'}>
+              <VStack
+                alignItems={'flex-start'}
+                noOfLines={1}
+                spacing={1}
+                w={'full'}
+              >
+                <>
                   {(() => {
                     switch (type) {
-                      case 'album':
-                        return (
-                          <>
-                            <Text
-                              color={'text.base'}
-                              fontSize={'sm'}
-                              noOfLines={1}
-                            >
-                              {moment(release_date).format('YYYY')}
-                            </Text>
-
-                            <MetaPopularity popularity={popularity} />
-                          </>
-                        );
-
-                      case 'artist':
-                        return (
-                          <>
-                            <Text
-                              color={'text.base'}
-                              fontSize={'sm'}
-                              noOfLines={1}
-                            >
-                              {[...(genres || ['No genres available'])]
-                                .splice(0, 2)
-                                .join(', ')}
-                            </Text>
-
-                            <MetaPopularity popularity={popularity} />
-                          </>
-                        );
-
-                      case 'playlist':
-                        return (
-                          <>
-                            <Text
-                              color={'text.base'}
-                              fontSize={'sm'}
-                              noOfLines={1}
-                            >
-                              {utilPluralize('track', tracks?.total)}
-                            </Text>
-                          </>
-                        );
-
                       case 'track':
                         return (
-                          <>
-                            <Text
-                              color={'text.base'}
-                              fontSize={'sm'}
-                              noOfLines={1}
-                            >
-                              {capitalize(context?.type)}
-                            </Text>
-                          </>
+                          <Heading fontSize={'sm'} noOfLines={1}>
+                            {getNameByTrackContext(data)}
+                          </Heading>
                         );
 
                       default:
-                        break;
+                        return (
+                          <Heading fontSize={'sm'} noOfLines={1}>
+                            {name}
+                          </Heading>
+                        );
                     }
                   })()}
-                </HStack>
-              </>
-            </VStack>
-          </Flex>
-        </Card>
+
+                  <HStack justifyContent={'space-between'}>
+                    {(() => {
+                      switch (type) {
+                        case 'album':
+                          return (
+                            <>
+                              <Text
+                                color={'text.base'}
+                                fontSize={'sm'}
+                                noOfLines={1}
+                              >
+                                {moment(release_date).format('YYYY')}
+                              </Text>
+
+                              <MetaPopularity popularity={popularity} />
+                            </>
+                          );
+
+                        case 'artist':
+                          return (
+                            <>
+                              <Text
+                                color={'text.base'}
+                                fontSize={'sm'}
+                                noOfLines={1}
+                              >
+                                {[
+                                  ...(genres || ['No genres available'])
+                                ]
+                                  .splice(0, 2)
+                                  .join(', ')}
+                              </Text>
+
+                              <MetaPopularity popularity={popularity} />
+                            </>
+                          );
+
+                        case 'playlist':
+                          return (
+                            <>
+                              <Text
+                                color={'text.base'}
+                                fontSize={'sm'}
+                                noOfLines={1}
+                              >
+                                {utilPluralize('track', tracks?.total)}
+                              </Text>
+                            </>
+                          );
+
+                        case 'track':
+                          return (
+                            <>
+                              <Text
+                                color={'text.base'}
+                                fontSize={'sm'}
+                                noOfLines={1}
+                              >
+                                {capitalize(context?.type)}
+                              </Text>
+                            </>
+                          );
+
+                        default:
+                          break;
+                      }
+                    })()}
+                  </HStack>
+                </>
+              </VStack>
+            </Flex>
+          </Card>
+        ) : (
+          (() => {
+            switch (type) {
+              case 'album':
+                return (
+                  <Card>
+                    <AlbumEmptySkeleton />
+                  </Card>
+                );
+
+              case 'artist':
+                return (
+                  <Card>
+                    <ArtistEmptySkeleton />
+                  </Card>
+                );
+
+              case 'playlist':
+                return (
+                  <Card>
+                    <PlaylistEmptySkeleton />
+                  </Card>
+                );
+
+              case 'track':
+                return (
+                  <Card>
+                    <TrackEmptySkeleton />
+                  </Card>
+                );
+
+              default:
+                break;
+            }
+          })()
+        )}
       </Skeleton>
     </Box>
   );

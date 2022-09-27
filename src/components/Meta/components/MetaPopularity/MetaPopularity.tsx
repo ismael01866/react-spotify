@@ -9,12 +9,7 @@ export function MetaPopularity(props: CardMetaPopularityProps) {
   const { popularity = 0 } = props;
 
   const parsedPopularity = Math.round(popularity / 10);
-  const icon =
-    parsedPopularity > 6
-      ? FaStar
-      : popularity === 0
-      ? FaRegStar
-      : FaStarHalfAlt;
+  const icon = getPopularityIcon(parsedPopularity);
 
   return (
     <Tooltip
@@ -34,4 +29,10 @@ export function MetaPopularity(props: CardMetaPopularityProps) {
       </HStack>
     </Tooltip>
   );
+}
+
+export function getPopularityIcon(popularity: number) {
+  if (!popularity) return FaRegStar;
+
+  return popularity > 6 ? FaStar : FaStarHalfAlt;
 }
