@@ -1,12 +1,12 @@
 import { List } from '@chakra-ui/react';
-import { SidebarListItem } from '../SidebarListItem';
+import { SidebarItem } from '../SidebarItem';
 import { data } from './data';
 
 export const SidebarListNavItems = () => {
   return (
-    <List spacing={2}>
+    <List spacing={2} w={'full'}>
       {data.map((item, index) => {
-        return <SidebarListItem key={index} item={item} />;
+        return <SidebarItem key={index} item={item} />;
       })}
     </List>
   );

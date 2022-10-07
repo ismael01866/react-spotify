@@ -9,7 +9,6 @@ export function Sidebar() {
       h={'full'}
       overflow={'hidden'}
       py={8}
-      px={4}
       w={20}
     >
       <Box mb={8} textAlign={'center'}>

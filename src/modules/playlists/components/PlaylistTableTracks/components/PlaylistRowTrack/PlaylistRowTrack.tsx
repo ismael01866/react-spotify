@@ -27,6 +27,9 @@ export function PlaylistRowTrack(props: PlaylistRowTrackProps) {
   return (
     <Tr
       role={'group'}
+      _hover={{
+        bgGradient: 'linear(to-r, transparent, bg.900)'
+      }}
       onDoubleClick={() => {
         buttonPlayRef.current?.click();
       }}

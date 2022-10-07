@@ -6,6 +6,7 @@ import {
 } from '@chakra-ui/react';
 import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
+import { useRouter } from 'next/router';
 import { IPlaylist } from 'src/types/playlist';
 
 interface SidebarPlaylistItemProps {
@@ -18,6 +19,9 @@ export const SidebarPlaylistItem = (
   const { item } = props;
   const { id, name = '', images } = item;
 
+  const router = useRouter();
+  const isCurrentRoute = router.asPath === `/playlists/${id}`;
+
   return (
     <Tooltip label={capitalize(name)} placement={'end'}>
       <ListItem>
@@ -25,7 +29,7 @@ export const SidebarPlaylistItem = (
           <IconButton
             aria-label={name}
             color={'text.muted'}
-            filter="grayscale(1)"
+            filter={isCurrentRoute ? '' : 'grayscale(1)'}
             variant={'ghost'}
             _hover={{
               color: 'text.base',
