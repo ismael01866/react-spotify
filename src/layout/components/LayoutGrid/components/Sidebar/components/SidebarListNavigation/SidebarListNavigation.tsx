@@ -1,13 +1,17 @@
-import { List } from '@chakra-ui/react';
-import { SidebarListNavigationItem } from './components';
-import { data } from './data';
+import { StackDivider, VStack } from '@chakra-ui/react';
+import { SidebarListNavItems } from './components/SidebarListNavItems';
+import { SidebarListPlaylistItems } from './components/SidebarListPlaylistItems';
 
 export function SidebarListNavigation() {
   return (
-    <List spacing={4}>
-      {data.map((item, index) => {
-        return <SidebarListNavigationItem key={index} item={item} />;
-      })}
-    </List>
+    <VStack
+      divider={<StackDivider alignSelf={'center'} w={8} />}
+      overflow={'hidden'}
+      flex={'1 1 0'}
+      spacing={4}
+    >
+      <SidebarListNavItems />
+      <SidebarListPlaylistItems />
+    </VStack>
   );
 }

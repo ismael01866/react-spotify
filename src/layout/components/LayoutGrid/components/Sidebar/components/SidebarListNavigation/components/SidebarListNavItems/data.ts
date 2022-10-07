@@ -1,4 +1,5 @@
 import { HiHome, HiSearchCircle, HiViewBoards } from 'react-icons/hi';
+import { RiHeartsFill } from 'react-icons/ri';
 
 export const data = [
   {
@@ -15,5 +16,10 @@ export const data = [
     href: '/library',
     label: 'library',
     icon: HiViewBoards
+  },
+  {
+    href: '/liked/songs',
+    label: 'liked songs',
+    icon: RiHeartsFill
   }
 ];

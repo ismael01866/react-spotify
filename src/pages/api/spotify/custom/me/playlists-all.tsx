@@ -12,6 +12,8 @@ export default async function handler(
     req.query
   );
 
+  const { limit } = req.query;
+
   const playlists: IPlaylist[] = [];
 
   do {
@@ -19,6 +21,11 @@ export default async function handler(
       await fetchWithToken(req, playlistsURL);
 
     playlists.push(...items);
+
+    const limitReached =
+      limit && playlists.length >= parseInt(limit as string);
+
+    if (limitReached) break;
 
     playlistsURL = next;
   } while (playlistsURL);

@@ -3,14 +3,14 @@ import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
 import { IconType } from 'react-icons';
 
-interface SidebarListNavigationItemProps {
+interface SidebarListItemProps {
   label: string;
   href: string;
   icon: IconType;
 }
 
-export const SidebarListNavigationItem = (props: {
-  item: SidebarListNavigationItemProps;
+export const SidebarListItem = (props: {
+  item: SidebarListItemProps;
 }) => {
   const {
     item: { label, href, icon }

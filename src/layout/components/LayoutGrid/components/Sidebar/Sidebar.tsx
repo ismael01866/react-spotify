@@ -7,6 +7,7 @@ export function Sidebar() {
       bg={'bg.900'}
       direction={'column'}
       h={'full'}
+      overflow={'hidden'}
       py={8}
       px={4}
       w={20}
