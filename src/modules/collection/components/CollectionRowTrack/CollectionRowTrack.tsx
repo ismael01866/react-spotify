@@ -1,20 +1,23 @@
-import { Box, Heading, Td, Text, Tr } from '@chakra-ui/react';
+import { Box, Heading, Td, Text } from '@chakra-ui/react';
 import moment from 'moment';
 import { useRef } from 'react';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { ButtonPlay } from 'src/components';
 import { TrTrack } from 'src/components/Table/Tr';
-import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
+import { TrackButtonFollow } from 'src/modules/tracks/components';
 import { ITrack } from 'src/types/track';
 
-interface UserRowTrackProps {
+interface CollectionRowTrackProps {
   index: number;
   track: ITrack;
 }
 
-export function UserRowTrack(props: UserRowTrackProps) {
+export function CollectionRowTrack(props: CollectionRowTrackProps) {
   const { index, track } = props;
-  const { uri, name, duration_ms, album, is_playable = true } = track;
 
+  const { uri, name, duration_ms, is_playable = true } = track.track!;
+  const { added_at } = track;
+
+  const containerEl = useRef<HTMLTableRowElement>(null);
   const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -23,6 +26,7 @@ export function UserRowTrack(props: UserRowTrackProps) {
       onDoubleClick={() => {
         buttonPlayRef.current?.click();
       }}
+      ref={containerEl}
     >
       <Td textAlign={'right'}>
         <Box pos={'relative'} px={2}>
@@ -57,14 +61,14 @@ export function UserRowTrack(props: UserRowTrackProps) {
         </Heading>
       </Td>
 
-      <Td px={0} whiteSpace={'normal'}>
+      <Td>
         <Heading fontSize={'sm'} noOfLines={1}>
-          {album?.name}
+          {moment(added_at).fromNow()}
         </Heading>
       </Td>
 
       <Td>
-        <TrackButtonFollow track={track} />
+        <TrackButtonFollow track={track.track!} />
       </Td>
 
       <Td textAlign={'right'}>

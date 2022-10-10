@@ -6,6 +6,7 @@ export interface ITrack {
   id?: string;
   uri?: string;
   name?: string;
+  added_at?: string;
   duration_ms?: number;
 
   track?: ITrack;

@@ -18,7 +18,7 @@ export const data = [
     icon: HiViewBoards
   },
   {
-    href: '/liked-songs',
+    href: '/collection/tracks',
     label: 'liked songs',
     icon: RiHeartsFill
   }

@@ -8,7 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { limit } = req.query;
+  const { limit = 99 } = req.query;
 
   let tracksURL = utilWithQueryParams(
     'https://api.spotify.com/v1/me/player/recently-played',

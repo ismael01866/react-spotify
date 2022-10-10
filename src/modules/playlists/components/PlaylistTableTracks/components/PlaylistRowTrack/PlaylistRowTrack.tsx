@@ -1,7 +1,8 @@
-import { Box, Heading, Td, Text, Tr } from '@chakra-ui/react';
+import { Box, Heading, Td, Text } from '@chakra-ui/react';
 import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { TrTrack } from 'src/components/Table/Tr';
 import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
@@ -25,11 +26,8 @@ export function PlaylistRowTrack(props: PlaylistRowTrackProps) {
   const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <Tr
+    <TrTrack
       role={'group'}
-      _hover={{
-        bgGradient: 'linear(to-r, transparent, bg.900)'
-      }}
       onDoubleClick={() => {
         buttonPlayRef.current?.click();
       }}
@@ -82,6 +80,6 @@ export function PlaylistRowTrack(props: PlaylistRowTrackProps) {
           {moment(duration_ms).format('mm:ss')}
         </Text>
       </Td>
-    </Tr>
+    </TrTrack>
   );
 }

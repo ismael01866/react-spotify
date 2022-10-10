@@ -26,6 +26,8 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
       ids
     });
 
+    setIsFollowing(!isFollowing);
+
     // update SWR's cache regarding
     // the 'is_following' prop for a given track
 
@@ -33,13 +35,14 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
       await fetcher(updateURL, { method }).then(({ isFollowing }) => {
         const msg = isFollowing ? 'Added to' : 'Removed from';
 
-        setIsFollowing(isFollowing);
         track.is_following = isFollowing;
 
         toast({ description: `${msg} your liked songs` });
       });
 
       return track;
+    }).catch(() => {
+      setIsFollowing(!isFollowing);
     });
   };
 
@@ -48,6 +51,7 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
       label={
         (isFollowing ? 'Remove from' : 'Save to') + ' your library'
       }
+      closeOnClick={false}
       openDelay={TOOLTIP_OPEN_DELAY}
       placement="top"
     >

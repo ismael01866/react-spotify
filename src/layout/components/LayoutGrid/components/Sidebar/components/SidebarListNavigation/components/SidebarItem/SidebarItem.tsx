@@ -1,8 +1,8 @@
 import { Icon, IconButton, ListItem, Tooltip } from '@chakra-ui/react';
 import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
+import { useRouter } from 'next/router';
 import { IconType } from 'react-icons';
-import { useCurrentRoute } from 'src/layout/hooks';
 
 interface SidebarItemProps {
   item: {
@@ -17,7 +17,9 @@ export const SidebarItem = (props: SidebarItemProps) => {
     item: { label, href, icon }
   } = props;
 
-  const isCurrentRoute = useCurrentRoute(href, label);
+  const router = useRouter();
+
+  const isCurrentRoute = router.pathname === href;
 
   return (
     <Tooltip

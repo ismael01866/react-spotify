@@ -12,6 +12,7 @@ import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { Skeleton } from 'src/components/Skeleton';
+import { TrTrack } from 'src/components/Table/Tr';
 import { TrackButtonFollow } from 'src/modules/tracks/components/TrackButtonFollow';
 import { ITrack } from 'src/types/track';
 
@@ -28,7 +29,7 @@ export function ArtistRowPopularTrack(
   const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <Tr
+    <TrTrack
       role={'group'}
       onDoubleClick={() => {
         buttonPlayRef.current?.click();
@@ -84,6 +85,6 @@ export function ArtistRowPopularTrack(
           {moment(duration_ms).format('mm:ss')}
         </Text>
       </Td>
-    </Tr>
+    </TrTrack>
   );
 }

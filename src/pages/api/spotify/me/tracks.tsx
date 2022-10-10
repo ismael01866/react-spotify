@@ -11,13 +11,15 @@ export default async function handler(
     req.query
   );
 
-  let isFollowing = false;
+  if (req.method === 'PUT' || req.method === 'DELETE') {
+    let isFollowing = false;
 
-  await fetchWithToken(req, url, {
-    method: req.method
-  }).then(() => {
-    isFollowing = req.method === 'PUT' ? true : false;
-  });
+    await fetchWithToken(req, url, {
+      method: req.method
+    }).then(() => {
+      isFollowing = req.method === 'PUT' ? true : false;
+    });
 
-  return res.status(200).json({ isFollowing });
+    return res.status(200).json({ isFollowing });
+  }
 }

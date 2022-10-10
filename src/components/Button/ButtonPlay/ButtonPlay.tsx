@@ -1,8 +1,9 @@
-import { ButtonProps, IconButton, Skeleton } from '@chakra-ui/react';
+import { ButtonProps, IconButton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import { forwardRef, useContext } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { Skeleton } from 'src/components/Skeleton';
 import { PlayerContext } from 'src/modules/player/Player/PlayerContext';
 import {
   selectDeviceID,

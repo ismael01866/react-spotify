@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { IArtist } from 'src/types/artist';
+import { IAlbum } from 'src/types/album';
 import { useMeAlbumsAll } from 'src/utils/hooks/services';
 import {
   LibraryAlbumsContent,
@@ -11,7 +11,7 @@ import { LibraryAlbumsContext } from './LibraryAlbumsContext';
 export function LibraryAlbums() {
   const { albums } = useMeAlbumsAll({ sort: 'name' });
 
-  const [albumsFiltered, setAlbumsFiltered] = useState<IArtist[]>();
+  const [albumsFiltered, setAlbumsFiltered] = useState<IAlbum[]>();
 
   useEffect(() => {
     if (!albums) return;
