@@ -12,6 +12,9 @@ export const playerSlice = createSlice({
 
     deviceID: '',
     playbackID: '',
+    playbackContext: {
+      uri: ''
+    },
 
     track: {} as ITrack
   },
@@ -22,6 +25,10 @@ export const playerSlice = createSlice({
 
     setPlaybackID: (state, action) => {
       state.playbackID = action.payload;
+    },
+
+    setPlaybackContext: (state, action) => {
+      state.playbackContext = action.payload;
     },
 
     setTrack: (state, action) => {
@@ -46,6 +53,7 @@ export const playerReducer = playerSlice.reducer;
 export const {
   setDeviceID,
   setPlaybackID,
+  setPlaybackContext,
   setTrack,
   setPaused,
   setDuration,
@@ -57,6 +65,9 @@ export const selectDeviceID = (state: RootState) =>
 
 export const selectPlaybackID = (state: RootState) =>
   state.player.playbackID;
+
+export const selectPlaybackContext = (state: RootState) =>
+  state.player.playbackContext;
 
 export const selectTrack = (state: RootState) => state.player.track;
 

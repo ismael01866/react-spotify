@@ -11,28 +11,31 @@ export function TrackImage(props: TrackImageProps) {
   const { track } = props;
   const { name, album, playlist, artists } = track;
 
-  const getImageByContext = useCallback((track: ITrack) => {
-    if (!track.context) return;
+  const getImageByContext = useCallback(
+    (track: ITrack) => {
+      if (!track.context) return;
 
-    const {
-      context: { type }
-    } = track;
+      const {
+        context: { type }
+      } = track;
 
-    switch (type) {
-      case 'track':
-      case 'album':
-        return album?.images?.[0]?.url;
+      switch (type) {
+        case 'track':
+        case 'album':
+          return album?.images?.[0]?.url;
 
-      case 'artist':
-        return artists?.[0]?.images?.[0]?.url;
+        case 'artist':
+          return artists?.[0]?.images?.[0]?.url;
 
-      case 'playlist':
-        return playlist?.images?.[0]?.url;
+        case 'playlist':
+          return playlist?.images?.[0]?.url;
 
-      default:
-        break;
-    }
-  }, []);
+        default:
+          break;
+      }
+    },
+    [album, artists, playlist]
+  );
 
   return (
     <AspectRatio

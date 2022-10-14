@@ -5,7 +5,7 @@ export function CollectionRowTrackEmpty() {
   return (
     <Tr>
       <Td>
-        <Skeleton startColor={''} h={10} w={10} />
+        <Skeleton startColor={''} h={6} w={6} />
       </Td>
       <Td px={0}>
         <Skeleton startColor={''} h={4} />

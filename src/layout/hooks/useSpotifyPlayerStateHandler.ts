@@ -6,6 +6,7 @@ import {
   setDuration,
   setPaused,
   setPlaybackID,
+  setPlaybackContext,
   setPosition,
   setTrack
 } from 'src/modules/player/Player/PlayerSlice';
@@ -29,6 +30,7 @@ export const useSpotifyPlayerStateHandler = () => {
         },
         onStateChange: (state) => {
           dispatch(setPlaybackID(state?.playback_id));
+          dispatch(setPlaybackContext(state?.context));
 
           dispatch(setPaused(state?.paused));
           dispatch(setDuration(state?.duration));

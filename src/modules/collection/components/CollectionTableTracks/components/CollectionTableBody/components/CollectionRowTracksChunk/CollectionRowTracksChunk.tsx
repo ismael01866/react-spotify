@@ -16,11 +16,11 @@ export function CollectionRowTracksChunk(
 ) {
   const { chunkSize } = useContext(CollectionTracksContext);
 
-  const { index, skeletonTracks } = props;
+  const { index: chunkIndex, skeletonTracks } = props;
   const { tracks, isLoading } = useMeTracksWithFollow(
     {
       limit: chunkSize,
-      offset: (index - 1) * chunkSize
+      offset: (chunkIndex - 1) * chunkSize
     },
     {},
     {
@@ -46,7 +46,7 @@ export function CollectionRowTracksChunk(
         return (
           <CollectionRowTrack
             key={index}
-            index={index + 1}
+            index={(chunkIndex - 1) * chunkSize + (index + 1)}
             track={track}
           />
         );

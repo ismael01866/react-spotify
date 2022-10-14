@@ -1,4 +1,4 @@
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import {

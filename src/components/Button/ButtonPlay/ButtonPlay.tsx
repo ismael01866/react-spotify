@@ -8,6 +8,7 @@ import { PlayerContext } from 'src/modules/player/Player/PlayerContext';
 import {
   selectDeviceID,
   selectPaused,
+  selectPlaybackContext,
   selectTrack
 } from 'src/modules/player/Player/PlayerSlice';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
@@ -39,32 +40,23 @@ export const ButtonPlay = forwardRef<
   const track = useSelector(selectTrack);
   const paused = useSelector(selectPaused);
   const deviceID = useSelector(selectDeviceID);
+  const playbackContext = useSelector(selectPlaybackContext);
 
   const { player } = useContext(PlayerContext);
 
   let trackIsPlaying = false;
-  let albumIsPlaying = false;
-  let artistIsPlaying = false;
 
   if (track?.uri) {
     trackIsPlaying = track.uri === uri;
   }
 
-  if (track?.album?.uri) {
-    albumIsPlaying = track.album.uri === context_uri;
-  }
-
-  if (track?.artists?.[0].uri) {
-    artistIsPlaying = track.artists[0].uri === context_uri;
-  }
-
   const isPlaying =
-    !artistIsPlaying && !albumIsPlaying && !trackIsPlaying;
+    playbackContext.uri === context_uri || trackIsPlaying;
 
-  const icon = paused || isPlaying ? <FaPlay /> : <FaPause />;
+  const icon = paused || !isPlaying ? <FaPlay /> : <FaPause />;
 
   const handleOnClick = debounce(async () => {
-    if (artistIsPlaying || trackIsPlaying) return player?.togglePlay();
+    if (isPlaying) return player?.togglePlay();
 
     const url = utilWithQueryParams('/api/spotify/me/player/play', {
       device_id: deviceID
