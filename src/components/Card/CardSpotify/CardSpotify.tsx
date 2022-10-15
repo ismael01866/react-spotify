@@ -10,26 +10,10 @@ import {
 import { capitalize } from 'lodash';
 import moment from 'moment';
 import { default as NextLink } from 'next/link';
-import { useCallback, useContext, useRef } from 'react';
+import { memo, useCallback, useContext, useRef } from 'react';
 import { MetaPopularity } from 'src/components/Meta';
 import { Skeleton } from 'src/components/Skeleton';
 import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
-import {
-  AlbumEmptySkeleton,
-  AlbumImage
-} from 'src/modules/albums/components';
-import {
-  ArtistEmptySkeleton,
-  ArtistImage
-} from 'src/modules/artists/components';
-import {
-  PlaylistEmptySkeleton,
-  PlaylistImage
-} from 'src/modules/playlists/components';
-import {
-  TrackEmptySkeleton,
-  TrackImage
-} from 'src/modules/tracks/components';
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import { IPlaylist } from 'src/types/playlist';
@@ -37,18 +21,21 @@ import { ITrack } from 'src/types/track';
 import { utilPluralize } from 'src/utils/helpers';
 import { useOnScreen } from 'src/utils/hooks/dom';
 import { Card } from '../Card';
-import { CardButtonPlay } from '../components';
+import { CardButtonPlay, CardSpotifyImage } from '../components';
+import { CardSpotifyEmptySkeleton } from '../components/CardSpotifyEmptySkeleton';
+import { getNameByContext, getURLByType } from './utils';
 
 interface CardSpotifyProps {
-  type: 'album' | 'artist' | 'playlist' | 'track';
-  data: IAlbum | IArtist | IPlaylist | ITrack;
-  [others: string]: any;
+  // type: 'album' | 'artist' | 'playlist' | 'track';
+  // data: IAlbum | IArtist | IPlaylist | ITrack;
+  // data: T;
+  // [others: string]: any;
 }
 
-export const CardSpotify = (props: CardSpotifyProps) => {
+export const CardSpotify = (props: any) => {
   const { type, data, ...others } = props;
 
-  const { id, name, uri } = data;
+  const { id, name } = data;
 
   if (type === 'album') {
     var { release_date, popularity } = data as IAlbum;
@@ -74,71 +61,10 @@ export const CardSpotify = (props: CardSpotifyProps) => {
     rootMargin: '400px 0px'
   });
 
-  const getURLByType = useCallback((item: any) => {
-    let type = item.type;
+  const memoGetURLByType = useCallback(getURLByType, []);
+  const memoGetNameByContext = useCallback(getNameByContext, []);
 
-    if (type === 'track') {
-      if (item.context.type !== 'track') {
-        const id = item?.context?.uri?.split(':')?.pop();
-
-        switch (item.context.type) {
-          case 'album':
-            return `/albums/${id}`;
-
-          case 'artist':
-            return `/artists/${id}`;
-
-          case 'playlist':
-            return `/playlists/${id}`;
-
-          default:
-            break;
-        }
-      }
-
-      return `/albums/${item.album?.id}`;
-    }
-
-    switch (type) {
-      case 'track':
-      case 'album':
-        return `/albums/${item.id}`;
-
-      case 'artist':
-        return `/artists/${item.id}`;
-
-      case 'playlist':
-        return `/playlists/${item.id}`;
-
-      default:
-        break;
-    }
-  }, []);
-
-  const getNameByTrackContext = useCallback((track: ITrack) => {
-    if (!track.context) return;
-
-    const {
-      context: { type }
-    } = track;
-
-    switch (type) {
-      case 'album':
-        return track?.album?.name;
-
-      case 'artist':
-        return track?.artists?.[0]?.name;
-
-      case 'track':
-        return track?.name;
-
-      case 'playlist':
-        return track?.playlist?.name;
-
-      default:
-        break;
-    }
-  }, []);
+  const MemoCardSpotifyEmptySkeleton = memo(CardSpotifyEmptySkeleton);
 
   return (
     <Box ref={containerEl}>
@@ -147,50 +73,13 @@ export const CardSpotify = (props: CardSpotifyProps) => {
           <Card position={'relative'} role={'group'} {...others}>
             <Box boxShadow={'dark-lg'} position={'relative'}>
               <>
-                <NextLink href={`${getURLByType(data)}`} passHref>
+                <NextLink href={`${memoGetURLByType(data)}`} passHref>
                   <Link>
-                    {(() => {
-                      switch (type) {
-                        case 'album':
-                          return <AlbumImage album={data as IAlbum} />;
-
-                        case 'artist':
-                          return (
-                            <ArtistImage artist={data as IArtist} />
-                          );
-
-                        case 'playlist':
-                          return (
-                            <PlaylistImage
-                              playlist={data as IPlaylist}
-                            />
-                          );
-
-                        case 'track':
-                          return <TrackImage track={data as ITrack} />;
-
-                        default:
-                          break;
-                      }
-                    })()}
+                    <CardSpotifyImage type={type} data={data} />
                   </Link>
                 </NextLink>
 
-                {(() => {
-                  if (type === 'track') {
-                    switch (context?.type) {
-                      case 'track':
-                        return <CardButtonPlay uri={uri} />;
-
-                      default:
-                        return (
-                          <CardButtonPlay context_uri={context?.uri} />
-                        );
-                    }
-                  }
-
-                  return <CardButtonPlay context_uri={uri} />;
-                })()}
+                <CardButtonPlay type={type} data={data} />
               </>
             </Box>
 
@@ -202,23 +91,11 @@ export const CardSpotify = (props: CardSpotifyProps) => {
                 w={'full'}
               >
                 <>
-                  {(() => {
-                    switch (type) {
-                      case 'track':
-                        return (
-                          <Heading fontSize={'sm'} noOfLines={1}>
-                            {getNameByTrackContext(data)}
-                          </Heading>
-                        );
-
-                      default:
-                        return (
-                          <Heading fontSize={'sm'} noOfLines={1}>
-                            {name}
-                          </Heading>
-                        );
-                    }
-                  })()}
+                  <Heading fontSize={'sm'} noOfLines={1}>
+                    {type === 'track'
+                      ? memoGetNameByContext(data)
+                      : name}
+                  </Heading>
 
                   <HStack justifyContent={'space-between'}>
                     {(() => {
@@ -293,40 +170,9 @@ export const CardSpotify = (props: CardSpotifyProps) => {
             </Flex>
           </Card>
         ) : (
-          (() => {
-            switch (type) {
-              case 'album':
-                return (
-                  <Card>
-                    <AlbumEmptySkeleton />
-                  </Card>
-                );
-
-              case 'artist':
-                return (
-                  <Card>
-                    <ArtistEmptySkeleton />
-                  </Card>
-                );
-
-              case 'playlist':
-                return (
-                  <Card>
-                    <PlaylistEmptySkeleton />
-                  </Card>
-                );
-
-              case 'track':
-                return (
-                  <Card>
-                    <TrackEmptySkeleton />
-                  </Card>
-                );
-
-              default:
-                break;
-            }
-          })()
+          <Card>
+            <MemoCardSpotifyEmptySkeleton type={type} />
+          </Card>
         )}
       </Skeleton>
     </Box>
