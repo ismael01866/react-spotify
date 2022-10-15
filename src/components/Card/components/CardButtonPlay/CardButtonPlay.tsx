@@ -1,22 +1,18 @@
 import { memo } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { IAlbum } from 'src/types/album';
-import { IArtist } from 'src/types/artist';
-import { IPlaylist } from 'src/types/playlist';
 import { ITrack } from 'src/types/track';
 
-interface CardButtonPlayProps<T> {
-  data: T &
-    (IAlbum | IArtist | IPlaylist | ITrack) & {
-      context: ITrack['context'];
-    };
-  type: 'album' | 'artist' | 'playlist' | 'track';
+interface CardButtonPlayProps<TData, TType> {
+  data: TData;
+  type: TType;
   [others: string]: any;
 }
 
 const MemoButtonPlay = memo(ButtonPlayContainer);
 
-export function CardButtonPlay<T>(props: CardButtonPlayProps<T>) {
+export function CardButtonPlay<TData extends {} & ITrack, TType>(
+  props: CardButtonPlayProps<TData, TType>
+) {
   const {
     type,
     data: { context, uri }

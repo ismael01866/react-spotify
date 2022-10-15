@@ -1,9 +1,5 @@
 import { IAlbum } from 'src/types/album';
-import { IArtist } from 'src/types/artist';
-import { IPlaylist } from 'src/types/playlist';
 import { ITrack } from 'src/types/track';
-
-type TBase = IAlbum | IArtist | IPlaylist | ITrack;
 
 type TGenericProps = {
   album?: IAlbum;
@@ -11,7 +7,7 @@ type TGenericProps = {
   context?: ITrack['context'];
 };
 
-export const getURLByType = <T extends TBase>(
+export const getURLByType = <T extends { id?: string }>(
   item: T & TGenericProps
 ) => {
   const { id, type, album } = item;

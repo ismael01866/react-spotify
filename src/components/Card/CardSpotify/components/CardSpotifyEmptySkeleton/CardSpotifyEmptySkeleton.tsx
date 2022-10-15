@@ -3,12 +3,12 @@ import { ArtistEmptySkeleton } from 'src/modules/artists/components';
 import { PlaylistEmptySkeleton } from 'src/modules/playlists/components';
 import { TrackEmptySkeleton } from 'src/modules/tracks/components';
 
-type CardSpotifyEmptySkeletonProps = {
-  type: 'album' | 'artist' | 'playlist' | 'track';
+type CardSpotifyEmptySkeletonProps<T> = {
+  type: T;
 };
 
-export function CardSpotifyEmptySkeleton(
-  props: CardSpotifyEmptySkeletonProps
+export function CardSpotifyEmptySkeleton<T extends string>(
+  props: CardSpotifyEmptySkeletonProps<T>
 ) {
   const { type } = props;
 
