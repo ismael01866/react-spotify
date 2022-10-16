@@ -7,7 +7,7 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { memo, useCallback, useContext, useRef } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import { Skeleton } from 'src/components/Skeleton';
 import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
 import { IAlbum } from 'src/types/album';
@@ -35,21 +35,14 @@ export function CardSpotify<
 >(props: CardSpotifyProps<TData, TType>) {
   const { type, data, ...others } = props;
 
-  const MemoCardImage = memo(CardImage);
-  const MemoCardContent = memo(CardContent);
-
   const containerEl = useRef<HTMLDivElement>(null);
 
   return (
     <Box ref={containerEl}>
       <Skeleton isLoaded={!!data.id}>
         <Card position={'relative'} role={'group'} {...others}>
-          <MemoCardImage
-            data={data}
-            type={type}
-            parentRef={containerEl}
-          />
-          <MemoCardContent data={data} type={type} />
+          <CardImage data={data} type={type} parentRef={containerEl} />
+          <CardContent data={data} type={type} />
         </Card>
       </Skeleton>
     </Box>
@@ -65,7 +58,6 @@ function CardImage({ data, type, parentRef }: any) {
   });
 
   const memoGetURLByType = useCallback(getURLByType, []);
-  const MemoCardSpotifyEmptySkeleton = memo(CardSpotifyEmptySkeleton);
 
   return (
     <Box boxShadow={'dark-lg'} position={'relative'}>
@@ -80,7 +72,7 @@ function CardImage({ data, type, parentRef }: any) {
           <CardButtonPlay type={type} data={data} />
         </>
       ) : (
-        <MemoCardSpotifyEmptySkeleton type={type} />
+        <CardSpotifyEmptySkeleton type={type} />
       )}
     </Box>
   );

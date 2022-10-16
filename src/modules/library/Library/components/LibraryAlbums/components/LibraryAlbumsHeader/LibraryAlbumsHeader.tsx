@@ -15,6 +15,7 @@ import {
 } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { IAlbum } from 'src/types/album';
+import { utilSetDelayedState } from 'src/utils/helpers';
 import { LibraryAlbumsContext } from '../../LibraryAlbumsContext';
 
 export function LibraryAlbumsHeader() {
@@ -50,13 +51,16 @@ export function LibraryAlbumsHeader() {
   const handleOnChangeSelect = (
     event: FormEvent<HTMLSelectElement>
   ) => {
+    if (!albumsFiltered) return;
+
     const prop = event.currentTarget.value as keyof IAlbum;
     setSortProp(prop);
 
-    if (albumsFiltered) {
-      const sorted = sortAlbumsByProp(albumsFiltered, prop);
-      setAlbumsFiltered(sorted);
-    }
+    const sorted = sortAlbumsByProp(albumsFiltered, prop);
+    if (!sorted) return;
+
+    setAlbumsFiltered([]);
+    utilSetDelayedState(sorted, setAlbumsFiltered);
   };
 
   const filterAlbumsByName = (albums: IAlbum[], value: string) => {

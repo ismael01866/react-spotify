@@ -15,6 +15,7 @@ import {
 } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { IArtist } from 'src/types/artist';
+import { utilSetDelayedState } from 'src/utils/helpers';
 import { LibraryArtistsContext } from '../../LibraryArtistsContext';
 
 export function LibraryArtistsHeader() {
@@ -49,16 +50,16 @@ export function LibraryArtistsHeader() {
   const handleOnChangeSelect = (
     event: FormEvent<HTMLSelectElement>
   ) => {
+    if (!artistsFiltered) return;
+
     const prop = event.currentTarget.value as keyof IArtist;
     setSortProp(prop);
 
-    if (artistsFiltered) {
-      const sorted = sortArtistsByProp(artistsFiltered, prop);
+    const sorted = sortArtistsByProp(artistsFiltered, prop);
+    if (!sorted) return;
 
-      startTransition(() => {
-        setArtistsFiltered(sorted);
-      });
-    }
+    setArtistsFiltered([]);
+    utilSetDelayedState(sorted, setArtistsFiltered);
   };
 
   const filterArtistsByName = (artists: IArtist[], value: string) => {
