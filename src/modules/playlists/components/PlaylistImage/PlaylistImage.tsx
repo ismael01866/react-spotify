@@ -11,12 +11,7 @@ export function PlaylistImage(props: PlaylistImageProps) {
   const { name, images } = playlist;
 
   return (
-    <AspectRatio
-      borderRadius={'base'}
-      boxSize={'full'}
-      overflow={'hidden'}
-      ratio={4 / 4}
-    >
+    <AspectRatio boxSize={'full'} overflow={'hidden'} ratio={4 / 4}>
       <Image
         src={images?.[0]?.url}
         alt={name}

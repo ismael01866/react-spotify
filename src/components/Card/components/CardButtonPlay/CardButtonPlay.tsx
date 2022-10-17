@@ -33,10 +33,9 @@ function ButtonPlayContainer({ ...others }) {
   return (
     <ButtonPlay
       bottom={4}
-      right={4}
+      boxShadow={'dark-lg'}
       pos={'absolute'}
-      opacity={0}
-      _groupHover={{ opacity: 1 }}
+      right={4}
       {...others}
     />
   );

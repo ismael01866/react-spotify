@@ -1,6 +1,80 @@
-import { Home } from 'modules/home';
-import type { NextPage } from 'next';
+import { random } from 'lodash';
+import { Home, HomeContext } from 'modules/home';
+import type {
+  GetServerSideProps,
+  NextApiRequest,
+  NextPage
+} from 'next';
+import { IArtist } from 'src/types/artist';
+import { ITrack } from 'src/types/track';
+import { fetchWithToken } from 'src/utils/fetch';
+import { utilWithQueryParams } from 'src/utils/helpers';
 
-const IndexPage: NextPage = () => <Home />;
+interface HomePageProps {
+  artist: IArtist[];
+}
 
-export default IndexPage;
+const HomePage: NextPage<HomePageProps> = (props) => {
+  const { artist } = props;
+
+  return (
+    <HomeContext.Provider value={{ artist }}>
+      <Home />
+    </HomeContext.Provider>
+  );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({
+  req
+}) => {
+  // Get top artists
+
+  const topArtistsURL = utilWithQueryParams(
+    `${process.env.NEXT_PUBLIC_SPOTIFY_API}/me/top/artists`,
+    {
+      limit: 5
+    }
+  );
+
+  const { items: topArtists }: { items: IArtist[] } =
+    await fetchWithToken(req as NextApiRequest, topArtistsURL);
+
+  // Get recommendations
+
+  const limit = 10;
+  const seed_artists = topArtists.map((item) => item.id).join(',');
+
+  const recommendationsURL = utilWithQueryParams(
+    `${process.env.NEXT_PUBLIC_SPOTIFY_API}/recommendations`,
+    {
+      limit,
+      seed_artists
+    }
+  );
+
+  const { tracks }: { tracks: ITrack[] } = await fetchWithToken(
+    req as NextApiRequest,
+    recommendationsURL
+  );
+
+  // Get artist info
+
+  let artistID;
+
+  while (!artistID) {
+    artistID = tracks[random(1, limit)]?.artists?.[0]?.id;
+  }
+
+  const artistsURL = `${process.env.NEXT_PUBLIC_SPOTIFY_API}/artists/${artistID}`;
+
+  const artist: IArtist = await fetchWithToken(
+    req as NextApiRequest,
+    artistsURL
+  );
+
+  return {
+    props: { artist }
+  };
+};
+
+export default HomePage;

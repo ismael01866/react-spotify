@@ -1,13 +1,14 @@
 import {
   AspectRatio,
   Box,
+  BoxProps,
   Center,
   Icon,
   useStyleConfig,
   useTheme
 } from '@chakra-ui/react';
 
-interface EmptySkeletonProps {
+interface EmptySkeletonProps extends BoxProps {
   icon?: any;
   [others: string]: any;
 }
@@ -35,11 +36,13 @@ export function EmptySkeleton(props: EmptySkeletonProps) {
         ratio={4 / 4}
       >
         <Center boxSize={'full'}>
-          <Icon
-            as={icon}
-            boxSize={'40%'}
-            color={`${defaultBackground}.400`}
-          />
+          {icon && (
+            <Icon
+              as={icon}
+              boxSize={'40%'}
+              color={`${defaultBackground}.400`}
+            />
+          )}
         </Center>
       </AspectRatio>
     </Box>

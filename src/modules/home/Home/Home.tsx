@@ -1,24 +1,13 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import {
-  HomeBrowseFeaturedPlaylists,
-  HomeUserMePlayerRecentlyPlayed,
-  HomeUserMeTopArtists
+  HomeHeader
+  // HomeContent,
 } from './components';
 
 export function Home() {
   return (
     <Flex flexDirection={'column'} gap={12}>
-      <Box>
-        <HomeUserMePlayerRecentlyPlayed />
-      </Box>
-
-      <Box>
-        <HomeBrowseFeaturedPlaylists />
-      </Box>
-
-      <Box>
-        <HomeUserMeTopArtists />
-      </Box>
+      <HomeHeader />
     </Flex>
   );
 }

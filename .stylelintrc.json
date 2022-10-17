@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "stylelint-config-sass-guidelines"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ],
+  "plugins": [
+		"stylelint-order"
+	],
+  "rules": {
+    "order/properties-alphabetical-order": true
+	}
+}

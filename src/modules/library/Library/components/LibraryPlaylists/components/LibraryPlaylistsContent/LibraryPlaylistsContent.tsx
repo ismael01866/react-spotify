@@ -16,7 +16,7 @@ export function LibraryPlaylistsContent() {
   return (
     <PlaylistGrid
       playlists={playlists}
-      columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
+      columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
     />
   );
 }

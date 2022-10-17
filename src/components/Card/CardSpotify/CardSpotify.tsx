@@ -1,14 +1,19 @@
 import {
+  AspectRatio,
   Box,
+  Center,
   Flex,
   Heading,
   HStack,
   Link,
+  SlideFade,
+  useDisclosure,
   VStack
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useCallback, useContext, useRef } from 'react';
-import { Skeleton } from 'src/components/Skeleton';
+import { useCallback, useContext, useMemo, useRef } from 'react';
+import { BoxAnimated } from 'src/components/Box';
+import { EmptySkeleton, Skeleton } from 'src/components/Skeleton';
 import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
 import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
@@ -17,11 +22,7 @@ import { ITrack } from 'src/types/track';
 import { useOnScreen } from 'src/utils/hooks/dom';
 import { Card } from '../Card';
 import { CardButtonPlay } from '../components';
-import {
-  CardSpotifyContent,
-  CardSpotifyEmptySkeleton,
-  CardSpotifyImage
-} from './components';
+import { CardSpotifyContent, CardSpotifyImage } from './components';
 import { getNameByContext, getURLByType } from './utils';
 
 export interface CardSpotifyProps<TData, TType> {
@@ -40,7 +41,7 @@ export function CardSpotify<
   return (
     <Box ref={containerEl}>
       <Skeleton isLoaded={!!data.id}>
-        <Card position={'relative'} role={'group'} {...others}>
+        <Card padding={0} position={'relative'} {...others}>
           <CardImage data={data} type={type} parentRef={containerEl} />
           <CardContent data={data} type={type} />
         </Card>
@@ -57,22 +58,59 @@ function CardImage({ data, type, parentRef }: any) {
     rootMargin: '400px 0px'
   });
 
-  const memoGetURLByType = useCallback(getURLByType, []);
+  const { isOpen: onHover, onOpen, onClose } = useDisclosure();
+  const memoGetURLByType = useMemo(() => getURLByType(data), [data]);
 
   return (
-    <Box boxShadow={'dark-lg'} position={'relative'}>
+    <Box position={'relative'}>
       {isIntersecting ? (
-        <>
-          <NextLink href={`${memoGetURLByType(data)}`} passHref>
+        <Box
+          onMouseEnter={onOpen}
+          onMouseLeave={onClose}
+          // whileHover={{
+          //  borderRadius: '0%',
+          //  filter: 'grayscale(0)',
+          //  scale: 1.2,
+          //  transition: { duration: 0.2 }
+          // }}
+        >
+          <NextLink href={`${memoGetURLByType}`} passHref>
             <Link>
-              <CardSpotifyImage type={type} data={data} />
+              <Center>
+                <AspectRatio
+                  boxSize={'full'}
+                  overflow={'hidden'}
+                  ratio={4 / 4}
+                >
+                  <BoxAnimated
+                    boxSize={'full'}
+                    boxShadow={'dark-lg'}
+                    animate={{
+                      opacity: 1.0,
+                      transform: `scale(${onHover ? '1.1' : '1'})`
+                    }}
+                    initial={{ opacity: 0.2, transform: 'scale(1)' }}
+                    sx={{
+                      transform: onHover ? 'scale(1.2)' : ''
+                    }}
+                    // @ts-ignore
+                    transition={{
+                      duration: 0.24
+                    }}
+                  >
+                    <CardSpotifyImage type={type} data={data} />
+                  </BoxAnimated>
+                </AspectRatio>
+              </Center>
             </Link>
           </NextLink>
 
-          <CardButtonPlay type={type} data={data} />
-        </>
+          <SlideFade in={onHover} offsetY={'1rem'}>
+            <CardButtonPlay type={type} data={data} />
+          </SlideFade>
+        </Box>
       ) : (
-        <CardSpotifyEmptySkeleton type={type} />
+        <EmptySkeleton />
       )}
     </Box>
   );
@@ -84,7 +122,7 @@ function CardContent({ data, type }: any) {
   const memoGetNameByContext = useCallback(getNameByContext, []);
 
   return (
-    <Flex bg={'bg.900'} mt={4} w={'full'}>
+    <Flex bg={'bg.900'} p={4} w={'full'}>
       <VStack
         alignItems={'flex-start'}
         noOfLines={1}
