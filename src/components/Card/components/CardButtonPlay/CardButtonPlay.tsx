@@ -31,12 +31,6 @@ export function CardButtonPlay<TData extends {} & ITrack, TType>(
 
 function ButtonPlayContainer({ ...others }) {
   return (
-    <ButtonPlay
-      bottom={4}
-      boxShadow={'dark-lg'}
-      pos={'absolute'}
-      right={4}
-      {...others}
-    />
+    <ButtonPlay bottom={4} pos={'absolute'} right={4} {...others} />
   );
 }

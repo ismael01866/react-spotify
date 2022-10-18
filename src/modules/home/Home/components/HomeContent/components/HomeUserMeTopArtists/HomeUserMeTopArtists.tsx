@@ -4,7 +4,7 @@ import { ArtistGrid } from 'src/modules/artists/components';
 import { useMeTopArtists } from 'src/utils/hooks/services';
 
 export function HomeUserMeTopArtists() {
-  const limit = 6;
+  const limit = 2;
 
   const { artists, isLoading } = useMeTopArtists({
     limit
@@ -25,7 +25,10 @@ export function HomeUserMeTopArtists() {
         </HStack>
 
         <br />
-        <ArtistGrid artists={data} />
+        <ArtistGrid
+          columns={{ base: 1, sm: 2, md: 2 }}
+          artists={data}
+        />
       </>
     )) || <></>
   );

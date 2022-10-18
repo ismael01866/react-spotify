@@ -38,28 +38,23 @@ const colors = {
   },
 
   text: {
-    muted: '#6A6A6A',
-    base: '#B3B3B3',
+    muted: '#6a6a6a',
+    base: '#b3b3b3',
     body: 'var(--chakra-colors-chakra-body-text)'
   },
 
   spotify: {
     '50': '#e6f7ea',
     '100': '#c3eacb',
-    '200': '#1DB954',
+    '200': '#9cdcaa',
     '300': '#71cf88',
     '400': '#4cc46e',
-    '500': '#1DB954',
+    '500': '#1db954',
     '600': '#10aa4a',
     '700': '#00973e',
     '800': '#008633',
     '900': '#00671e'
   }
-};
-
-const fonts = {
-  // heading: `'Open Sans', sans-serif`,
-  // body: `'Raleway', sans-serif`
 };
 
 const sizes = {
@@ -87,6 +82,15 @@ const Button: ComponentStyleConfig = {
       },
 
       _active: {}
+    }),
+
+    solid: (props: StyleFunctionProps) => ({
+      ...defaultTheme.components.Button.variants.solid(props),
+
+      backgroundColor:
+        props.colorMode === 'dark' &&
+        props.colorScheme === 'spotify' &&
+        `var(--chakra-colors-${props.colorScheme}-500)`
     })
   }
 };
@@ -232,7 +236,6 @@ export const theme = extendTheme(
 
     styles,
     colors,
-    fonts,
     sizes,
 
     components: {

@@ -40,6 +40,20 @@ export default NextAuth({
     signIn: '/auth/signin'
   },
 
+  // debug: true,
+
+  // logger: {
+  //   error(code, metadata) {
+  //     console.error(code, metadata);
+  //   },
+  //   warn(code) {
+  //     console.warn(code);
+  //   },
+  //   debug(code, metadata) {
+  //     console.debug(code, metadata);
+  //   }
+  // },
+
   callbacks: {
     async jwt({ token, account, user }) {
       if (account) {

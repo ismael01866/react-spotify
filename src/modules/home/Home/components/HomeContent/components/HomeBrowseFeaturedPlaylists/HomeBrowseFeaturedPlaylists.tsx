@@ -8,7 +8,7 @@ import { UserContext } from 'src/modules/users/User/UserContext';
 
 export function HomeBrowseFeaturedPlaylists() {
   const { country } = useContext(UserContext);
-  const limit = 6;
+  const limit = 8;
 
   const {
     data: { message, playlists },
@@ -33,7 +33,10 @@ export function HomeBrowseFeaturedPlaylists() {
         </HStack>
 
         <br />
-        <PlaylistGrid playlists={data} />
+        <PlaylistGrid
+          columns={{ base: 1, sm: 2, md: 4 }}
+          playlists={data}
+        />
       </>
     )) || <></>
   );

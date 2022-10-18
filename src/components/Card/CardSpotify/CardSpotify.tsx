@@ -39,7 +39,7 @@ export function CardSpotify<
   const containerEl = useRef<HTMLDivElement>(null);
 
   return (
-    <Box ref={containerEl}>
+    <Box ref={containerEl} boxShadow={'xl'}>
       <Skeleton isLoaded={!!data.id}>
         <Card padding={0} position={'relative'} {...others}>
           <CardImage data={data} type={type} parentRef={containerEl} />
@@ -64,16 +64,7 @@ function CardImage({ data, type, parentRef }: any) {
   return (
     <Box position={'relative'}>
       {isIntersecting ? (
-        <Box
-          onMouseEnter={onOpen}
-          onMouseLeave={onClose}
-          // whileHover={{
-          //  borderRadius: '0%',
-          //  filter: 'grayscale(0)',
-          //  scale: 1.2,
-          //  transition: { duration: 0.2 }
-          // }}
-        >
+        <Box onMouseEnter={onOpen} onMouseLeave={onClose}>
           <NextLink href={`${memoGetURLByType}`} passHref>
             <Link>
               <Center>

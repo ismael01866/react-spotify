@@ -11,7 +11,7 @@ import { fetchWithToken } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 
 interface HomePageProps {
-  artist: IArtist[];
+  artist: IArtist;
 }
 
 const HomePage: NextPage<HomePageProps> = (props) => {
@@ -32,17 +32,19 @@ export const getServerSideProps: GetServerSideProps = async ({
   const topArtistsURL = utilWithQueryParams(
     `${process.env.NEXT_PUBLIC_SPOTIFY_API}/me/top/artists`,
     {
-      limit: 5
+      limit: 5 // 5 is the max supported
     }
   );
 
-  const { items: topArtists }: { items: IArtist[] } =
-    await fetchWithToken(req as NextApiRequest, topArtistsURL);
+  const { items }: { items: IArtist[] } = await fetchWithToken(
+    req as NextApiRequest,
+    topArtistsURL
+  );
 
   // Get recommendations
 
-  const limit = 10;
-  const seed_artists = topArtists.map((item) => item.id).join(',');
+  const limit = 20;
+  const seed_artists = items.map((item) => item.id).join(',');
 
   const recommendationsURL = utilWithQueryParams(
     `${process.env.NEXT_PUBLIC_SPOTIFY_API}/recommendations`,

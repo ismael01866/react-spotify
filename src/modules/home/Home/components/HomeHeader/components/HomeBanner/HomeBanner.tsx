@@ -11,21 +11,18 @@ export function HomeBanner(props: HomeBannerProps) {
 
   return (
     <AspectRatio
+      h={'full'}
       ratio={16 / 9}
-      position={'fixed'}
-      boxSize={'full'}
-      top={0}
-      left={0}
       sx={{ imageRendering: 'crisp-edges' }}
       _after={{
         bgGradient:
           'linear(var(--chakra-colors-bg-base), var(--chakra-colors-spotify-500))',
-        opacity: 0.92,
+        boxSize: 'full',
         content: '""',
+        opacity: 0.92,
         position: 'absolute',
         top: 0,
-        left: 0,
-        boxSize: 'full'
+        left: 0
       }}
     >
       <Image

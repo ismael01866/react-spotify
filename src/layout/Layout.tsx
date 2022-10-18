@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { ReactNode } from 'react';
 import { LayoutGrid } from './components/LayoutGrid';
 import { useSpotifyPlayerEmbed } from './hooks';

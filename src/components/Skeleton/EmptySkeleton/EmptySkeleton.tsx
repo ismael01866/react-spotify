@@ -27,6 +27,7 @@ export function EmptySkeleton(props: EmptySkeletonProps) {
       __css={styles}
       bg={`${defaultBackground}.700`}
       boxSize={'full'}
+      opacity={1}
       {...others}
     >
       <AspectRatio

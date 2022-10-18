@@ -1,13 +1,11 @@
 import { Flex } from '@chakra-ui/react';
-import {
-  HomeHeader
-  // HomeContent,
-} from './components';
+import { HomeContent, HomeHeader } from './components';
 
 export function Home() {
   return (
-    <Flex flexDirection={'column'} gap={12}>
+    <Flex flexDirection={'column'} gap={20}>
       <HomeHeader />
+      <HomeContent />
     </Flex>
   );
 }

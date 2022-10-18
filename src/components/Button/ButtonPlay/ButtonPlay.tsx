@@ -16,69 +16,65 @@ import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 
 interface BaseButtonPlayProps extends ButtonProps {
+  uri: string;
+  context_uri: string;
   [other: string]: any;
 }
 
-interface ButtonPlayPropsWithURI extends BaseButtonPlayProps {
-  uri?: string;
-}
+export const ButtonPlay = forwardRef<
+  Partial<BaseButtonPlayProps>,
+  'button'
+>((props, ref) => {
+  const { uri, context_uri, ...others } = props;
 
-interface ButtonPlayPropsWithContextURI extends BaseButtonPlayProps {
-  context_uri?: string;
-}
+  const track = useSelector(selectTrack);
+  const paused = useSelector(selectPaused);
+  const deviceID = useSelector(selectDeviceID);
+  const playbackContext = useSelector(selectPlaybackContext);
 
-type ButtonPlayProps =
-  | ButtonPlayPropsWithURI
-  | ButtonPlayPropsWithContextURI;
+  const { player } = useContext(PlayerContext);
 
-export const ButtonPlay = forwardRef<ButtonPlayProps, 'button'>(
-  (props, ref) => {
-    const { uri, context_uri, ...others } = props;
+  let trackIsPlaying = false;
 
-    const track = useSelector(selectTrack);
-    const paused = useSelector(selectPaused);
-    const deviceID = useSelector(selectDeviceID);
-    const playbackContext = useSelector(selectPlaybackContext);
-
-    const { player } = useContext(PlayerContext);
-
-    let trackIsPlaying = false;
-
-    if (track?.uri) {
-      trackIsPlaying = track.uri === uri;
-    }
-
-    const isPlaying =
-      playbackContext.uri === context_uri || trackIsPlaying;
-
-    const icon = paused || !isPlaying ? <FaPlay /> : <FaPause />;
-
-    const handleOnClick = debounce(async () => {
-      if (isPlaying) return player?.togglePlay();
-
-      const url = utilWithQueryParams('/api/spotify/me/player/play', {
-        device_id: deviceID
-      });
-
-      fetcher(url, {
-        method: 'POST',
-        body: JSON.stringify({ uris: uri && [uri], context_uri })
-      });
-    }, DEBOUNCE_WAIT);
-
-    return (
-      <Skeleton isLoaded={!!deviceID}>
-        <IconButton
-          ref={ref}
-          aria-label={'play'}
-          colorScheme={'spotify'}
-          icon={icon}
-          onClick={handleOnClick}
-          {...others}
-        />
-      </Skeleton>
-    );
+  if (track?.uri) {
+    trackIsPlaying = track.uri === uri;
   }
-);
+
+  const isPlaying =
+    playbackContext.uri === context_uri || trackIsPlaying;
+
+  const icon = paused || !isPlaying ? <FaPlay /> : <FaPause />;
+
+  const handleOnClick = debounce(async () => {
+    if (isPlaying) return player?.togglePlay();
+
+    const url = utilWithQueryParams('/api/spotify/me/player/play', {
+      device_id: deviceID
+    });
+
+    fetcher(url, {
+      method: 'POST',
+      body: JSON.stringify({ uris: uri && [uri], context_uri })
+    });
+  }, DEBOUNCE_WAIT);
+
+  return (
+    <Skeleton
+      isLoaded={!!deviceID}
+      startColor={'whiteAlpha.200'}
+      endColor={'whiteAlpha.500'}
+    >
+      <IconButton
+        ref={ref}
+        aria-label={'play'}
+        boxShadow={'dark-lg'}
+        colorScheme={'spotify'}
+        icon={icon}
+        onClick={handleOnClick}
+        {...others}
+      />
+    </Skeleton>
+  );
+});
 
 ButtonPlay.displayName = 'ButtonPlay';

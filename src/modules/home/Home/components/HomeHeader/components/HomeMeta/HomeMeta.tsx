@@ -11,10 +11,15 @@ export function HomeMeta(props: HomeMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Heading fontSize={'xs'} letterSpacing={2} mb={1} opacity={0.64}>
+      <Heading fontSize={'xs'} letterSpacing={2} mb={2} opacity={0.64}>
         RECOMMENDED
       </Heading>
-      <Heading noOfLines={2} size={'4xl'}>
+      <Heading
+        noOfLines={2}
+        lineHeight={'initial'}
+        my={-2}
+        size={'4xl'}
+      >
         {name}
       </Heading>
     </Flex>

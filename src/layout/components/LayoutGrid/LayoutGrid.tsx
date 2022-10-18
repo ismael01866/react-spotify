@@ -42,8 +42,7 @@ export function LayoutGrid({ children }: LayoutGridProps) {
 
             <GridItem
               area={'content'}
-              py={12}
-              px={12}
+              p={12}
               ref={contentElRef}
               overflowX={'hidden'}
               overflowY={'auto'}

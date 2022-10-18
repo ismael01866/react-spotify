@@ -16,12 +16,11 @@ export function ArtistBanner(props: ArtistBannerProps) {
       overflow={'hidden'}
       _after={{
         bgColor: 'blackAlpha.800',
+        boxSize: 'full',
         content: '""',
         position: 'absolute',
         top: 0,
-        left: 0,
-        h: 'full',
-        w: 'full'
+        left: 0
       }}
     >
       <Image
