@@ -14,19 +14,16 @@ export function AlbumMeta(props: AlbumMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Heading
-        color={'text.muted'}
-        fontSize={'xs'}
-        letterSpacing={2}
-        mb={1}
-      >
+      <Heading color={'text.base'} fontSize={'xs'} letterSpacing={2}>
         ALBUM
       </Heading>
-      <Heading noOfLines={1}>{name}</Heading>
+
+      <Heading noOfLines={1} lineHeight={'initial'} size={'3xl'}>
+        {name}
+      </Heading>
 
       <HStack
         alignItems={'center'}
-        color={'text.base'}
         divider={<span>&bull;</span>}
         mt={4}
         gap={1}
@@ -41,11 +38,11 @@ export function AlbumMeta(props: AlbumMetaProps) {
           ))}
         </Heading>
 
-        <Heading fontSize={'sm'}>
+        <Heading color={'text.base'} fontSize={'sm'}>
           {moment(release_date).format('YYYY')}
         </Heading>
 
-        <Heading fontSize={'sm'} noOfLines={1}>
+        <Heading color={'text.base'} fontSize={'sm'} noOfLines={1}>
           {utilPluralize('song', total_tracks)}
         </Heading>
       </HStack>

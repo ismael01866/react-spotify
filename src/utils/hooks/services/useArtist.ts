@@ -10,7 +10,7 @@ export const useArtist = (
   const { headers, url } = useSpotifyApi(`/artists/${id}`);
 
   const { data, error } = useSWR<IArtist>(
-    [url, { ...headers, ...opts }],
+    () => (id ? [url, { ...headers, ...opts }] : null),
     fetcher
   );
 

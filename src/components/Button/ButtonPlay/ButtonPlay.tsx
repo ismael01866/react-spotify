@@ -1,4 +1,9 @@
-import { ButtonProps, forwardRef, IconButton } from '@chakra-ui/react';
+import {
+  Button,
+  ButtonProps,
+  forwardRef,
+  IconButton
+} from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import { useContext } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
@@ -25,7 +30,7 @@ export const ButtonPlay = forwardRef<
   Partial<BaseButtonPlayProps>,
   'button'
 >((props, ref) => {
-  const { uri, context_uri, ...others } = props;
+  const { children, uri, context_uri, ...others } = props;
 
   const track = useSelector(selectTrack);
   const paused = useSelector(selectPaused);
@@ -58,21 +63,35 @@ export const ButtonPlay = forwardRef<
     });
   }, DEBOUNCE_WAIT);
 
+  const sharedProps = {
+    ref: ref,
+    boxShadow: 'dark-lg',
+    colorScheme: 'spotify',
+    ...others
+  };
+
   return (
     <Skeleton
       isLoaded={!!deviceID}
       startColor={'whiteAlpha.200'}
       endColor={'whiteAlpha.500'}
     >
-      <IconButton
-        ref={ref}
-        aria-label={'play'}
-        boxShadow={'dark-lg'}
-        colorScheme={'spotify'}
-        icon={icon}
-        onClick={handleOnClick}
-        {...others}
-      />
+      {children ? (
+        <Button
+          leftIcon={icon}
+          onClick={handleOnClick}
+          {...sharedProps}
+        >
+          {children}
+        </Button>
+      ) : (
+        <IconButton
+          aria-label={'play'}
+          icon={icon}
+          onClick={handleOnClick}
+          {...sharedProps}
+        />
+      )}
     </Skeleton>
   );
 });

@@ -10,4 +10,8 @@ export interface IUser {
   followers?: {
     total?: number;
   };
+
+  // custom
+
+  is_following?: boolean;
 }

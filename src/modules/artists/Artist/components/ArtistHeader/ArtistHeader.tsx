@@ -1,37 +1,38 @@
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
+import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
 import {
   ArtistButtonFollow,
-  ArtistImage
+  ArtistEmptySkeleton
 } from 'src/modules/artists/components';
 import { ArtistContext } from '../../ArtistContext';
-import { ArtistBanner, ArtistMeta } from './components';
+import { ArtistMeta } from './components';
 
 export function ArtistHeader() {
   const artist = useContext(ArtistContext);
+  const { images, name } = artist;
 
   return (
-    <Box minH={'2xs'} pos={'relative'}>
-      <Box
-        left={0}
-        top={0}
-        pos={'absolute'}
-        w={'full'}
-        sx={{ transform: 'scale(1.5)' }}
-      >
-        <ArtistBanner artist={artist} />
+    <Box pos={'relative'} mx={-12} mt={-12}>
+      <Box boxSize={'full'} overflow={'hidden'} pos={'absolute'}>
+        <HeaderBanner>
+          <Image src={images?.[0]?.url} alt={name} />
+        </HeaderBanner>
       </Box>
 
-      <Box pos={'relative'}>
+      <Box px={12} pt={24} pos={'relative'}>
         <HStack spacing={8}>
-          <Box boxSize={'3xs'} mt={8}>
-            <ArtistImage artist={artist} />
-          </Box>
+          <HeaderMetaImage mb={-4}>
+            <Image
+              alt={name}
+              src={images?.[0]?.url}
+              fallback={<ArtistEmptySkeleton />}
+            />
+          </HeaderMetaImage>
 
-          <VStack alignItems={'flex-start'} pt={6} spacing={8}>
+          <VStack alignItems={'flex-start'} spacing={8}>
             <ArtistMeta artist={artist} />
-
             <HStack spacing={2}>
               <ButtonPlay context_uri={artist.uri} />
               <ArtistButtonFollow artist={artist} />

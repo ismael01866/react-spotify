@@ -5,10 +5,11 @@ import { TrackEmptySkeleton } from '../TrackEmptySkeleton';
 
 export interface TrackImageProps {
   track: ITrack;
+  [others: string]: any;
 }
 
 export function TrackImage(props: TrackImageProps) {
-  const { track } = props;
+  const { track, ...others } = props;
   const { name, album, playlist, artists } = track;
 
   const getImageByContext = useCallback(
@@ -38,7 +39,7 @@ export function TrackImage(props: TrackImageProps) {
   );
 
   return (
-    <AspectRatio boxSize={'full'} overflow={'hidden'} ratio={4 / 4}>
+    <AspectRatio boxSize={'full'} ratio={4 / 4} {...others}>
       <Image
         src={getImageByContext(track)}
         alt={name}

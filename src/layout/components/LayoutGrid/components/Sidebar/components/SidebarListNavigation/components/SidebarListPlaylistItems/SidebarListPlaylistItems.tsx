@@ -4,7 +4,8 @@ import { SidebarPlaylistItem } from './components/SidebarPlaylistItem';
 
 export const SidebarListPlaylistItems = () => {
   const { isLoading, playlists } = useMePlaylistsAll({
-    sort: 'name'
+    sort: 'name',
+    limit: 8
   });
 
   const skeletonData = new Array(3).fill('');

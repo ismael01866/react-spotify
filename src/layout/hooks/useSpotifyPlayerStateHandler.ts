@@ -5,8 +5,8 @@ import {
   setDeviceID,
   setDuration,
   setPaused,
-  setPlaybackID,
   setPlaybackContext,
+  setPlaybackID,
   setPosition,
   setTrack
 } from 'src/modules/player/Player/PlayerSlice';
@@ -16,13 +16,13 @@ export const useSpotifyPlayerStateHandler = () => {
   const dispatch = useDispatch();
 
   const [player, setPlayer] = useState(null);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   useEffect(() => {
-    if (status !== 'authenticated' || !session) return;
+    if (!session) return;
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = session?.access_token as string;
+      const token = session.access_token as string;
 
       const player = buildSpotifyPlayer(token, {
         onReady: (device_id) => {
@@ -44,7 +44,7 @@ export const useSpotifyPlayerStateHandler = () => {
         if (success) setPlayer(player);
       });
     };
-  }, [session, status, dispatch]);
+  }, [session, dispatch]);
 
   return { player };
 };

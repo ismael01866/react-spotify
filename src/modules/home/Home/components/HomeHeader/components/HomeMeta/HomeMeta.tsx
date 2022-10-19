@@ -1,4 +1,5 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Link } from '@chakra-ui/react';
+import { default as NextLink } from 'next/link';
 import { IArtist } from 'src/types/artist';
 
 interface HomeMetaProps {
@@ -7,20 +8,18 @@ interface HomeMetaProps {
 
 export function HomeMeta(props: HomeMetaProps) {
   const { artist } = props;
-  const { name } = artist;
+  const { id, name } = artist;
 
   return (
     <Flex direction={'column'}>
-      <Heading fontSize={'xs'} letterSpacing={2} mb={2} opacity={0.64}>
+      <Heading color={'text.base'} fontSize={'xs'} letterSpacing={2}>
         RECOMMENDED
       </Heading>
-      <Heading
-        noOfLines={2}
-        lineHeight={'initial'}
-        my={-2}
-        size={'4xl'}
-      >
-        {name}
+
+      <Heading noOfLines={1} lineHeight={'initial'} size={'3xl'}>
+        <NextLink href={`/artists/${id}`} passHref>
+          <Link>{name}</Link>
+        </NextLink>
       </Heading>
     </Flex>
   );

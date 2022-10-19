@@ -8,7 +8,10 @@ export const useTracksWithFollow = (
 ) => {
   const url = `/api/spotify/custom/tracks-with-follow/${id}`;
 
-  const { data, error } = useSWR<ITrack>([url, opts], fetcher);
+  const { data, error } = useSWR<ITrack>(
+    () => (id ? [url, opts] : null),
+    fetcher
+  );
 
   return {
     error,

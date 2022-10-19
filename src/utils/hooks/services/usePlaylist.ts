@@ -8,7 +8,10 @@ export const usePlaylist = (
 ) => {
   const url = `/api/spotify/playlists/${id}`;
 
-  const { data, error } = useSWR<IPlaylist>([url, opts], fetcher);
+  const { data, error } = useSWR<IPlaylist>(
+    () => (id ? [url, opts] : null),
+    fetcher
+  );
 
   return {
     error,

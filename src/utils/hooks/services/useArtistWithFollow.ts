@@ -9,7 +9,7 @@ export const useArtistWithFollow = (
   const url = `/api/spotify/custom/artists-with-follow/${id}`;
 
   const { data, error } = useSWR<IArtist>(
-    [url, { refreshInterval: 1000, ...opts }],
+    () => (id ? [url, opts] : null),
     fetcher
   );
 

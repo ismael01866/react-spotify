@@ -13,7 +13,7 @@ export const fetchWithToken = async (
   const token = await getToken({ req });
 
   const tokenHasExpired =
-    moment(Date.now()).unix() > (token?.expires_at as Number);
+    moment(Date.now()).unix() > (token!.expires_at as Number);
 
   // refresh token
 
@@ -30,7 +30,7 @@ export const fetchWithToken = async (
   }
 
   return fetcher(url, {
-    headers: { Authorization: `Bearer ${token?.access_token}` },
+    headers: { Authorization: `Bearer ${token!.access_token}` },
     ...opts
   });
 };

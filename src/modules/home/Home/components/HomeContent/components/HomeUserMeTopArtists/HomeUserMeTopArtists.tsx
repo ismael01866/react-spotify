@@ -4,7 +4,7 @@ import { ArtistGrid } from 'src/modules/artists/components';
 import { useMeTopArtists } from 'src/utils/hooks/services';
 
 export function HomeUserMeTopArtists() {
-  const limit = 2;
+  const limit = 8;
 
   const { artists, isLoading } = useMeTopArtists({
     limit
@@ -14,22 +14,17 @@ export function HomeUserMeTopArtists() {
   const data = isLoading ? skeletonData : artists;
 
   return (
-    (data && (
-      <>
-        <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Top artists</Heading>
+    <>
+      <HStack justifyContent={'space-between'}>
+        <Heading fontSize={'2xl'}>Top artists</Heading>
 
-          <NextLink href={'/users/me/top/artists'}>
-            <Link ml={'auto'}>See all</Link>
-          </NextLink>
-        </HStack>
+        <NextLink href={'/users/me/top/artists'}>
+          <Link ml={'auto'}>See all</Link>
+        </NextLink>
+      </HStack>
 
-        <br />
-        <ArtistGrid
-          columns={{ base: 1, sm: 2, md: 2 }}
-          artists={data}
-        />
-      </>
-    )) || <></>
+      <br />
+      <ArtistGrid columns={{ base: 1, sm: 2, md: 4 }} artists={data!} />
+    </>
   );
 }

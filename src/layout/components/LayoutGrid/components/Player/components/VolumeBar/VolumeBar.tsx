@@ -49,7 +49,7 @@ export function VolumeBar() {
         onMouseLeave={() => setShowThumb(false)}
       >
         <SliderTrack>
-          <SliderFilledTrack />
+          <SliderFilledTrack bgColor={'spotify.500'} />
         </SliderTrack>
 
         <SliderThumb display={showThumb ? '' : 'none'} />

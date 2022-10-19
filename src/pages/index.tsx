@@ -25,8 +25,14 @@ const HomePage: NextPage<HomePageProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
-  req
+  req,
+  res
 }) => {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1, stale-while-revalidate=59'
+  );
+
   // Get top artists
 
   const topArtistsURL = utilWithQueryParams(

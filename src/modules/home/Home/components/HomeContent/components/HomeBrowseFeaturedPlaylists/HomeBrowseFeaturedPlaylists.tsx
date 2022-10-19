@@ -22,22 +22,20 @@ export function HomeBrowseFeaturedPlaylists() {
   const data = isLoading ? skeletonData : playlists;
 
   return (
-    (data && (
-      <>
-        <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>{message}</Heading>
+    <>
+      <HStack justifyContent={'space-between'}>
+        <Heading fontSize={'2xl'}>{message}</Heading>
 
-          <NextLink href={'/browse/featured-playlists'}>
-            <Link ml={'auto'}>See all</Link>
-          </NextLink>
-        </HStack>
+        <NextLink href={'/browse/featured-playlists'}>
+          <Link ml={'auto'}>See all</Link>
+        </NextLink>
+      </HStack>
 
-        <br />
-        <PlaylistGrid
-          columns={{ base: 1, sm: 2, md: 4 }}
-          playlists={data}
-        />
-      </>
-    )) || <></>
+      <br />
+      <PlaylistGrid
+        columns={{ base: 1, sm: 2, md: 4 }}
+        playlists={data!}
+      />
+    </>
   );
 }

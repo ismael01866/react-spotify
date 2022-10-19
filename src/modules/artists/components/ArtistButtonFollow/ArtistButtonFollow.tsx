@@ -45,12 +45,8 @@ export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
 
   return (
     <Button
-      backgroundColor={'var(--chakra-colors-whiteAlpha-300)'}
       leftIcon={isFollowing ? <FaHeart /> : <FaRegHeart />}
       onClick={handleOnClick}
-      _hover={{
-        backgroundColor: 'var(--chakra-colors-whiteAlpha-400)'
-      }}
     >
       {isFollowing ? 'Following' : 'Follow'}
     </Button>

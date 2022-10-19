@@ -12,7 +12,7 @@ export function Artist() {
 
   return (
     (!isLoading && (
-      <Flex flexDirection={'column'} gap={12}>
+      <Flex flexDirection={'column'} gap={16}>
         <ArtistContext.Provider value={artist}>
           <ArtistHeader />
           <ArtistContent />

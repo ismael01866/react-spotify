@@ -1,0 +1,13 @@
+.banner {
+  &::after {
+    background-image: linear-gradient(var(--chakra-colors-spotify-900), var(--chakra-colors-bg-base));
+    content: '';
+    height: var(--chakra-sizes-full);
+    left: 0;
+    mix-blend-mode: darken;
+    opacity: 0.96;
+    position: absolute;
+    top: 0;
+    width: var(--chakra-sizes-full);
+  }
+}

@@ -57,6 +57,7 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
     >
       <IconButton
         aria-label={'follow-track'}
+        color={isFollowing ? 'spotify.500' : ''}
         colorScheme={isFollowing ? 'spotify' : ''}
         icon={isFollowing ? <FaHeart /> : <FaRegHeart />}
         variant={'fade'}

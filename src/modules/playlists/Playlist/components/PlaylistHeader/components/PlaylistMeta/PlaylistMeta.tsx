@@ -19,19 +19,16 @@ export function PlaylistMeta(props: PlaylistMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Heading
-        color={'text.muted'}
-        fontSize={'xs'}
-        letterSpacing={2}
-        mb={1}
-      >
+      <Heading color={'text.base'} fontSize={'xs'} letterSpacing={2}>
         PUBLIC PLAYLIST
       </Heading>
-      <Heading noOfLines={1}>{name}</Heading>
+
+      <Heading noOfLines={1} lineHeight={'initial'} size={'3xl'}>
+        {name}
+      </Heading>
 
       <HStack
         alignItems={'center'}
-        color={'text.base'}
         divider={<span>&bull;</span>}
         mt={4}
         gap={1}
@@ -45,7 +42,7 @@ export function PlaylistMeta(props: PlaylistMetaProps) {
             />
             <Heading fontSize={'sm'} noOfLines={1}>
               <NextLink
-                href={userIsMe ? '/users/me' : `users/${user?.id}`}
+                href={userIsMe ? '/users/me' : `/users/${user?.id}`}
                 passHref
               >
                 <Link color={'text.body'}>{user?.display_name}</Link>
@@ -54,11 +51,11 @@ export function PlaylistMeta(props: PlaylistMetaProps) {
           </HStack>
         )}
 
-        <Heading fontSize={'sm'}>
+        <Heading color={'text.base'} fontSize={'sm'}>
           {utilPluralize('song', tracks?.total)}
         </Heading>
 
-        <Heading fontSize={'sm'} noOfLines={1}>
+        <Heading color={'text.base'} fontSize={'sm'}>
           {moment(total_duration).format('h')} hr{' '}
           {moment(total_duration).format('mm')} min
         </Heading>

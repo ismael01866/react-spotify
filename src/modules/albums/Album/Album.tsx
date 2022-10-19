@@ -12,7 +12,7 @@ export function Album() {
 
   return (
     (!isLoading && (
-      <Flex flexDirection={'column'} gap={12}>
+      <Flex flexDirection={'column'} gap={16}>
         <AlbumContext.Provider value={album}>
           <AlbumHeader />
           <AlbumContent />

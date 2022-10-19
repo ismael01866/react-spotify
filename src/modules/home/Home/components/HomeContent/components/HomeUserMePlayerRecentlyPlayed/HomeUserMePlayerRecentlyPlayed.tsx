@@ -4,7 +4,7 @@ import { TrackGrid } from 'src/modules/tracks/components';
 import { useMePlayerRecentlyPlayed } from 'src/utils/hooks/services';
 
 export function HomeUserMePlayerRecentlyPlayed() {
-  const limit = 6;
+  const limit = 8;
 
   const { tracks, isLoading } = useMePlayerRecentlyPlayed({
     limit
@@ -14,19 +14,17 @@ export function HomeUserMePlayerRecentlyPlayed() {
   const data = isLoading ? skeletonData : tracks;
 
   return (
-    (data && (
-      <>
-        <HStack justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Recently played</Heading>
+    <>
+      <HStack justifyContent={'space-between'}>
+        <Heading fontSize={'2xl'}>Recently played</Heading>
 
-          <NextLink href={'/users/me/player/recently-played'}>
-            <Link ml={'auto'}>See all</Link>
-          </NextLink>
-        </HStack>
+        <NextLink href={'/users/me/player/recently-played'}>
+          <Link ml={'auto'}>See all</Link>
+        </NextLink>
+      </HStack>
 
-        <br />
-        <TrackGrid tracks={data} />
-      </>
-    )) || <></>
+      <br />
+      <TrackGrid columns={{ base: 1, sm: 2, md: 4 }} tracks={data!} />
+    </>
   );
 }

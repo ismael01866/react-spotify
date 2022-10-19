@@ -4,14 +4,15 @@ import { AlbumEmptySkeleton } from '../AlbumEmptySkeleton';
 
 interface AlbumImageProps {
   album: IAlbum;
+  [others: string]: any;
 }
 
 export function AlbumImage(props: AlbumImageProps) {
-  const { album } = props;
+  const { album, ...others } = props;
   const { name, images } = album;
 
   return (
-    <AspectRatio boxSize={'full'} overflow={'hidden'} ratio={4 / 4}>
+    <AspectRatio boxSize={'full'} ratio={4 / 4} {...others}>
       <Image
         src={images?.[0]?.url}
         alt={name}

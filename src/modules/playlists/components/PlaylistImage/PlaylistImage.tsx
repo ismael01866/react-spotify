@@ -4,14 +4,15 @@ import { PlaylistEmptySkeleton } from '../PlaylistEmptySkeleton';
 
 interface PlaylistImageProps {
   playlist: IPlaylist;
+  [others: string]: any;
 }
 
 export function PlaylistImage(props: PlaylistImageProps) {
-  const { playlist } = props;
+  const { playlist, ...others } = props;
   const { name, images } = playlist;
 
   return (
-    <AspectRatio boxSize={'full'} overflow={'hidden'} ratio={4 / 4}>
+    <AspectRatio boxSize={'full'} ratio={4 / 4} {...others}>
       <Image
         src={images?.[0]?.url}
         alt={name}

@@ -11,15 +11,13 @@ export function ArtistMeta(props: ArtistMetaProps) {
 
   return (
     <Flex direction={'column'}>
-      <Heading
-        color={'text.muted'}
-        fontSize={'xs'}
-        letterSpacing={2}
-        mb={1}
-      >
+      <Heading color={'text.base'} fontSize={'xs'} letterSpacing={2}>
         ARTIST
       </Heading>
-      <Heading noOfLines={1}>{name}</Heading>
+
+      <Heading noOfLines={1} lineHeight={'initial'} size={'3xl'}>
+        {name}
+      </Heading>
 
       <Heading color={'text.base'} fontSize={'sm'} mt={4}>
         {followers?.total?.toLocaleString()} followers

@@ -10,7 +10,7 @@ export const useAlbum = (
   const { headers, url } = useSpotifyApi(`/albums/${id}`);
 
   const { data, error } = useSWR<IAlbum>(
-    [url, { ...headers, ...opts }],
+    () => (id ? [url, { ...headers, ...opts }] : null),
     fetcher
   );
 

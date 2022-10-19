@@ -46,7 +46,6 @@ export function AlbumButtonFollow(props: AlbumButtonFollowProps) {
     <Button
       leftIcon={isFollowing ? <FaHeart /> : <FaRegHeart />}
       onClick={handleOnClick}
-      variant={'outline'}
     >
       {isFollowing ? 'Liked' : 'Like'}
     </Button>

@@ -59,7 +59,9 @@ export function LibraryArtistsHeader() {
     if (!sorted) return;
 
     setArtistsFiltered([]);
-    utilSetDelayedState(sorted, setArtistsFiltered);
+    utilSetDelayedState(sorted, setArtistsFiltered, {
+      renderDelay: 10
+    });
   };
 
   const filterArtistsByName = (artists: IArtist[], value: string) => {
