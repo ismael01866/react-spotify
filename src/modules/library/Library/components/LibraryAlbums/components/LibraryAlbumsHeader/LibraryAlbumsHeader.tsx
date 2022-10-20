@@ -14,9 +14,9 @@ import {
   useState
 } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { LibraryAlbumsContext } from 'src/state';
 import { IAlbum } from 'src/types/album';
 import { utilSetDelayedState } from 'src/utils/helpers';
-import { LibraryAlbumsContext } from '../../LibraryAlbumsContext';
 
 export function LibraryAlbumsHeader() {
   const { albums, albumsFiltered, setAlbumsFiltered } = useContext(

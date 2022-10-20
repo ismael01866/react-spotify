@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AlbumGrid } from 'src/modules/albums/components';
+import { LibraryAlbumsContext } from 'src/state';
 import { IAlbum } from 'src/types/album';
-import { LibraryAlbumsContext } from '../../LibraryAlbumsContext';
 
 export function LibraryAlbumsContent() {
   const { albumsFiltered } = useContext(LibraryAlbumsContext);

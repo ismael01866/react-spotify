@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
 import { ArtistEmptySkeleton } from 'src/modules/artists/components';
-import { HomeContext } from 'src/modules/home/Home';
+import { HomeContext } from 'src/state';
 import { HomeMeta } from './components';
 
 export function HomeHeader() {

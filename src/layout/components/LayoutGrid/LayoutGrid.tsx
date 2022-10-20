@@ -5,8 +5,8 @@ import {
   useSpotifyPlayerEmbed,
   useSpotifyPlayerStateHandler
 } from 'src/layout/hooks';
-import { PlayerContext } from 'src/modules/player/Player/PlayerContext';
 import { selectPlaybackID } from 'src/modules/player/Player/PlayerSlice';
+import { PlayerContext } from 'src/state';
 import { Player, Sidebar } from './components';
 import { LayoutGridContext } from './LayoutGridContext';
 

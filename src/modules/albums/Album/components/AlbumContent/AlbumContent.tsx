@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
-import { AlbumContext } from '../../AlbumContext';
+import { AlbumContext } from 'src/state';
 import { AlbumTracks, ArtistAlbums } from './components';
 
 export function AlbumContent() {

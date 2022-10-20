@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
-import { ArtistContext } from '../../ArtistContext';
+import { ArtistContext } from 'src/state';
 import { ArtistPopularTracks } from './components';
 import { ArtistAlbums } from './components/ArtistAlbums';
 import { ArtistRelatedArtists } from './components/ArtistRelatedArtists';

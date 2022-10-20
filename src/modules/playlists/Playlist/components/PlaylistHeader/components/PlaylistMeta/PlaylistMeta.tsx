@@ -1,9 +1,10 @@
 import { Avatar, Flex, Heading, HStack, Link } from '@chakra-ui/react';
 import moment from 'moment';
 import { default as NextLink } from 'next/link';
+import { useContext } from 'react';
+import { SessionContext } from 'src/state';
 import { IPlaylist } from 'src/types/playlist';
 import { utilPluralize } from 'src/utils/helpers';
-import { useUserIsMe } from 'src/utils/hooks/auth';
 import { useUser } from 'src/utils/hooks/services';
 
 interface PlaylistMetaProps {
@@ -15,7 +16,11 @@ export function PlaylistMeta(props: PlaylistMetaProps) {
   const { name, owner, tracks, total_duration } = playlist;
 
   const { user } = useUser(owner?.id);
-  const { userIsMe } = useUserIsMe(user?.id);
+  const {
+    user: { id }
+  } = useContext(SessionContext);
+
+  const userIsMe = id === user?.id;
 
   return (
     <Flex direction={'column'}>

@@ -1,7 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react';
 import { useContext } from 'react';
-
-import { BrowseFeaturedPlaylistsContext } from '../../BrowseFeaturedPlaylistsContext';
+import { BrowseFeaturedPlaylistsContext } from 'src/state';
 
 export function BrowseFeaturedPlaylistsHeader() {
   const { message } = useContext(BrowseFeaturedPlaylistsContext);

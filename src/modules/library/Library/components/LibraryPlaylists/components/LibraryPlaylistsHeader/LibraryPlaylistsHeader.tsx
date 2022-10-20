@@ -9,8 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { FormEvent, useContext, useTransition } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { LibraryPlaylistsContext } from 'src/state';
 import { IPlaylist } from 'src/types/playlist';
-import { LibraryPlaylistsContext } from '../../LibraryPlaylistsContext';
 
 export function LibraryPlaylistsHeader() {
   const { playlists, playlistsFiltered, setPlaylistsFiltered } =

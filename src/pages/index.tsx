@@ -1,10 +1,11 @@
 import { random } from 'lodash';
-import { Home, HomeContext } from 'modules/home';
+import { Home } from 'modules/home';
 import type {
   GetServerSideProps,
   NextApiRequest,
   NextPage
 } from 'next';
+import { HomeContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';

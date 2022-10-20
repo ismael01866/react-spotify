@@ -1,8 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { ArtistTablePopularTracks } from 'src/modules/artists/components';
 import { TrackLoadingStack } from 'src/modules/tracks/components';
 import { UserContext } from 'src/modules/users/User/UserContext';
+import { ArtistContext } from 'src/state';
 import { ITrack } from 'src/types/track';
 import { useArtistTopTracksWithFollow } from 'src/utils/hooks/services';
 import { ArtistButtonTogglePopularTracks } from './components/ArtistButtonTogglePopularTracks';

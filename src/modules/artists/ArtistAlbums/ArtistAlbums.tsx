@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { ArtistContext } from 'src/state';
 import { useArtist } from 'src/utils/hooks/services';
-import { ArtistContext } from '../Artist/ArtistContext';
 import { ArtistAlbumsContent, ArtistAlbumsHeader } from './components';
 
 export function ArtistAlbums() {

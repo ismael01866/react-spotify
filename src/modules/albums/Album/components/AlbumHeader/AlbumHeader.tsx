@@ -6,7 +6,7 @@ import {
   AlbumButtonFollow,
   AlbumEmptySkeleton
 } from 'src/modules/albums/components';
-import { AlbumContext } from '../../AlbumContext';
+import { AlbumContext } from 'src/state';
 import { AlbumMeta } from './components';
 
 export function AlbumHeader() {

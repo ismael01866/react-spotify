@@ -1,7 +1,7 @@
 import { Heading } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
 import { ArtistGrid } from 'src/modules/artists/components';
+import { ArtistContext } from 'src/state';
 import { useArtistRelatedArtists } from 'src/utils/hooks/services';
 
 export function ArtistRelatedArtists() {

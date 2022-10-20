@@ -9,13 +9,13 @@ import { useContext } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { Skeleton } from 'src/components/Skeleton';
-import { PlayerContext } from 'src/modules/player/Player/PlayerContext';
 import {
   selectDeviceID,
   selectPaused,
   selectPlaybackContext,
   selectTrack
 } from 'src/modules/player/Player/PlayerSlice';
+import { PlayerContext } from 'src/state';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';

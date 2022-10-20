@@ -5,6 +5,7 @@ import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
+import { useSpotifyApi } from 'src/utils/hooks/api';
 import { mutate } from 'swr';
 
 interface AlbumButtonFollowProps {
@@ -15,27 +16,27 @@ export function AlbumButtonFollow(props: AlbumButtonFollowProps) {
   const { toast } = useButtonFollowToast();
 
   const { album } = props;
-  const { id: ids, is_following } = album;
+  const { id, is_following } = album;
 
   const [isFollowing, setIsFollowing] = useState(is_following);
 
+  const { headers, url: baseURL } = useSpotifyApi(`/me/albums`);
+
   const handleOnClick = () => {
+    const url = utilWithQueryParams(baseURL, { ids: id });
     const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = utilWithQueryParams('/api/spotify/me/albums', {
-      ids
-    });
 
     // update SWR's cache regarding
     // the 'is_following' prop for a given album
 
     mutate(async () => {
-      await fetcher(updateURL, { method }).then(({ isFollowing }) => {
-        const msg = isFollowing ? 'Added to' : 'Removed from';
-
-        setIsFollowing(isFollowing);
-        album.is_following = isFollowing;
+      await fetcher(url, { method, ...headers }).then(() => {
+        const msg = !isFollowing ? 'Added to' : 'Removed from';
+        album.is_following = !isFollowing;
 
         toast({ description: `${msg} your liked albums` });
+
+        setIsFollowing(!isFollowing);
       });
 
       return album;

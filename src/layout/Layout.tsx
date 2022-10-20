@@ -1,9 +1,10 @@
-import { Center, Spinner } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { ReactNode } from 'react';
 import { LayoutGrid } from './components/LayoutGrid';
 
+import { LoadingScreen } from 'src/components';
 import { UserContext } from 'src/modules/users/User/UserContext';
+import { SessionContext } from 'src/state';
 import { useMe } from 'src/utils/hooks/services';
 
 interface LayoutProps {
@@ -11,19 +12,28 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
-  const { status } = useSession();
-  const { user, isLoading: userIsLoading } = useMe();
+  const { status, data: session } = useSession();
 
-  if (status === 'loading' || userIsLoading) {
-    return (
-      <Center h={'100vh'} w={'100vw'}>
-        <Spinner color={'spotify.500'} size={'xl'} />
-      </Center>
-    );
+  if (status === 'loading') {
+    return <LoadingScreen />;
   }
 
   if (status !== 'authenticated') {
     return <>{children}</>;
+  }
+
+  return (
+    <SessionContext.Provider value={session}>
+      <LayoutUserContainer>{children}</LayoutUserContainer>
+    </SessionContext.Provider>
+  );
+}
+
+function LayoutUserContainer({ children }: LayoutProps) {
+  const { user, isLoading } = useMe();
+
+  if (isLoading) {
+    return <LoadingScreen />;
   }
 
   return (

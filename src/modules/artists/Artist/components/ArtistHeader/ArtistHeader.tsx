@@ -6,7 +6,7 @@ import {
   ArtistButtonFollow,
   ArtistEmptySkeleton
 } from 'src/modules/artists/components';
-import { ArtistContext } from '../../ArtistContext';
+import { ArtistContext } from 'src/state';
 import { ArtistMeta } from './components';
 
 export function ArtistHeader() {

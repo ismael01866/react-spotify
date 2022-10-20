@@ -14,9 +14,9 @@ import {
   useState
 } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { LibraryArtistsContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
 import { utilSetDelayedState } from 'src/utils/helpers';
-import { LibraryArtistsContext } from '../../LibraryArtistsContext';
 
 export function LibraryArtistsHeader() {
   const { artists, artistsFiltered, setArtistsFiltered } = useContext(

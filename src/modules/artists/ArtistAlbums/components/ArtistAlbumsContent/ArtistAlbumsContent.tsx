@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
 import { AlbumGrid } from 'src/modules/albums/components';
-import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
+import { ArtistContext } from 'src/state';
 import { useInfiniteScroll } from 'src/utils/hooks/dom';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 

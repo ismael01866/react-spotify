@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { CollectionTracksContext } from './CollectionTracksContext';
+import { CollectionTracksContext } from 'src/state';
 import {
   CollectionTracksContent,
   CollectionTracksHeader

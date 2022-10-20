@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AlbumGrid } from 'src/modules/albums/components';
-import { ArtistContext } from 'src/modules/artists/Artist/ArtistContext';
+import { ArtistContext } from 'src/state';
 import { useArtistAlbums } from 'src/utils/hooks/services';
 
 export function ArtistAlbums() {
