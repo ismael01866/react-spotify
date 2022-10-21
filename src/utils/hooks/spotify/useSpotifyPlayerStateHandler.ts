@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   setDeviceID,
@@ -7,6 +7,7 @@ import {
   setPaused,
   setPlaybackContext,
   setPlaybackID,
+  setPlayer,
   setPosition,
   setTrack
 } from 'src/modules/player/Player/PlayerSlice';
@@ -15,7 +16,6 @@ import { buildSpotifyPlayer } from 'src/utils/spotify';
 export const useSpotifyPlayerStateHandler = () => {
   const dispatch = useDispatch();
 
-  const [player, setPlayer] = useState(null);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -41,10 +41,8 @@ export const useSpotifyPlayerStateHandler = () => {
       });
 
       player.connect().then((success: boolean) => {
-        if (success) setPlayer(player);
+        if (success) dispatch(setPlayer(player));
       });
     };
   }, [session, dispatch]);
-
-  return { player };
 };

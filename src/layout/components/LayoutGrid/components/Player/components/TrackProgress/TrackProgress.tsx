@@ -7,20 +7,20 @@ import {
   Text
 } from '@chakra-ui/react';
 import moment from 'moment';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectDuration,
   selectPaused,
   selectPlaybackID,
+  selectPlayer,
   selectPosition
 } from 'src/modules/player/Player/PlayerSlice';
-import { PlayerContext } from 'src/state';
 
 export function TrackProgress() {
   let timer = useRef({});
 
-  const { player } = useContext(PlayerContext);
+  const player = useSelector(selectPlayer);
 
   const [progress, setProgress] = useState(0);
   const [showThumb, setShowThumb] = useState(false);

@@ -6,12 +6,13 @@ import {
   SliderThumb,
   SliderTrack
 } from '@chakra-ui/react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaVolumeDown } from 'react-icons/fa';
-import { PlayerContext } from 'src/state';
+import { useSelector } from 'react-redux';
+import { selectPlayer } from 'src/modules/player';
 
 export function VolumeBar() {
-  const { player } = useContext(PlayerContext);
+  const player = useSelector(selectPlayer);
 
   const [volume, setVolume] = useState(0);
   const [showThumb, setShowThumb] = useState(false);

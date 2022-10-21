@@ -34,10 +34,8 @@ export function HomeHeader() {
               <ButtonPlay
                 context_uri={artist.uri}
                 size={'lg'}
-                w={'2xs'}
-              >
-                Play
-              </ButtonPlay>
+                w={'4xs'}
+              ></ButtonPlay>
             </HStack>
           </VStack>
         </HStack>

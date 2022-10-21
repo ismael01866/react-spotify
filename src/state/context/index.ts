@@ -4,7 +4,6 @@ export * from './browse';
 export * from './collection';
 export * from './home';
 export * from './library';
-export * from './player';
 export * from './playlist';
 export * from './session';
 export * from './user';

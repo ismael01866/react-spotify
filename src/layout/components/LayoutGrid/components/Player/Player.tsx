@@ -12,15 +12,17 @@ export function Player() {
   const track = useSelector(selectTrack);
 
   return (
-    <SimpleGrid h={'6xs'} w={'full'} columns={3} spacing={8}>
-      {track && <TrackMeta track={track} />}
+    track && (
+      <SimpleGrid h={'6xs'} w={'full'} columns={3} spacing={8}>
+        {track && <TrackMeta track={track} />}
 
-      <VStack alignSelf={'center'} mt={2} spacing={0}>
-        <PlayControls />
-        <TrackProgress />
-      </VStack>
+        <VStack alignSelf={'center'} mt={2} spacing={0}>
+          <PlayControls />
+          <TrackProgress />
+        </VStack>
 
-      <VolumeBar />
-    </SimpleGrid>
+        <VolumeBar />
+      </SimpleGrid>
+    )
   );
 }

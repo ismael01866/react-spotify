@@ -1,11 +1,27 @@
+import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit';
 import { RootState } from 'src/store';
-import { createSlice } from '@reduxjs/toolkit';
 
-import { ITrack } from 'src/types/track';
+export interface IPlayerSliceState {
+  player: Spotify.Player | null;
 
-export const playerSlice = createSlice({
+  paused: boolean;
+  duration: number;
+  position: number;
+
+  deviceID: string;
+  playbackID: string;
+  playbackContext: Spotify.PlaybackContext;
+
+  track: Spotify.Track | null;
+}
+
+export const playerSlice = createSlice<
+  IPlayerSliceState,
+  SliceCaseReducers<any>
+>({
   name: 'player',
   initialState: {
+    player: null,
     paused: true,
     duration: 0,
     position: 0,
@@ -13,12 +29,17 @@ export const playerSlice = createSlice({
     deviceID: '',
     playbackID: '',
     playbackContext: {
-      uri: ''
+      uri: '',
+      metadata: null
     },
 
-    track: {} as ITrack
+    track: null
   },
   reducers: {
+    setPlayer: (state, action) => {
+      state.player = action.payload;
+    },
+
     setDeviceID: (state, action) => {
       state.deviceID = action.payload;
     },
@@ -51,6 +72,7 @@ export const playerSlice = createSlice({
 
 export const playerReducer = playerSlice.reducer;
 export const {
+  setPlayer,
   setDeviceID,
   setPlaybackID,
   setPlaybackContext,
@@ -59,6 +81,8 @@ export const {
   setDuration,
   setPosition
 } = playerSlice.actions;
+
+export const selectPlayer = (state: RootState) => state.player.player;
 
 export const selectDeviceID = (state: RootState) =>
   state.player.deviceID;

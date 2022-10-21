@@ -1,21 +1,20 @@
 import {
-  Button,
   ButtonProps,
   forwardRef,
-  IconButton
+  IconButton,
+  InteractivityProps
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { Skeleton } from 'src/components/Skeleton';
 import {
   selectDeviceID,
   selectPaused,
   selectPlaybackContext,
+  selectPlayer,
   selectTrack
 } from 'src/modules/player/Player/PlayerSlice';
-import { PlayerContext } from 'src/state';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
@@ -31,14 +30,14 @@ export const ButtonPlay = forwardRef<
   Partial<BaseButtonPlayProps>,
   'button'
 >((props, ref) => {
-  const { children, uri, context_uri, ...others } = props;
+  const { uri, context_uri, ...others } = props;
+
+  const player = useSelector(selectPlayer);
+  const deviceID = useSelector(selectDeviceID);
 
   const track = useSelector(selectTrack);
   const paused = useSelector(selectPaused);
-  const deviceID = useSelector(selectDeviceID);
   const playbackContext = useSelector(selectPlaybackContext);
-
-  const { player } = useContext(PlayerContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -50,8 +49,6 @@ export const ButtonPlay = forwardRef<
 
   const isPlaying =
     playbackContext.uri === context_uri || trackIsPlaying;
-
-  const icon = paused || !isPlaying ? <FaPlay /> : <FaPause />;
 
   const { headers, url: baseURL } = useSpotifyApi(`/me/player/play`);
 
@@ -72,40 +69,24 @@ export const ButtonPlay = forwardRef<
     });
   };
 
+  const icon = paused || !isPlaying ? <FaPlay /> : <FaPause />;
+  const isLoading = loading || !deviceID;
+
   const sharedProps = {
     ref: ref,
     boxShadow: 'dark-lg',
     colorScheme: 'spotify',
+    disabled: false,
+    pointerEvents: (isLoading
+      ? 'none'
+      : 'auto') as keyof InteractivityProps['pointerEvents'],
+    isLoading,
+    onClick: handleOnClick,
     ...others
   };
 
   return (
-    <Skeleton
-      isLoaded={!!deviceID}
-      startColor={'whiteAlpha.200'}
-      endColor={'whiteAlpha.500'}
-    >
-      {children ? (
-        <Button
-          leftIcon={icon}
-          onClick={handleOnClick}
-          isLoading={loading}
-          disabled={false}
-          {...sharedProps}
-        >
-          {children}
-        </Button>
-      ) : (
-        <IconButton
-          icon={icon}
-          onClick={handleOnClick}
-          aria-label={'play'}
-          isLoading={loading}
-          disabled={false}
-          {...sharedProps}
-        />
-      )}
-    </Skeleton>
+    <IconButton aria-label={'play'} icon={icon} {...sharedProps} />
   );
 });
 
