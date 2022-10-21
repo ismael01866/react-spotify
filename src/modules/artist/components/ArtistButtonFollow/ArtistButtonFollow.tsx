@@ -5,6 +5,7 @@ import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IArtist } from 'src/types/artist';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
+import { useSpotifyApi } from 'src/utils/hooks/api';
 import { mutate } from 'swr';
 
 interface ArtistButtonFollowProps {
@@ -15,14 +16,15 @@ export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
   const { toast } = useButtonFollowToast();
 
   const { artist } = props;
-  const { id: ids, is_following } = artist;
+  const { id, is_following } = artist;
 
   const [isFollowing, setIsFollowing] = useState(is_following);
 
+  const { headers, url: baseURL } = useSpotifyApi(`/me/following`);
+
   const handleOnClick = () => {
-    const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = utilWithQueryParams('/api/spotify/me/following', {
-      ids,
+    const url = utilWithQueryParams(baseURL, {
+      ids: id,
       type: 'artist'
     });
 
@@ -30,12 +32,14 @@ export function ArtistButtonFollow(props: ArtistButtonFollowProps) {
     // the 'is_following' prop for a given artist
 
     mutate(async () => {
-      await fetcher(updateURL, { method }).then(({ isFollowing }) => {
-        const msg = isFollowing ? 'Saved to' : 'Removed from';
+      await fetcher(url, {
+        method: isFollowing ? 'DELETE' : 'PUT',
+        ...headers
+      }).then(() => {
+        const msg = !isFollowing ? 'Saved to' : 'Removed from';
+        artist.is_following = !isFollowing;
 
-        setIsFollowing(isFollowing);
-        artist.is_following = isFollowing;
-
+        setIsFollowing(!isFollowing);
         toast({ description: `${msg} your library` });
       });
 

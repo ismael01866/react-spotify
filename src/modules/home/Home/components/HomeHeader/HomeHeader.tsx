@@ -32,9 +32,9 @@ export function HomeHeader() {
             <HomeMeta artist={artist} />
             <HStack spacing={2}>
               <ButtonPlay
-                colorScheme={'spotify'}
                 context_uri={artist.uri}
                 size={'lg'}
+                w={'2xs'}
               >
                 Play
               </ButtonPlay>

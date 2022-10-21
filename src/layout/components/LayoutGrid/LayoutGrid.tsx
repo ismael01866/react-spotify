@@ -1,12 +1,12 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 import { ReactNode, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { selectPlaybackID } from 'src/modules/player/Player/PlayerSlice';
+import { PlayerContext } from 'src/state';
 import {
   useSpotifyPlayerEmbed,
   useSpotifyPlayerStateHandler
-} from 'src/layout/hooks';
-import { selectPlaybackID } from 'src/modules/player/Player/PlayerSlice';
-import { PlayerContext } from 'src/state';
+} from 'src/utils/hooks/spotify';
 import { Player, Sidebar } from './components';
 import { LayoutGridContext } from './LayoutGridContext';
 

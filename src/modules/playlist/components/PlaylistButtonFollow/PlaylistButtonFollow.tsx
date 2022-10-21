@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IPlaylist } from 'src/types/playlist';
 import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+import { useSpotifyApi } from 'src/utils/hooks/api';
 import { mutate } from 'swr';
 
 interface PlaylistButtonFollowProps {
@@ -19,22 +19,21 @@ export function PlaylistButtonFollow(props: PlaylistButtonFollowProps) {
 
   const [isFollowing, setIsFollowing] = useState(is_following);
 
-  const handleOnClick = () => {
-    const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = utilWithQueryParams(
-      `/api/spotify/playlists/${id}/followers`
-    );
+  const { headers, url } = useSpotifyApi(`/playlists/${id}/followers`);
 
+  const handleOnClick = () => {
     // update SWR's cache regarding
-    // the 'is_following' prop for a given playlist
+    // the 'is_following' prop for a given album
 
     mutate(async () => {
-      await fetcher(updateURL, { method }).then(({ isFollowing }) => {
-        const msg = isFollowing ? 'Saved to' : 'Removed from';
+      await fetcher(url, {
+        method: isFollowing ? 'DELETE' : 'PUT',
+        ...headers
+      }).then(() => {
+        const msg = !isFollowing ? 'Saved to' : 'Removed from';
+        playlist.is_following = !isFollowing;
 
-        setIsFollowing(isFollowing);
-        playlist.is_following = isFollowing;
-
+        setIsFollowing(!isFollowing);
         toast({ description: `${msg} your library` });
       });
 

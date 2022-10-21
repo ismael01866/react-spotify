@@ -9,8 +9,6 @@ export function UserMeta(props: UserMetaProps) {
   const { user } = props;
   const { display_name, followers } = user;
 
-  console.log(user);
-
   return (
     <Flex direction={'column'}>
       <Heading color={'text.base'} fontSize={'xs'} letterSpacing={2}>

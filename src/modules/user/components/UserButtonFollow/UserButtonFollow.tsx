@@ -4,6 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { IUser } from 'src/types/user';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
+import { useSpotifyApi } from 'src/utils/hooks/api';
 import { mutate } from 'swr';
 
 interface UserButtonFollowProps {
@@ -12,14 +13,15 @@ interface UserButtonFollowProps {
 
 export function UserButtonFollow(props: UserButtonFollowProps) {
   const { user } = props;
-  const { id: ids, is_following } = user;
+  const { id, is_following } = user;
 
   const [isFollowing, setIsFollowing] = useState(is_following);
 
+  const { headers, url: baseURL } = useSpotifyApi(`/me/following`);
+
   const handleOnClick = () => {
-    const method = isFollowing ? 'DELETE' : 'PUT';
-    const updateURL = utilWithQueryParams('/api/spotify/me/following', {
-      ids,
+    const url = utilWithQueryParams(baseURL, {
+      ids: id,
       type: 'user'
     });
 
@@ -27,9 +29,12 @@ export function UserButtonFollow(props: UserButtonFollowProps) {
     // the 'is_following' prop for a given user
 
     mutate(async () => {
-      await fetcher(updateURL, { method }).then(({ isFollowing }) => {
-        setIsFollowing(isFollowing);
-        user.is_following = isFollowing;
+      await fetcher(url, {
+        method: isFollowing ? 'DELETE' : 'PUT',
+        ...headers
+      }).then(() => {
+        user.is_following = !isFollowing;
+        setIsFollowing(!isFollowing);
       });
 
       return user;

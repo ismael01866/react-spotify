@@ -24,19 +24,20 @@ export function AlbumButtonFollow(props: AlbumButtonFollowProps) {
 
   const handleOnClick = () => {
     const url = utilWithQueryParams(baseURL, { ids: id });
-    const method = isFollowing ? 'DELETE' : 'PUT';
 
     // update SWR's cache regarding
     // the 'is_following' prop for a given album
 
     mutate(async () => {
-      await fetcher(url, { method, ...headers }).then(() => {
+      await fetcher(url, {
+        method: isFollowing ? 'DELETE' : 'PUT',
+        ...headers
+      }).then(() => {
         const msg = !isFollowing ? 'Added to' : 'Removed from';
         album.is_following = !isFollowing;
 
-        toast({ description: `${msg} your liked albums` });
-
         setIsFollowing(!isFollowing);
+        toast({ description: `${msg} your liked albums` });
       });
 
       return album;

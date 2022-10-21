@@ -5,7 +5,7 @@ import {
   IconButton
 } from '@chakra-ui/react';
 import { debounce } from 'lodash';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { Skeleton } from 'src/components/Skeleton';
@@ -19,6 +19,7 @@ import { PlayerContext } from 'src/state';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
+import { useSpotifyApi } from 'src/utils/hooks/api';
 
 interface BaseButtonPlayProps extends ButtonProps {
   uri: string;
@@ -39,6 +40,8 @@ export const ButtonPlay = forwardRef<
 
   const { player } = useContext(PlayerContext);
 
+  const [loading, setLoading] = useState(false);
+
   let trackIsPlaying = false;
 
   if (track?.uri) {
@@ -50,18 +53,24 @@ export const ButtonPlay = forwardRef<
 
   const icon = paused || !isPlaying ? <FaPlay /> : <FaPause />;
 
+  const { headers, url: baseURL } = useSpotifyApi(`/me/player/play`);
+
   const handleOnClick = debounce(async () => {
     if (isPlaying) return player?.togglePlay();
 
-    const url = utilWithQueryParams('/api/spotify/me/player/play', {
-      device_id: deviceID
-    });
-
-    fetcher(url, {
-      method: 'POST',
-      body: JSON.stringify({ uris: uri && [uri], context_uri })
-    });
+    handleFetch();
   }, DEBOUNCE_WAIT);
+
+  const handleFetch = () => {
+    setLoading(true);
+
+    const url = utilWithQueryParams(baseURL, { device_id: deviceID });
+    const body = JSON.stringify({ uris: uri && [uri], context_uri });
+
+    fetcher(url, { method: 'PUT', body, ...headers }).finally(() => {
+      setLoading(false);
+    });
+  };
 
   const sharedProps = {
     ref: ref,
@@ -80,15 +89,19 @@ export const ButtonPlay = forwardRef<
         <Button
           leftIcon={icon}
           onClick={handleOnClick}
+          isLoading={loading}
+          disabled={false}
           {...sharedProps}
         >
           {children}
         </Button>
       ) : (
         <IconButton
-          aria-label={'play'}
           icon={icon}
           onClick={handleOnClick}
+          aria-label={'play'}
+          isLoading={loading}
+          disabled={false}
           {...sharedProps}
         />
       )}
