@@ -3,7 +3,7 @@ import type {
   NextApiRequest,
   NextPage
 } from 'next';
-import { ArtistRelatedArtists } from 'src/modules/artists/ArtistRelatedArtists';
+import { ArtistRelatedArtists } from 'src/modules/artist/ArtistRelatedArtists';
 import { ArtistRelatedArtistsContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
 import { fetchWithToken } from 'src/utils/fetch';

@@ -8,7 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { limit = 99 } = req.query;
+  const { limit = 50 } = req.query;
 
   let tracksURL = utilWithQueryParams(
     'https://api.spotify.com/v1/me/player/recently-played',
@@ -90,7 +90,7 @@ export default async function handler(
     );
 
     tracksURL = next;
-  } while (tracksURL && parsedResults.length < Number(limit));
+  } while (!!(tracksURL && parsedResults.length < Number(limit)));
 
   // since the items of type 'artist' don't have any image metadata, we
   // need to fetch the individual artist info
@@ -102,7 +102,6 @@ export default async function handler(
       result?.context?.type === 'artist'
     ) {
       const artistData = await fetchWithToken(req, result.context.href);
-
       result.artists = [{ ...artistData }];
     }
   }

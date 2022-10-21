@@ -1,6 +1,6 @@
 import { Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { ArtistGrid } from 'src/modules/artists/components';
+import { ArtistGrid } from 'src/modules/artist/components';
 import { useMeTopArtists } from 'src/utils/hooks/services';
 
 export function HomeUserMeTopArtists() {

@@ -8,7 +8,7 @@ import {
 import { signOut } from 'next-auth/react';
 import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
-import { UserContext } from 'src/modules/users/User/UserContext';
+import { UserContext } from 'src/state';
 
 export function SidebarMenuUser() {
   const { display_name, images } = useContext(UserContext);

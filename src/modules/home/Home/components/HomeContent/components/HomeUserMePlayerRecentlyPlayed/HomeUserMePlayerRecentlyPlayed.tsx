@@ -1,6 +1,6 @@
 import { Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { TrackGrid } from 'src/modules/tracks/components';
+import { TrackGrid } from 'src/modules/track/components';
 import { useMePlayerRecentlyPlayed } from 'src/utils/hooks/services';
 
 export function HomeUserMePlayerRecentlyPlayed() {

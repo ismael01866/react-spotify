@@ -3,8 +3,7 @@ import { ReactNode } from 'react';
 import { LayoutGrid } from './components/LayoutGrid';
 
 import { LoadingScreen } from 'src/components';
-import { UserContext } from 'src/modules/users/User/UserContext';
-import { SessionContext } from 'src/state';
+import { SessionContext, UserContext } from 'src/state';
 import { useMe } from 'src/utils/hooks/services';
 
 interface LayoutProps {

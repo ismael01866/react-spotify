@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { PlaylistGrid } from 'src/modules/playlists/components/PlaylistGrid';
+import { PlaylistGrid } from 'src/modules/playlist/components/PlaylistGrid';
 import { LibraryPlaylistsContext } from 'src/state';
 import { IPlaylist } from 'src/types/playlist';
 

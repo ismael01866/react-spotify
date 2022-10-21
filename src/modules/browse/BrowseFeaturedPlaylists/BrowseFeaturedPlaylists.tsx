@@ -1,7 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { UserContext } from 'src/modules/users/User/UserContext';
-import { BrowseFeaturedPlaylistsContext } from 'src/state';
+import { BrowseFeaturedPlaylistsContext, UserContext } from 'src/state';
 import { useBrowseFeaturedPlaylist } from 'src/utils/hooks/services';
 import {
   BrowseFeaturedPlaylistsContent,

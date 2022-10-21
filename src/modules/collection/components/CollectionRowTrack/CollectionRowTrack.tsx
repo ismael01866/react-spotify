@@ -3,7 +3,7 @@ import moment from 'moment';
 import { useRef } from 'react';
 import { ButtonPlay } from 'src/components';
 import { TrTrack } from 'src/components/Table/Tr';
-import { TrackButtonFollow } from 'src/modules/tracks/components';
+import { TrackButtonFollow } from 'src/modules/track/components';
 import { ITrack } from 'src/types/track';
 
 interface CollectionRowTrackProps {

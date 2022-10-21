@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { AlbumGrid } from 'src/modules/albums/components';
+import { AlbumGrid } from 'src/modules/album/components';
 import { LibraryAlbumsContext } from 'src/state';
 import { IAlbum } from 'src/types/album';
 

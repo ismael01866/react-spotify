@@ -2,7 +2,7 @@ import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
-import { ArtistEmptySkeleton } from 'src/modules/artists/components';
+import { ArtistEmptySkeleton } from 'src/modules/artist/components';
 import { HomeContext } from 'src/state';
 import { HomeMeta } from './components';
 

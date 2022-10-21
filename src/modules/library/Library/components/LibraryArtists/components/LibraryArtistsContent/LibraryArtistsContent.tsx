@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ArtistGrid } from 'src/modules/artists/components/ArtistGrid';
+import { ArtistGrid } from 'src/modules/artist/components/ArtistGrid';
 import { LibraryArtistsContext } from 'src/state';
 
 export function LibraryArtistsContent() {
