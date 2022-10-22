@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { ButtonPlay } from 'src/components/Button/ButtonPlay';
 import { ITrack } from 'src/types/track';
 
@@ -8,29 +7,28 @@ interface CardButtonPlayProps<TData, TType> {
   [others: string]: any;
 }
 
-const MemoButtonPlay = memo(ButtonPlayContainer);
-
-export function CardButtonPlay<TData extends {} & ITrack, TType>(
-  props: CardButtonPlayProps<TData, TType>
-) {
+export function CardButtonPlay<
+  TData extends { context: { type: string; uri: string } } & ITrack,
+  TType
+>(props: CardButtonPlayProps<TData, TType>) {
   const {
     type,
     data: { context, uri }
   } = props;
 
+  const style: any = {
+    right: 4,
+    bottom: 4,
+    position: 'absolute'
+  };
+
   if (type === 'track') {
-    if (context?.type === 'track') {
-      return <MemoButtonPlay uri={uri} />;
+    if (context.type === 'track') {
+      return <ButtonPlay uri={uri} {...style} />;
     }
 
-    return <MemoButtonPlay context_uri={context?.uri} />;
+    return <ButtonPlay context_uri={context.uri} {...style} />;
   }
 
-  return <MemoButtonPlay context_uri={uri} />;
-}
-
-function ButtonPlayContainer({ ...others }) {
-  return (
-    <ButtonPlay bottom={4} pos={'absolute'} right={4} {...others} />
-  );
+  return <ButtonPlay context_uri={uri} {...style} />;
 }

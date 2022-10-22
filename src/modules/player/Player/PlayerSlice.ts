@@ -5,8 +5,9 @@ export interface IPlayerSliceState {
   player: Spotify.Player | null;
 
   paused: boolean;
-  duration: number;
-  position: number;
+
+  playbackDuration: number;
+  playbackPosition: number;
 
   deviceID: string;
   playbackID: string;
@@ -23,8 +24,9 @@ export const playerSlice = createSlice<
   initialState: {
     player: null,
     paused: true,
-    duration: 0,
-    position: 0,
+
+    playbackDuration: 0,
+    playbackPosition: 0,
 
     deviceID: '',
     playbackID: '',
@@ -61,16 +63,15 @@ export const playerSlice = createSlice<
     },
 
     setDuration: (state, action) => {
-      state.duration = action.payload;
+      state.playbackDuration = action.payload;
     },
 
     setPosition: (state, action) => {
-      state.position = action.payload;
+      state.playbackPosition = action.payload;
     }
   }
 });
 
-export const playerReducer = playerSlice.reducer;
 export const {
   setPlayer,
   setDeviceID,
@@ -82,22 +83,8 @@ export const {
   setPosition
 } = playerSlice.actions;
 
-export const selectPlayer = (state: RootState) => state.player.player;
-
-export const selectDeviceID = (state: RootState) =>
-  state.player.deviceID;
-
-export const selectPlaybackID = (state: RootState) =>
-  state.player.playbackID;
-
-export const selectPlaybackContext = (state: RootState) =>
-  state.player.playbackContext;
-
 export const selectTrack = (state: RootState) => state.player.track;
+export const selectPlayer = (state: RootState) => state.player.player;
+export const selectPlayerState = (state: RootState) => state.player;
 
-export const selectPaused = (state: RootState) => state.player.paused;
-export const selectDuration = (state: RootState) =>
-  state.player.duration;
-
-export const selectPosition = (state: RootState) =>
-  state.player.position;
+export const playerReducer = playerSlice.reducer;

@@ -9,26 +9,21 @@ import {
 import moment from 'moment';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  selectDuration,
-  selectPaused,
-  selectPlaybackID,
-  selectPlayer,
-  selectPosition
-} from 'src/modules/player/Player/PlayerSlice';
+import { selectPlayerState } from 'src/modules/player/Player/PlayerSlice';
 
 export function TrackProgress() {
   let timer = useRef({});
 
-  const player = useSelector(selectPlayer);
+  const {
+    player,
+    paused,
+    playbackID,
+    playbackPosition,
+    playbackDuration
+  } = useSelector(selectPlayerState);
 
   const [progress, setProgress] = useState(0);
   const [showThumb, setShowThumb] = useState(false);
-
-  const paused = useSelector(selectPaused);
-  const playbackID = useSelector(selectPlaybackID);
-  const playbackDuration = useSelector(selectDuration);
-  const playbackPosition = useSelector(selectPosition);
 
   useEffect(() => {
     setProgress(0);

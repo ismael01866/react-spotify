@@ -2,16 +2,12 @@ import { HStack, IconButton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import { FaStepBackward, FaStepForward } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import {
-  selectPaused,
-  selectPlayer
-} from 'src/modules/player/Player/PlayerSlice';
+import { selectPlayerState } from 'src/modules/player/Player/PlayerSlice';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { PlayerButtonPlay } from './components';
 
 export function PlayControls() {
-  const player = useSelector(selectPlayer);
-  const paused = useSelector(selectPaused);
+  const { player, paused } = useSelector(selectPlayerState);
 
   const handleOnClickPrevTrack = debounce(() => {
     player?.previousTrack();
