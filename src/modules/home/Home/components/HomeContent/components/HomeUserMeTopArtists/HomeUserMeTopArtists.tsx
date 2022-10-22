@@ -24,7 +24,7 @@ export function HomeUserMeTopArtists() {
       </HStack>
 
       <br />
-      <ArtistGrid columns={{ base: 1, sm: 2, md: 4 }} artists={data!} />
+      <ArtistGrid artists={data!} />
     </>
   );
 }

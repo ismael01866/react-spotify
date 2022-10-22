@@ -1,18 +1,3 @@
-import { IArtist } from './artist';
-
-export interface IAlbum {
-  id?: string;
-  uri?: string;
-  name?: string;
-  images?: {
-    url?: string;
-  }[];
-  release_date?: string;
-  total_tracks?: number;
-  artists?: IArtist[];
-  popularity?: number;
-
-  // custom
-
+export interface IAlbum extends SpotifyApi.AlbumObjectFull {
   is_following?: boolean;
 }

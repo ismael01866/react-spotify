@@ -34,7 +34,7 @@ export function buildSpotifyPlayer(
   const player = new window.Spotify.Player({
     name: 'Spotify Web Player',
     volume: 0.4,
-    getOAuthToken: (cb: (token: string) => {}) => {
+    getOAuthToken: (cb: (token: string) => void) => {
       cb(token);
     }
   });

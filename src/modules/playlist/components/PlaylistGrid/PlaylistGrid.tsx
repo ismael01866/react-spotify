@@ -12,7 +12,7 @@ export function PlaylistGrid(props: PlaylistGridProps) {
 
   return (
     <SimpleGrid
-      columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
+      columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
       spacing={4}
       {...others}
     >

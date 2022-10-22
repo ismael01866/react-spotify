@@ -7,13 +7,6 @@ export function BrowseFeaturedPlaylistsContent() {
   const { playlists } = useContext(BrowseFeaturedPlaylistsContext);
 
   return (
-    <Box>
-      {playlists && (
-        <PlaylistGrid
-          playlists={playlists}
-          columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
-        />
-      )}
-    </Box>
+    <Box>{playlists && <PlaylistGrid playlists={playlists} />}</Box>
   );
 }

@@ -14,15 +14,14 @@ import {
 import { buildSpotifyPlayer } from 'src/utils/spotify';
 
 export const useSpotifyPlayerStateHandler = () => {
+  const { data } = useSession();
   const dispatch = useDispatch();
 
-  const { data: session } = useSession();
-
   useEffect(() => {
-    if (!session) return;
+    if (!data) return;
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = session.access_token as string;
+      const token = data.access_token as string;
 
       const player = buildSpotifyPlayer(token, {
         onReady: (device_id) => {
@@ -44,5 +43,5 @@ export const useSpotifyPlayerStateHandler = () => {
         if (success) dispatch(setPlayer(player));
       });
     };
-  }, [session, dispatch]);
+  }, [data, dispatch]);
 };

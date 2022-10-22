@@ -1,17 +1,3 @@
-export interface IArtist {
-  id?: string;
-  name?: string;
-  uri?: string;
-  images?: {
-    url?: string;
-  }[];
-  followers?: {
-    total?: number;
-  };
-  genres?: string[];
-  popularity?: number;
-
-  // custom
-
+export interface IArtist extends SpotifyApi.ArtistObjectFull {
   is_following?: boolean;
 }
