@@ -7,7 +7,7 @@ import { useBrowseNewReleases } from 'src/utils/hooks/services';
 
 export function HomeBrowseNewReleases() {
   const { country } = useContext(UserContext);
-  const limit = 8;
+  const limit = 10;
 
   const { albums, isLoading } = useBrowseNewReleases({
     limit,

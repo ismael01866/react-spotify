@@ -4,7 +4,7 @@ import { ArtistGrid } from 'src/modules/artist/components';
 import { useMeTopArtists } from 'src/utils/hooks/services';
 
 export function HomeUserMeTopArtists() {
-  const limit = 8;
+  const limit = 10;
 
   const { artists, isLoading } = useMeTopArtists({
     limit

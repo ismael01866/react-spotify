@@ -23,11 +23,11 @@ export function CardButtonPlay<
   };
 
   if (type === 'track') {
-    if (context.type === 'track') {
+    if (context?.type === 'track') {
       return <ButtonPlay uri={uri} {...style} />;
     }
 
-    return <ButtonPlay context_uri={context.uri} {...style} />;
+    return <ButtonPlay context_uri={context?.uri} {...style} />;
   }
 
   return <ButtonPlay context_uri={uri} {...style} />;

@@ -13,10 +13,5 @@ export function LibraryPlaylistsContent() {
     if (playlistsFiltered) setPlaylists(playlistsFiltered);
   }, [playlistsFiltered]);
 
-  return (
-    <PlaylistGrid
-      playlists={playlists}
-      columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
-    />
-  );
+  return <PlaylistGrid playlists={playlists} />;
 }

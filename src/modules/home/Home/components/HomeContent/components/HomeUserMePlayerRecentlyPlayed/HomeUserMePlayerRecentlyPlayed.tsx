@@ -4,7 +4,7 @@ import { TrackGrid } from 'src/modules/track/components';
 import { useMePlayerRecentlyPlayed } from 'src/utils/hooks/services';
 
 export function HomeUserMePlayerRecentlyPlayed() {
-  const limit = 8;
+  const limit = 10;
 
   const { tracks, isLoading } = useMePlayerRecentlyPlayed({
     limit

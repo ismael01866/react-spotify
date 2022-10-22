@@ -8,10 +8,5 @@ export function LibraryArtistsContent() {
     LibraryArtistsContext
   );
 
-  return (
-    <ArtistGrid
-      artists={artistsFiltered}
-      columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
-    />
-  );
+  return <ArtistGrid artists={artistsFiltered} />;
 }

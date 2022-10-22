@@ -13,10 +13,5 @@ export function LibraryAlbumsContent() {
     if (albumsFiltered) setAlbums(albumsFiltered);
   }, [albumsFiltered]);
 
-  return (
-    <AlbumGrid
-      albums={albums}
-      columns={{ base: 1, sm: 2, md: 3, lg: 6 }}
-    />
-  );
+  return <AlbumGrid albums={albums} />;
 }
