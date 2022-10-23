@@ -28,7 +28,7 @@ export function CollectionTableBody(props: CollectionTableBodyProps) {
    * we use a delay render to load each chunk after each other
    */
 
-  const delayTime = 100 * (index - 1); // milliseconds
+  const delayTime = 20 * (index - 1); // milliseconds
   const delayedRender = useDelayedRender(delayTime);
 
   return (

@@ -12,7 +12,7 @@ export function Player() {
   const track = useSelector(selectTrack);
 
   return (
-    track && (
+    (track.uri && (
       <SimpleGrid h={'6xs'} w={'full'} columns={3} spacing={8}>
         {track && <TrackMeta track={track} />}
 
@@ -23,6 +23,6 @@ export function Player() {
 
         <VolumeBar />
       </SimpleGrid>
-    )
+    )) || <></>
   );
 }
