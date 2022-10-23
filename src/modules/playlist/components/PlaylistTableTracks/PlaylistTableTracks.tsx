@@ -1,9 +1,8 @@
 import { Table, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
-import { ITrack } from 'src/types/track';
 import { PlaylistRowTrack } from './components';
 
 interface PlaylistTableTracksProps {
-  tracks: ITrack[];
+  tracks: SpotifyApi.PlaylistTrackObject[];
 }
 
 export function PlaylistTableTracks(props: PlaylistTableTracksProps) {
@@ -33,9 +32,9 @@ export function PlaylistTableTracks(props: PlaylistTableTracksProps) {
         <Tbody>
           {tracks.map((track, index) => (
             <PlaylistRowTrack
-              key={track.id || index}
+              key={track?.track?.id || index}
               index={index + 1}
-              track={track}
+              track={track.track!}
             />
           ))}
         </Tbody>

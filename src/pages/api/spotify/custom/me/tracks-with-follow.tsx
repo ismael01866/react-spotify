@@ -35,8 +35,12 @@ export default async function handler(
     limit,
     offset,
     total
-  }: { items: ITrack[]; limit: number; offset: number; total: number } =
-    await fetchWithToken(req, url);
+  }: {
+    items: SpotifyApi.PlaylistTrackObject[];
+    limit: number;
+    offset: number;
+    total: number;
+  } = await fetchWithToken(req, url);
 
   const tracksFollowURL = utilWithQueryParams(
     `https://api.spotify.com/v1/me/tracks/contains`,
@@ -46,7 +50,10 @@ export default async function handler(
   const tracksFollowed: ITrack[] = await fetchWithToken(req, tracksFollowURL);
 
   const data = items?.map((track, index) => {
-    ((track || {}).track || {}).is_following = !!tracksFollowed?.[index];
+    if (track.track) {
+      (track.track as ITrack).is_following = !!tracksFollowed?.[index];
+    }
+
     return track;
   });
 

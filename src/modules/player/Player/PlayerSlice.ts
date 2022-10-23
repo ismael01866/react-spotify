@@ -1,5 +1,6 @@
 import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit';
 import { RootState } from 'src/store';
+import { ITrack } from 'src/types/track';
 
 export interface IPlayerSliceState {
   player: Spotify.Player | null;
@@ -13,7 +14,7 @@ export interface IPlayerSliceState {
   playbackID: string;
   playbackContext: Spotify.PlaybackContext;
 
-  track: Spotify.Track | null;
+  track: ITrack;
 }
 
 export const playerSlice = createSlice<
@@ -35,7 +36,7 @@ export const playerSlice = createSlice<
       metadata: null
     },
 
-    track: null
+    track: {}
   },
   reducers: {
     setPlayer: (state, action) => {

@@ -1,4 +1,3 @@
-import { ITrack } from 'src/types/track';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
@@ -9,11 +8,10 @@ export const useMeTracksWithFollow = (query = {}, opts = {}, SWROpts = {}) => {
     query
   );
 
-  const { data, error } = useSWR<{ items: ITrack[]; total: number }>(
-    [url, opts],
-    fetcher,
-    SWROpts
-  );
+  const { data, error } = useSWR<{
+    items: SpotifyApi.PlaylistTrackObject[];
+    total: number;
+  }>([url, opts], fetcher, SWROpts);
 
   return {
     error,

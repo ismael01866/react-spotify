@@ -25,11 +25,12 @@ export function TrackImage(props: TrackImageProps) {
         case 'album':
           return album?.images?.[0]?.url;
 
-        case 'artist':
-          return artists?.[0]?.images?.[0]?.url;
-
         case 'playlist':
           return playlist?.images?.[0]?.url;
+
+        case 'artist':
+          return (artists?.[0] as SpotifyApi.ArtistObjectFull)?.images?.[0]
+            ?.url;
 
         default:
           break;

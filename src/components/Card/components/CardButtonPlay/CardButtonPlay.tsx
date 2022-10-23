@@ -9,7 +9,7 @@ interface CardButtonPlayProps<TData, TType> {
 
 export function CardButtonPlay<
   TData extends { context: { type: string; uri: string } } & ITrack,
-  TType
+  TType extends SpotifyApi.ContextObject['type'] | 'track'
 >(props: CardButtonPlayProps<TData, TType>) {
   const {
     type,

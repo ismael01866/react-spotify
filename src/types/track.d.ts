@@ -1,5 +1,7 @@
 export interface ITrack extends Partial<SpotifyApi.TrackObjectFull> {
-  artists?: SpotifyApi.ArtistObjectFull[];
+  artists?:
+    | Partial<SpotifyApi.ArtistObjectFull[]>
+    | Partial<SpotifyApi.ArtistObjectSimplified[]>;
 
   context?: {
     uri?: 'string';

@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IPlaylist } from 'src/types/playlist';
-import { ITrack } from 'src/types/track';
 import { fetchWithToken } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 
@@ -32,7 +31,7 @@ export default async function handler(
   return res.status(200).json(result);
 }
 
-function calculatePlaylistDuration(tracks: ITrack[]) {
+function calculatePlaylistDuration(tracks: SpotifyApi.PlaylistTrackObject[]) {
   return tracks.reduce((totalDuration, { track }) => {
     return track?.duration_ms
       ? totalDuration + track.duration_ms

@@ -32,7 +32,7 @@ export interface CardSpotifyProps<TData, TType> {
 
 export function CardSpotify<
   TData extends IAlbum | IArtist | IPlaylist | ITrack,
-  TType extends 'album' | 'artist' | 'playlist' | 'track'
+  TType extends SpotifyApi.ContextObject['type'] | 'track'
 >(props: CardSpotifyProps<TData, TType>) {
   const { type, data, ...others } = props;
 

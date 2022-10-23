@@ -13,9 +13,7 @@ interface PlaylistRowTrackProps {
 
 export function PlaylistRowTrack(props: PlaylistRowTrackProps) {
   const { index, track } = props;
-  const innerTrack = track.track as ITrack;
-
-  const { uri, name, duration_ms, album, is_playable = true } = innerTrack;
+  const { uri, name, duration_ms, album, is_playable = true } = track;
 
   const buttonPlayRef = useRef<HTMLButtonElement>(null);
 
@@ -66,7 +64,7 @@ export function PlaylistRowTrack(props: PlaylistRowTrackProps) {
       </Td>
 
       <Td>
-        <TrackButtonFollow track={innerTrack} />
+        <TrackButtonFollow track={track} />
       </Td>
 
       <Td textAlign={'right'}>

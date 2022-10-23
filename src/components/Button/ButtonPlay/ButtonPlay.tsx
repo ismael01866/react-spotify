@@ -1,6 +1,6 @@
 import { ButtonProps, forwardRef, IconButton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';

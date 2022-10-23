@@ -21,7 +21,7 @@ export default async function handler(
     tracks: { items }
   }: {
     tracks: {
-      items: ITrack[];
+      items: SpotifyApi.PlaylistTrackObject[];
     };
   } = await fetchWithToken(req, playlistURL);
 
@@ -37,7 +37,7 @@ export default async function handler(
 
     const data = splicedItems?.map((track, index) => {
       if (track.track) {
-        track.track.is_following = !!tracksFollowed?.[index];
+        (track.track as ITrack).is_following = !!tracksFollowed?.[index];
       }
 
       return track;
