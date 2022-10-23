@@ -16,8 +16,7 @@ const HomePage: NextPage<HomePageProps> = (props) => {
 
   return (
     <HomeContext.Provider value={{ artist }}>
-      <Home />
-    </HomeContext.Provider>
+      <Home /></HomeContext.Provider>
   );
 };
 
@@ -52,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       limit,
       seed_artists
     }
-  );
+  )
 
   const { tracks }: { tracks: ITrack[] } = await fetchWithToken(
     req as NextApiRequest,
