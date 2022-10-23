@@ -5,12 +5,12 @@ const buildEslintCommand = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(' --file ')}`;
 
-const buildTSCommand = () => `npm tsc --noEmit`;
+const buildTSCommand = () => `npm type-check`;
 
 const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
 module.exports = {
-  '*.{ts,tsx}': [buildTSCommand],
-  '*.{js,jsx,ts,tsx}': [buildEslintCommand, buildPrettierCommand]
+  '**/*.ts?(x)': [buildTSCommand],
+  '**/*.{js,jsx,ts,tsx}': [buildEslintCommand, buildPrettierCommand]
 };

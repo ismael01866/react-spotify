@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "prepare": "husky install"
   },
   "dependencies": {
