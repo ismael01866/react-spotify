@@ -1,3 +1,3 @@
-export interface IUser extends SpotifyApi.UserObjectPrivate {
+export interface IUser extends Partial<SpotifyApi.UserObjectPrivate> {
   is_following?: boolean;
 }

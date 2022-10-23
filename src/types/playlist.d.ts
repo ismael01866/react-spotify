@@ -1,4 +1,4 @@
-export interface IPlaylist extends SpotifyApi.PlaylistObjectFull {
+export interface IPlaylist extends Partial<SpotifyApi.PlaylistObjectFull> {
   is_following?: boolean;
   total_duration?: number;
 }

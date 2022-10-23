@@ -1,3 +1,3 @@
-export interface IAlbum extends SpotifyApi.AlbumObjectFull {
+export interface IAlbum extends Partial<SpotifyApi.AlbumObjectFull> {
   is_following?: boolean;
 }

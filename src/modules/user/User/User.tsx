@@ -10,16 +10,15 @@ export function User() {
   const { id } = useContext(UserContext);
 
   const { id: userID } = router.query;
-  const { user = {}, isLoading } = useUserWithFollow(userID, {
+  const { user, isLoading } = useUserWithFollow(userID, {
     ids: id
   });
 
   return (
-    (!isLoading && (
+    (!isLoading && user && (
       <Flex flexDirection={'column'} gap={16}>
         <UserContext.Provider value={user}>
           <UserHeader />
-          {/* <UserContent /> */}
         </UserContext.Provider>
       </Flex>
     )) || <></>

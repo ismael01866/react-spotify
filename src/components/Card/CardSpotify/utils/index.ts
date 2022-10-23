@@ -3,7 +3,7 @@ import { ITrack } from 'src/types/track';
 
 type TGenericProps = {
   album?: IAlbum;
-  type?: ITrack['type'];
+  type?: ITrack['context'];
   context?: ITrack['context'];
 };
 
