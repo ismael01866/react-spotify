@@ -8,7 +8,7 @@ import { fetchWithToken } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 
 interface HomePageProps {
-  artist: IAlbum;
+  artist: ITrack;
 }
 
 const HomePage: NextPage<HomePageProps> = (props) => {
