@@ -11,6 +11,6 @@ const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
 module.exports = {
-  '*.ts?(x)': [buildTSCommand]
+  '*.ts?(x)': buildTSCommand
   // '**/*.{js?(x),ts?(x)}': [buildEslintCommand, buildPrettierCommand]
 };
