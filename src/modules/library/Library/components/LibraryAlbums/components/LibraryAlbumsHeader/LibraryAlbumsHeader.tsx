@@ -7,21 +7,15 @@ import {
   InputLeftElement,
   Select
 } from '@chakra-ui/react';
-import {
-  FormEvent,
-  startTransition,
-  useContext,
-  useState
-} from 'react';
+import { FormEvent, startTransition, useContext, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LibraryAlbumsContext } from 'src/state';
 import { IAlbum } from 'src/types/album';
 import { utilSetDelayedState } from 'src/utils/helpers';
 
 export function LibraryAlbumsHeader() {
-  const { albums, albumsFiltered, setAlbumsFiltered } = useContext(
-    LibraryAlbumsContext
-  );
+  const { albums, albumsFiltered, setAlbumsFiltered } =
+    useContext(LibraryAlbumsContext);
 
   const [sortProp, setSortProp] = useState<keyof IAlbum>('name');
 
@@ -48,9 +42,7 @@ export function LibraryAlbumsHeader() {
     }
   };
 
-  const handleOnChangeSelect = (
-    event: FormEvent<HTMLSelectElement>
-  ) => {
+  const handleOnChangeSelect = (event: FormEvent<HTMLSelectElement>) => {
     if (!albumsFiltered) return;
 
     const prop = event.currentTarget.value as keyof IAlbum;

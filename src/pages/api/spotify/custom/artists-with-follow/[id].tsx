@@ -17,10 +17,7 @@ export default async function handler(
     { ids: id, type: 'artist' }
   );
 
-  const artists: IArtist[] = await fetchWithToken(
-    req,
-    artistsFollowURL
-  );
+  const artists: IArtist[] = await fetchWithToken(req, artistsFollowURL);
 
   artist.is_following = !!artists?.[0];
 

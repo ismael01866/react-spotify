@@ -17,8 +17,10 @@ export default async function handler(
   do {
     const {
       artists: { items, next }
-    }: { artists: { items: IArtist[]; next: string } } =
-      await fetchWithToken(req, artistsURL);
+    }: { artists: { items: IArtist[]; next: string } } = await fetchWithToken(
+      req,
+      artistsURL
+    );
 
     artists.push(...items);
 

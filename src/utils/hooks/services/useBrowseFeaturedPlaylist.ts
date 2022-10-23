@@ -5,9 +5,7 @@ import useSWR from 'swr';
 import { useSpotifyApi } from '../api';
 
 export const useBrowseFeaturedPlaylist = (query = {}, opts = {}) => {
-  const { headers, url: baseURL } = useSpotifyApi(
-    `/browse/featured-playlists`
-  );
+  const { headers, url: baseURL } = useSpotifyApi(`/browse/featured-playlists`);
 
   const url = utilWithQueryParams(baseURL, query);
 

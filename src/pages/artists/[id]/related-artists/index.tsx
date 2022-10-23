@@ -1,8 +1,4 @@
-import type {
-  GetServerSideProps,
-  NextApiRequest,
-  NextPage
-} from 'next';
+import type { GetServerSideProps, NextApiRequest, NextPage } from 'next';
 import { ArtistRelatedArtists } from 'src/modules/artist/ArtistRelatedArtists';
 import { ArtistRelatedArtistsContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
@@ -13,9 +9,9 @@ interface ArtistRelatedArtistsPageProps {
   data: IArtist[];
 }
 
-const ArtistRelatedArtistsPage: NextPage<
-  ArtistRelatedArtistsPageProps
-> = (props) => {
+const ArtistRelatedArtistsPage: NextPage<ArtistRelatedArtistsPageProps> = (
+  props
+) => {
   const { data } = props;
 
   return (
@@ -33,8 +29,10 @@ export const getServerSideProps: GetServerSideProps = async ({
     `${process.env.NEXT_PUBLIC_SPOTIFY_API}/artists/${query.id}/related-artists`
   );
 
-  const { artists: data }: { artists: IArtist[] } =
-    await fetchWithToken(req as NextApiRequest, url);
+  const { artists: data }: { artists: IArtist[] } = await fetchWithToken(
+    req as NextApiRequest,
+    url
+  );
 
   return {
     props: { data }

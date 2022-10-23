@@ -7,7 +7,6 @@ interface LibraryArtistsContextProps {
   setArtistsFiltered: Dispatch<SetStateAction<IArtist[] | undefined>>;
 }
 
-export const LibraryArtistsContext =
-  createContext<LibraryArtistsContextProps>({
-    setArtistsFiltered: function () {}
-  });
+export const LibraryArtistsContext = createContext<LibraryArtistsContextProps>({
+  setArtistsFiltered: function () {}
+});

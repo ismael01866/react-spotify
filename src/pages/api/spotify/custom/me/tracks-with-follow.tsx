@@ -43,14 +43,10 @@ export default async function handler(
     { ids: items?.map((track) => track?.track?.id).join(',') }
   );
 
-  const tracksFollowed: ITrack[] = await fetchWithToken(
-    req,
-    tracksFollowURL
-  );
+  const tracksFollowed: ITrack[] = await fetchWithToken(req, tracksFollowURL);
 
   const data = items?.map((track, index) => {
-    ((track || {}).track || {}).is_following =
-      !!tracksFollowed?.[index];
+    ((track || {}).track || {}).is_following = !!tracksFollowed?.[index];
     return track;
   });
 

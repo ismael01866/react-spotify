@@ -8,9 +8,7 @@ export const useArtistAlbums = (
   query = {},
   opts = {}
 ) => {
-  const { headers, url: baseURL } = useSpotifyApi(
-    `/artists/${id}/albums`
-  );
+  const { headers, url: baseURL } = useSpotifyApi(`/artists/${id}/albums`);
 
   const url = utilWithQueryParams(baseURL, query);
 
@@ -36,8 +34,7 @@ export const useArtistAlbums = (
     isLoadingInitialData ||
     (size > 0 && data && typeof data[size - 1] === 'undefined');
 
-  const isEmpty =
-    !isLoadingInitialData && data?.[size - 1]?.items.length === 0;
+  const isEmpty = !isLoadingInitialData && data?.[size - 1]?.items.length === 0;
 
   return {
     error,

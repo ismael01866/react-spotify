@@ -13,8 +13,9 @@ import { LibraryPlaylistsContext } from 'src/state';
 import { IPlaylist } from 'src/types/playlist';
 
 export function LibraryPlaylistsHeader() {
-  const { playlists, playlistsFiltered, setPlaylistsFiltered } =
-    useContext(LibraryPlaylistsContext);
+  const { playlists, playlistsFiltered, setPlaylistsFiltered } = useContext(
+    LibraryPlaylistsContext
+  );
 
   const [_, startTransition] = useTransition();
 
@@ -34,10 +35,7 @@ export function LibraryPlaylistsHeader() {
     setPlaylistsFiltered(playlists);
   };
 
-  const filterPlaylistsByName = (
-    playlists: IPlaylist[],
-    value: string
-  ) => {
+  const filterPlaylistsByName = (playlists: IPlaylist[], value: string) => {
     return playlists?.filter((artist) =>
       artist.name?.toLowerCase()?.includes(value.toLowerCase())
     );

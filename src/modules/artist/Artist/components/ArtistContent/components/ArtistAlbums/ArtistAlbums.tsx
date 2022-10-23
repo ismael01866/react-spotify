@@ -15,11 +15,13 @@ export function ArtistAlbums() {
   const { id: artistID } = useContext(ArtistContext);
 
   const limit = 6;
-  const { albums, isLoadingInitialData: isLoadingAlbums } =
-    useArtistAlbums(artistID, {
+  const { albums, isLoadingInitialData: isLoadingAlbums } = useArtistAlbums(
+    artistID,
+    {
       limit,
       include_groups: 'album'
-    });
+    }
+  );
 
   const { albums: singles, isLoadingInitialData: isLoadingSingles } =
     useArtistAlbums(artistID, {

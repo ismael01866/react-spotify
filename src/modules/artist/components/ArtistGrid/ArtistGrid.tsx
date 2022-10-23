@@ -18,11 +18,7 @@ export function ArtistGrid(props: ArtistGridProps) {
     >
       {artists?.map((artist, index) => {
         return (
-          <CardSpotify
-            key={artist.id || index}
-            type="artist"
-            data={artist}
-          />
+          <CardSpotify key={artist.id || index} type="artist" data={artist} />
         );
       })}
     </SimpleGrid>

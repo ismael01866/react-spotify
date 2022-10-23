@@ -18,11 +18,7 @@ export function AlbumGrid(props: AlbumGridProps) {
     >
       {albums?.map((album, index) => {
         return (
-          <CardSpotify
-            key={album.id || index}
-            type={'album'}
-            data={album}
-          />
+          <CardSpotify key={album.id || index} type={'album'} data={album} />
         );
       })}
     </SimpleGrid>

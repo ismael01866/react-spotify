@@ -9,10 +9,7 @@ export const useMePlaylistsAll = (query = {}, opts = {}) => {
     query
   );
 
-  const { data, error } = useSWR<IPlaylist[]>(
-    [url, { ...opts }],
-    fetcher
-  );
+  const { data, error } = useSWR<IPlaylist[]>([url, { ...opts }], fetcher);
 
   return {
     error,

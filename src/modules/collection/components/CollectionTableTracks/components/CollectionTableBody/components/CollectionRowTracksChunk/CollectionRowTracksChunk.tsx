@@ -11,9 +11,7 @@ interface CollectionRowTracksChunkProps {
 
 const MemoizedRowEmpty = memo(CollectionRowTrackEmpty);
 
-export function CollectionRowTracksChunk(
-  props: CollectionRowTracksChunkProps
-) {
+export function CollectionRowTracksChunk(props: CollectionRowTracksChunkProps) {
   const { chunkSize } = useContext(CollectionTracksContext);
 
   const { index: chunkIndex, skeletonTracks } = props;

@@ -22,11 +22,7 @@ export const SidebarItem = (props: SidebarItemProps) => {
   const isCurrentRoute = router.pathname === href;
 
   return (
-    <Tooltip
-      label={capitalize(label)}
-      offset={[0, -16]}
-      placement={'end'}
-    >
+    <Tooltip label={capitalize(label)} offset={[0, -16]} placement={'end'}>
       <ListItem
         pl={4}
         position={'relative'}

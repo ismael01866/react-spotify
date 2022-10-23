@@ -24,10 +24,7 @@ export default async function handler(
     { ids: tracks?.map((track) => track.id).join(',') }
   );
 
-  const tracksFollowed: ITrack[] = await fetchWithToken(
-    req,
-    tracksFollowURL
-  );
+  const tracksFollowed: ITrack[] = await fetchWithToken(req, tracksFollowURL);
 
   const data = tracks?.map((track, index) => {
     track.is_following = !!tracksFollowed?.[index];

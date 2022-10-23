@@ -13,10 +13,9 @@ export interface CardSpotifyContentProps<TData, TType> {
   type: TType;
 }
 
-export function CardSpotifyContent<
-  TData extends {},
-  TType extends string
->(props: CardSpotifyContentProps<TData, TType>) {
+export function CardSpotifyContent<TData extends {}, TType extends string>(
+  props: CardSpotifyContentProps<TData, TType>
+) {
   const { type, data } = props;
 
   if (type === 'album') {
@@ -39,9 +38,7 @@ export function CardSpotifyContent<
     return (
       <>
         <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-          {[...(genres || ['No genres available'])]
-            .splice(0, 2)
-            .join(', ')}
+          {[...(genres || ['No genres available'])].splice(0, 2).join(', ')}
         </Text>
 
         <MetaPopularity popularity={popularity} />

@@ -62,9 +62,7 @@ export function AlbumRowTrack(props: AlbumRowTrackProps) {
       </Td>
 
       <Td textAlign={'right'}>
-        <Text fontSize={'sm'}>
-          {moment(duration_ms).format('mm:ss')}
-        </Text>
+        <Text fontSize={'sm'}>{moment(duration_ms).format('mm:ss')}</Text>
       </Td>
     </TrTrack>
   );

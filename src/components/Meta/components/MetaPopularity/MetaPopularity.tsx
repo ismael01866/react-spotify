@@ -12,18 +12,11 @@ export function MetaPopularity(props: CardMetaPopularityProps) {
   const icon = getPopularityIcon(parsedPopularity);
 
   return (
-    <Tooltip
-      label={`Popularity ${parsedPopularity}/10`}
-      placement={'top'}
-    >
+    <Tooltip label={`Popularity ${parsedPopularity}/10`} placement={'top'}>
       <HStack>
         <Icon as={icon} color={'orange.300'} />
 
-        <Text
-          color={'text.base'}
-          fontWeight={'semibold'}
-          fontSize={'xs'}
-        >
+        <Text color={'text.base'} fontWeight={'semibold'} fontSize={'xs'}>
           {parsedPopularity}
         </Text>
       </HStack>

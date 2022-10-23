@@ -19,8 +19,7 @@ export function EmptySkeleton(props: EmptySkeletonProps) {
   const theme = useTheme();
   const styles = useStyleConfig('Skeleton');
 
-  const defaultBackground =
-    theme.components.Skeleton.defaultProps.colorScheme;
+  const defaultBackground = theme.components.Skeleton.defaultProps.colorScheme;
 
   return (
     <Box

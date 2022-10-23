@@ -4,11 +4,10 @@ import {
 } from '@reduxjs/toolkit';
 import { playerReducer } from './modules/player/Player/PlayerSlice';
 
-const serializableMiddleware =
-  createSerializableStateInvariantMiddleware({
-    ignoredPaths: ['player.player'],
-    ignoredActions: ['player/setPlayer']
-  });
+const serializableMiddleware = createSerializableStateInvariantMiddleware({
+  ignoredPaths: ['player.player'],
+  ignoredActions: ['player/setPlayer']
+});
 
 export const store = configureStore({
   reducer: {

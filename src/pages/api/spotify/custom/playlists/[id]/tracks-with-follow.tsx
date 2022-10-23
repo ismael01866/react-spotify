@@ -33,10 +33,7 @@ export default async function handler(
       { ids: splicedItems?.map((track) => track?.track?.id).join(',') }
     );
 
-    const tracksFollowed: ITrack[] = await fetchWithToken(
-      req,
-      tracksFollowURL
-    );
+    const tracksFollowed: ITrack[] = await fetchWithToken(req, tracksFollowURL);
 
     const data = splicedItems?.map((track, index) => {
       if (track.track) {

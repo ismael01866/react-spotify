@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableContainer,
-  Tbody,
-  Th,
-  Thead,
-  Tr
-} from '@chakra-ui/react';
+import { Table, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 import { ITrack } from 'src/types/track';
 import { PlaylistRowTrack } from './components';
 

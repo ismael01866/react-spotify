@@ -7,7 +7,6 @@ interface LibraryAlbumsContextProps {
   setAlbumsFiltered: Dispatch<SetStateAction<IAlbum[] | undefined>>;
 }
 
-export const LibraryAlbumsContext =
-  createContext<LibraryAlbumsContextProps>({
-    setAlbumsFiltered: function () {}
-  });
+export const LibraryAlbumsContext = createContext<LibraryAlbumsContextProps>({
+  setAlbumsFiltered: function () {}
+});

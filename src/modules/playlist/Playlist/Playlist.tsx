@@ -10,10 +10,9 @@ export function Playlist() {
   const { id } = useContext(UserContext);
 
   const { id: playlistID } = router.query;
-  const { playlist = {}, isLoading } = usePlaylistWithFollow(
-    playlistID,
-    { ids: id }
-  );
+  const { playlist = {}, isLoading } = usePlaylistWithFollow(playlistID, {
+    ids: id
+  });
 
   return (
     (!isLoading && (

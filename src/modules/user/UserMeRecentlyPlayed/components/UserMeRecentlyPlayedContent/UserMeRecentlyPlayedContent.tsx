@@ -13,9 +13,7 @@ export function UserMeRecentlyPlayedContent() {
   // (but the may be grouped), we need to reduce the actual results to
   // be displayed to the actual limit
 
-  const data = isLoading
-    ? skeletonData
-    : [...(tracks || [])].splice(0, limit);
+  const data = isLoading ? skeletonData : [...(tracks || [])].splice(0, limit);
 
   return <Box>{data && <TrackGrid tracks={data} />}</Box>;
 }

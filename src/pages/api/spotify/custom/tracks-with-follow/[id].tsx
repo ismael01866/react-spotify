@@ -17,10 +17,7 @@ export default async function handler(
     { ids: id }
   );
 
-  const albumsFollowed: IAlbum[] = await fetchWithToken(
-    req,
-    albumsFollowURL
-  );
+  const albumsFollowed: IAlbum[] = await fetchWithToken(req, albumsFollowURL);
 
   album.is_following = !!albumsFollowed?.[0];
 

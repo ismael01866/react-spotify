@@ -20,9 +20,7 @@ interface ArtistRowPopularTrackProps {
   track: ITrack;
 }
 
-export function ArtistRowPopularTrack(
-  props: ArtistRowPopularTrackProps
-) {
+export function ArtistRowPopularTrack(props: ArtistRowPopularTrackProps) {
   const { track } = props;
   const { uri, name, duration_ms, album, is_playable } = track;
 
@@ -81,9 +79,7 @@ export function ArtistRowPopularTrack(
       </Td>
 
       <Td textAlign={'right'}>
-        <Text fontSize={'sm'}>
-          {moment(duration_ms).format('mm:ss')}
-        </Text>
+        <Text fontSize={'sm'}>{moment(duration_ms).format('mm:ss')}</Text>
       </Td>
     </TrTrack>
   );

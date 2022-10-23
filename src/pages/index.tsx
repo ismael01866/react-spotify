@@ -1,10 +1,6 @@
 import { random } from 'lodash';
 import { Home } from 'modules/home';
-import type {
-  GetServerSideProps,
-  NextApiRequest,
-  NextPage
-} from 'next';
+import type { GetServerSideProps, NextApiRequest, NextPage } from 'next';
 import { HomeContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';
@@ -25,10 +21,7 @@ const HomePage: NextPage<HomePageProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  res
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=1, stale-while-revalidate=59'

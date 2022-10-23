@@ -44,9 +44,7 @@ export function TrackButtonFollow(props: TrackButtonFollowProps) {
 
   return (
     <Tooltip
-      label={
-        (isFollowing ? 'Remove from' : 'Save to') + ' your library'
-      }
+      label={(isFollowing ? 'Remove from' : 'Save to') + ' your library'}
       closeOnClick={false}
       openDelay={TOOLTIP_OPEN_DELAY}
       placement="top"

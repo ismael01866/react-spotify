@@ -111,10 +111,7 @@ export default async function handler(
 
   for (let result of parsedResults) {
     if (result.context?.type === 'playlist' && result.context.href) {
-      const playlistData = await fetchWithToken(
-        req,
-        result.context.href
-      );
+      const playlistData = await fetchWithToken(req, result.context.href);
 
       result.playlist = playlistData;
     }

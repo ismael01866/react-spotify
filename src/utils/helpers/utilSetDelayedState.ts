@@ -16,8 +16,7 @@ export const utilSetDelayedState = (
       const timeout = setTimeout(
         () => {
           setStateCallback((currentValue: any) => {
-            if (currentValue)
-              return [...currentValue, ...chunkSorted[i]];
+            if (currentValue) return [...currentValue, ...chunkSorted[i]];
           });
 
           clearTimeout(timeout);

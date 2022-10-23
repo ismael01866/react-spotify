@@ -3,11 +3,7 @@ import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
 
-export const useMeTracksWithFollow = (
-  query = {},
-  opts = {},
-  SWROpts = {}
-) => {
+export const useMeTracksWithFollow = (query = {}, opts = {}, SWROpts = {}) => {
   const url = utilWithQueryParams(
     `/api/spotify/custom/me/tracks-with-follow`,
     query

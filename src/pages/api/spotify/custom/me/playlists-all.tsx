@@ -22,8 +22,7 @@ export default async function handler(
 
     playlists.push(...items);
 
-    const limitReached =
-      limit && playlists.length >= parseInt(limit as string);
+    const limitReached = limit && playlists.length >= parseInt(limit as string);
 
     if (limitReached) break;
 

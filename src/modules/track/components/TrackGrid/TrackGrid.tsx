@@ -18,11 +18,7 @@ export function TrackGrid(props: TrackGridProps) {
     >
       {tracks?.map((track, index) => {
         return (
-          <CardSpotify
-            key={track.id || index}
-            type={'track'}
-            data={track}
-          />
+          <CardSpotify key={track.id || index} type={'track'} data={track} />
         );
       })}
     </SimpleGrid>

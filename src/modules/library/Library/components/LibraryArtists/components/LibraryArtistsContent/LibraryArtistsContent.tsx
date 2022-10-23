@@ -4,9 +4,7 @@ import { LibraryArtistsContext } from 'src/state';
 
 export function LibraryArtistsContent() {
   const skeletonData = new Array(20).fill('');
-  const { artistsFiltered = skeletonData } = useContext(
-    LibraryArtistsContext
-  );
+  const { artistsFiltered = skeletonData } = useContext(LibraryArtistsContext);
 
   return <ArtistGrid artists={artistsFiltered} />;
 }

@@ -1,9 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  forwardRef,
-  useStyleConfig
-} from '@chakra-ui/react';
+import { Box, BoxProps, forwardRef, useStyleConfig } from '@chakra-ui/react';
 
 export const Card = forwardRef<BoxProps, 'div'>((props, ref) => {
   const { ...others } = props;

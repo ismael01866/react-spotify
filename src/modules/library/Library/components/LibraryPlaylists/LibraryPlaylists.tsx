@@ -3,16 +3,12 @@ import { useEffect, useState } from 'react';
 import { LibraryPlaylistsContext } from 'src/state';
 import { IPlaylist } from 'src/types/playlist';
 import { useMePlaylistsAll } from 'src/utils/hooks/services';
-import {
-  LibraryPlaylistsContent,
-  LibraryPlaylistsHeader
-} from './components';
+import { LibraryPlaylistsContent, LibraryPlaylistsHeader } from './components';
 
 export function LibraryPlaylists() {
   const { playlists } = useMePlaylistsAll({ sort: 'name' });
 
-  const [playlistsFiltered, setPlaylistsFiltered] =
-    useState<IPlaylist[]>();
+  const [playlistsFiltered, setPlaylistsFiltered] = useState<IPlaylist[]>();
 
   useEffect(() => {
     if (!playlists) return;

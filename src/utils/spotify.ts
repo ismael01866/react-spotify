@@ -1,9 +1,7 @@
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString(
-  'base64'
-);
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
 export async function getSpotifyToken(refresh_token: string) {
   const data = await fetch(`https://accounts.spotify.com/api/token`, {
@@ -39,26 +37,17 @@ export function buildSpotifyPlayer(
     }
   });
 
-  player.addListener(
-    'ready',
-    ({ device_id }: { device_id: string }) => {
-      if (typeof onReady === 'function') onReady(device_id);
-    }
-  );
+  player.addListener('ready', ({ device_id }: { device_id: string }) => {
+    if (typeof onReady === 'function') onReady(device_id);
+  });
 
-  player.addListener(
-    'not_ready',
-    ({ device_id }: { device_id: string }) => {
-      console.log('Device ID has gone offline', device_id);
-    }
-  );
+  player.addListener('not_ready', ({ device_id }: { device_id: string }) => {
+    console.log('Device ID has gone offline', device_id);
+  });
 
-  player.addListener(
-    'playback_error',
-    ({ message }: { message: string }) => {
-      console.error(message);
-    }
-  );
+  player.addListener('playback_error', ({ message }: { message: string }) => {
+    console.error(message);
+  });
 
   player.addListener(
     'initialization_error',
@@ -74,12 +63,9 @@ export function buildSpotifyPlayer(
     }
   );
 
-  player.addListener(
-    'account_error',
-    ({ message }: { message: string }) => {
-      console.error(message);
-    }
-  );
+  player.addListener('account_error', ({ message }: { message: string }) => {
+    console.error(message);
+  });
 
   player.addListener('player_state_changed', (state: any) => {
     if (!state) return;

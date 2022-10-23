@@ -6,10 +6,7 @@ export interface UsePlayerState {
   context_uri?: string | undefined;
 }
 
-export function usePlayerState({
-  uri,
-  context_uri
-}: UsePlayerState = {}) {
+export function usePlayerState({ uri, context_uri }: UsePlayerState = {}) {
   const { player, track, paused, playbackContext, deviceID } =
     useSelector(selectPlayerState);
 
@@ -19,8 +16,7 @@ export function usePlayerState({
     trackIsPlaying = track.uri === uri;
   }
 
-  trackIsPlaying =
-    playbackContext?.uri === context_uri || trackIsPlaying;
+  trackIsPlaying = playbackContext?.uri === context_uri || trackIsPlaying;
 
   return { player, deviceID, paused, trackIsPlaying };
 }

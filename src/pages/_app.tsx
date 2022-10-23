@@ -9,10 +9,7 @@ import { Layout } from 'src/layout';
 import { theme } from '../../theme';
 import { store } from './../store';
 
-function App({
-  Component,
-  pageProps: { session, ...pageProps }
-}: AppProps) {
+function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <ChakraProvider theme={theme}>

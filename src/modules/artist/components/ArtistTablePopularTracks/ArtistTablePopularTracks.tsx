@@ -6,9 +6,7 @@ interface ArtistTablePopularTracksProps {
   tracks: ITrack[];
 }
 
-export function ArtistTablePopularTracks(
-  props: ArtistTablePopularTracksProps
-) {
+export function ArtistTablePopularTracks(props: ArtistTablePopularTracksProps) {
   const { tracks } = props;
 
   return (

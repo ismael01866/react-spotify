@@ -18,10 +18,7 @@ export default async function handler(
     { ...query }
   );
 
-  const playlists: IPlaylist[] = await fetchWithToken(
-    req,
-    playlistsFollowURL
-  );
+  const playlists: IPlaylist[] = await fetchWithToken(req, playlistsFollowURL);
 
   const result = playlist || {};
 

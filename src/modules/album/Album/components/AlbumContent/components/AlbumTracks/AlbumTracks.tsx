@@ -15,8 +15,8 @@ export function AlbumTracks() {
   });
 
   return (
-    (!isLoading && (
-      <AlbumTableTracks tracks={tracks as ITrack[]} />
-    )) || <TrackLoadingStack />
+    (!isLoading && <AlbumTableTracks tracks={tracks as ITrack[]} />) || (
+      <TrackLoadingStack />
+    )
   );
 }

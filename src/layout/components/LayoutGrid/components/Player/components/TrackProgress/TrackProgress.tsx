@@ -14,13 +14,8 @@ import { selectPlayerState } from 'src/modules/player/Player/PlayerSlice';
 export function TrackProgress() {
   let timer = useRef({});
 
-  const {
-    player,
-    paused,
-    playbackID,
-    playbackPosition,
-    playbackDuration
-  } = useSelector(selectPlayerState);
+  const { player, paused, playbackID, playbackPosition, playbackDuration } =
+    useSelector(selectPlayerState);
 
   const [progress, setProgress] = useState(0);
   const [showThumb, setShowThumb] = useState(false);

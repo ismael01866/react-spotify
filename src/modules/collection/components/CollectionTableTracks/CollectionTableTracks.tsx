@@ -7,9 +7,7 @@ interface CollectionTableTracksProps {
   skeletonTracks: any[];
 }
 
-export function CollectionTableTracks(
-  props: CollectionTableTracksProps
-) {
+export function CollectionTableTracks(props: CollectionTableTracksProps) {
   const { chunkSize } = useContext(CollectionTracksContext);
   const { skeletonTracks } = props;
 

@@ -6,7 +6,5 @@ import { BrowseFeaturedPlaylistsContext } from 'src/state';
 export function BrowseFeaturedPlaylistsContent() {
   const { playlists } = useContext(BrowseFeaturedPlaylistsContext);
 
-  return (
-    <Box>{playlists && <PlaylistGrid playlists={playlists} />}</Box>
-  );
+  return <Box>{playlists && <PlaylistGrid playlists={playlists} />}</Box>;
 }

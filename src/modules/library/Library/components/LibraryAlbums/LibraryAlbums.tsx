@@ -3,10 +3,7 @@ import { useEffect, useState } from 'react';
 import { LibraryAlbumsContext } from 'src/state';
 import { IAlbum } from 'src/types/album';
 import { useMeAlbumsAll } from 'src/utils/hooks/services';
-import {
-  LibraryAlbumsContent,
-  LibraryAlbumsHeader
-} from './components';
+import { LibraryAlbumsContent, LibraryAlbumsHeader } from './components';
 
 export function LibraryAlbums() {
   const { albums } = useMeAlbumsAll({ sort: 'name' });

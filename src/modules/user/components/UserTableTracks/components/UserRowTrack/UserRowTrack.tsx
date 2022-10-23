@@ -68,9 +68,7 @@ export function UserRowTrack(props: UserRowTrackProps) {
       </Td>
 
       <Td textAlign={'right'}>
-        <Text fontSize={'sm'}>
-          {moment(duration_ms).format('mm:ss')}
-        </Text>
+        <Text fontSize={'sm'}>{moment(duration_ms).format('mm:ss')}</Text>
       </Td>
     </TrTrack>
   );

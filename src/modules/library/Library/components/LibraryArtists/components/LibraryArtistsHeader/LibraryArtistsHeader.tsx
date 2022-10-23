@@ -7,12 +7,7 @@ import {
   InputLeftElement,
   Select
 } from '@chakra-ui/react';
-import {
-  FormEvent,
-  startTransition,
-  useContext,
-  useState
-} from 'react';
+import { FormEvent, startTransition, useContext, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LibraryArtistsContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
@@ -47,9 +42,7 @@ export function LibraryArtistsHeader() {
     }
   };
 
-  const handleOnChangeSelect = (
-    event: FormEvent<HTMLSelectElement>
-  ) => {
+  const handleOnChangeSelect = (event: FormEvent<HTMLSelectElement>) => {
     if (!artistsFiltered) return;
 
     const prop = event.currentTarget.value as keyof IArtist;
@@ -70,10 +63,7 @@ export function LibraryArtistsHeader() {
     );
   };
 
-  const sortArtistsByProp = (
-    artists: IArtist[],
-    prop: keyof IArtist
-  ) => {
+  const sortArtistsByProp = (artists: IArtist[], prop: keyof IArtist) => {
     if (!artists) return;
 
     const sorted = [...artists].sort((a, b) => {

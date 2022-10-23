@@ -22,9 +22,7 @@ export function BrowseFeaturedPlaylists() {
   return (
     (!isLoading && (
       <Flex flexDirection={'column'} gap={12}>
-        <BrowseFeaturedPlaylistsContext.Provider
-          value={{ message, playlists }}
-        >
+        <BrowseFeaturedPlaylistsContext.Provider value={{ message, playlists }}>
           <BrowseFeaturedPlaylistsHeader />
           <BrowseFeaturedPlaylistsContent />
         </BrowseFeaturedPlaylistsContext.Provider>

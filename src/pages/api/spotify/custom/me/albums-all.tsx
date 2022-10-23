@@ -15,10 +15,7 @@ export default async function handler(
   const albums: IAlbum[] = [];
 
   do {
-    const {
-      items,
-      next
-    }: { items: [{ album: IAlbum }]; next: string } =
+    const { items, next }: { items: [{ album: IAlbum }]; next: string } =
       await fetchWithToken(req, albumsURL);
 
     const parsedItem = items.map((item) => item.album);

@@ -10,9 +10,7 @@ interface UserMeTopArtistsPageProps {
   data: IArtist[];
 }
 
-const UserMeTopArtistsPage: NextPage<UserMeTopArtistsPageProps> = (
-  props
-) => {
+const UserMeTopArtistsPage: NextPage<UserMeTopArtistsPageProps> = (props) => {
   const { data } = props;
 
   return (
@@ -22,9 +20,7 @@ const UserMeTopArtistsPage: NextPage<UserMeTopArtistsPageProps> = (
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const url = utilWithQueryParams(
     `${process.env.NEXT_PUBLIC_SPOTIFY_API}/me/top/artists`,
     {

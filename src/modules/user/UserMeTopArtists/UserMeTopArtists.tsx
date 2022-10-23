@@ -1,8 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import {
-  UserMeTopArtistsContent,
-  UserMeTopArtistsHeader
-} from './components';
+import { UserMeTopArtistsContent, UserMeTopArtistsHeader } from './components';
 
 export function UserMeTopArtists() {
   return (

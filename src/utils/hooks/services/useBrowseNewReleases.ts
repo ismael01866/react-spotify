@@ -5,9 +5,7 @@ import useSWR from 'swr';
 import { useSpotifyApi } from '../api';
 
 export const useBrowseNewReleases = (query = {}, opts = {}) => {
-  const { headers, url: baseURL } = useSpotifyApi(
-    `/browse/new-releases`
-  );
+  const { headers, url: baseURL } = useSpotifyApi(`/browse/new-releases`);
 
   const url = utilWithQueryParams(baseURL, query);
 

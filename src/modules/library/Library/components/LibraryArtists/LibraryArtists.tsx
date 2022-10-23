@@ -3,10 +3,7 @@ import { useEffect, useState } from 'react';
 import { LibraryArtistsContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
 import { useMeArtistsAll } from 'src/utils/hooks/services';
-import {
-  LibraryArtistsContent,
-  LibraryArtistsHeader
-} from './components';
+import { LibraryArtistsContent, LibraryArtistsHeader } from './components';
 
 export function LibraryArtists() {
   const { artists } = useMeArtistsAll({ sort: 'name' });

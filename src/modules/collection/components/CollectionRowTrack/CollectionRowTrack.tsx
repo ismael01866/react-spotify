@@ -72,9 +72,7 @@ export function CollectionRowTrack(props: CollectionRowTrackProps) {
       </Td>
 
       <Td textAlign={'right'}>
-        <Text fontSize={'sm'}>
-          {moment(duration_ms).format('mm:ss')}
-        </Text>
+        <Text fontSize={'sm'}>{moment(duration_ms).format('mm:ss')}</Text>
       </Td>
     </TrTrack>
   );

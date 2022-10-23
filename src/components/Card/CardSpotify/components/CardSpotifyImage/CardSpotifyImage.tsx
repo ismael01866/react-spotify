@@ -4,16 +4,14 @@ import { ArtistImage } from 'src/modules/artist/components';
 import { PlaylistImage } from 'src/modules/playlist/components';
 import { TrackImage } from 'src/modules/track/components';
 
-export interface CardSpotifyImageProps<TData, TType>
-  extends ImageProps {
+export interface CardSpotifyImageProps<TData, TType> extends ImageProps {
   data: TData;
   type: TType;
 }
 
-export function CardSpotifyImage<
-  TData extends {},
-  TType extends string
->(props: CardSpotifyImageProps<TData, TType>) {
+export function CardSpotifyImage<TData extends {}, TType extends string>(
+  props: CardSpotifyImageProps<TData, TType>
+) {
   const { type, data } = props;
 
   if (type === 'album') {
