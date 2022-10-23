@@ -1,3 +1,3 @@
-export * from './HomeUserMeTopArtists';
-export * from './HomeUserMePlayerRecentlyPlayed';
 export * from './HomeBrowseFeaturedPlaylists';
+export * from './HomeBrowseNewReleases';
+export * from './HomeUserMeTopArtists';

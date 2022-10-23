@@ -40,7 +40,7 @@ export function CardSpotify<
 
   return (
     <Box ref={containerEl} boxShadow={'xl'}>
-      <Skeleton isLoaded={!!data.id}>
+      <Skeleton isLoaded={!!Object.keys(data).length}>
         <Card padding={0} position={'relative'} {...others}>
           <CardImage data={data} type={type} parentRef={containerEl} />
           <CardContent data={data} type={type} />

@@ -1,15 +1,13 @@
 export interface ITrack extends Partial<SpotifyApi.TrackObjectFull> {
-  is_following?: boolean;
+  artists?: SpotifyApi.ArtistObjectFull[];
+
+  context?: {
+    uri?: 'string';
+    type?: SpotifyApi.ContextObject['type'] | 'track';
+  };
+
   is_visible?: boolean;
+  is_following?: boolean;
+
+  playlist?: SpotifyApi.PlaylistBaseObject;
 }
-
-// context?: {
-//   uri?: 'string';
-//   type?: SpotifyApi.ContextObject['type'] | 'track';
-// };
-
-// playlist?: SpotifyApi.PlaylistBaseObject;
-// track?: SpotifyApi.TrackObjectFull & {
-//   is_following?: boolean;
-//   is_visible?: boolean;
-// };

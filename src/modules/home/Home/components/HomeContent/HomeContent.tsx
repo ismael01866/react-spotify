@@ -1,7 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import {
   HomeBrowseFeaturedPlaylists,
-  HomeUserMePlayerRecentlyPlayed,
   HomeUserMeTopArtists
 } from './components';
 import { HomeBrowseNewReleases } from './components/HomeBrowseNewReleases';
@@ -15,10 +14,6 @@ export function HomeContent() {
 
       <Box>
         <HomeUserMeTopArtists />
-      </Box>
-
-      <Box>
-        <HomeUserMePlayerRecentlyPlayed />
       </Box>
 
       <Box>

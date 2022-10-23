@@ -59,12 +59,12 @@ export function CardSpotifyContent<TData extends {}, TType extends string>(
   }
 
   if (type === 'track') {
-    const { context: { type } = {} } = data as ITrack;
+    const { context } = data as ITrack;
 
     return (
       <>
         <Text color={'text.base'} fontSize={'sm'} noOfLines={1}>
-          {capitalize(type)}
+          {capitalize(context?.type)}
         </Text>
       </>
     );

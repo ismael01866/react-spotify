@@ -11,7 +11,6 @@ export * from './useBrowseNewReleases';
 export * from './useMe';
 export * from './useMeAlbumsAll';
 export * from './useMeArtistsAll';
-export * from './useMePlayerRecentlyPlayed';
 export * from './useMePlaylists';
 export * from './useMePlaylistsAll';
 export * from './useMeTopArtists';
