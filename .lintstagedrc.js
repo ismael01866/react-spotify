@@ -11,7 +11,7 @@ const buildStyleLintCommand = (filenames) =>
 const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
-const buildTSCCommand = () => `tsc --project tsconfig.json --noEmit`;
+const buildTSCCommand = (filenames) => `tsc --noEmit ${filenames.join(' ')}`;
 
 module.exports = {
   '*.{ts,tsx}': [buildTSCCommand],
