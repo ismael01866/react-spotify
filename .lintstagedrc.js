@@ -1,5 +1,7 @@
 const path = require('path');
 
+const buildTSCCommand = () => `tsc --pretty --noEmit`;
+
 const buildEsLintCommand = (filenames) =>
   `next lint --cache --fix --file ${filenames
     .map((f) => path.relative(process.cwd(), f))
@@ -10,8 +12,6 @@ const buildStyleLintCommand = (filenames) =>
 
 const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
-
-const buildTSCCommand = () => `tsc --pretty --noEmit`;
 
 module.exports = {
   '*.{ts,tsx}': [buildTSCCommand],
