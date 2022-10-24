@@ -9,11 +9,11 @@ const path = require('path');
 //   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
 const buildStyleLintCommand = (filenames) =>
-  `stylelint --cache --fix ${filenames.join(' ')}`;
+  `stylelint --fix ${filenames.join(' ')}`;
 
 module.exports = {
   // '*.{ts, tsx}': 'tsc --project tsconfig.json --pretty --noEmit',
   // '*.{js, jsx, ts, tsx}': [buildEslintCommand],
-  '**/*.{css,scss}': [buildStyleLintCommand]
+  '*.{css,scss}': [buildStyleLintCommand]
   // '*.{js, jsx, ts, tsx, css, scss, md, json}': [buildPrettierCommand]
 };
