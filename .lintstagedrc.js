@@ -14,6 +14,6 @@ const buildStyleLintCommand = (filenames) =>
 module.exports = {
   // '*.{ts, tsx}': 'tsc --project tsconfig.json --pretty --noEmit',
   // '*.{js, jsx, ts, tsx}': [buildEslintCommand],
-  '*.{css,scss}': [buildStyleLintCommand],
-  '*.{js,jsx,ts,tsx,css,scss,md,json}': [buildPrettierCommand]
+  '*.{js,jsx,ts,tsx,css,scss,md,json}': [buildPrettierCommand],
+  '*.{css,scss}': [buildStyleLintCommand]
 };
