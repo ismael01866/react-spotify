@@ -9,7 +9,7 @@ const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
 const buildStyleLintCommand = (filenames) =>
-  `stylelint --fix ${filenames.join(' ')}`;
+  `stylelint --syntax scss --fix ${filenames.join(' ')}`;
 
 module.exports = {
   '*.{ts, tsx}': 'tsc --project tsconfig.json --pretty --noEmit',
