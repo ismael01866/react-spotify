@@ -1,4 +1,5 @@
 import { StackDivider, VStack } from '@chakra-ui/react';
+
 import { SidebarListNavItems } from './components/SidebarListNavItems';
 import { SidebarListPlaylistItems } from './components/SidebarListPlaylistItems';
 

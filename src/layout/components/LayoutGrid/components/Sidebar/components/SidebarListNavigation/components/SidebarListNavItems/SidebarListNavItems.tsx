@@ -1,5 +1,7 @@
 import { List } from '@chakra-ui/react';
+
 import { SidebarItem } from '../SidebarItem';
+
 import { data } from './data';
 
 export const SidebarListNavItems = () => {

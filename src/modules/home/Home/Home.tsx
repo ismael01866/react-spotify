@@ -1,4 +1,5 @@
 import { Flex } from '@chakra-ui/react';
+
 import { HomeContent, HomeHeader } from './components';
 
 export function Home() {

@@ -1,4 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
+
 import { SidebarListNavigation, SidebarMenuUser } from './components';
 
 export function Sidebar() {

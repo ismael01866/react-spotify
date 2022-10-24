@@ -1,6 +1,6 @@
+import { FaSpotify } from 'react-icons/fa';
 import { Button, Center, Icon, VStack } from '@chakra-ui/react';
 import { signIn } from 'next-auth/react';
-import { FaSpotify } from 'react-icons/fa';
 
 export function SignIn() {
   const handleOnClick = () => {

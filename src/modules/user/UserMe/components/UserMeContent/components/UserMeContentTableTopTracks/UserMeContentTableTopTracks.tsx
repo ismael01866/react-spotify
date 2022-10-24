@@ -5,7 +5,7 @@ import { useMeTopTracksWithFollow } from 'hooks/services';
 import { UserRowTrack } from 'modules/user/components/UserTableTracks/components';
 
 export function UserMeContentTableTopTracks() {
-  const limit = 4;
+  const limit = 5;
   const time_range = 'short_term';
 
   const { tracks, isLoading } = useMeTopTracksWithFollow({

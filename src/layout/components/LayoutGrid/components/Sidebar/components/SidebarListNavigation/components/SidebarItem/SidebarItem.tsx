@@ -1,8 +1,8 @@
+import { IconType } from 'react-icons';
 import { Icon, IconButton, ListItem, Tooltip } from '@chakra-ui/react';
 import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
 import { useRouter } from 'next/router';
-import { IconType } from 'react-icons';
 
 interface SidebarItemProps {
   item: {

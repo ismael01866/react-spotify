@@ -3,13 +3,19 @@ import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 
 import { HeaderBanner, HeaderMetaImage } from 'components/Header';
 import { UserButtonFollow, UserEmptySkeleton } from 'modules/user/components';
-import { UserContext } from 'state';
+import { SessionContext, UserContext } from 'state';
 
 import { UserMeta } from './components';
 
 export function UserHeader() {
   const user = useContext(UserContext);
   const { images, display_name } = user;
+
+  const {
+    user: { id }
+  } = useContext(SessionContext);
+
+  const userIsMe = id === user?.id;
 
   return (
     <Box pos={'relative'} mx={-12} mt={-12}>
@@ -31,9 +37,11 @@ export function UserHeader() {
 
           <VStack alignItems={'flex-start'} spacing={8}>
             <UserMeta user={user} />
-            <HStack spacing={2}>
-              <UserButtonFollow user={user} />
-            </HStack>
+            {!userIsMe && (
+              <HStack spacing={2}>
+                <UserButtonFollow user={user} />
+              </HStack>
+            )}
           </VStack>
         </HStack>
       </Box>

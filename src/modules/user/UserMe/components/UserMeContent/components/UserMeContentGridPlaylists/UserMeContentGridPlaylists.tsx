@@ -2,7 +2,7 @@ import { useMePlaylists } from 'hooks/services/useMePlaylists';
 import { PlaylistGrid } from 'modules/playlist/components';
 
 export function UserMeContentGridPlaylists() {
-  const limit = 6;
+  const limit = 10;
 
   const { playlists, isLoading } = useMePlaylists({ limit });
 

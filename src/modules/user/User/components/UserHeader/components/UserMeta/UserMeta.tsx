@@ -1,4 +1,4 @@
-import { Flex, Heading, HStack } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 
 import { IUser } from 'types/user';
 

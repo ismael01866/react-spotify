@@ -1,9 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
+
+import { HomeBrowseNewReleases } from './components/HomeBrowseNewReleases';
 import {
   HomeBrowseFeaturedPlaylists,
   HomeUserMeTopArtists
 } from './components';
-import { HomeBrowseNewReleases } from './components/HomeBrowseNewReleases';
 
 export function HomeContent() {
   return (

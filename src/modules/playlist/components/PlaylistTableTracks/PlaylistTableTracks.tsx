@@ -1,4 +1,5 @@
 import { Table, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
+
 import { PlaylistRowTrack } from './components';
 
 interface PlaylistTableTracksProps {
