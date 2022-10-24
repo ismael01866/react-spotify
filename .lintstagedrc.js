@@ -8,9 +8,7 @@ const buildEslintCommand = (filenames) =>
 const buildTSCommand = () => `npm run type-check`;
 
 const buildPrettierCommand = (filenames) =>
-  `prettier --config .prettierrc --write ${filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`;
+  `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
 module.exports = {
   '*.{ts, tsx}': [buildTSCommand],
