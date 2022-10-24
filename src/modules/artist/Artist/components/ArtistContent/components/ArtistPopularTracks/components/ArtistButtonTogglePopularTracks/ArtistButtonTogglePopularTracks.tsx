@@ -1,6 +1,7 @@
-import { Button, useBoolean } from '@chakra-ui/react';
 import { Dispatch, SetStateAction } from 'react';
-import { ITrack } from 'src/types/track';
+import { Button, useBoolean } from '@chakra-ui/react';
+
+import { ITrack } from 'types/track';
 
 interface ArtistButtonTogglePopularTracksProps {
   tracks: ITrack[];

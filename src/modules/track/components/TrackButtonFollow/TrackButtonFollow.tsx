@@ -1,13 +1,14 @@
-import { IconButton, Tooltip } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
-import { ITrack } from 'src/types/track';
-import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/hooks/api';
+import { IconButton, Tooltip } from '@chakra-ui/react';
 import { mutate } from 'swr';
+
+import { useButtonFollowToast } from 'components/Button/ButtonFollow';
+import { useSpotifyApi } from 'hooks/api';
+import { ITrack } from 'types/track';
+import { TOOLTIP_OPEN_DELAY } from 'utils/constants';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 interface TrackButtonFollowProps {
   track: ITrack;

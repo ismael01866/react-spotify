@@ -1,3 +1,5 @@
+import { FormEvent, useContext, useTransition } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import {
   Box,
   Heading,
@@ -7,10 +9,9 @@ import {
   InputGroup,
   InputLeftElement
 } from '@chakra-ui/react';
-import { FormEvent, useContext, useTransition } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import { LibraryPlaylistsContext } from 'src/state';
-import { IPlaylist } from 'src/types/playlist';
+
+import { LibraryPlaylistsContext } from 'state';
+import { IPlaylist } from 'types/playlist';
 
 export function LibraryPlaylistsHeader() {
   const { playlists, playlistsFiltered, setPlaylistsFiltered } = useContext(

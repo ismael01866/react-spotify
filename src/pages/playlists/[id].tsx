@@ -1,5 +1,6 @@
-import { Playlist } from 'src/modules/playlist';
 import type { NextPage } from 'next';
+
+import { Playlist } from 'modules/playlist';
 
 const PlaylistPage: NextPage = () => <Playlist />;
 

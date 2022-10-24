@@ -1,5 +1,5 @@
-import { HStack, Icon, Text, Tooltip } from '@chakra-ui/react';
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { HStack, Icon, Text, Tooltip } from '@chakra-ui/react';
 
 interface CardMetaPopularityProps {
   popularity?: number;

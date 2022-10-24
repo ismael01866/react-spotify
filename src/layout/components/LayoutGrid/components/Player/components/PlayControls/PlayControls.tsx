@@ -1,9 +1,11 @@
-import { HStack, IconButton } from '@chakra-ui/react';
-import { debounce } from 'lodash';
 import { FaStepBackward, FaStepForward } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { selectPlayerState } from 'src/modules/player/Player/PlayerSlice';
-import { DEBOUNCE_WAIT } from 'src/utils/constants';
+import { HStack, IconButton } from '@chakra-ui/react';
+import { debounce } from 'lodash';
+
+import { selectPlayerState } from 'modules/player/Player/PlayerSlice';
+import { DEBOUNCE_WAIT } from 'utils/constants';
+
 import { PlayerButtonPlay } from './components';
 
 export function PlayControls() {

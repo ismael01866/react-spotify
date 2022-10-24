@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { PlaylistGrid } from 'src/modules/playlist/components/PlaylistGrid';
-import { LibraryPlaylistsContext } from 'src/state';
-import { IPlaylist } from 'src/types/playlist';
+
+import { PlaylistGrid } from 'modules/playlist/components/PlaylistGrid';
+import { LibraryPlaylistsContext } from 'state';
+import { IPlaylist } from 'types/playlist';
 
 export function LibraryPlaylistsContent() {
   const { playlistsFiltered } = useContext(LibraryPlaylistsContext);

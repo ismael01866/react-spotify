@@ -1,5 +1,6 @@
-import { Artist } from 'src/modules/artist';
 import type { NextPage } from 'next';
+
+import { Artist } from 'modules/artist';
 
 const ArtistPage: NextPage = () => <Artist />;
 

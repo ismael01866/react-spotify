@@ -1,3 +1,5 @@
+import { FormEvent, startTransition, useContext, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import {
   Heading,
   HStack,
@@ -7,11 +9,10 @@ import {
   InputLeftElement,
   Select
 } from '@chakra-ui/react';
-import { FormEvent, startTransition, useContext, useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import { LibraryAlbumsContext } from 'src/state';
-import { IAlbum } from 'src/types/album';
-import { utilSetDelayedState } from 'src/utils/helpers';
+
+import { LibraryAlbumsContext } from 'state';
+import { IAlbum } from 'types/album';
+import { utilSetDelayedState } from 'utils/helpers';
 
 export function LibraryAlbumsHeader() {
   const { albums, albumsFiltered, setAlbumsFiltered } =

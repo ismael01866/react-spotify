@@ -1,6 +1,7 @@
 import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit';
-import { RootState } from 'src/store';
-import { ITrack } from 'src/types/track';
+import { RootState } from 'store';
+
+import { ITrack } from 'types/track';
 
 export interface IPlayerSliceState {
   player: Spotify.Player | null;

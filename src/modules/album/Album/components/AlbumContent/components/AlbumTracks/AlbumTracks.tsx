@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { AlbumTableTracks } from 'src/modules/album/components';
-import { TrackLoadingStack } from 'src/modules/track/components';
-import { AlbumContext, UserContext } from 'src/state';
-import { ITrack } from 'src/types/track';
-import { useAlbumTracksWithFollow } from 'src/hooks/services';
+
+import { useAlbumTracksWithFollow } from 'hooks/services';
+import { AlbumTableTracks } from 'modules/album/components';
+import { TrackLoadingStack } from 'modules/track/components';
+import { AlbumContext, UserContext } from 'state';
+import { ITrack } from 'types/track';
 
 export function AlbumTracks() {
   const { country } = useContext(UserContext);

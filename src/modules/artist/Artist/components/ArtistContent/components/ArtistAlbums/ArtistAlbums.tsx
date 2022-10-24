@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Heading,
   Tab,
@@ -6,10 +7,10 @@ import {
   TabPanels,
   Tabs
 } from '@chakra-ui/react';
-import { useContext } from 'react';
-import { AlbumGrid } from 'src/modules/album/components';
-import { ArtistContext } from 'src/state';
-import { useArtistAlbums } from 'src/hooks/services';
+
+import { useArtistAlbums } from 'hooks/services';
+import { AlbumGrid } from 'modules/album/components';
+import { ArtistContext } from 'state';
 
 export function ArtistAlbums() {
   const { id: artistID } = useContext(ArtistContext);

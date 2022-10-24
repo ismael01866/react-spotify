@@ -1,6 +1,7 @@
 import { Flex, Heading, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { IArtist } from 'src/types/artist';
+
+import { IArtist } from 'types/artist';
 
 interface HomeMetaProps {
   artist: IArtist;

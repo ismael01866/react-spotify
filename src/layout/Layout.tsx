@@ -1,10 +1,11 @@
-import { useSession } from 'next-auth/react';
 import { ReactNode } from 'react';
-import { LayoutGrid } from './components/LayoutGrid';
+import { useSession } from 'next-auth/react';
 
-import { LoadingScreen } from 'src/components';
-import { SessionContext, UserContext } from 'src/state';
-import { useMe } from 'src/hooks/services';
+import { LoadingScreen } from 'components';
+import { useMe } from 'hooks/services';
+import { SessionContext, UserContext } from 'state';
+
+import { LayoutGrid } from './components/LayoutGrid';
 
 interface LayoutProps {
   children: ReactNode;

@@ -2,7 +2,8 @@ import moment from 'moment';
 import { NextApiRequest } from 'next';
 import { getToken } from 'next-auth/jwt';
 
-import { fetcher } from 'src/utils/fetch';
+import { fetcher } from 'utils/fetch';
+
 import { getSpotifyToken } from '../spotify';
 
 export const fetchWithToken = async (

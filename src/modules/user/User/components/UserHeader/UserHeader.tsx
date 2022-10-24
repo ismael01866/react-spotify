@@ -1,11 +1,10 @@
-import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
-import {
-  UserButtonFollow,
-  UserEmptySkeleton
-} from 'src/modules/user/components';
-import { UserContext } from 'src/state';
+import { Box, HStack, Image, VStack } from '@chakra-ui/react';
+
+import { HeaderBanner, HeaderMetaImage } from 'components/Header';
+import { UserButtonFollow, UserEmptySkeleton } from 'modules/user/components';
+import { UserContext } from 'state';
+
 import { UserMeta } from './components';
 
 export function UserHeader() {

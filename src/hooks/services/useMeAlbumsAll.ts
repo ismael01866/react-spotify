@@ -1,7 +1,8 @@
-import { IAlbum } from 'src/types/album';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+
+import { IAlbum } from 'types/album';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export const useMeAlbumsAll = (query = {}, opts = {}) => {
   const url = utilWithQueryParams('/api/spotify/custom/me/albums-all', {

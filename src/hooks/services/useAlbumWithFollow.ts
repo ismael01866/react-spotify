@@ -1,6 +1,7 @@
-import { IAlbum } from 'src/types/album';
-import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
+
+import { IAlbum } from 'types/album';
+import { fetcher } from 'utils/fetch';
 
 export const useAlbumWithFollow = (
   id: string | string[] | undefined,

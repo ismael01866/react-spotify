@@ -1,8 +1,9 @@
 import { ImageProps } from '@chakra-ui/react';
-import { AlbumImage } from 'src/modules/album/components';
-import { ArtistImage } from 'src/modules/artist/components';
-import { PlaylistImage } from 'src/modules/playlist/components';
-import { TrackImage } from 'src/modules/track/components';
+
+import { AlbumImage } from 'modules/album/components';
+import { ArtistImage } from 'modules/artist/components';
+import { PlaylistImage } from 'modules/playlist/components';
+import { TrackImage } from 'modules/track/components';
 
 export interface CardSpotifyImageProps<TData, TType> extends ImageProps {
   data: TData;

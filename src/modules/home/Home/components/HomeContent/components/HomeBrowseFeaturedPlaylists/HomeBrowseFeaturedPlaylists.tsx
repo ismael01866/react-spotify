@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import { Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
-import { PlaylistGrid } from 'src/modules/playlist/components';
-import { UserContext } from 'src/state';
-import { useBrowseFeaturedPlaylist } from 'src/hooks/services';
+
+import { useBrowseFeaturedPlaylist } from 'hooks/services';
+import { PlaylistGrid } from 'modules/playlist/components';
+import { UserContext } from 'state';
 
 export function HomeBrowseFeaturedPlaylists() {
   const { country } = useContext(UserContext);

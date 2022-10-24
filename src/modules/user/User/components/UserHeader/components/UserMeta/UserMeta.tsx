@@ -1,5 +1,6 @@
 import { Flex, Heading, HStack } from '@chakra-ui/react';
-import { IUser } from 'src/types/user';
+
+import { IUser } from 'types/user';
 
 interface UserMetaProps {
   user: IUser;

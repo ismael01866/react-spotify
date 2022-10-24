@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IArtist } from 'src/types/artist';
-import { fetchWithToken } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+
+import { IArtist } from 'types/artist';
+import { fetchWithToken } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,

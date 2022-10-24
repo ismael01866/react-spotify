@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
-import { SignIn } from 'src/modules/auth';
+
+import { SignIn } from 'modules/auth';
 
 const SignInPage: NextPage = () => <SignIn />;
 

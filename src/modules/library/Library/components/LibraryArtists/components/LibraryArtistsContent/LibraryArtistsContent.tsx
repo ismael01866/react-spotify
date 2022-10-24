@@ -1,6 +1,7 @@
 import { useContext } from 'react';
-import { ArtistGrid } from 'src/modules/artist/components/ArtistGrid';
-import { LibraryArtistsContext } from 'src/state';
+
+import { ArtistGrid } from 'modules/artist/components/ArtistGrid';
+import { LibraryArtistsContext } from 'state';
 
 export function LibraryArtistsContent() {
   const skeletonData = new Array(20).fill('');

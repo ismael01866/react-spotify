@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextPage } from 'next';
 import { GetServerSideProps } from 'next';
-import { UserMeTopArtists } from 'src/modules/user';
-import { UserMeTopArtistsContext } from 'src/state';
-import { IArtist } from 'src/types/artist';
-import { fetchWithToken } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+
+import { UserMeTopArtists } from 'modules/user';
+import { UserMeTopArtistsContext } from 'state';
+import { IArtist } from 'types/artist';
+import { fetchWithToken } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 interface UserMeTopArtistsPageProps {
   data: IArtist[];

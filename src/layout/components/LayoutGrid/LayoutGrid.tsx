@@ -1,9 +1,11 @@
-import { Grid, GridItem } from '@chakra-ui/react';
 import { ReactNode, useEffect, useRef } from 'react';
+import { Grid, GridItem } from '@chakra-ui/react';
+
 import {
   useSpotifyPlayerEmbed,
   useSpotifyPlayerStateHandler
-} from 'src/hooks/spotify';
+} from 'hooks/spotify';
+
 import { Player, Sidebar } from './components';
 import { LayoutGridContext } from './LayoutGridContext';
 

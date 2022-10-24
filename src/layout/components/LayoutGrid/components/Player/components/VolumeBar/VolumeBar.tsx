@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { FaVolumeDown } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import {
   HStack,
   Icon,
@@ -6,10 +9,8 @@ import {
   SliderThumb,
   SliderTrack
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { FaVolumeDown } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { selectPlayer } from 'src/modules/player';
+
+import { selectPlayer } from 'modules/player';
 
 export function VolumeBar() {
   const player = useSelector(selectPlayer);

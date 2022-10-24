@@ -1,5 +1,7 @@
 import { Table, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
-import { ITrack } from 'src/types/track';
+
+import { ITrack } from 'types/track';
+
 import { AlbumRowTrack } from './components';
 
 interface AlbumTableTracksProps {

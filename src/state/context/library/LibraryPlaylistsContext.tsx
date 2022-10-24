@@ -1,5 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-import { IPlaylist } from 'src/types/playlist';
+
+import { IPlaylist } from 'types/playlist';
 
 interface LibraryPlaylistsContextProps {
   playlists?: IPlaylist[];

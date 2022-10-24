@@ -1,13 +1,15 @@
-import 'styles/globals.css';
-
-import { ChakraProvider } from '@chakra-ui/react';
-import { SessionProvider } from 'next-auth/react';
-import { AppProps } from 'next/app';
-import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
-import { Layout } from 'src/layout';
+import { ChakraProvider } from '@chakra-ui/react';
+import { Layout } from 'layout';
+import { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
+import NextNProgress from 'nextjs-progressbar';
+
 import { theme } from '../../theme';
+
 import { store } from './../store';
+
+import 'styles/globals.css';
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (

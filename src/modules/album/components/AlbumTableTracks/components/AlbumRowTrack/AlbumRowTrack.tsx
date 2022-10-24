@@ -1,10 +1,11 @@
+import { useRef } from 'react';
 import { Box, Heading, Td, Text, Tr } from '@chakra-ui/react';
 import moment from 'moment';
-import { useRef } from 'react';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { TrTrack } from 'src/components/Table/Tr';
-import { TrackButtonFollow } from 'src/modules/track/components/TrackButtonFollow';
-import { ITrack } from 'src/types/track';
+
+import { ButtonPlay } from 'components/Button/ButtonPlay';
+import { TrTrack } from 'components/Table/Tr';
+import { TrackButtonFollow } from 'modules/track/components/TrackButtonFollow';
+import { ITrack } from 'types/track';
 
 interface AlbumRowTrackProps {
   index: number;

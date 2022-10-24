@@ -1,6 +1,8 @@
-import { Table, TableContainer, Th, Thead, Tr } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { CollectionTracksContext } from 'src/state';
+import { Table, TableContainer, Th, Thead, Tr } from '@chakra-ui/react';
+
+import { CollectionTracksContext } from 'state';
+
 import { CollectionTableBody } from './components/CollectionTableBody';
 
 interface CollectionTableTracksProps {

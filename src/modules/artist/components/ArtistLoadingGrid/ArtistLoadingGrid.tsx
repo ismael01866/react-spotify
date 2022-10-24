@@ -1,6 +1,7 @@
 import { Stack } from '@chakra-ui/react';
-import { Skeleton } from 'src/components/Skeleton';
-import { ITrack } from 'src/types/track';
+
+import { Skeleton } from 'components/Skeleton';
+import { ITrack } from 'types/track';
 
 interface ArtistLoadingGridProps {
   count?: number;

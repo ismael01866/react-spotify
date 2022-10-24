@@ -1,10 +1,12 @@
+import { useContext } from 'react';
 import { Flex, Grid, GridItem, Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
-import { ArtistContext } from 'src/state';
-import { ArtistPopularTracks } from './components';
+
+import { ArtistContext } from 'state';
+
 import { ArtistAlbums } from './components/ArtistAlbums';
 import { ArtistRelatedArtists } from './components/ArtistRelatedArtists';
+import { ArtistPopularTracks } from './components';
 
 export function ArtistContent() {
   const { id: artistID } = useContext(ArtistContext);

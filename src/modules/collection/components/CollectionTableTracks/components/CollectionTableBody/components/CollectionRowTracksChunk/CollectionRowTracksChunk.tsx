@@ -1,8 +1,9 @@
 import { memo, useContext } from 'react';
-import { CollectionRowTrack } from 'src/modules/collection/components/CollectionRowTrack';
-import { CollectionRowTrackEmpty } from 'src/modules/collection/components/CollectionRowTrackEmpty';
-import { CollectionTracksContext } from 'src/state';
-import { useMeTracksWithFollow } from 'src/hooks/services';
+
+import { useMeTracksWithFollow } from 'hooks/services';
+import { CollectionRowTrack } from 'modules/collection/components/CollectionRowTrack';
+import { CollectionRowTrackEmpty } from 'modules/collection/components/CollectionRowTrackEmpty';
+import { CollectionTracksContext } from 'state';
 
 interface CollectionRowTracksChunkProps {
   index: number;

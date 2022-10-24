@@ -1,7 +1,8 @@
-import { IPlaylist } from 'src/types/playlist';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+
+import { IPlaylist } from 'types/playlist';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export const usePlaylistWithFollow = (
   id: string | string[] | undefined,

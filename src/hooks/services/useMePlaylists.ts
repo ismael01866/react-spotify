@@ -1,8 +1,9 @@
-import { IPlaylist } from 'src/types/playlist';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
-import { useSpotifyApi } from 'src/hooks/api';
+
+import { useSpotifyApi } from 'hooks/api';
+import { IPlaylist } from 'types/playlist';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export const useMePlaylists = (query = {}, opts = {}) => {
   const { headers, url: baseURL } = useSpotifyApi(`/me/playlists`);

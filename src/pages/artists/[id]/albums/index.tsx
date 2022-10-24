@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
-import { ArtistAlbums } from 'src/modules/artist/ArtistAlbums';
+
+import { ArtistAlbums } from 'modules/artist/ArtistAlbums';
 
 const ArtistAlbumsPage: NextPage = () => <ArtistAlbums />;
 

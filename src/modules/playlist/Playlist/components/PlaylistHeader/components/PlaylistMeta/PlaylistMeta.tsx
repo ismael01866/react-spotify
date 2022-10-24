@@ -1,11 +1,12 @@
+import { useContext } from 'react';
 import { Avatar, Flex, Heading, HStack, Link } from '@chakra-ui/react';
 import moment from 'moment';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
-import { SessionContext } from 'src/state';
-import { IPlaylist } from 'src/types/playlist';
-import { utilPluralize } from 'src/utils/helpers';
-import { useUser } from 'src/hooks/services';
+
+import { useUser } from 'hooks/services';
+import { SessionContext } from 'state';
+import { IPlaylist } from 'types/playlist';
+import { utilPluralize } from 'utils/helpers';
 
 interface PlaylistMetaProps {
   playlist: IPlaylist;

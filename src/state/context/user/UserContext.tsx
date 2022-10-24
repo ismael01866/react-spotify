@@ -1,4 +1,5 @@
 import { createContext } from 'react';
-import { IUser } from 'src/types/user';
+
+import { IUser } from 'types/user';
 
 export const UserContext = createContext<IUser>({});

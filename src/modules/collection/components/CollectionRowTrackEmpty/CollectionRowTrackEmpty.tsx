@@ -1,5 +1,6 @@
 import { Td, Tr } from '@chakra-ui/react';
-import { Skeleton } from 'src/components/Skeleton';
+
+import { Skeleton } from 'components/Skeleton';
 
 export function CollectionRowTrackEmpty() {
   return (

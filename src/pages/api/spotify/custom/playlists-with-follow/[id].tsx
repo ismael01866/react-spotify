@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IPlaylist } from 'src/types/playlist';
-import { fetchWithToken } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+
+import { IPlaylist } from 'types/playlist';
+import { fetchWithToken } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,

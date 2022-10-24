@@ -1,6 +1,7 @@
-import { IArtist } from 'src/types/artist';
-import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
+
+import { IArtist } from 'types/artist';
+import { fetcher } from 'utils/fetch';
 
 export const useArtistWithFollow = (
   id: string | string[] | undefined,

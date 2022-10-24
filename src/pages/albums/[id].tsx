@@ -1,5 +1,6 @@
-import { Album } from 'src/modules/album';
 import type { NextPage } from 'next';
+
+import { Album } from 'modules/album';
 
 const AlbumPage: NextPage = () => <Album />;
 

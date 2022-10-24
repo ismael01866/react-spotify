@@ -1,11 +1,12 @@
-import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
-import { IPlaylist } from 'src/types/playlist';
-import { fetcher } from 'src/utils/fetch';
-import { useSpotifyApi } from 'src/hooks/api';
+import { Button } from '@chakra-ui/react';
 import { mutate } from 'swr';
+
+import { useButtonFollowToast } from 'components/Button/ButtonFollow';
+import { useSpotifyApi } from 'hooks/api';
+import { IPlaylist } from 'types/playlist';
+import { fetcher } from 'utils/fetch';
 
 interface PlaylistButtonFollowProps {
   playlist: IPlaylist;

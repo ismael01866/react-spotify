@@ -2,7 +2,7 @@ export {};
 
 declare global {
   interface Window {
-    Spotify: any;
+    Spotify: typeof Spotify;
     onSpotifyWebPlaybackSDKReady: () => void;
   }
 }

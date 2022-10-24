@@ -1,5 +1,6 @@
-import { AspectRatioProps, Box } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import { AspectRatioProps, Box } from '@chakra-ui/react';
+
 import styles from './HeaderMetaImage.module.scss';
 
 interface HeaderMetaImageProps extends AspectRatioProps {

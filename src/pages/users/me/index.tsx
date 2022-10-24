@@ -1,5 +1,6 @@
-import { UserMe } from 'src/modules/user';
 import type { NextPage } from 'next';
+
+import { UserMe } from 'modules/user';
 
 const UserMePage: NextPage = () => <UserMe />;
 

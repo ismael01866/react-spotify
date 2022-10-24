@@ -1,12 +1,13 @@
-import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
-import { IAlbum } from 'src/types/album';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/hooks/api';
+import { Button } from '@chakra-ui/react';
 import { mutate } from 'swr';
+
+import { useButtonFollowToast } from 'components/Button/ButtonFollow';
+import { useSpotifyApi } from 'hooks/api';
+import { IAlbum } from 'types/album';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 interface AlbumButtonFollowProps {
   album: IAlbum;

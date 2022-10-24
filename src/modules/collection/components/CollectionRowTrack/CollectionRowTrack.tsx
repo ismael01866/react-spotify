@@ -1,9 +1,10 @@
+import { useRef } from 'react';
 import { Box, Heading, Td, Text } from '@chakra-ui/react';
 import moment from 'moment';
-import { useRef } from 'react';
-import { ButtonPlay } from 'src/components';
-import { TrTrack } from 'src/components/Table/Tr';
-import { TrackButtonFollow } from 'src/modules/track/components';
+
+import { ButtonPlay } from 'components';
+import { TrTrack } from 'components/Table/Tr';
+import { TrackButtonFollow } from 'modules/track/components';
 
 interface CollectionRowTrackProps {
   index: number;

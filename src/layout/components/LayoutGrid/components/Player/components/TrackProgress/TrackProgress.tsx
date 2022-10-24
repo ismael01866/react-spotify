@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   HStack,
   Slider,
@@ -7,9 +9,8 @@ import {
   Text
 } from '@chakra-ui/react';
 import moment from 'moment';
-import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectPlayerState } from 'src/modules/player/Player/PlayerSlice';
+
+import { selectPlayerState } from 'modules/player/Player/PlayerSlice';
 
 export function TrackProgress() {
   let timer = useRef({});

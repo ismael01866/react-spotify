@@ -1,5 +1,5 @@
-import { PlaylistGrid } from 'src/modules/playlist/components';
-import { useMePlaylists } from 'src/hooks/services/useMePlaylists';
+import { useMePlaylists } from 'hooks/services/useMePlaylists';
+import { PlaylistGrid } from 'modules/playlist/components';
 
 export function UserMeContentGridPlaylists() {
   const limit = 6;

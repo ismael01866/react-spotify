@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectPlayerState } from 'src/modules/player';
+
+import { selectPlayerState } from 'modules/player';
 
 export interface UsePlayerState {
   uri?: string | undefined;

@@ -1,5 +1,5 @@
-import { IAlbum } from 'src/types/album';
-import { ITrack } from 'src/types/track';
+import { IAlbum } from 'types/album';
+import { ITrack } from 'types/track';
 
 type TGenericProps = {
   album?: IAlbum;

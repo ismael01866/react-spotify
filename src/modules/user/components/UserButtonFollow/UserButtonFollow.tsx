@@ -1,11 +1,12 @@
-import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { IUser } from 'src/types/user';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/hooks/api';
+import { Button } from '@chakra-ui/react';
 import { mutate } from 'swr';
+
+import { useSpotifyApi } from 'hooks/api';
+import { IUser } from 'types/user';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 interface UserButtonFollowProps {
   user: IUser;

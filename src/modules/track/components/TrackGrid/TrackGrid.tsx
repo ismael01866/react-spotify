@@ -1,6 +1,7 @@
 import { SimpleGrid } from '@chakra-ui/react';
-import { CardSpotify } from 'src/components/Card/CardSpotify';
-import { ITrack } from 'src/types/track';
+
+import { CardSpotify } from 'components/Card/CardSpotify';
+import { ITrack } from 'types/track';
 
 interface TrackGridProps {
   tracks: ITrack[];

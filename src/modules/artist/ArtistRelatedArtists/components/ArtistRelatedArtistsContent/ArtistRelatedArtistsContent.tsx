@@ -1,7 +1,8 @@
-import { Box } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { ArtistGrid } from 'src/modules/artist/components';
-import { ArtistRelatedArtistsContext } from 'src/state';
+import { Box } from '@chakra-ui/react';
+
+import { ArtistGrid } from 'modules/artist/components';
+import { ArtistRelatedArtistsContext } from 'state';
 
 export function ArtistRelatedArtistsContent() {
   const data = useContext(ArtistRelatedArtistsContext);

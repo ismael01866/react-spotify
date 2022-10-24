@@ -1,5 +1,5 @@
-import { TableRowProps, Tr } from '@chakra-ui/react';
 import { forwardRef } from 'react';
+import { TableRowProps, Tr } from '@chakra-ui/react';
 
 interface TrTackProps extends TableRowProps {}
 

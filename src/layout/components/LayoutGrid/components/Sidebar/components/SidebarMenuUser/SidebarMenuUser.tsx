@@ -1,8 +1,9 @@
-import { Avatar, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import { signOut } from 'next-auth/react';
-import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
-import { UserContext } from 'src/state';
+import { Avatar, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { default as NextLink } from 'next/link';
+import { signOut } from 'next-auth/react';
+
+import { UserContext } from 'state';
 
 export function SidebarMenuUser() {
   const { display_name, images } = useContext(UserContext);

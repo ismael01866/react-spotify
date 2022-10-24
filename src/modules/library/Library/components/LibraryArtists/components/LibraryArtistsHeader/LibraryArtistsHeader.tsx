@@ -1,3 +1,5 @@
+import { FormEvent, startTransition, useContext, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import {
   Heading,
   HStack,
@@ -7,11 +9,10 @@ import {
   InputLeftElement,
   Select
 } from '@chakra-ui/react';
-import { FormEvent, startTransition, useContext, useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import { LibraryArtistsContext } from 'src/state';
-import { IArtist } from 'src/types/artist';
-import { utilSetDelayedState } from 'src/utils/helpers';
+
+import { LibraryArtistsContext } from 'state';
+import { IArtist } from 'types/artist';
+import { utilSetDelayedState } from 'utils/helpers';
 
 export function LibraryArtistsHeader() {
   const { artists, artistsFiltered, setArtistsFiltered } = useContext(

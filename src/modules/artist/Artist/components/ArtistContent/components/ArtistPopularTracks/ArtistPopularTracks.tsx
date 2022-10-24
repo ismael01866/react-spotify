@@ -1,9 +1,11 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { ArtistTablePopularTracks } from 'src/modules/artist/components';
-import { TrackLoadingStack } from 'src/modules/track/components';
-import { ArtistContext, UserContext } from 'src/state';
-import { ITrack } from 'src/types/track';
-import { useArtistTopTracksWithFollow } from 'src/hooks/services';
+
+import { useArtistTopTracksWithFollow } from 'hooks/services';
+import { ArtistTablePopularTracks } from 'modules/artist/components';
+import { TrackLoadingStack } from 'modules/track/components';
+import { ArtistContext, UserContext } from 'state';
+import { ITrack } from 'types/track';
+
 import { ArtistButtonTogglePopularTracks } from './components/ArtistButtonTogglePopularTracks';
 
 export function ArtistPopularTracks() {

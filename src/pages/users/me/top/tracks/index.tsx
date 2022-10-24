@@ -1,5 +1,6 @@
-import { UserMeTopTracks } from 'src/modules/user';
 import type { NextPage } from 'next';
+
+import { UserMeTopTracks } from 'modules/user';
 
 const UserMeTopTracksPage: NextPage = () => <UserMeTopTracks />;
 

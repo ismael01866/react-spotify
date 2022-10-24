@@ -1,9 +1,11 @@
-import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
-import { ArtistEmptySkeleton } from 'src/modules/artist/components';
-import { HomeContext } from 'src/state';
+import { Box, HStack, Image, VStack } from '@chakra-ui/react';
+
+import { ButtonPlay } from 'components/Button/ButtonPlay';
+import { HeaderBanner, HeaderMetaImage } from 'components/Header';
+import { ArtistEmptySkeleton } from 'modules/artist/components';
+import { HomeContext } from 'state';
+
 import { HomeMeta } from './components';
 
 export function HomeHeader() {

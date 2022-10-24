@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
-import { Library } from 'src/modules/library';
+
+import { Library } from 'modules/library';
 
 const LibraryPage: NextPage = () => <Library />;
 

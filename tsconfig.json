@@ -15,25 +15,37 @@
     "noEmit": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
       "*": ["*"],
+      "styles*": ["styles"],
 
-      "state*": ["src/state"],
-      "hooks*": ["src/hooks"],
+      "types*": ["types"],
+      "types/*": ["types/*"],
 
-      "styles*": ["src/styles"],
+      "utils*": ["utils"],
+      "utils/*": ["utils/*"],
 
-      "types*": ["src/types"],
-      "utils*": ["src/utils"],
+      "state*": ["state"],
+      "state/*": ["state/*"],
 
-      "pages*": ["src/pages"],
-      "modules*": ["src/modules"],
+      "hooks*": ["hooks"],
+      "hooks/*": ["hooks/*"],
 
-      "layout*": ["src/layout"],
+      "pages*": ["pages"],
+      "pages/*": ["pages/*"],
 
-      "features*": ["src/features"],
-      "components*": ["src/components"]
+      "modules*": ["modules"],
+      "modules/*": ["modules/*"],
+
+      "layout*": ["layout"],
+      "layout/*": ["layout/*"],
+
+      "features*": ["features"],
+      "features/*": ["features/*"],
+
+      "components*": ["components"],
+      "components/*": ["components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

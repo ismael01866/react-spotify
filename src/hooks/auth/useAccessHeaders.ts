@@ -1,5 +1,6 @@
 import { useSession } from 'next-auth/react';
-import { utilGetAccessHeaders } from 'src/utils/helpers';
+
+import { utilGetAccessHeaders } from 'utils/helpers';
 
 export const useAccessHeaders = () => {
   const { data: session } = useSession();

@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import { Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
-import { AlbumGrid } from 'src/modules/album/components';
-import { UserContext } from 'src/state';
-import { useBrowseNewReleases } from 'src/hooks/services';
+
+import { useBrowseNewReleases } from 'hooks/services';
+import { AlbumGrid } from 'modules/album/components';
+import { UserContext } from 'state';
 
 export function HomeBrowseNewReleases() {
   const { country } = useContext(UserContext);

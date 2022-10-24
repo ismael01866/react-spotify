@@ -1,8 +1,10 @@
+import { useContext } from 'react';
 import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
-import { UserContext } from 'src/state';
-import { useUserWithFollow } from 'src/hooks/services/useUserWithFollow';
+
+import { useUserWithFollow } from 'hooks/services/useUserWithFollow';
+import { UserContext } from 'state';
+
 import { UserHeader } from './components';
 
 export function User() {

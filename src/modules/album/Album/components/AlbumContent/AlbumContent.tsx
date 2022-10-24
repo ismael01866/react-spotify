@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import { Flex, Grid, GridItem, Heading, HStack, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useContext } from 'react';
-import { AlbumContext } from 'src/state';
+
+import { AlbumContext } from 'state';
+
 import { AlbumTracks, ArtistAlbums } from './components';
 
 export function AlbumContent() {

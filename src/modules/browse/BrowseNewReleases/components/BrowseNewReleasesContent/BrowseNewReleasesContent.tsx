@@ -1,7 +1,8 @@
-import { Box } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { AlbumGrid } from 'src/modules/album/components';
-import { BrowseNewReleasesContext } from 'src/state';
+import { Box } from '@chakra-ui/react';
+
+import { AlbumGrid } from 'modules/album/components';
+import { BrowseNewReleasesContext } from 'state';
 
 export function BrowseNewReleasesContent() {
   const { albums } = useContext(BrowseNewReleasesContext);

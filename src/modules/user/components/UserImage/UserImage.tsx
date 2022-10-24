@@ -1,5 +1,7 @@
 import { AspectRatio, Image } from '@chakra-ui/react';
-import { IUser } from 'src/types/user';
+
+import { IUser } from 'types/user';
+
 import { UserEmptySkeleton } from '../UserEmptySkeleton';
 
 interface UserImageProps {

@@ -1,7 +1,8 @@
 import moment from 'moment';
 import NextAuth, { User } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
-import { getSpotifyToken } from 'src/utils/spotify';
+
+import { getSpotifyToken } from 'utils/spotify';
 
 const clientId = process.env.CLIENT_ID || '';
 const clientSecret = process.env.CLIENT_SECRET || '';

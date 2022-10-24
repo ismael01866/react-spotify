@@ -1,5 +1,6 @@
 import { useToast, UseToastOptions } from '@chakra-ui/react';
-import { TOAST_DURATION } from 'src/utils/constants';
+
+import { TOAST_DURATION } from 'utils/constants';
 
 export const useButtonFollowToast = () => {
   const toast = useToast();

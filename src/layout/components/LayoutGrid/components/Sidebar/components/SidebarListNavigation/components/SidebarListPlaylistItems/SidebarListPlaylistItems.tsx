@@ -1,5 +1,7 @@
 import { List } from '@chakra-ui/react';
-import { useMePlaylistsAll } from 'src/hooks/services';
+
+import { useMePlaylistsAll } from 'hooks/services';
+
 import { SidebarPlaylistItem } from './components/SidebarPlaylistItem';
 
 export const SidebarListPlaylistItems = () => {

@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IAlbum } from 'src/types/album';
-import { fetchWithToken } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+
+import { IAlbum } from 'types/album';
+import { fetchWithToken } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export default async function handler(
   req: NextApiRequest,

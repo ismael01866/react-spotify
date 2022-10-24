@@ -1,11 +1,12 @@
 import { random } from 'lodash';
 import type { GetServerSideProps, NextApiRequest, NextPage } from 'next';
-import { Home } from 'src/modules/home';
-import { HomeContext } from 'src/state';
-import { IArtist } from 'src/types/artist';
-import { ITrack } from 'src/types/track';
-import { fetchWithToken } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+
+import { Home } from 'modules/home';
+import { HomeContext } from 'state';
+import { IArtist } from 'types/artist';
+import { ITrack } from 'types/track';
+import { fetchWithToken } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 interface HomePageProps {
   artist: IArtist;

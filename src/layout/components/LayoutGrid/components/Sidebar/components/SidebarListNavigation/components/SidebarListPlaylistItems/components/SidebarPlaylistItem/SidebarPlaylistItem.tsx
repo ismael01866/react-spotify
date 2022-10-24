@@ -2,7 +2,8 @@ import { Avatar, IconButton, ListItem, Tooltip } from '@chakra-ui/react';
 import { capitalize } from 'lodash';
 import { default as NextLink } from 'next/link';
 import { useRouter } from 'next/router';
-import { IPlaylist } from 'src/types/playlist';
+
+import { IPlaylist } from 'types/playlist';
 
 interface SidebarPlaylistItemProps {
   item: IPlaylist;

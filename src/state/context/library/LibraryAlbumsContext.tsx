@@ -1,5 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-import { IAlbum } from 'src/types/album';
+
+import { IAlbum } from 'types/album';
 
 interface LibraryAlbumsContextProps {
   albums?: IAlbum[];

@@ -1,12 +1,14 @@
-import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
+import { Box, HStack, Image, VStack } from '@chakra-ui/react';
+
+import { ButtonPlay } from 'components/Button/ButtonPlay';
+import { HeaderBanner, HeaderMetaImage } from 'components/Header';
 import {
   AlbumButtonFollow,
   AlbumEmptySkeleton
-} from 'src/modules/album/components';
-import { AlbumContext } from 'src/state';
+} from 'modules/album/components';
+import { AlbumContext } from 'state';
+
 import { AlbumMeta } from './components';
 
 export function AlbumHeader() {

@@ -1,6 +1,7 @@
-import { IUser } from 'src/types/user';
-import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
+
+import { IUser } from 'types/user';
+import { fetcher } from 'utils/fetch';
 
 export const useUserWithFollow = (
   id: string | string[] | undefined,

@@ -1,3 +1,4 @@
+import { useCallback, useContext, useMemo, useRef } from 'react';
 import {
   AspectRatio,
   Box,
@@ -10,18 +11,20 @@ import {
   useDisclosure,
   VStack
 } from '@chakra-ui/react';
+import { LayoutGridContext } from 'layout/components/LayoutGrid/LayoutGridContext';
 import { default as NextLink } from 'next/link';
-import { useCallback, useContext, useMemo, useRef } from 'react';
-import { BoxAnimated } from 'src/components/Box';
-import { EmptySkeleton, Skeleton } from 'src/components/Skeleton';
-import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
-import { IAlbum } from 'src/types/album';
-import { IArtist } from 'src/types/artist';
-import { IPlaylist } from 'src/types/playlist';
-import { ITrack } from 'src/types/track';
-import { useOnScreen } from 'src/hooks/dom';
+
+import { BoxAnimated } from 'components/Box';
+import { EmptySkeleton, Skeleton } from 'components/Skeleton';
+import { useOnScreen } from 'hooks/dom';
+import { IAlbum } from 'types/album';
+import { IArtist } from 'types/artist';
+import { IPlaylist } from 'types/playlist';
+import { ITrack } from 'types/track';
+
 import { Card } from '../Card';
 import { CardButtonPlay } from '../components';
+
 import { CardSpotifyContent, CardSpotifyImage } from './components';
 import { getNameByContext, getURLByType } from './utils';
 

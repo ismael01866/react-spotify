@@ -1,6 +1,7 @@
 import { useContext } from 'react';
-import { ArtistGrid } from 'src/modules/artist/components';
-import { UserMeTopArtistsContext } from 'src/state';
+
+import { ArtistGrid } from 'modules/artist/components';
+import { UserMeTopArtistsContext } from 'state';
 
 export function UserMeTopArtistsContent() {
   const data = useContext(UserMeTopArtistsContext);

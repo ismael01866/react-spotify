@@ -1,12 +1,14 @@
-import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { HeaderBanner, HeaderMetaImage } from 'src/components/Header';
+import { Box, HStack, Image, VStack } from '@chakra-ui/react';
+
+import { ButtonPlay } from 'components/Button/ButtonPlay';
+import { HeaderBanner, HeaderMetaImage } from 'components/Header';
 import {
   PlaylistButtonFollow,
   PlaylistEmptySkeleton
-} from 'src/modules/playlist/components';
-import { PlaylistContext } from 'src/state';
+} from 'modules/playlist/components';
+import { PlaylistContext } from 'state';
+
 import { PlaylistMeta } from './components';
 
 export function PlaylistHeader() {

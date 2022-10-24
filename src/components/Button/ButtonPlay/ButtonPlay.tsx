@@ -1,11 +1,13 @@
-import { ButtonProps, forwardRef, IconButton } from '@chakra-ui/react';
-import { debounce } from 'lodash';
 import { useState } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
-import { DEBOUNCE_WAIT } from 'src/utils/constants';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/hooks/api';
+import { ButtonProps, forwardRef, IconButton } from '@chakra-ui/react';
+import { debounce } from 'lodash';
+
+import { useSpotifyApi } from 'hooks/api';
+import { DEBOUNCE_WAIT } from 'utils/constants';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
+
 import { usePlayerState } from './hooks';
 
 interface BaseButtonPlayProps extends ButtonProps {

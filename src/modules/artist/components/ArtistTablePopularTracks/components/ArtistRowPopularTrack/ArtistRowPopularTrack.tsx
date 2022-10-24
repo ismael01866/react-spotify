@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import {
   AspectRatio,
   Box,
@@ -9,12 +10,12 @@ import {
   Tr
 } from '@chakra-ui/react';
 import moment from 'moment';
-import { useRef } from 'react';
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { Skeleton } from 'src/components/Skeleton';
-import { TrTrack } from 'src/components/Table/Tr';
-import { TrackButtonFollow } from 'src/modules/track/components/TrackButtonFollow';
-import { ITrack } from 'src/types/track';
+
+import { ButtonPlay } from 'components/Button/ButtonPlay';
+import { Skeleton } from 'components/Skeleton';
+import { TrTrack } from 'components/Table/Tr';
+import { TrackButtonFollow } from 'modules/track/components/TrackButtonFollow';
+import { ITrack } from 'types/track';
 
 interface ArtistRowPopularTrackProps {
   track: ITrack;

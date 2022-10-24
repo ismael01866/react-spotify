@@ -1,5 +1,7 @@
 import { Table, TableContainer, Tbody } from '@chakra-ui/react';
-import { ITrack } from 'src/types/track';
+
+import { ITrack } from 'types/track';
+
 import { ArtistRowPopularTrack } from './components';
 
 interface ArtistTablePopularTracksProps {

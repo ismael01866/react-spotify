@@ -1,9 +1,10 @@
 import type { GetServerSideProps, NextApiRequest, NextPage } from 'next';
-import { ArtistRelatedArtists } from 'src/modules/artist/ArtistRelatedArtists';
-import { ArtistRelatedArtistsContext } from 'src/state';
-import { IArtist } from 'src/types/artist';
-import { fetchWithToken } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
+
+import { ArtistRelatedArtists } from 'modules/artist/ArtistRelatedArtists';
+import { ArtistRelatedArtistsContext } from 'state';
+import { IArtist } from 'types/artist';
+import { fetchWithToken } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 interface ArtistRelatedArtistsPageProps {
   data: IArtist[];

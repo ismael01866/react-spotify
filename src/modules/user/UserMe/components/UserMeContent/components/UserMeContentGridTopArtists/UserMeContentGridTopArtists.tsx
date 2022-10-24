@@ -1,5 +1,5 @@
-import { ArtistGrid } from 'src/modules/artist/components';
-import { useMeTopArtists } from 'src/hooks/services';
+import { useMeTopArtists } from 'hooks/services';
+import { ArtistGrid } from 'modules/artist/components';
 
 export function UserMeContentGridTopArtists() {
   const limit = 6;

@@ -1,4 +1,5 @@
 import { createContext } from 'react';
-import { IArtist } from 'src/types/artist';
+
+import { IArtist } from 'types/artist';
 
 export const UserMeTopArtistsContext = createContext<IArtist[]>([]);

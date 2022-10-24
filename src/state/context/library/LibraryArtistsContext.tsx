@@ -1,5 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-import { IArtist } from 'src/types/artist';
+
+import { IArtist } from 'types/artist';
 
 interface LibraryArtistsContextProps {
   artists?: IArtist[];

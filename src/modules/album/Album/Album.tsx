@@ -1,7 +1,9 @@
 import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { AlbumContext } from 'src/state';
-import { useAlbumWithFollow } from 'src/hooks/services';
+
+import { useAlbumWithFollow } from 'hooks/services';
+import { AlbumContext } from 'state';
+
 import { AlbumContent, AlbumHeader } from './components';
 
 export function Album() {

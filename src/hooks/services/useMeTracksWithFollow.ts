@@ -1,6 +1,7 @@
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export const useMeTracksWithFollow = (query = {}, opts = {}, SWROpts = {}) => {
   const url = utilWithQueryParams(

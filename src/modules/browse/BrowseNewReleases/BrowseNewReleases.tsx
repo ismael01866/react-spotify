@@ -1,7 +1,9 @@
-import { Flex } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { BrowseNewReleasesContext, UserContext } from 'src/state';
-import { useBrowseNewReleases } from 'src/hooks/services';
+import { Flex } from '@chakra-ui/react';
+
+import { useBrowseNewReleases } from 'hooks/services';
+import { BrowseNewReleasesContext, UserContext } from 'state';
+
 import {
   BrowseNewReleasesContent,
   BrowseNewReleasesHeader

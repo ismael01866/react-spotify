@@ -1,7 +1,10 @@
 import { Flex } from '@chakra-ui/react';
-import { UserContext } from 'src/state';
-import { useMe } from 'src/hooks/services';
+
+import { useMe } from 'hooks/services';
+import { UserContext } from 'state';
+
 import { UserHeader } from '../User/components';
+
 import { UserMeContent } from './components';
 
 export function UserMe() {

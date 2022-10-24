@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   AspectRatio,
   Box,
@@ -9,8 +10,8 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { useEffect, useState } from 'react';
-import { ITrack } from 'src/types/track';
+
+import { ITrack } from 'types/track';
 
 interface TrackMetaProps {
   track: ITrack;

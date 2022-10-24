@@ -1,10 +1,11 @@
-import { Box } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
-import { AlbumGrid } from 'src/modules/album/components';
-import { ArtistContext } from 'src/state';
-import { useInfiniteScroll } from 'src/hooks/dom';
-import { useArtistAlbums } from 'src/hooks/services';
+import { Box } from '@chakra-ui/react';
+import { LayoutGridContext } from 'layout/components/LayoutGrid/LayoutGridContext';
+
+import { useInfiniteScroll } from 'hooks/dom';
+import { useArtistAlbums } from 'hooks/services';
+import { AlbumGrid } from 'modules/album/components';
+import { ArtistContext } from 'state';
 
 export function ArtistAlbumsContent() {
   const { contentElRef } = useContext(LayoutGridContext);

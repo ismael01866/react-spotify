@@ -1,7 +1,8 @@
+import { FaPause, FaPlay } from 'react-icons/fa';
 import { IconButton } from '@chakra-ui/react';
 import { debounce } from 'lodash';
-import { FaPause, FaPlay } from 'react-icons/fa';
-import { DEBOUNCE_WAIT } from 'src/utils/constants';
+
+import { DEBOUNCE_WAIT } from 'utils/constants';
 
 interface PlayerButtonPlayProps {
   paused: boolean;

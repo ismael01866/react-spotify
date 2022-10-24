@@ -1,6 +1,7 @@
-import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSession } from 'next-auth/react';
+
 import {
   setDeviceID,
   setDuration,
@@ -10,8 +11,8 @@ import {
   setPlayer,
   setPosition,
   setTrack
-} from 'src/modules/player/Player/PlayerSlice';
-import { buildSpotifyPlayer } from 'src/utils/spotify';
+} from 'modules/player/Player/PlayerSlice';
+import { buildSpotifyPlayer } from 'utils/spotify';
 
 export const useSpotifyPlayerStateHandler = () => {
   const { data } = useSession();

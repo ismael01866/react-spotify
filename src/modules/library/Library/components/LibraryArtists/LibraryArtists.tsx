@@ -1,8 +1,10 @@
-import { Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { LibraryArtistsContext } from 'src/state';
-import { IArtist } from 'src/types/artist';
-import { useMeArtistsAll } from 'src/hooks/services';
+import { Flex } from '@chakra-ui/react';
+
+import { useMeArtistsAll } from 'hooks/services';
+import { LibraryArtistsContext } from 'state';
+import { IArtist } from 'types/artist';
+
 import { LibraryArtistsContent, LibraryArtistsHeader } from './components';
 
 export function LibraryArtists() {

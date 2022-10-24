@@ -1,8 +1,9 @@
-import { useSpotifyApi } from 'src/hooks/api';
-import { IArtist } from 'src/types/artist';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+
+import { useSpotifyApi } from 'hooks/api';
+import { IArtist } from 'types/artist';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export const useArtistRelatedArtists = (
   id: string | string[] | undefined,

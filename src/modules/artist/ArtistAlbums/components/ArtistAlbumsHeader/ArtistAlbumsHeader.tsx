@@ -1,8 +1,8 @@
-import { Box, Heading, Link } from '@chakra-ui/react';
 import { useContext } from 'react';
-
+import { Box, Heading, Link } from '@chakra-ui/react';
 import { default as NextLink } from 'next/link';
-import { ArtistContext } from 'src/state';
+
+import { ArtistContext } from 'state';
 
 export function ArtistAlbumsHeader() {
   const artist = useContext(ArtistContext);

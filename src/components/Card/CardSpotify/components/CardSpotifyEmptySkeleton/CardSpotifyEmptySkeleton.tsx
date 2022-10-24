@@ -1,7 +1,7 @@
-import { AlbumEmptySkeleton } from 'src/modules/album/components';
-import { ArtistEmptySkeleton } from 'src/modules/artist/components';
-import { PlaylistEmptySkeleton } from 'src/modules/playlist/components';
-import { TrackEmptySkeleton } from 'src/modules/track/components';
+import { AlbumEmptySkeleton } from 'modules/album/components';
+import { ArtistEmptySkeleton } from 'modules/artist/components';
+import { PlaylistEmptySkeleton } from 'modules/playlist/components';
+import { TrackEmptySkeleton } from 'modules/track/components';
 
 type CardSpotifyEmptySkeletonProps<T> = {
   type: T;

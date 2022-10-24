@@ -1,5 +1,5 @@
-import { ButtonPlay } from 'src/components/Button/ButtonPlay';
-import { ITrack } from 'src/types/track';
+import { ButtonPlay } from 'components/Button/ButtonPlay';
+import { ITrack } from 'types/track';
 
 interface CardButtonPlayProps<TData, TType> {
   data: TData;

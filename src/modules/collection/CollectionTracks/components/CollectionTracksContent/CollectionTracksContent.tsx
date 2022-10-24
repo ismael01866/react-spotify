@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
-import { CollectionTableTracks } from 'src/modules/collection/components/CollectionTableTracks/CollectionTableTracks';
-import { useMeTracksWithFollow } from 'src/hooks/services';
+
+import { useMeTracksWithFollow } from 'hooks/services';
+import { CollectionTableTracks } from 'modules/collection/components/CollectionTableTracks/CollectionTableTracks';
 
 export function CollectionTracksContent() {
   const { total } = useMeTracksWithFollow(

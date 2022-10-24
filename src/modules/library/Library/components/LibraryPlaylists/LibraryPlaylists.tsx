@@ -1,8 +1,10 @@
-import { Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { LibraryPlaylistsContext } from 'src/state';
-import { IPlaylist } from 'src/types/playlist';
-import { useMePlaylistsAll } from 'src/hooks/services';
+import { Flex } from '@chakra-ui/react';
+
+import { useMePlaylistsAll } from 'hooks/services';
+import { LibraryPlaylistsContext } from 'state';
+import { IPlaylist } from 'types/playlist';
+
 import { LibraryPlaylistsContent, LibraryPlaylistsHeader } from './components';
 
 export function LibraryPlaylists() {

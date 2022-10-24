@@ -1,7 +1,8 @@
-import { IUser } from 'src/types/user';
-import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
-import { useSpotifyApi } from 'src/hooks/api';
+
+import { useSpotifyApi } from 'hooks/api';
+import { IUser } from 'types/user';
+import { fetcher } from 'utils/fetch';
 
 export const useUser = (id: string | string[] | undefined, opts = {}) => {
   const { headers, url } = useSpotifyApi(`/users/${id}`);

@@ -1,12 +1,13 @@
 import { Text } from '@chakra-ui/react';
 import { capitalize } from 'lodash';
 import moment from 'moment';
-import { MetaPopularity } from 'src/components/Meta';
-import { IAlbum } from 'src/types/album';
-import { IArtist } from 'src/types/artist';
-import { IPlaylist } from 'src/types/playlist';
-import { ITrack } from 'src/types/track';
-import { utilPluralize } from 'src/utils/helpers';
+
+import { MetaPopularity } from 'components/Meta';
+import { IAlbum } from 'types/album';
+import { IArtist } from 'types/artist';
+import { IPlaylist } from 'types/playlist';
+import { ITrack } from 'types/track';
+import { utilPluralize } from 'utils/helpers';
 
 export interface CardSpotifyContentProps<TData, TType> {
   data: TData;

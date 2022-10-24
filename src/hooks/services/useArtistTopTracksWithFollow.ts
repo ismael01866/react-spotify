@@ -1,7 +1,8 @@
-import { ITrack } from 'src/types/track';
-import { fetcher } from 'src/utils/fetch';
-import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
+
+import { ITrack } from 'types/track';
+import { fetcher } from 'utils/fetch';
+import { utilWithQueryParams } from 'utils/helpers';
 
 export const useArtistTopTracksWithFollow = (
   id: string | string[] | undefined,

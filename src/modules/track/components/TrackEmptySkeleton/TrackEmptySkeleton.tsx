@@ -1,5 +1,6 @@
 import { FaMusic } from 'react-icons/fa';
-import { EmptySkeleton } from 'src/components/Skeleton';
+
+import { EmptySkeleton } from 'components/Skeleton';
 
 export function TrackEmptySkeleton() {
   return <EmptySkeleton icon={FaMusic} />;

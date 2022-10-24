@@ -1,9 +1,10 @@
-import { Stack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { Skeleton } from 'src/components/Skeleton';
-import { PlaylistTableTracks } from 'src/modules/playlist/components';
-import { PlaylistContext } from 'src/state';
-import { usePlaylistTracksWithFollow } from 'src/hooks/services';
+import { Stack } from '@chakra-ui/react';
+
+import { Skeleton } from 'components/Skeleton';
+import { usePlaylistTracksWithFollow } from 'hooks/services';
+import { PlaylistTableTracks } from 'modules/playlist/components';
+import { PlaylistContext } from 'state';
 
 export function PlaylistTracks() {
   const { id: playlistID } = useContext(PlaylistContext);

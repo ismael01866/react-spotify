@@ -1,6 +1,7 @@
-import { ITrack } from 'src/types/track';
-import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
+
+import { ITrack } from 'types/track';
+import { fetcher } from 'utils/fetch';
 
 export const useTracksWithFollow = (
   id: string | string[] | undefined,

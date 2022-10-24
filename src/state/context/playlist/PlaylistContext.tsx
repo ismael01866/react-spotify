@@ -1,4 +1,5 @@
 import { createContext } from 'react';
-import { IPlaylist } from 'src/types/playlist';
+
+import { IPlaylist } from 'types/playlist';
 
 export const PlaylistContext = createContext<IPlaylist>({});
