@@ -13,7 +13,7 @@ export function HeaderMetaImage(props: HeaderMetaImageProps) {
   return (
     <Box
       className={styles['header-meta-image']}
-      borderRadius={}
+      borderRadius={'lg'}
       boxShadow={'dark-lg'}
       h={'2xs'}
       overflow={'hidden'}
