@@ -11,7 +11,7 @@ const buildStyleLintCommand = (filenames) =>
 const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
-const buildTSCCommand = () => `yarn tsc --noEmit`;
+const buildTSCCommand = () => `npx tsc --noEmit`;
 
 module.exports = {
   '*.{ts,tsx}': [buildTSCCommand],
