@@ -8,8 +8,7 @@ const path = require('path');
 // const buildPrettierCommand = (filenames) =>
 //   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
-const buildStyleLintCommand = (filenames) =>
-  `stylelint:scss --fix ${filenames.join(' ')}`;
+const buildStyleLintCommand = () => `stylelint **/*.{scss,css} --fix`;
 
 module.exports = {
   // '*.{ts, tsx}': 'tsc --project tsconfig.json --pretty --noEmit',
