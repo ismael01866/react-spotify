@@ -6,10 +6,14 @@ const buildEsLintCommand = (filenames) =>
     .join(' --file ')}`;
 
 const buildStyleLintCommand = (filenames) =>
-  `stylelint --fix ${filenames.join(' ')}`;
+  `stylelint --fix ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`;
 
 const buildPrettierCommand = (filenames) =>
-  `prettier --config .prettierrc --write ${filenames.join(' ')}`;
+  `prettier --config .prettierrc --write ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`;
 
 const buildTSCCommand = () => `tsc --pretty --noEmit`;
 
