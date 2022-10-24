@@ -4,7 +4,7 @@ import { LayoutGrid } from './components/LayoutGrid';
 
 import { LoadingScreen } from 'src/components';
 import { SessionContext, UserContext } from 'src/state';
-import { useMe } from 'src/utils/hooks/services';
+import { useMe } from 'src/hooks/services';
 
 interface LayoutProps {
   children: ReactNode;

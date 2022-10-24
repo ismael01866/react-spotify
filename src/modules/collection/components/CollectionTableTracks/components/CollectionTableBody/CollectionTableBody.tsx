@@ -1,7 +1,7 @@
 import { Tbody, Tr } from '@chakra-ui/react';
 import { useContext, useRef } from 'react';
 import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
-import { useDelayedRender, useOnScreen } from 'src/utils/hooks/dom';
+import { useDelayedRender, useOnScreen } from 'src/hooks/dom';
 import { CollectionRowTracksChunk } from './components';
 
 interface CollectionTableBodyProps {

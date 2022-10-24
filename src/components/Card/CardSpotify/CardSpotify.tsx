@@ -19,7 +19,7 @@ import { IAlbum } from 'src/types/album';
 import { IArtist } from 'src/types/artist';
 import { IPlaylist } from 'src/types/playlist';
 import { ITrack } from 'src/types/track';
-import { useOnScreen } from 'src/utils/hooks/dom';
+import { useOnScreen } from 'src/hooks/dom';
 import { Card } from '../Card';
 import { CardButtonPlay } from '../components';
 import { CardSpotifyContent, CardSpotifyImage } from './components';

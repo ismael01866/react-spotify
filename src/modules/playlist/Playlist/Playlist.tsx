@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { PlaylistContext, UserContext } from 'src/state';
-import { usePlaylistWithFollow } from 'src/utils/hooks/services/usePlaylistWithFollow';
+import { usePlaylistWithFollow } from 'src/hooks/services/usePlaylistWithFollow';
 import { PlaylistContent, PlaylistHeader } from './components';
 
 export function Playlist() {

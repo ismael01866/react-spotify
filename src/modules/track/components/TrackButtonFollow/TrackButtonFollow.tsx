@@ -6,7 +6,7 @@ import { ITrack } from 'src/types/track';
 import { TOOLTIP_OPEN_DELAY } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/utils/hooks/api';
+import { useSpotifyApi } from 'src/hooks/api';
 import { mutate } from 'swr';
 
 interface TrackButtonFollowProps {

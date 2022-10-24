@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { ArtistContext } from 'src/state';
-import { useArtistWithFollow } from 'src/utils/hooks/services';
+import { useArtistWithFollow } from 'src/hooks/services';
 import { ArtistContent, ArtistHeader } from './components';
 
 export function Artist() {

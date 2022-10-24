@@ -1,7 +1,7 @@
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWR from 'swr';
-import { useSpotifyApi } from '../api';
+import { useSpotifyApi } from 'src/hooks/api';
 
 export const useTrackFollow = (query = {}, opts: any = {}) => {
   const { headers, url: baseURL } = useSpotifyApi(`/me/tracks/contains`);

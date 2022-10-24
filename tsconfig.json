@@ -19,32 +19,21 @@
     "paths": {
       "*": ["*"],
 
-      "components": ["src/components"],
-      "components/*": ["src/components/*"],
+      "state*": ["src/state"],
+      "hooks*": ["src/hooks"],
 
-      "layout": ["src/layout"],
-      "layout/*": ["src/layout/*"],
+      "styles*": ["src/styles"],
 
-      "pages": ["src/pages"],
-      "pages/*": ["src/pages/*"],
+      "types*": ["src/types"],
+      "utils*": ["src/utils"],
 
-      "modules": ["src/modules"],
-      "modules/*": ["src/modules/*"],
+      "pages*": ["src/pages"],
+      "modules*": ["src/modules"],
 
-      "store": ["src/state"],
-      "store/*": ["src/state/*"],
+      "layout*": ["src/layout"],
 
-      "features": ["src/features"],
-      "features/*": ["src/features/*"],
-
-      "lib": ["src/utils"],
-      "lib/*": ["src/utils/*"],
-
-      "types": ["src/types"],
-      "types/*": ["src/types/*"],
-
-      "styles": ["src/styles"],
-      "styles/*": ["src/styles/*"]
+      "features*": ["src/features"],
+      "components*": ["src/components"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

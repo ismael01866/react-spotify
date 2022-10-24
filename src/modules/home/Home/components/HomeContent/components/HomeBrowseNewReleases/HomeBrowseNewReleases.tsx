@@ -3,7 +3,7 @@ import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
 import { AlbumGrid } from 'src/modules/album/components';
 import { UserContext } from 'src/state';
-import { useBrowseNewReleases } from 'src/utils/hooks/services';
+import { useBrowseNewReleases } from 'src/hooks/services';
 
 export function HomeBrowseNewReleases() {
   const { country } = useContext(UserContext);

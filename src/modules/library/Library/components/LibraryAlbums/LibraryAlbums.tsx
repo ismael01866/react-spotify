@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { LibraryAlbumsContext } from 'src/state';
 import { IAlbum } from 'src/types/album';
-import { useMeAlbumsAll } from 'src/utils/hooks/services';
+import { useMeAlbumsAll } from 'src/hooks/services';
 import { LibraryAlbumsContent, LibraryAlbumsHeader } from './components';
 
 export function LibraryAlbums() {

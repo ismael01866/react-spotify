@@ -3,7 +3,7 @@ import { default as NextLink } from 'next/link';
 import { useContext } from 'react';
 import { PlaylistGrid } from 'src/modules/playlist/components';
 import { UserContext } from 'src/state';
-import { useBrowseFeaturedPlaylist } from 'src/utils/hooks/services';
+import { useBrowseFeaturedPlaylist } from 'src/hooks/services';
 
 export function HomeBrowseFeaturedPlaylists() {
   const { country } = useContext(UserContext);

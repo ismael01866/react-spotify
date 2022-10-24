@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/react';
 import { Skeleton } from 'src/components/Skeleton';
 import { UserTableTracks } from 'src/modules/user/components';
-import { useMeTopTracksWithFollow } from 'src/utils/hooks/services';
+import { useMeTopTracksWithFollow } from 'src/hooks/services';
 
 export function UserMeTopTracks() {
   const limit = 50;

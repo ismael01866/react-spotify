@@ -5,7 +5,7 @@ import { FaPause, FaPlay } from 'react-icons/fa';
 import { DEBOUNCE_WAIT } from 'src/utils/constants';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/utils/hooks/api';
+import { useSpotifyApi } from 'src/hooks/api';
 import { usePlayerState } from './hooks';
 
 interface BaseButtonPlayProps extends ButtonProps {

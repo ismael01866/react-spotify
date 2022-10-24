@@ -1,7 +1,7 @@
 import { Stack, Table, TableContainer, Tbody } from '@chakra-ui/react';
 import { Skeleton } from 'src/components/Skeleton';
 import { UserRowTrack } from 'src/modules/user/components/UserTableTracks/components';
-import { useMeTopTracksWithFollow } from 'src/utils/hooks/services';
+import { useMeTopTracksWithFollow } from 'src/hooks/services';
 
 export function UserMeContentTableTopTracks() {
   const limit = 4;

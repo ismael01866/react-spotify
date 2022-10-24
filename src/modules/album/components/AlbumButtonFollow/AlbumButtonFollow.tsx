@@ -5,7 +5,7 @@ import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/utils/hooks/api';
+import { useSpotifyApi } from 'src/hooks/api';
 import { mutate } from 'swr';
 
 interface AlbumButtonFollowProps {

@@ -1,6 +1,6 @@
-import { SignIn as SignInModule } from 'modules/auth';
 import type { NextPage } from 'next';
+import { SignIn } from 'src/modules/auth';
 
-const SignIn: NextPage = () => <SignInModule />;
+const SignInPage: NextPage = () => <SignIn />;
 
-export default SignIn;
+export default SignInPage;

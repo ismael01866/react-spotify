@@ -2,7 +2,7 @@ import { Heading } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { ArtistGrid } from 'src/modules/artist/components';
 import { ArtistContext } from 'src/state';
-import { useArtistRelatedArtists } from 'src/utils/hooks/services';
+import { useArtistRelatedArtists } from 'src/hooks/services';
 
 export function ArtistRelatedArtists() {
   const { id: artistID } = useContext(ArtistContext);

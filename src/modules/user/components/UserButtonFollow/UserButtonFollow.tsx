@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { IUser } from 'src/types/user';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
-import { useSpotifyApi } from 'src/utils/hooks/api';
+import { useSpotifyApi } from 'src/hooks/api';
 import { mutate } from 'swr';
 
 interface UserButtonFollowProps {

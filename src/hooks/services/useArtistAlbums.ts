@@ -1,7 +1,7 @@
+import { useSpotifyApi } from 'src/hooks/api';
 import { fetcher } from 'src/utils/fetch';
 import { utilWithQueryParams } from 'src/utils/helpers';
 import useSWRInfinite from 'swr/infinite';
-import { useSpotifyApi } from '../api';
 
 export const useArtistAlbums = (
   id: string | string[] | undefined,

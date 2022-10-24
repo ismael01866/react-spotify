@@ -9,7 +9,7 @@ import {
 import { useContext } from 'react';
 import { AlbumGrid } from 'src/modules/album/components';
 import { ArtistContext } from 'src/state';
-import { useArtistAlbums } from 'src/utils/hooks/services';
+import { useArtistAlbums } from 'src/hooks/services';
 
 export function ArtistAlbums() {
   const { id: artistID } = useContext(ArtistContext);

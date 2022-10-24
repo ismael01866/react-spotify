@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useButtonFollowToast } from 'src/components/Button/ButtonFollow';
 import { IPlaylist } from 'src/types/playlist';
 import { fetcher } from 'src/utils/fetch';
-import { useSpotifyApi } from 'src/utils/hooks/api';
+import { useSpotifyApi } from 'src/hooks/api';
 import { mutate } from 'swr';
 
 interface PlaylistButtonFollowProps {

@@ -1,6 +1,6 @@
 import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
-import { useSpotifyApi } from '../api';
+import { useSpotifyApi } from 'src/hooks/api';
 
 export const useRecommendationsAvailableGenreSeeds = (opts = {}) => {
   const { headers, url } = useSpotifyApi(

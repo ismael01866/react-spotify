@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { LayoutGridContext } from 'src/layout/components/LayoutGrid/LayoutGridContext';
 import { AlbumGrid } from 'src/modules/album/components';
 import { ArtistContext } from 'src/state';
-import { useInfiniteScroll } from 'src/utils/hooks/dom';
-import { useArtistAlbums } from 'src/utils/hooks/services';
+import { useInfiniteScroll } from 'src/hooks/dom';
+import { useArtistAlbums } from 'src/hooks/services';
 
 export function ArtistAlbumsContent() {
   const { contentElRef } = useContext(LayoutGridContext);

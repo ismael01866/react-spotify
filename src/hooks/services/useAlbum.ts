@@ -1,7 +1,7 @@
+import { useSpotifyApi } from 'src/hooks/api';
 import { IAlbum } from 'src/types/album';
 import { fetcher } from 'src/utils/fetch';
 import useSWR from 'swr';
-import { useSpotifyApi } from '../api';
 
 export const useAlbum = (id: string | string[] | undefined, opts = {}) => {
   const { headers, url } = useSpotifyApi(`/albums/${id}`);

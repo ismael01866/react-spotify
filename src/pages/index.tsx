@@ -1,6 +1,6 @@
 import { random } from 'lodash';
-import { Home } from 'modules/home';
 import type { GetServerSideProps, NextApiRequest, NextPage } from 'next';
+import { Home } from 'src/modules/home';
 import { HomeContext } from 'src/state';
 import { IArtist } from 'src/types/artist';
 import { ITrack } from 'src/types/track';

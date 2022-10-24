@@ -15,8 +15,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       <ChakraProvider theme={theme}>
         <Provider store={store}>
           <Layout>
-            <NextNProgress color="var(--chakra-colors-spotify-500)" />
             <Component {...pageProps} />
+            <NextNProgress color="var(--chakra-colors-spotify-500)" />
           </Layout>
         </Provider>
       </ChakraProvider>

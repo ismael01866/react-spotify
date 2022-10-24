@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useRef } from 'react';
 import {
   useSpotifyPlayerEmbed,
   useSpotifyPlayerStateHandler
-} from 'src/utils/hooks/spotify';
+} from 'src/hooks/spotify';
 import { Player, Sidebar } from './components';
 import { LayoutGridContext } from './LayoutGridContext';
 

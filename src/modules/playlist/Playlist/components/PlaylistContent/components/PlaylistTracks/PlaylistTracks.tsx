@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Skeleton } from 'src/components/Skeleton';
 import { PlaylistTableTracks } from 'src/modules/playlist/components';
 import { PlaylistContext } from 'src/state';
-import { usePlaylistTracksWithFollow } from 'src/utils/hooks/services';
+import { usePlaylistTracksWithFollow } from 'src/hooks/services';
 
 export function PlaylistTracks() {
   const { id: playlistID } = useContext(PlaylistContext);

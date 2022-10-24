@@ -3,7 +3,7 @@ import { ArtistTablePopularTracks } from 'src/modules/artist/components';
 import { TrackLoadingStack } from 'src/modules/track/components';
 import { ArtistContext, UserContext } from 'src/state';
 import { ITrack } from 'src/types/track';
-import { useArtistTopTracksWithFollow } from 'src/utils/hooks/services';
+import { useArtistTopTracksWithFollow } from 'src/hooks/services';
 import { ArtistButtonTogglePopularTracks } from './components/ArtistButtonTogglePopularTracks';
 
 export function ArtistPopularTracks() {

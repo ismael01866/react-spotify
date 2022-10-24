@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { SessionContext } from 'src/state';
 import { IPlaylist } from 'src/types/playlist';
 import { utilPluralize } from 'src/utils/helpers';
-import { useUser } from 'src/utils/hooks/services';
+import { useUser } from 'src/hooks/services';
 
 interface PlaylistMetaProps {
   playlist: IPlaylist;

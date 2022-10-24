@@ -3,7 +3,7 @@ import { AlbumTableTracks } from 'src/modules/album/components';
 import { TrackLoadingStack } from 'src/modules/track/components';
 import { AlbumContext, UserContext } from 'src/state';
 import { ITrack } from 'src/types/track';
-import { useAlbumTracksWithFollow } from 'src/utils/hooks/services';
+import { useAlbumTracksWithFollow } from 'src/hooks/services';
 
 export function AlbumTracks() {
   const { country } = useContext(UserContext);
