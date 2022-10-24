@@ -1,7 +1,7 @@
 .header-meta-image {
-  > img {
-  object-fit: cover;  
-    height: var(--chakra-sizes-full);
+  > img {  
+    object-fit: cover;
+	height: var(--chakra-sizes-full);
     
   }
 }
