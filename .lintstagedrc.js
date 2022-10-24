@@ -9,7 +9,7 @@ const buildPrettierCommand = (filenames) =>
   `prettier --config .prettierrc --write ${filenames.join(' ')}`;
 
 module.exports = {
-  '*.{ts, tsx}': 'npm run type-check',
+  '*.{ts, tsx}': 'tsc --project tsconfig.json --pretty --noEmit',
   '*.{js, jsx, ts, tsx}': [buildEslintCommand],
   '*.{css, scss}': 'stylelint --fix',
   '*.{js, jsx, ts, tsx, css, scss, md, json}': [buildPrettierCommand]
