@@ -2,10 +2,12 @@ const path = require('path');
 
 const buildTSCCommand = () => `tsc --pretty --noEmit`;
 
-const buildEsLintCommand = (filenames) =>
+const buildNextLintCommand = (filenames) =>
   `next lint --cache --fix --file ${filenames
     .map((f) => path.relative(process.cwd(), f))
     .join(' --file ')}`;
+
+const buildEsLintCommand = (filenames) => `eslint --fix ${filenames.join(' ')}`;
 
 const buildStyleLintCommand = (filenames) =>
   `stylelint --fix ${filenames.join(' ')}`;
@@ -17,5 +19,6 @@ module.exports = {
   '*.{ts,tsx}': [buildTSCCommand],
   '*.{js,jsx,ts,tsx,css,scss,md,json}': [buildPrettierCommand],
   '*.{js,jsx,ts,tsx}': [buildEsLintCommand],
+  '*.{js,jsx,ts,tsx}': [buildNextLintCommand],
   '*.{css,scss}': [buildStyleLintCommand]
 };
