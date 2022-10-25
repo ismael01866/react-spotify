@@ -24,7 +24,7 @@ export function AlbumHeader() {
       </Box>
 
       <Box px={12} pt={24} pos={'relative'}>
-        <HStack spacing={8}>
+        <HStack gap={8}>
           <HeaderMetaImage mb={-4}>
             <Image
               alt={name}
@@ -33,9 +33,9 @@ export function AlbumHeader() {
             />
           </HeaderMetaImage>
 
-          <VStack alignItems={'flex-start'} spacing={8}>
+          <VStack alignItems={'flex-start'} gap={8}>
             <AlbumMeta album={album} />
-            <HStack spacing={2}>
+            <HStack gap={2}>
               <ButtonPlay context_uri={album.uri} />
               <AlbumButtonFollow album={album} />
             </HStack>

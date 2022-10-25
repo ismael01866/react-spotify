@@ -21,7 +21,7 @@ export function HomeHeader() {
       </Box>
 
       <Box px={12} pt={24} pos={'relative'}>
-        <HStack spacing={8}>
+        <HStack gap={8}>
           <HeaderMetaImage mb={-4}>
             <Image
               alt={name}
@@ -30,9 +30,9 @@ export function HomeHeader() {
             />
           </HeaderMetaImage>
 
-          <VStack alignItems={'flex-start'} spacing={8}>
+          <VStack alignItems={'flex-start'} gap={8}>
             <HomeMeta artist={artist} />
-            <HStack spacing={2}>
+            <HStack gap={2}>
               <ButtonPlay
                 context_uri={artist.uri}
                 size={'lg'}

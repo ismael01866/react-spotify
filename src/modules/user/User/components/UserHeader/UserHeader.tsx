@@ -26,7 +26,7 @@ export function UserHeader() {
       </Box>
 
       <Box px={12} pt={24} pos={'relative'}>
-        <HStack spacing={8}>
+        <HStack gap={8}>
           <HeaderMetaImage mb={-4}>
             <Image
               alt={display_name}
@@ -35,10 +35,10 @@ export function UserHeader() {
             />
           </HeaderMetaImage>
 
-          <VStack alignItems={'flex-start'} spacing={8}>
+          <VStack alignItems={'flex-start'} gap={8}>
             <UserMeta user={user} />
             {!userIsMe && (
-              <HStack spacing={2}>
+              <HStack gap={2}>
                 <UserButtonFollow user={user} />
               </HStack>
             )}

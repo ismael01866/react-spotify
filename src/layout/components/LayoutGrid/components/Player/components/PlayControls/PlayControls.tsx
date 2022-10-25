@@ -20,7 +20,7 @@ export function PlayControls() {
   }, DEBOUNCE_WAIT);
 
   return (
-    <HStack spacing={2}>
+    <HStack gap={2}>
       <IconButton
         aria-label={'stepbackward'}
         icon={<FaStepBackward />}

@@ -38,7 +38,7 @@ export function VolumeBar() {
   };
 
   return (
-    <HStack ml={'auto'} pr={16} spacing={4}>
+    <HStack ml={'auto'} pr={16} gap={4}>
       <Icon as={FaVolumeDown} />
       <Slider
         colorScheme={'spotify'}

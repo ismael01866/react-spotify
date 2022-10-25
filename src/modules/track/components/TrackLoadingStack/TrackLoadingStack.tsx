@@ -14,7 +14,7 @@ export function TrackLoadingStack(props: TrackLoadingStackProps) {
   const skeletonData = new Array(count).fill('') as ITrack[];
 
   return (
-    <Stack spacing={4} {...others}>
+    <Stack gap={4} {...others}>
       {skeletonData.map((_, index) => (
         <Skeleton key={index} height={20} />
       ))}

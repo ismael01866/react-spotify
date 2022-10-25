@@ -14,7 +14,7 @@ export function ArtistGrid(props: ArtistGridProps) {
   return (
     <SimpleGrid
       columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
-      spacing={4}
+      gap={4}
       {...others}
     >
       {artists?.map((artist, index) => {

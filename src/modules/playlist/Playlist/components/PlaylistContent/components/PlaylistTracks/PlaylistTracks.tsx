@@ -16,7 +16,7 @@ export function PlaylistTracks() {
 
   const LoadingContent = () => {
     return (
-      <Stack spacing={4}>
+      <Stack gap={4}>
         {data?.map((_, index) => (
           <Skeleton key={index} height={20} />
         ))}

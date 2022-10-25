@@ -44,7 +44,7 @@ export function TrackMeta(props: TrackMetaProps) {
   }, [track]);
 
   return (
-    <HStack spacing={12}>
+    <HStack gap={12}>
       <AspectRatio h={'full'} ratio={4 / 3} w={'7xs'}>
         <Image
           maxHeight={'full'}

@@ -11,7 +11,7 @@ export function SignIn() {
 
   return (
     <Center h={'100vh'} w={'100vw'}>
-      <VStack spacing={12}>
+      <VStack gap={12}>
         <Button
           colorScheme={'spotify'}
           rounded={'full'}

@@ -9,7 +9,7 @@ export function SidebarListNavigation() {
       divider={<StackDivider alignSelf={'center'} w={8} />}
       overflow={'hidden'}
       flex={'1 1 0'}
-      spacing={4}
+      gap={4}
     >
       <SidebarListNavItems />
       <SidebarListPlaylistItems />

@@ -24,7 +24,7 @@ export function PlaylistHeader() {
       </Box>
 
       <Box px={12} pt={24} pos={'relative'}>
-        <HStack spacing={8}>
+        <HStack gap={8}>
           <HeaderMetaImage mb={-4}>
             <Image
               alt={name}
@@ -33,10 +33,10 @@ export function PlaylistHeader() {
             />
           </HeaderMetaImage>
 
-          <VStack alignItems={'flex-start'} spacing={8}>
+          <VStack alignItems={'flex-start'} gap={8}>
             <PlaylistMeta playlist={playlist} />
 
-            <HStack spacing={2}>
+            <HStack gap={2}>
               <ButtonPlay context_uri={playlist.uri} />
               <PlaylistButtonFollow playlist={playlist} />
             </HStack>

@@ -14,7 +14,7 @@ export function AlbumGrid(props: AlbumGridProps) {
   return (
     <SimpleGrid
       columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }}
-      spacing={4}
+      gap={4}
       {...others}
     >
       {albums?.map((album, index) => {

@@ -91,7 +91,7 @@ export function LibraryAlbumsHeader() {
 
       <HStack
         ml={'auto'}
-        spacing={2}
+        gap={2}
         visibility={albumsFiltered ? 'visible' : 'hidden'}
       >
         <InputGroup>

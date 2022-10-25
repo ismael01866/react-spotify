@@ -19,7 +19,7 @@ export const SidebarListPlaylistItems = () => {
       flexDirection={'column'}
       minH={'xs'}
       overflow={'hidden auto'}
-      spacing={2}
+      gap={2}
       sx={{
         scrollbarWidth: 'thin'
       }}

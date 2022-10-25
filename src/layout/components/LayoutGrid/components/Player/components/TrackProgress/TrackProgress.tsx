@@ -58,7 +58,7 @@ export function TrackProgress() {
   };
 
   return (
-    <HStack spacing={4} w={'full'}>
+    <HStack gap={4} w={'full'}>
       <Text color={'text.base'} fontSize={'xs'}>
         {moment(progress).format('mm:ss')}
       </Text>

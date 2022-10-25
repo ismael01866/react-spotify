@@ -89,7 +89,7 @@ export function LibraryArtistsHeader() {
 
       <HStack
         ml={'auto'}
-        spacing={2}
+        gap={2}
         visibility={artistsFiltered ? 'visible' : 'hidden'}
       >
         <InputGroup>

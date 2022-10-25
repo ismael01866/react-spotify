@@ -16,6 +16,7 @@ export function HeaderMetaImage(props: HeaderMetaImageProps) {
       className={styles['header-meta-image']}
       borderRadius={'lg'}
       boxShadow={'dark-lg'}
+      display={{ base: 'none', md: 'initial' }}
       h={'2xs'}
       overflow={'hidden'}
       pos={'relative'}

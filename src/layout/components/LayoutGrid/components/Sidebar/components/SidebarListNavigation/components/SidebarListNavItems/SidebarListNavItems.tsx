@@ -6,7 +6,7 @@ import { data } from './data';
 
 export const SidebarListNavItems = () => {
   return (
-    <List spacing={2} w={'full'}>
+    <List gap={2} w={'full'}>
       {data.map((item, index) => {
         return <SidebarItem key={index} item={item} />;
       })}

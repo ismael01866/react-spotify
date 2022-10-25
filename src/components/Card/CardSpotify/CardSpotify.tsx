@@ -113,7 +113,7 @@ function CardContent({ data, type }: any) {
 
   return (
     <Flex bg={'bg.900'} p={4} w={'full'}>
-      <VStack alignItems={'flex-start'} noOfLines={1} spacing={1} w={'full'}>
+      <VStack alignItems={'flex-start'} noOfLines={1} gap={1} w={'full'}>
         <>
           <Heading fontSize={'sm'} noOfLines={1}>
             {type === 'track' ? memoGetNameByContext(data) : name}
